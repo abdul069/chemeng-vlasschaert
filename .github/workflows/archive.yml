@@ -1,0 +1,61 @@
+name: archive-site
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Mirror Weebly site
+        run: |
+          mkdir -p /tmp/mirror
+          cd /tmp/mirror
+          wget --mirror \
+               --page-requisites \
+               --adjust-extension \
+               --convert-links \
+               --restrict-file-names=windows \
+               --no-parent \
+               --wait=0.3 \
+               --tries=3 \
+               --timeout=30 \
+               -e robots=off \
+               --user-agent="Mozilla/5.0 (archival mirror for preservation)" \
+               https://petervlaschemeng.weebly.com/ || true
+          echo "--- resultaat ---"
+          du -sh petervlaschemeng.weebly.com || true
+          find petervlaschemeng.weebly.com -type f | wc -l || true
+
+      - name: Copy into repo
+        run: |
+          rm -rf archive/site
+          mkdir -p archive/site
+          cp -r /tmp/mirror/petervlaschemeng.weebly.com/. archive/site/
+          FILES=$(find archive/site -type f | wc -l)
+          SIZE=$(du -sh archive/site | cut -f1)
+          {
+            echo "# Site-archief petervlaschemeng.weebly.com"
+            echo ""
+            echo "Volledige spiegel (mirror) van de oorspronkelijke Weebly-site van P. Vlasschaert,"
+            echo "gemaakt ter bewaring van het originele bronmateriaal."
+            echo ""
+            echo "- Datum archivering: $(date -u +%Y-%m-%d)"
+            echo "- Aantal bestanden: $FILES"
+            echo "- Totale grootte: $SIZE"
+            echo ""
+            echo "Open \`archive/site/index.html\` lokaal in een browser om de site offline te bekijken."
+          } > archive/README.md
+
+      - name: Commit archive
+        run: |
+          git config user.name "site-archiver"
+          git config user.email "actions@github.com"
+          git add archive/
+          git commit -m "Archive: volledige mirror van petervlaschemeng.weebly.com" || echo "niets te committen"
+          git push
