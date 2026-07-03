@@ -1,0 +1,552 @@
+<!DOCTYPE HTML">
+<HTML>
+ <HEAD>
+  <TITLE>linlog10introfinalmaximahtml</TITLE>
+  <META NAME="generator" CONTENT="wxMaxima">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    displayAlign: "left",
+    context: "MathJax"
+  })
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+  <link rel="stylesheet" type="text/css" href="https://petervlaschemeng.weebly.com/uploads/5/3/7/6/53761997/linlog10introfinalmaximahtml_htmlimg/linlog10introfinalmaximahtml.css"/>
+ </HEAD>
+ <BODY>
+
+<!-- ***************************************************** -->
+<!--          Created with wxMaxima version 16.12.0         -->
+<!-- ***************************************************** -->
+<noscript><div class="error message">    Please enable JavaScript in order to get a 2d display of the equations embedded in this web page.</div></noscript>\(      \DeclareMathOperator{\abs}{abs}
+      \newcommand{\ensuremath}[1]{\mbox{$#1$}}
+\)
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+&quot;--------------------------------------------&quot;<BR>&quot; How to make lin-log10 paper. (intro) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;<BR>&quot;(log in Maxima,base &nbsp;'%e'=2.718281828459045)&quot;<BR>&quot;--------------------------------------------&quot;<BR><a href="https://petervlaschemeng.weebly.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4535203120376b3329243636262d24203731052228242c296b262a28">[email&#160;protected]</a>,17/01/2017<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+we need conversion factor:<BR>maxima: log(x) = &nbsp;y &hArr; x = (exp(1))^y<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">kill</span>(<span class="code_variable">all</span>)<span class="code_endofline">$</span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+How to find : e<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">float</span>((<span class="code_variable">%e</span>)<span class="code_operator">^</span><span class="code_number">1</span>)<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\% o1} 2.718281828459045\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">float</span>(<span class="code_function">exp</span>(<span class="code_number">1</span>))<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\% o2} 2.718281828459045\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">float</span>(<span class="code_function">log</span>(<span class="code_number">9</span>))<span class="code_operator">/</span><span class="code_function">float</span>(<span class="code_function">log</span>(<span class="code_number">10</span>))<span class="code_endofline">;</span><BR>
+  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\% o3} 0.9542425094393249\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+principle 'for' &rArr; log ('scale' part)<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+don't use (....)$<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+for <span class="code_variable">i</span><span class="code_operator">:</span><span class="code_number">1</span> thru <span class="code_number">6</span> step <span class="code_number">1</span> do<BR>
+ ( <span class="code_variable">conv</span><span class="code_operator">:</span><span class="code_function">float</span>(<span class="code_number">1</span><span class="code_operator">/</span><span class="code_function">log</span>(<span class="code_number">10</span>)),<BR>
+ &nbsp;&nbsp;<span class="code_variable">log10</span><span class="code_operator">:</span><span class="code_function">float</span>(<span class="code_function">log</span>(<span class="code_variable">i</span>)<span class="code_operator">*</span><span class="code_variable">conv</span>),<BR>
+ &nbsp;&nbsp;<span class="code_function">print</span>(<span class="code_string">&quot;</span><span class="code_string">number</span><span class="code_string"> </span><span class="code_string">=</span><span class="code_string"> </span><span class="code_string">&quot;</span>,<span class="code_variable">i</span>,<span class="code_string">&quot;</span><span class="code_string">,</span><span class="code_string">&quot;</span>,<span class="code_string">&quot;</span><span class="code_string">log10</span><span class="code_string">(</span><span class="code_string">&quot;</span>,<span class="code_variable">i</span>,<span class="code_string">&quot;</span><span class="code_string">) </span><span class="code_string">=</span><span class="code_string"> </span><span class="code_string">&quot;</span>,<span class="code_variable">log10</span>)<BR>
+ ) &nbsp;&nbsp;&nbsp;&nbsp;<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\mbox{}\\number =  1 , log10( 1 ) =  0.0 \mbox{}\\number =  2 , log10( 2 ) =  0.3010299956639811 \mbox{}\\number =  3 , log10( 3 ) =  0.4771212547196624 \mbox{}\\number =  4 , log10( 4 ) =  0.6020599913279623 \mbox{}\\number =  5 , log10( 5 ) =  0.6989700043360186 \mbox{}\\number =  6 , log10( 6 ) =  0.7781512503836435 \]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+fill a array:without know the dimension<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+use of: makelist<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+-----------------------------------------------------------<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">v</span><span class="code_operator">:</span><span class="code_function">makelist</span>(<span class="code_variable">i</span><span class="code_operator">^</span><span class="code_number">2</span>,<span class="code_variable">i</span>,<span class="code_number">1</span>,<span class="code_number">10</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">v</span>[<span class="code_number">3</span>]<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{v}\mathit{done}\]
+\[\tag{v}[1,4,9,16,25,36,49,64,81,100]\]
+\[\tag{\% o6} 9\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+----------------------------------------------------------<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+principle 'makelist' &rArr; log ('scale' part)<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+1e) definition<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">w</span>(<span class="code_variable">j</span>)<span class="code_operator">:</span><span class="code_operator">=</span><span class="code_function">float</span>(<span class="code_function">log</span>(<span class="code_variable">j</span>)<span class="code_operator">*</span><span class="code_variable">conv</span>)<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\% o7} \operatorname{w}(j):=\operatorname{float}\left( \log{(j)}\, \mathit{conv}\right) \]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+check : definition<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">w</span>(<span class="code_number">2</span>)<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\% o8} 0.3010299956639811\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+2e) make list,vv<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">vv</span><span class="code_operator">:</span><span class="code_function">makelist</span>(<span class="code_function">w</span>(<span class="code_variable">j</span>),<span class="code_variable">j</span>,<span class="code_number">1</span>,<span class="code_number">10</span>)<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{vv}[0.0,0.3010299956639811,0.4771212547196624,0.6020599913279623,0.6989700043360186,0.7781512503836435,0.8450980400142567,0.9030899869919433,0.9542425094393248,0.9999999999999999]\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+some manupulations on the list command<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">vv</span>[<span class="code_number">3</span>]<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\% o10} 0.4771212547196624\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">ww</span><span class="code_operator">:</span><span class="code_function">append</span>(<span class="code_variable">vv</span>,[<span class="code_function">w</span>(<span class="code_number">3</span>)])<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{ww}[0.0,0.3010299956639811,0.4771212547196624,0.6020599913279623,0.6989700043360186,0.7781512503836435,0.8450980400142567,0.9030899869919433,0.9542425094393248,0.9999999999999999,0.4771212547196624]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">zz</span><span class="code_operator">:</span><span class="code_function">delete</span>(<span class="code_function">w</span>(<span class="code_number">3</span>),<span class="code_variable">ww</span>)<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{zz}[0.0,0.3010299956639811,0.6020599913279623,0.6989700043360186,0.7781512503836435,0.8450980400142567,0.9030899869919433,0.9542425094393248,0.9999999999999999]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">length</span>(<span class="code_variable">zz</span>)<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\% o13} 9\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">write_data</span>(<span class="code_variable">zz</span>,<span class="code_string">&quot;</span><span class="code_string">zzfilelist</span><span class="code_string">.</span><span class="code_string">dat</span><span class="code_string">&quot;</span>)<span class="code_endofline">$</span>  </SPAN></TD>
+</TR></TABLE>
+\[\mbox{}\\\mbox{0 errors, 0 warnings}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">printfile</span>(<span class="code_string">&quot;</span><span class="code_string">zzfilelist</span><span class="code_string">.</span><span class="code_string">dat</span><span class="code_string">&quot;</span>)<span class="code_endofline">$</span>  </SPAN></TD>
+</TR></TABLE>
+\[\mbox{}\\\mbox{0.0 0.3010299956639811 0.6020599913279623 0.6989700043360186 0.7781512503836435 0.8450980400142567 0.9030899869919433 0.9542425094393248 0.9999999999999999}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">zz</span><span class="code_operator">:</span><span class="code_function">append</span>([<span class="code_variable">zz</span>],[<span class="code_number">1</span>,<span class="code_number">2</span>,<span class="code_number">3</span>,<span class="code_number">4</span>,<span class="code_number">5</span>,<span class="code_number">6</span>,<span class="code_number">7</span>,<span class="code_number">8</span>,<span class="code_number">9</span>])<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{zz}[[0.0,0.3010299956639811,0.6020599913279623,0.6989700043360186,0.7781512503836435,0.8450980400142567,0.9030899869919433,0.9542425094393248,0.9999999999999999],1,2,3,4,5,6,7,8,9]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">write_data</span>(<span class="code_variable">zz</span>,<span class="code_string">&quot;</span><span class="code_string">zzfilearray</span><span class="code_string">.</span><span class="code_string">dat</span><span class="code_string">&quot;</span>)<span class="code_endofline">$</span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">printfile</span>(<span class="code_string">&quot;</span><span class="code_string">zzfilearray</span><span class="code_string">.</span><span class="code_string">dat</span><span class="code_string">&quot;</span>)<span class="code_endofline">$</span>  </SPAN></TD>
+</TR></TABLE>
+\[\mbox{}\\\mbox{0.0 0.3010299956639811 0.6020599913279623 0.6989700043360186 0.7781512503836435 0.8450980400142567 0.9030899869919433 0.9542425094393248 0.9999999999999999}\mbox{}\\\mbox{1 2 3 4 5 6 7 8 9}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">data</span><span class="code_operator">:</span><span class="code_function">read_matrix</span>(<span class="code_string">&quot;</span><span class="code_string">zzfilearray</span><span class="code_string">.</span><span class="code_string">dat</span><span class="code_string">&quot;</span>)<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{data}\begin{pmatrix}0.0 & 0.3010299956639811 & 0.6020599913279623 & 0.6989700043360186 & 0.7781512503836435 & 0.8450980400142567 & 0.9030899869919433 & 0.9542425094393248 & 0.9999999999999999\\
+1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\end{pmatrix}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+element :from matrix 'data'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">data</span>[<span class="code_number">1</span>,<span class="code_number">3</span>]<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\% o20} 0.6020599913279623\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+row : 'first row' &rArr; data<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">data</span>[<span class="code_number">1</span>]<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\% o21} [0.0,0.3010299956639811,0.6020599913279623,0.6989700043360186,0.7781512503836435,0.8450980400142567,0.9030899869919433,0.9542425094393248,0.9999999999999999]\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+row : 'second row' &rArr; data<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">data</span>[<span class="code_number">2</span>]<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\% o22} [1,2,3,4,5,6,7,8,9]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">datav</span><span class="code_operator">:</span><span class="code_function">transpose</span>(<span class="code_variable">data</span>)<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{datav}\begin{pmatrix}0.0 & 1\\
+0.3010299956639811 & 2\\
+0.6020599913279623 & 3\\
+0.6989700043360186 & 4\\
+0.7781512503836435 & 5\\
+0.8450980400142567 & 6\\
+0.9030899869919433 & 7\\
+0.9542425094393248 & 8\\
+0.9999999999999999 & 9\end{pmatrix}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">data</span>[<span class="code_number">1</span>,<span class="code_number">1</span>]<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\% o24} 0.0\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+plot2d ' discrete data'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">x_cor</span><span class="code_operator">:</span>[<span class="code_number">1</span>,<span class="code_number">2</span>,<span class="code_number">3</span>,<span class="code_number">4</span>,<span class="code_number">5</span>]<span class="code_endofline">$</span><BR>
+<span class="code_variable">y_cor</span><span class="code_operator">:</span>[<span class="code_number">0</span><span class="code_number">.</span><span class="code_number">2</span>,<span class="code_number">0</span><span class="code_number">.</span><span class="code_number">5</span>,<span class="code_number">0</span><span class="code_number">.</span><span class="code_number">7</span>,<span class="code_number">0</span><span class="code_number">.</span><span class="code_number">9</span>,<span class="code_number">1</span><span class="code_number">.</span><span class="code_number">2</span>]<span class="code_endofline">$</span><BR>
+<span class="code_variable">xy</span><span class="code_operator">:</span>[[<span class="code_number">1</span>,<span class="code_number">0</span><span class="code_number">.</span><span class="code_number">2</span>],[<span class="code_number">2</span>,<span class="code_number">0</span><span class="code_number">.</span><span class="code_number">5</span>],[<span class="code_number">3</span>,<span class="code_number">0</span><span class="code_number">.</span><span class="code_number">7</span>],[<span class="code_number">4</span>,.<span class="code_number">9</span>],[<span class="code_number">5</span>,<span class="code_number">1</span><span class="code_number">.</span><span class="code_number">2</span>]]<span class="code_endofline">$</span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">plot2d</span>([<span class="code_variable">discrete</span>,<span class="code_variable">x_cor</span>,<span class="code_variable">y_cor</span>],[<span class="code_variable">style</span>,<span class="code_variable">points</span>])<span class="code_endofline">$</span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+data plot from above from the above ('makelist','for')<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+ -->	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">plot2d</span>([<span class="code_variable">discrete</span>,<span class="code_variable">data</span>[<span class="code_number">2</span>],<span class="code_variable">data</span>[<span class="code_number">1</span>]],[<span class="code_variable">style</span>,<span class="code_variable">points</span>],[<span class="code_variable">legend</span>,<span class="code_string">&quot;</span><span class="code_string">data</span><span class="code_string">&quot;</span>],[<span class="code_variable">xlabel</span>,<span class="code_string">&quot;</span><span class="code_string">data</span><span class="code_string">[</span><span class="code_string">2</span><span class="code_string">]</span><span class="code_string">&quot;</span>],<BR>
+ &nbsp;&nbsp;&nbsp;[<span class="code_variable">ylabel</span>,<span class="code_string">&quot;</span><span class="code_string">data</span><span class="code_string">[</span><span class="code_string">1</span><span class="code_string">]</span><span class="code_string">&quot;</span>])<span class="code_endofline">$</span>  </SPAN></TD>
+</TR></TABLE>
+
+
+ <HR>
+ <SMALL> Created with <A HREF="http://wxmaxima.sourceforge.net/">wxMaxima</A>.</SMALL>
+ <script data-cfasync="false" src="../../../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></BODY>
+</HTML>

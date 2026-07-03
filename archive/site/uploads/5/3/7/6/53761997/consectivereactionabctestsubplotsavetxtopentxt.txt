@@ -1,0 +1,98 @@
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+import numpy as np
+import time
+# A > B > C, k[0],k[1]
+# python ,consecutive_reaction (subplot,savetxt,opentxt),version 1.0
+# peter.vlasschaert@gmail.com,03/01/2023
+def consecutive_reaction(init_conditions, t):
+    A = init_conditions[0]
+    B = init_conditions[1]
+    C = init_conditions[2]
+
+    k = [0.1, 0.2]
+    
+    dAdt = -k[0] * A  # Derivative of A with respect to time
+    dBdt = k[0] * A - k[1] * B  # Derivative of B with respect to time
+    dCdt = k[1] * B  # Derivative of C with respect to time
+    return [dAdt, dBdt, dCdt]
+
+# Initial conditions
+A0 = 1.0
+B0 = 0.0
+C0 = 0.0
+
+# Time points to evaluate the solution
+t = np.linspace(0, 5, 100)
+
+# Solve the differential equations
+solution = odeint(consecutive_reaction, [A0, B0, C0], t)
+
+# Extract the concentrations of each species
+A = solution[:, 0]
+B = solution[:, 1]
+C = solution[:, 2]
+
+# Calculate the total concentration of the three species
+total_concentration = A + B + C
+# output : label above every column :time,A,B,C
+labels = ['Time', 'A', 'B', 'C']
+matrix = np.column_stack((t, solution))
+matrix = np.vstack((labels, matrix))
+print(matrix)
+# Plot the concentrations of each species on the first subplot
+plt.subplot(2, 1, 1)
+plt.plot(t, A, label='A')
+plt.plot(t, B, label='B')
+plt.plot(t, C, label='C')
+
+# Add a legend and labels to the plot
+plt.legend()
+plt.xlabel('Time')
+plt.ylabel('Concentration')
+
+# Plot the total concentration on the second subplot
+# Plot the total concentration on the second subplot
+plt.subplot(2, 1, 2)
+plt.plot(t, total_concentration, label='Total concentration')
+plt.xlabel('Time')
+plt.ylabel('Total concentration')
+plt.show()
+# save matrix : data
+np.savetxt('consecutiveABC.txt', matrix, fmt='%s', delimiter='\t')
+# Close the previous plot
+print("close plot ")
+# import matrix : data 
+print("open :consecutiveABC.txt")
+# Import the data from the text file
+matrix = np.loadtxt('consecutiveABC.txt', delimiter='\t', dtype=str)
+
+# Extract the time and concentrations from the matrix
+time = matrix[1:, 0].astype(float)
+A = matrix[1:, 1].astype(float)
+B = matrix[1:, 2].astype(float)
+C = matrix[1:, 3].astype(float)
+
+# Calculate the total concentration of the three species
+total_concentration = A + B + C
+
+# Plot the concentrations of each species on the first subplot
+plt.subplot(2, 1, 1)
+plt.plot(time, A, label='A')
+plt.plot(time, B, label='B')
+plt.plot(time, C, label='C')
+
+# Add a legend and labels to the plot
+plt.legend()
+plt.xlabel('Time')
+plt.ylabel('Concentration')
+
+# Plot the total concentration on the second subplot
+plt.subplot(2, 1, 2)
+plt.plot(time, total_concentration, label='Total concentration')
+plt.xlabel('Time')
+plt.ylabel('Total concentration')
+
+# Show the plot
+plt.show()
+

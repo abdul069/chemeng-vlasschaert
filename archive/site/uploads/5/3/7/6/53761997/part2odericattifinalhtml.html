@@ -1,0 +1,272 @@
+<!DOCTYPE HTML">
+<HTML>
+ <HEAD>
+  <TITLE>part2odericattifinalhtml</TITLE>
+  <META NAME="generator" CONTENT="wxMaxima">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    displayAlign: "left",
+    context: "MathJax"
+  })
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+  <link rel="stylesheet" type="text/css" href="https://petervlaschemeng.weebly.com/uploads/5/3/7/6/53761997/part2odericattifinalhtml_htmlimg/part2odericattifinalhtml.css"/>
+ </HEAD>
+ <BODY>
+
+<!-- ***************************************************** -->
+<!--          Created with wxMaxima version 16.04.2         -->
+<!-- ***************************************************** -->
+<noscript><div class="error message">    Please enable JavaScript in order to get a 2d display of the equations embedded in this web page.</div></noscript>\(      \DeclareMathOperator{\abs}{abs}
+      \newcommand{\ensuremath}[1]{\mbox{$#1$}}
+\)
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">kill</span>(<span class="code_variable">all</span>)<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+ode : part2,intro: ricatti<BR><a href="https://petervlaschemeng.weebly.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d4a4b1a0b1a6faa2b8b5a7a7b7bcb5b1a6a094b3b9b5bdb8fab7bbb9">[email&#160;protected]</a>,03/02/2017<BR>
+</P>
+
+
+<!-- Title cell -->
+
+
+<P CLASS="title">
+Theory Ricatti : ODE (reaction kinetics)<BR>
+
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+(dy/dx) = p(x)*y^2+q(x)*y+r(x)<BR>Why: Consecutive Reactions and Ricatti<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k1 &nbsp;&nbsp;k2<BR>reaction kinetics : A &rarr; B &rarr; C<BR>dCA/dt = - k1*CA^n &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1)<BR>dCB/dt = k1*CA^n-k2*CB^m &nbsp;&nbsp;&nbsp;(2)<BR>dCC/dt = k2*CC^l &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3)<BR><BR>integer values : &nbsp;n,m,l<BR>concentration &nbsp;: CA,CB,CC<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i2) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">load</span>(<span class="code_operator">'</span><span class="code_variable">contrib_ode</span>)<span class="code_endofline">$</span><BR>
+<span class="code_function">assume</span>(<span class="code_variable">t</span>&gt;<span class="code_number">0</span>,<span class="code_variable">CA</span>&gt;<span class="code_number">0</span>,<span class="code_variable">CB</span>&gt;<span class="code_number">0</span>)<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+equation (2) n=1,m=1, by 't=0 &rarr; CA=CA0'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i4) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq1</span><span class="code_operator">:</span> <span class="code_variable">CA</span> <span class="code_operator">=</span> <span class="code_variable">CA0</span><span class="code_operator">*</span><span class="code_variable">%e</span><span class="code_operator">^</span>(<span class="code_operator">-</span><span class="code_variable">k1</span><span class="code_operator">*</span><span class="code_variable">t</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq2</span><span class="code_operator">:</span><span class="code_operator">'</span><span class="code_function">diff</span>(<span class="code_variable">CB</span>,<span class="code_variable">t</span>)<span class="code_operator">=</span><span class="code_variable">k1</span><span class="code_operator">*</span><span class="code_variable">CA</span><span class="code_operator">^</span><span class="code_number">1</span><span class="code_operator">-</span><span class="code_variable">k2</span><span class="code_operator">*</span><span class="code_variable">CB</span><span class="code_operator">^</span><span class="code_number">1</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq1}\label{eq1}\mathit{CA}=\mathit{CA0}\,{{\%{}e}^{-\mathit{k1}t}}\]
+\[\tag{eq2}\label{eq2}\frac{d}{dt}\mathit{CB}=\mathit{CA}\,\mathit{k1}-\mathit{CB}\,\mathit{k2}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+first order ODE : dCB/dt+g(t)*CB = f(t)<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+method1:<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i7) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq3</span><span class="code_operator">:</span><span class="code_function">subst</span>(<span class="code_function">rhs</span>(<span class="code_variable">eq1</span>),<span class="code_variable">CA</span>,<span class="code_variable">eq2</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq4</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">eq3</span>,<span class="code_number">2</span>,<span class="code_number">2</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq5</span><span class="code_operator">:</span> <span class="code_function">lhs</span>(<span class="code_variable">eq3</span>)<span class="code_operator">-</span><span class="code_variable">eq4</span><span class="code_operator">=</span><span class="code_function">rhs</span>(<span class="code_variable">eq3</span>)<span class="code_operator">-</span><span class="code_variable">eq4</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq3}\label{eq3}\frac{d}{dt}\mathit{CB}=\mathit{CA0}\,\mathit{k1}\,{{\%{}e}^{-\mathit{k1}t}}-\mathit{CB}\,\mathit{k2}\]
+\[\tag{eq4}\label{eq4}-\mathit{CB}\,\mathit{k2}\]
+\[\tag{eq5}\label{eq5}\mathit{CB}\,\mathit{k2}+\frac{d}{dt}\mathit{CB}=\mathit{CA0}\,\mathit{k1}\,{{\%{}e}^{-\mathit{k1}t}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i8) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq6</span><span class="code_operator">:</span><span class="code_function">contrib_ode</span>(<span class="code_variable">eq5</span>,<span class="code_variable">CB</span>,<span class="code_variable">t</span>)[<span class="code_number">1</span>]<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq6}\label{eq6}\mathit{CB}={{\%{}e}^{-\mathit{k2}t}}\,\left( \frac{\mathit{CA0}\,\mathit{k1}\,{{\%{}e}^{\mathit{k2}t-\mathit{k1}t}}}{\mathit{k2}-\mathit{k1}}+\mathit{\%{}c}\right) \]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+assume CB=0 by 't=0 find %c'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i10) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq7</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">eq6</span>,<span class="code_variable">t</span><span class="code_operator">=</span><span class="code_number">0</span>,<span class="code_variable">CB</span><span class="code_operator">=</span><span class="code_number">0</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq8</span><span class="code_operator">:</span><span class="code_function">solve</span>(<span class="code_variable">eq7</span>,<span class="code_variable">%c</span>)[<span class="code_number">1</span>]<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq7}\label{eq7}0=\frac{\mathit{CA0}\,\mathit{k1}}{\mathit{k2}-\mathit{k1}}+\mathit{\%{}c}\]
+\[\tag{eq8}\label{eq8}\mathit{\%{}c}=-\frac{\mathit{CA0}\,\mathit{k1}}{\mathit{k2}-\mathit{k1}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i11) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq9</span><span class="code_operator">:</span><span class="code_function">subst</span>(<span class="code_function">rhs</span>(<span class="code_variable">eq8</span>),<span class="code_variable">%c</span>,<span class="code_variable">eq6</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq9}\label{eq9}\mathit{CB}={{\%{}e}^{-\mathit{k2}t}}\,\left( \frac{\mathit{CA0}\,\mathit{k1}\,{{\%{}e}^{\mathit{k2}t-\mathit{k1}t}}}{\mathit{k2}-\mathit{k1}}-\frac{\mathit{CA0}\,\mathit{k1}}{\mathit{k2}-\mathit{k1}}\right) \]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i12) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq10</span><span class="code_operator">:</span><span class="code_function">radcan</span>(<span class="code_variable">eq9</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq10}\label{eq10}\mathit{CB}=\frac{\left( \mathit{CA0}\,\mathit{k1}\,{{\%{}e}^{\mathit{k2}t}}-\mathit{CA0}\,\mathit{k1}\,{{\%{}e}^{\mathit{k1}t}}\right) \,{{\%{}e}^{-\left( \mathit{k2}+\mathit{k1}\right) t}}}{\mathit{k2}-\mathit{k1}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i13) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq11</span><span class="code_operator">:</span><span class="code_function">factor</span>(<span class="code_function">part</span>(<span class="code_variable">eq10</span>,<span class="code_number">2</span>,<span class="code_number">1</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq11}\label{eq11}\mathit{CA0}\,\mathit{k1}\,\left( {{\%{}e}^{\mathit{k2}t}}-{{\%{}e}^{\mathit{k1}t}}\right) \,{{\%{}e}^{-\mathit{k2}t-\mathit{k1}t}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i14) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq12</span><span class="code_operator">:</span><span class="code_function">lhs</span>(<span class="code_variable">eq10</span>)<span class="code_operator">=</span><span class="code_variable">eq11</span><span class="code_operator">/</span><span class="code_function">part</span>(<span class="code_variable">eq10</span>,<span class="code_number">2</span>,<span class="code_number">2</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq12}\label{eq12}\mathit{CB}=\frac{\mathit{CA0}\,\mathit{k1}\,\left( {{\%{}e}^{\mathit{k2}t}}-{{\%{}e}^{\mathit{k1}t}}\right) \,{{\%{}e}^{-\mathit{k2}t-\mathit{k1}t}}}{\mathit{k2}-\mathit{k1}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+check : solution n=1,m=1<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i15) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq13</span><span class="code_operator">:</span><span class="code_function">ratsubst</span>(<span class="code_function">rhs</span>(<span class="code_variable">eq12</span>),<span class="code_variable">CB</span>,<span class="code_variable">eq3</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq13}\label{eq13}\frac{d}{dt}\frac{\mathit{CA0}\,\mathit{k1}\,\left( {{\%{}e}^{\mathit{k2}t}}-{{\%{}e}^{\mathit{k1}t}}\right) \,{{\%{}e}^{-\mathit{k2}t-\mathit{k1}t}}}{\mathit{k2}-\mathit{k1}}=\frac{{{\%{}e}^{-\mathit{k1}t}}\,\left( \mathit{CA0}\,\mathit{k1}\,\mathit{k2}\,{{\%{}e}^{\mathit{k1}t}}-\mathit{CA0}\,{{\mathit{k1}}^{2}}\,{{\%{}e}^{\mathit{k2}t}}\right) }{\mathit{k2}\,{{\%{}e}^{\mathit{k2}t}}-\mathit{k1}\,{{\%{}e}^{\mathit{k2}t}}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i16) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq14</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_function">part</span>(<span class="code_variable">eq13</span>,<span class="code_number">1</span>),<span class="code_variable">nouns</span>)<span class="code_operator">=</span><span class="code_function">ev</span>(<span class="code_function">part</span>(<span class="code_variable">eq13</span>,<span class="code_number">2</span>),<span class="code_variable">nouns</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq14}\label{eq14}\frac{\mathit{CA0}\,\mathit{k1}\,\left( \mathit{k2}\,{{\%{}e}^{\mathit{k2}t}}-\mathit{k1}\,{{\%{}e}^{\mathit{k1}t}}\right) \,{{\%{}e}^{-\mathit{k2}t-\mathit{k1}t}}}{\mathit{k2}-\mathit{k1}}+\frac{\mathit{CA0}\,\mathit{k1}\,\left( -\mathit{k2}-\mathit{k1}\right) \,\left( {{\%{}e}^{\mathit{k2}t}}-{{\%{}e}^{\mathit{k1}t}}\right) \,{{\%{}e}^{-\mathit{k2}t-\mathit{k1}t}}}{\mathit{k2}-\mathit{k1}}=\frac{{{\%{}e}^{-\mathit{k1}t}}\,\left( \mathit{CA0}\,\mathit{k1}\,\mathit{k2}\,{{\%{}e}^{\mathit{k1}t}}-\mathit{CA0}\,{{\mathit{k1}}^{2}}\,{{\%{}e}^{\mathit{k2}t}}\right) }{\mathit{k2}\,{{\%{}e}^{\mathit{k2}t}}-\mathit{k1}\,{{\%{}e}^{\mathit{k2}t}}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i17) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq5</span><span class="code_operator">:</span><span class="code_function">radcan</span>(<span class="code_variable">eq14</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq5}\label{eq5}-\frac{\left( \mathit{CA0}\,{{\mathit{k1}}^{2}}\,{{\%{}e}^{\mathit{k2}t}}-\mathit{CA0}\,\mathit{k1}\,\mathit{k2}\,{{\%{}e}^{\mathit{k1}t}}\right) \,{{\%{}e}^{-\left( \mathit{k2}+\mathit{k1}\right) t}}}{\mathit{k2}-\mathit{k1}}=-\frac{\left( \mathit{CA0}\,{{\mathit{k1}}^{2}}\,{{\%{}e}^{\mathit{k2}t}}-\mathit{CA0}\,\mathit{k1}\,\mathit{k2}\,{{\%{}e}^{\mathit{k1}t}}\right) \,{{\%{}e}^{-\left( \mathit{k2}+\mathit{k1}\right) t}}}{\mathit{k2}-\mathit{k1}}\]
+
+ <HR>
+ <SMALL> Created with <A HREF="http://wxmaxima.sourceforge.net/">wxMaxima</A>.</SMALL>
+ <script data-cfasync="false" src="../../../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></BODY>
+</HTML>

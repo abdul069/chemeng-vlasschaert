@@ -1,0 +1,56 @@
+import scipy.integrate as spi
+import numpy as np
+# numerical output
+print( "..............................................................................................")
+print( " simple reaction :1*A -> products,dnAdt = -k*(nA)**1 , no transition state,part 1,version 1.0 ")
+print( " peter.vlasschaert@gmail.com,15/01/2023                                                       ")
+print( "..............................................................................................")
+
+# transition state = intermediates = complex state.
+def reaction(y, t, k):
+# order of reaction ordeer = 1    
+    nA = y[0]
+    dnAdt = -k*(nA)**1
+    return [dnAdt]
+
+print( "...........................................................")
+print( " simple reaction :dnAdt = -k*(nA)**1 , no transition state ")
+print( "...........................................................")
+
+k = 0.1 # reaction rate constant (= fixed value for nA)
+nA0 = 1 # initial concentration of A
+t = np.linspace(0, 10, 100) # time points for the simulation
+y0 = [nA0]
+# integration method use : odeint
+result = spi.odeint(reaction, y0, t, args=(k,))
+print(result) #[[],.......]
+nA = result[:,0] # flatten symbolic algebra ( = cas)
+print(nA)     #[..........]  
+print ("initial value =  nA(0) ")
+print( ".......................")
+out =[t[0],nA[0]]
+print(out)
+# use range
+print ("print all values over time (use:range       ),nA(t)")
+
+out1=[(t[i],nA[i]) for i in range(len(t))]
+# len = length
+print(out1)
+# use enumerate,test = dummy variable
+print ("print all values over time (use:enumerate   ) ,nA(t)")
+print( "....................................................")
+out2=[(t[i],nA[i]) for i, test in enumerate(t)]
+print ("select values over time    (use,integer list) ,nA(t)")
+print( "....................................................")
+print(out2)
+# rem :
+# for i, test in enumerate(my_list):
+#      print(i, test)
+#...................................
+# output four first value output
+print ("select values over time    (use,integer list) ,nA(t)")
+print( "....................................................")
+# select values = list of integers 0,1,2,-1, positive or negative
+out3=[(i,t[i],nA[i]) for i in [0,1,2,-1]]
+# -1, give last value of t=10
+print(out3)

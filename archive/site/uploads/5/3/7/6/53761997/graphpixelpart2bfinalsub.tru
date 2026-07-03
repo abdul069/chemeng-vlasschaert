@@ -1,0 +1,112 @@
+option nolet
+ask pixels z1,z2
+print "----------------------------------------------------------"
+print " graph pixel   : part 2b , sub                version 1.0 "
+print " peter.vlasschaert@gmail.com,10/02/2019                   "
+print "----------------------------------------------------------"
+! filename : graphpixelpart2bfinalsub.tru    
+xmin = -5
+xmax = 5
+ymin = -7
+ymax = 7
+x_pix = z1
+y_pix = z2
+print
+print "--------------------------"
+print " draw a function y = F(x) "
+print "--------------------------"
+print
+print "--------------------------------------------"
+print " How to save pixel window  => funcpict1.bmp "
+print "--------------------------------------------"
+print
+set window 0,x_pix-1,y_pix-1,0
+set color "blue"
+! draw axis
+call draw_xas_usertopix(x_pix,y_pix,ymin,ymax)
+call draw_yas_usertopix(x_pix,y_pix,xmin,xmax)
+! draw F(x) =>
+print " x: ->  y = sin(x) 'red ',cos(x) 'green' "
+set color "red"
+val = 0.01
+for  x = xmin to xmax step val
+     y = sin(x) 
+call convers_usertopix(x_pix,y_pix,xmin,xmax,ymin,ymax,x,y,px,py)
+     plot px,py
+next x
+set color "green"
+for  x = xmin to xmax step val
+     y = cos(x) 
+call convers_usertopix(x_pix,y_pix,xmin,xmax,ymin,ymax,x,y,px,py)
+     plot px,py
+next x
+!************************************************
+! How to save canvas as a picture. (funcpict.bmp)
+!************************************************
+call save_pixfullwin(z1,z2,keep$)
+!------------------------------------------------------------------------,
+!  Create a filename. Don't need an extention; the SUB will put ".bmp"
+!------------------------------------------------------------------------,
+ff$="C:\download\funcpict1.bmp" ! make sure this is a valid path...
+CALL Write_Image("MS BMP", keep$, ff$) ! or you can use this 
+print
+end
+
+sub save_pixfullwin(z11,z22,kep$)
+! <help> 
+! z11 : number of pixels x-direction , start :0 to z11-1,integer >0
+! z22 : number of pixels y-direction , start :0 to z22-1,integer >0
+! picture hold string : kep$
+!************************************************
+box keep 0, z11-1, z22-1, 0 in kep$ ! kep$ memory
+end sub
+
+sub save_userfullwin(x_min,x_max,y_min,y_max,kep$)
+! <help>
+! x-direction : x_min < =  x < = x_max , float
+! y-direction : y_min < =  x < = x_max , float
+! picture hold string : kep$
+!***************************************************
+box keep x_min, x_max, y_min, y_max in kep$ ! kep$ memory
+end sub
+
+sub convers_usertopix(z11,z22,x_min,x_max,y_min,y_max,xx,yy,pxx,pyy)
+! < help >
+! z11 : number of pixels x-direction , start :0 to z11-1,integer >0
+! z22 : number of pixels y-direction , start :0 to z22-1,integer >0
+! x-direction : x_min < =  x < = x_max , float
+! y-direction : y_min < =  y < = y_max , float
+! pxx,pyy : integer > 0
+!********************************************************************
+dx = (x_min-x_max)
+dy = (y_min-y_max)
+pxx=(z11*x_min)/dx-(xx*z11)/dx
+pyy=(yy*z22)/dy-(z22*y_max)/dy
+end sub
+
+sub draw_xas_usertopix(z11,z22,y_min,y_max)
+! < help >
+! z11 : number of pixels x-direction , start :0 to z11-1,integer >0
+! z22 : number of pixels y-direction , start :0 to z22-1,integer >0
+! y-direction : y_min < =  y < = y_max , float
+!*******************************************************************
+dy = (y_min-y_max)
+pxa=0
+pxb=z11
+pxc=-(z22*y_max)/dy
+plot lines : pxa,pxc ;pxb,pxc
+end sub
+
+sub draw_yas_usertopix(z11,z22,x_min,x_max)
+! < help >
+! z11 : number of pixels y-direction , start :0 to z11-1,integer >0
+! z22 : number of pixels y-direction , start :0 to z22-1,integer >0
+! x-direction : xmin < =  x < = x_max , float
+!*******************************************************************
+dx = (x_min-x_max)
+pxaa=z22
+pxbb=0
+pxcc=(z11*x_min)/dx
+plot lines : pxcc,pxaa ;pxcc,pxbb
+end sub
+

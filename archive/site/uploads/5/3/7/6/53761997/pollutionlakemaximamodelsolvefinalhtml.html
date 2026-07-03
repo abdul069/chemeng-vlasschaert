@@ -1,0 +1,586 @@
+<!DOCTYPE HTML">
+<HTML>
+ <HEAD>
+  <TITLE>pollutionlakemaximamodelsolvefinalhtml</TITLE>
+  <META NAME="generator" CONTENT="wxMaxima">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    displayAlign: "left",
+    context: "MathJax"
+  })
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+  <link rel="stylesheet" type="text/css" href="https://petervlaschemeng.weebly.com/uploads/5/3/7/6/53761997/pollutionlakemaximamodelsolvefinalhtml_htmlimg/pollutionlakemaximamodelsolvefinalhtml.css"/>
+ </HEAD>
+ <BODY>
+
+<!-- ***************************************************** -->
+<!--          Created with wxMaxima version 16.04.2         -->
+<!-- ***************************************************** -->
+<noscript><div class="error message">    Please enable JavaScript in order to get a 2d display of the equations embedded in this web page.</div></noscript>\(      \DeclareMathOperator{\abs}{abs}
+      \newcommand{\ensuremath}[1]{\mbox{$#1$}}
+\)
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">kill</span>(<span class="code_variable">all</span>)<span class="code_endofline">$</span><BR>
+<span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+<a href="https://petervlaschemeng.weebly.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0c7c6978697e227a606d7f7f6f646d697e784c6b616d6560226f6361">[email&#160;protected]</a>,18/02/2016<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+part : how to get the model<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+discrete : first-order nonhomogeous dynamical system<BR>----------------------------------------------------<BR>amount pollution &rArr; simplification to understand principles.<BR><BR>Lake Ontari:a(n)<BR>Lake Eri &nbsp;&nbsp;:b(n)<BR>Lake Ontario connected with Lake Eri<BR><BR>system of equations :difference equations<BR><BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a(n+1)=0.87*a(n)+0.38*b(n) &nbsp;&nbsp;&nbsp;'1'<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b(n+1)=0.62*b(n) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'2'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i2) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eqn1</span><span class="code_operator">:</span><span class="code_function">a</span>(<span class="code_variable">n</span><span class="code_operator">+</span><span class="code_number">1</span>)<span class="code_operator">=</span><span class="code_variable">a1</span><span class="code_operator">*</span><span class="code_function">a</span>(<span class="code_variable">n</span>)<span class="code_operator">+</span><span class="code_variable">b1</span><span class="code_operator">*</span><span class="code_function">b</span>(<span class="code_variable">n</span>)<span class="code_endofline">$</span><BR>
+<span class="code_variable">eqn2</span><span class="code_operator">:</span><span class="code_function">b</span>(<span class="code_variable">n</span><span class="code_operator">+</span><span class="code_number">1</span>)<span class="code_operator">=</span><span class="code_variable">a2</span><span class="code_operator">*</span><span class="code_function">a</span>(<span class="code_variable">n</span>)<span class="code_operator">+</span><span class="code_variable">b2</span><span class="code_operator">*</span><span class="code_function">b</span>(<span class="code_variable">n</span>)<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+b(n):each year: Lake Eri 38%(0.38) 'replaced' by rain<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i4) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">a2</span><span class="code_operator">:</span><span class="code_number">0</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">b2</span><span class="code_operator">:</span><span class="code_number">1</span><span class="code_operator">-</span><span class="code_number">0</span>.<span class="code_number">38</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{a2}\label{a2}0\]
+\[\tag{b2}\label{b2}0.62\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i6) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eqn1</span><span class="code_operator">:</span><span class="code_function">a</span>(<span class="code_variable">n</span><span class="code_operator">+</span><span class="code_number">1</span>)<span class="code_operator">=</span><span class="code_variable">a1</span><span class="code_operator">*</span><span class="code_function">a</span>(<span class="code_variable">n</span>)<span class="code_operator">+</span><span class="code_variable">b1</span><span class="code_operator">*</span><span class="code_function">b</span>(<span class="code_variable">n</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">eqn2</span><span class="code_operator">:</span><span class="code_function">b</span>(<span class="code_variable">n</span><span class="code_operator">+</span><span class="code_number">1</span>)<span class="code_operator">=</span><span class="code_variable">a2</span><span class="code_operator">*</span><span class="code_function">a</span>(<span class="code_variable">n</span>)<span class="code_operator">+</span><span class="code_variable">b2</span><span class="code_operator">*</span><span class="code_function">b</span>(<span class="code_variable">n</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eqn1}\label{eqn1}\operatorname{a}\left( n+1\right) =\mathit{b1}\,\operatorname{b}(n)+\mathit{a1}\,\operatorname{a}(n)\]
+\[\tag{eqn2}\label{eqn2}\operatorname{b}\left( n+1\right) =0.62\operatorname{b}(n)\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+a(n);each year :Lake Ontario<BR>38%(0.38) Lake Eri flows into Lake Ontario<BR>13%(.13 ) Lake Ontarion 'replaced' from water from Lake Eri<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+rem:replaced : 1-..<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i8) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">a1</span><span class="code_operator">:</span><span class="code_number">1</span><span class="code_operator">-</span><span class="code_number">0</span>.<span class="code_number">13</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">b1</span><span class="code_operator">:</span><span class="code_number">0</span>.<span class="code_number">38</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{a1}\label{a1}0.87\]
+\[\tag{b1}\label{b1}0.38\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i10) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eqn1</span><span class="code_operator">:</span><span class="code_function">a</span>(<span class="code_variable">n</span><span class="code_operator">+</span><span class="code_number">1</span>)<span class="code_operator">=</span><span class="code_variable">a1</span><span class="code_operator">*</span><span class="code_function">a</span>(<span class="code_variable">n</span>)<span class="code_operator">+</span><span class="code_variable">b1</span><span class="code_operator">*</span><span class="code_function">b</span>(<span class="code_variable">n</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">eqn2</span><span class="code_operator">:</span><span class="code_function">b</span>(<span class="code_variable">n</span><span class="code_operator">+</span><span class="code_number">1</span>)<span class="code_operator">=</span><span class="code_variable">a2</span><span class="code_operator">*</span><span class="code_function">a</span>(<span class="code_variable">n</span>)<span class="code_operator">+</span><span class="code_variable">b2</span><span class="code_operator">*</span><span class="code_function">b</span>(<span class="code_variable">n</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eqn1}\label{eqn1}\operatorname{a}\left( n+1\right) =0.38\operatorname{b}(n)+0.87\operatorname{a}(n)\]
+\[\tag{eqn2}\label{eqn2}\operatorname{b}\left( n+1\right) =0.62\operatorname{b}(n)\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+solve: problem from the connected lakes(Eri,Ontario)<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+first: not connected &nbsp;:eqn2 : n=0,1,2,3,...<BR>b(0)=1 unit of pollution<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i13) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">v0</span><span class="code_operator">:</span><span class="code_function">b</span>(<span class="code_number">0</span>)<span class="code_operator">=</span><span class="code_number">1</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">v1</span><span class="code_operator">:</span><span class="code_function">b</span>(<span class="code_number">1</span>)<span class="code_operator">=</span><span class="code_number">0</span>.<span class="code_number">62</span><span class="code_operator">*</span><span class="code_function">b</span>(<span class="code_number">0</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">v2</span><span class="code_operator">:</span><span class="code_function">b</span>(<span class="code_number">2</span>)<span class="code_operator">=</span><span class="code_number">0</span>.<span class="code_number">62</span><span class="code_operator">*</span><span class="code_function">b</span>(<span class="code_number">1</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{v0}\label{v0}\operatorname{b}(0)=1\]
+\[\tag{v1}\label{v1}\operatorname{b}(1)=0.62\operatorname{b}(0)\]
+\[\tag{v2}\label{v2}\operatorname{b}(2)=0.62\operatorname{b}(1)\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i14) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">w1</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">v2</span>,<span class="code_variable">v1</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{w1}\label{w1}\operatorname{b}(2)=0.3844\operatorname{b}(0)\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i15) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">d1</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_function">coeff</span>(<span class="code_variable">w1</span>,<span class="code_function">b</span>(<span class="code_number">0</span>)),<span class="code_number">2</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{d1}\label{d1}0.3844\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i17) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">d2</span><span class="code_operator">:</span><span class="code_variable">d1</span><span class="code_operator">-</span>(<span class="code_variable">b2</span>)<span class="code_operator">^</span><span class="code_variable">kk</span><span class="code_operator">=</span><span class="code_number">0</span><span class="code_endofline">;</span><BR>
+<span class="code_function">find_root</span>(<span class="code_variable">d2</span>,<span class="code_variable">kk</span>,<span class="code_number">0</span>,<span class="code_number">100</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{d2}\label{d2}0.3844-{{0.62}^{\mathit{kk}}}=0\]
+\[\tag{\%{}o17}\label{o17} 2.0\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+b(k)=(0.62)^k*b(0)=(0.62)^k*1<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i19) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eqn11</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">eqn1</span>,<span class="code_function">b</span>(<span class="code_variable">n</span>)<span class="code_operator">=</span>(<span class="code_number">0</span>.<span class="code_number">62</span>)<span class="code_operator">^</span><span class="code_variable">n</span><span class="code_operator">*</span><span class="code_function">b</span>(<span class="code_number">0</span>))<span class="code_endofline">;</span><BR>
+<span class="code_variable">eqn111</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">eqn11</span>,<span class="code_function">b</span>(<span class="code_number">0</span>)<span class="code_operator">=</span><span class="code_number">1</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eqn11}\label{eqn11}\operatorname{a}\left( n+1\right) =0.87\operatorname{a}(n)+0.38\operatorname{b}(0)\,{{0.62}^{n}}\]
+\[\tag{eqn111}\label{eqn111}\operatorname{a}\left( n+1\right) =0.87\operatorname{a}(n)+0.38{{0.62}^{n}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+theory: Nonhomogeneneous dynamical systems<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a(n+1)=r*a(n)+b*s^n<BR>suppose &nbsp;: r&lt;&gt;s<BR>solution : a(k)=c1*(r)^k+c2*(s)^k<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a(k)=c*(r)^k+a*s^k<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a(k)= general solution + particular solution<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;? find a<BR>rem: r=s<BR> &nbsp;&nbsp;&nbsp;&nbsp;a(k)=c1*(r)^k+particular solution<BR> &nbsp;&nbsp;&nbsp;&nbsp;a(k)=c1*(r)^k+c2*k*(r)^k,c2=b/r<BR> &nbsp;&nbsp;&nbsp;&nbsp;a(k)=c1*r^k+(b/r*k)*r^k<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i22) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eqt</span> <span class="code_operator">:</span> <span class="code_function">a</span>(<span class="code_variable">n</span><span class="code_operator">+</span><span class="code_number">1</span>)<span class="code_operator">=</span><span class="code_variable">r</span><span class="code_operator">*</span><span class="code_function">a</span>(<span class="code_variable">n</span>)<span class="code_operator">+</span><span class="code_variable">b</span><span class="code_operator">*</span><span class="code_variable">s</span><span class="code_operator">^</span><span class="code_variable">n</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">eqak</span><span class="code_operator">:</span> <span class="code_function">a</span>(<span class="code_variable">k</span>)<span class="code_operator">=</span><span class="code_variable">c</span><span class="code_operator">*</span>(<span class="code_variable">r</span>)<span class="code_operator">^</span><span class="code_variable">k</span><span class="code_operator">+</span><span class="code_variable">a</span><span class="code_operator">*</span><span class="code_variable">s</span><span class="code_operator">^</span><span class="code_variable">k</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">eqan</span><span class="code_operator">:</span> <span class="code_function">ev</span>(<span class="code_variable">eqak</span>,<span class="code_variable">k</span><span class="code_operator">=</span><span class="code_variable">n</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eqt}\label{eqt}\operatorname{a}\left( n+1\right) =b\,{{s}^{n}}+\operatorname{a}(n)r\]
+\[\tag{eqak}\label{eqak}\operatorname{a}(k)=a\,{{s}^{k}}+c\,{{r}^{k}}\]
+\[\tag{eqan}\label{eqan}\operatorname{a}(n)=a\,{{s}^{n}}+c\,{{r}^{n}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i23) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eqanplus1</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">eqan</span>,<span class="code_variable">n</span><span class="code_operator">=</span><span class="code_variable">n</span><span class="code_operator">+</span><span class="code_number">1</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eqanplus1}\label{eqanplus1}\operatorname{a}\left( n+1\right) =a\,{{s}^{n+1}}+c\,{{r}^{n+1}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i24) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eqinput</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">eqt</span>,<span class="code_variable">eqan</span>,<span class="code_variable">eqanplus1</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eqinput}\label{eqinput}a\,{{s}^{n+1}}+c\,{{r}^{n+1}}=r\,\left( a\,{{s}^{n}}+c\,{{r}^{n}}\right) +b\,{{s}^{n}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i25) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eqval1</span><span class="code_operator">:</span><span class="code_function">ratsimp</span>(<span class="code_variable">a</span><span class="code_operator">*</span><span class="code_variable">s</span><span class="code_operator">^</span>(<span class="code_variable">n</span><span class="code_operator">+</span><span class="code_number">1</span>)<span class="code_operator">+</span><span class="code_variable">c</span><span class="code_operator">*</span><span class="code_variable">r</span><span class="code_operator">^</span>(<span class="code_variable">n</span><span class="code_operator">+</span><span class="code_number">1</span>)<span class="code_operator">=</span><span class="code_variable">r</span><span class="code_operator">*</span>(<span class="code_variable">a</span><span class="code_operator">*</span><span class="code_variable">s</span><span class="code_operator">^</span><span class="code_variable">n</span><span class="code_operator">+</span><span class="code_variable">c</span><span class="code_operator">*</span><span class="code_variable">r</span><span class="code_operator">^</span><span class="code_variable">n</span>)<span class="code_operator">+</span><span class="code_variable">b</span><span class="code_operator">*</span><span class="code_variable">s</span><span class="code_operator">^</span><span class="code_variable">n</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eqval1}\label{eqval1}a\,{{s}^{n+1}}+c\,{{r}^{n+1}}=\left( ar+b\right) \,{{s}^{n}}+c\,{{r}^{n+1}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i26) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">radcan</span>(<span class="code_variable">a</span><span class="code_operator">*</span><span class="code_variable">s</span><span class="code_operator">^</span>(<span class="code_variable">n</span><span class="code_operator">+</span><span class="code_number">1</span>)<span class="code_operator">+</span><span class="code_variable">c</span><span class="code_operator">*</span><span class="code_variable">r</span><span class="code_operator">^</span>(<span class="code_variable">n</span><span class="code_operator">+</span><span class="code_number">1</span>)<span class="code_operator">=</span>(<span class="code_variable">a</span><span class="code_operator">*</span><span class="code_variable">r</span><span class="code_operator">+</span><span class="code_variable">b</span>)<span class="code_operator">*</span><span class="code_variable">s</span><span class="code_operator">^</span><span class="code_variable">n</span><span class="code_operator">+</span><span class="code_variable">c</span><span class="code_operator">*</span><span class="code_variable">r</span><span class="code_operator">^</span>(<span class="code_variable">n</span><span class="code_operator">+</span><span class="code_number">1</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o26}\label{o26} a\,{{s}^{n+1}}+c\,{{r}^{n+1}}=\left( ar+b\right) \,{{s}^{n}}+c\,{{r}^{n+1}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i30) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">d_part1</span><span class="code_operator">:</span><span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">eqval1</span>,<span class="code_number">1</span>),<span class="code_variable">s</span><span class="code_operator">^</span>(<span class="code_variable">n</span><span class="code_operator">+</span><span class="code_number">1</span>))<span class="code_operator">*</span><span class="code_variable">s</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">d_part2</span><span class="code_operator">:</span><span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">eqval1</span>,<span class="code_number">2</span>),<span class="code_variable">s</span><span class="code_operator">^</span>(<span class="code_variable">n</span>))<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq_particular</span><span class="code_operator">:</span> <span class="code_variable">d_part1</span><span class="code_operator">=</span><span class="code_variable">d_part2</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">aa</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_function">solve</span>(<span class="code_variable">eq_particular</span>,<span class="code_variable">a</span>),<span class="code_number">1</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{d\_ part1}\label{d\_ part1}as\]
+\[\tag{d\_ part2}\label{d\_ part2}ar+b\]
+\[\tag{eq\_ particular}\label{eq\_ particular}as=ar+b\]
+\[\tag{aa}\label{aa}a=\frac{b}{s-r}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i31) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">gen_eq1</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_function">part</span>(<span class="code_variable">eqak</span>,<span class="code_number">2</span>),<span class="code_variable">aa</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{gen\_ eq1}\label{gen\_ eq1}\frac{b\,{{s}^{k}}}{s-r}+c\,{{r}^{k}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i32) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">gen_eq</span><span class="code_operator">:</span><span class="code_function">a</span>(<span class="code_variable">k</span>)<span class="code_operator">=</span><span class="code_variable">gen_eq1</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{gen\_ eq}\label{gen\_ eq}\operatorname{a}(k)=\frac{b\,{{s}^{k}}}{s-r}+c\,{{r}^{k}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+example: from Lake Ontario and Lake Eri<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r=0.87<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s=0.62<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b=0.38<BR>size: Lake Ontario three times the size of Lake Eri<BR>result :three times pollution but the same initial concentration<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a(0)=a0 ,a0=3*b0=3.b(0)<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i33) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">gen_eq_example</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">gen_eq</span>,<span class="code_variable">r</span><span class="code_operator">=</span><span class="code_number">0</span>.<span class="code_number">87</span>,<span class="code_variable">s</span><span class="code_operator">=</span><span class="code_number">0</span>.<span class="code_number">62</span>,<span class="code_variable">b</span><span class="code_operator">=</span><span class="code_number">0</span>.<span class="code_number">38</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{gen\_ eq\_ example}\label{gen\_ eq\_ example}\operatorname{a}(k)=c\,{{0.87}^{k}}-1.52{{0.62}^{k}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+because c undetermined variable,anything we like.<BR>check initial conditions.<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i35) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">gen_eq_ex1</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">gen_eq_example</span>,<span class="code_variable">c</span><span class="code_operator">=</span><span class="code_variable">c</span><span class="code_operator">-</span><span class="code_function">part</span>(<span class="code_variable">aa</span>,<span class="code_number">2</span>))<span class="code_endofline">;</span><BR>
+<span class="code_variable">gen_eq_ex2</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">gen_eq_ex1</span>,<span class="code_variable">r</span><span class="code_operator">=</span><span class="code_number">0</span>.<span class="code_number">87</span>,<span class="code_variable">s</span><span class="code_operator">=</span><span class="code_number">0</span>.<span class="code_number">62</span>,<span class="code_variable">b</span><span class="code_operator">=</span><span class="code_number">0</span>.<span class="code_number">38</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{gen\_ eq\_ ex1}\label{gen\_ eq\_ ex1}\operatorname{a}(k)={{0.87}^{k}}\,\left( c-\frac{b}{s-r}\right) -1.52{{0.62}^{k}}\]
+\[\tag{gen\_ eq\_ ex2}\label{gen\_ eq\_ ex2}\operatorname{a}(k)=\left( c+1.52\right) \,{{0.87}^{k}}-1.52{{0.62}^{k}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i36) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">gen_eq_init</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">gen_eq_ex2</span>,<span class="code_variable">k</span><span class="code_operator">=</span><span class="code_number">0</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{gen\_ eq\_ init}\label{gen\_ eq\_ init}\operatorname{a}(0)=1.0\left( c+1.52\right) -1.52\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i37) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">gen_eq_initc</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">gen_eq_init</span>,<span class="code_function">a</span>(<span class="code_number">0</span>)<span class="code_operator">=</span><span class="code_number">3</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{gen\_ eq\_ initc}\label{gen\_ eq\_ initc}3=1.0\left( c+1.52\right) -1.52\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i38) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">c_init</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_function">solve</span>(<span class="code_variable">gen_eq_initc</span>,<span class="code_variable">c</span>),<span class="code_number">1</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\mbox{}\\\mbox{rat: replaced 4.52 by 113/25 = 4.52}\mbox{}\\\mbox{rat: replaced -1.0 by -1/1 = -1.0}\mbox{}\\\mbox{rat: replaced 1.52 by 38/25 = 1.52}\]
+\[\tag{c\_ init}\label{c\_ init}c=3\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i39) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">gen_eq_ex3</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">gen_eq_ex2</span>,<span class="code_variable">c_init</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{gen\_ eq\_ ex3}\label{gen\_ eq\_ ex3}\operatorname{a}(k)=4.52{{0.87}^{k}}-1.52{{0.62}^{k}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+How long will take :Lake Eri , 10%(0.1) from present value b(0)=1<BR>Because Lake Ontario '3' times size of Lake Eri<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;30%(0.3)<BR>(Lake Eri :ref)<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+first :unpolluted,Lake Eri ? How many years<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i40) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">b_unpol1</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_function">b</span>(<span class="code_variable">k</span>)<span class="code_operator">=</span>(<span class="code_number">0</span>.<span class="code_number">62</span>)<span class="code_operator">^</span><span class="code_variable">k</span><span class="code_operator">*</span><span class="code_function">b</span>(<span class="code_number">0</span>),<span class="code_function">b</span>(<span class="code_number">0</span>)<span class="code_operator">=</span><span class="code_number">1</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{b\_ unpol1}\label{b\_ unpol1}\operatorname{b}(k)={{0.62}^{k}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i41) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">b_unpol2</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">b_unpol1</span>,<span class="code_function">b</span>(<span class="code_variable">k</span>)<span class="code_operator">=</span><span class="code_number">0</span>.<span class="code_number">1</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{b\_ unpol2}\label{b\_ unpol2}0.1={{0.62}^{k}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+find ,between 0 years and 100 years<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i42) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">k_year_unpol_Eri</span><span class="code_operator">:</span><span class="code_function">find_root</span>(<span class="code_variable">b_unpol2</span>,<span class="code_variable">k</span>,<span class="code_number">0</span>,<span class="code_number">100</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{k\_ year\_ unpol\_ Eri}\label{k\_ year\_ unpol\_ Eri}4.816762862638821\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+second:unpolluted,Lake Ontario ? How many years<BR>b(k) = 0.1 &rarr; 3 times &rarr; a(k) = .3<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i43) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">a_unpol1</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">gen_eq_ex3</span>,<span class="code_function">a</span>(<span class="code_variable">k</span>)<span class="code_operator">=</span>.<span class="code_number">3</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{a\_ unpol1}\label{a\_ unpol1}0.3=4.52{{0.87}^{k}}-1.52{{0.62}^{k}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+find,between 0 years and 100 years<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i44) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">k_year_unpol_Ontario</span><span class="code_operator">:</span><span class="code_function">find_root</span>(<span class="code_variable">a_unpol1</span>,<span class="code_variable">k</span>,<span class="code_number">0</span>,<span class="code_number">100</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{k\_ year\_ unpol\_ Ontario}\label{k\_ year\_ unpol\_ Ontario}19.47426223504164\]
+
+ <HR>
+ <SMALL> Created with <A HREF="http://wxmaxima.sourceforge.net/">wxMaxima</A>.</SMALL>
+ <script data-cfasync="false" src="../../../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></BODY>
+</HTML>

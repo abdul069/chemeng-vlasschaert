@@ -1,0 +1,17 @@
+from tkinter import *                                               # * = everything imported
+win=Tk()                                                            # tkinter window created = win (left right corner(x=0,y=0))
+h=win.winfo_screenheight()                                          # screen height of the monitor (max =y-resolution, top -> bottom )
+w=win.winfo_screenwidth()                                           # screen width  of the monitor (max =x-resolution),left -> right )
+win.title("full windowscreen : maximum pixels "+ str(w)+"*"+str(h)) # info sreen monitor
+win.resizable(False,False)                                          # fullscreen only be closed
+win.geometry("%dx%d+%d+%d" % (w,h,0,0))                             # formated string monitor
+lab=Label (win,text = 'peter.vlasschaert@gmail.com,14/03/2021 ',    # make the  label
+bg="white",fg="blue")
+lab.pack(padx=50)                                                   # place the label  on win
+but1=Button (win,text = "close window",width = 60,height = 4,       # place the button on win,click 'break in the loop'
+bg = "green",fg="red",command = win.destroy)                        # make the button
+but1.pack(padx=50,pady=80)                                          # place the button on win
+lab1=Label (win,text = "this label in win ",
+width = 20 ,height = 4,bg="green",fg="blue",font = "Helvetica 20")  # make the  label
+lab1.pack(padx=50,pady=100)                                         # place the label on win
+win.mainloop()                                                      # event loop : waiting for interaction 'widget'

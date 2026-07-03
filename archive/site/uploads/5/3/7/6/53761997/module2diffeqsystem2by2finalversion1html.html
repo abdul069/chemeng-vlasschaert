@@ -1,0 +1,527 @@
+<!DOCTYPE HTML">
+<HTML>
+ <HEAD>
+  <TITLE>module2diffeqsystem2by2finalversion1html</TITLE>
+  <META NAME="generator" CONTENT="wxMaxima">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    displayAlign: "left",
+    context: "MathJax"
+  })
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+  <link rel="stylesheet" type="text/css" href="https://petervlaschemeng.weebly.com/uploads/5/3/7/6/53761997/module2diffeqsystem2by2finalversion1html_htmlimg/module2diffeqsystem2by2finalversion1html.css"/>
+ </HEAD>
+ <BODY>
+
+<!-- ***************************************************** -->
+<!--          Created with wxMaxima version 16.04.2         -->
+<!-- ***************************************************** -->
+<noscript><div class="error message">    Please enable JavaScript in order to get a 2d display of the equations embedded in this web page.</div></noscript>\(      \DeclareMathOperator{\abs}{abs}
+      \newcommand{\ensuremath}[1]{\mbox{$#1$}}
+\)
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">kill</span>(<span class="code_variable">all</span>)<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">load</span>(<span class="code_variable">eigen</span>)<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+module 2: solve system : differential equations. 2 by 2<BR><a href="https://petervlaschemeng.weebly.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dcacb9a8b9aef2aab0bdafafbfb4bdb9aea89cbbb1bdb5b0f2bfb3b1">[email&#160;protected]</a> , 25/03/2017<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i3) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">ps</span>[<span class="code_number">1</span>]<span class="code_operator">:</span><span class="code_operator">'</span><span class="code_function">diff</span>(<span class="code_variable">x</span>[<span class="code_number">1</span>],<span class="code_variable">t</span>)<span class="code_operator">=</span><span class="code_number">-</span><span class="code_number">0</span>.<span class="code_number">5</span><span class="code_operator">*</span><span class="code_variable">x</span>[<span class="code_number">1</span>]<span class="code_operator">+</span><span class="code_variable">x</span>[<span class="code_number">2</span>]<span class="code_endofline">;</span><BR>
+<span class="code_variable">ps</span>[<span class="code_number">2</span>]<span class="code_operator">:</span><span class="code_operator">'</span><span class="code_function">diff</span>(<span class="code_variable">x</span>[<span class="code_number">2</span>],<span class="code_variable">t</span>)<span class="code_operator">=</span><span class="code_number">0</span><span class="code_operator">*</span><span class="code_variable">x</span>[<span class="code_number">1</span>]<span class="code_operator">-</span><span class="code_number">2</span><span class="code_operator">*</span><span class="code_variable">x</span>[<span class="code_number">2</span>]<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o2}\label{o2} \frac{d}{dt}{{x}_{1}}={{x}_{2}}-0.5{{x}_{1}}\]
+\[\tag{\%{}o3}\label{o3} \frac{d}{dt}{{x}_{2}}=-2{{x}_{2}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i4) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">M1</span><span class="code_operator">:</span><span class="code_function">zeromatrix</span>(<span class="code_number">2</span>,<span class="code_number">2</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{M1}\label{M1}\begin{pmatrix}0 & 0\\
+0 & 0\end{pmatrix}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+find coef ps[1] &rArr; x1,x2<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i6) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p1</span><span class="code_operator">:</span><span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">ps</span>[<span class="code_number">1</span>],<span class="code_number">2</span>),<span class="code_variable">x</span>[<span class="code_number">1</span>])<span class="code_endofline">;</span><BR>
+<span class="code_variable">p2</span><span class="code_operator">:</span><span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">ps</span>[<span class="code_number">1</span>],<span class="code_number">2</span>),<span class="code_variable">x</span>[<span class="code_number">2</span>])<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p1}\label{p1}-0.5\]
+\[\tag{p2}\label{p2}1\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i7) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+for <span class="code_variable">i</span><span class="code_operator">:</span><span class="code_number">1</span> thru <span class="code_number">2</span> do<BR>
+ &nbsp;&nbsp;&nbsp;for <span class="code_variable">j</span><span class="code_operator">:</span><span class="code_number">1</span> thru <span class="code_number">2</span> do<BR>
+ &nbsp;<span class="code_variable">M1</span>[<span class="code_variable">i</span>,<span class="code_variable">j</span>]<span class="code_operator">:</span><span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">ps</span>[<span class="code_variable">i</span>],<span class="code_number">2</span>),<span class="code_variable">x</span>[<span class="code_variable">j</span>])<span class="code_endofline">;</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o7}\label{o7} \mathit{done}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+coefficient matrix (from differential equations): ps[1],ps[2].<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i8) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">M1</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o8}\label{o8} \begin{pmatrix}-0.5 & 1\\
+0 & -2\end{pmatrix}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i9) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+[<span class="code_variable">vals</span>, <span class="code_variable">vecs</span>] <span class="code_operator">:</span> <span class="code_function">uniteigenvectors</span> (<span class="code_variable">M1</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\mbox{}\\\mbox{rat: replaced -0.5 by -1/2 = -0.5}\]
+\[\tag{\%{}o9}\label{o9} [[[-\frac{1}{2},-2],[1,1]],[[[1,0]],[[\frac{2}{\sqrt{13}},-\frac{3}{\sqrt{13}}]]]]\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+&rArr; eigenvalues :<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i10) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p3</span><span class="code_operator">:</span><span class="code_variable">vals</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p3}\label{p3}[[-\frac{1}{2},-2],[1,1]]\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+values :<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i12) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p4</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">vals</span>,<span class="code_number">1</span>)[<span class="code_number">1</span>]<span class="code_endofline">;</span><BR>
+<span class="code_variable">p5</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">vals</span>,<span class="code_number">1</span>)[<span class="code_number">2</span>]<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p4}\label{p4}-\frac{1}{2}\]
+\[\tag{p5}\label{p5}-2\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+multiplicities 'values':<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i14) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p41</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">vals</span>,<span class="code_number">2</span>)[<span class="code_number">1</span>]<span class="code_endofline">;</span><BR>
+<span class="code_variable">p51</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">vals</span>,<span class="code_number">2</span>)[<span class="code_number">2</span>]<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p41}\label{p41}1\]
+\[\tag{p51}\label{p51}1\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+&rArr; uniteigenvectors :<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i16) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p6</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">vecs</span>,<span class="code_number">1</span>)[<span class="code_number">1</span>]<span class="code_endofline">;</span><BR>
+<span class="code_variable">p7</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">vecs</span>,<span class="code_number">2</span>)[<span class="code_number">1</span>]<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p6}\label{p6}[1,0]\]
+\[\tag{p7}\label{p7}[\frac{2}{\sqrt{13}},-\frac{3}{\sqrt{13}}]\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+&rArr; build matrix 'eigenvectors,column format'<BR>math : A<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i17) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p8</span><span class="code_operator">:</span><span class="code_function">transpose</span>(<span class="code_function">matrix</span>(<span class="code_variable">p6</span>,<span class="code_variable">p7</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p8}\label{p8}\begin{pmatrix}1 & \frac{2}{\sqrt{13}}\\
+0 & -\frac{3}{\sqrt{13}}\end{pmatrix}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+&rArr; build from p8 &rArr; 'invert(p8)'<BR>math : A^(-1)<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i18) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p9</span><span class="code_operator">:</span><span class="code_function">invert</span>(<span class="code_variable">p8</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p9}\label{p9}\begin{pmatrix}1 & \frac{2}{3}\\
+0 & -\frac{\sqrt{13}}{3}\end{pmatrix}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i19) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p10</span><span class="code_operator">:</span><span class="code_function">diagmatrix</span>(<span class="code_number">2</span>,<span class="code_number">1</span>)<span class="code_endofline">;</span><BR>
+<span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p10}\label{p10}\begin{pmatrix}1 & 0\\
+0 & 1\end{pmatrix}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i20) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+for <span class="code_variable">i</span><span class="code_operator">:</span><span class="code_number">1</span> thru <span class="code_number">2</span> do <BR>
+ &nbsp;&nbsp;&nbsp;<span class="code_variable">p10</span>[<span class="code_variable">i</span>][<span class="code_variable">i</span>]<span class="code_operator">:</span><span class="code_variable">e</span><span class="code_operator">^</span>((<span class="code_function">part</span>(<span class="code_variable">vals</span>,<span class="code_number">1</span>)[<span class="code_variable">i</span>])<span class="code_operator">*</span><span class="code_variable">t</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o20}\label{o20} \mathit{done}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+Matrix exponential '2 by 2'<BR>math : e^(At),A = matrix 'diagonal matrix'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i21) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p10</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o21}\label{o21} \begin{pmatrix}\frac{1}{{{e}^{\frac{t}{2}}}} & 0\\
+0 & \frac{1}{{{e}^{2t}}}\end{pmatrix}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+product : three matrix multiplied<BR>math : A*e^(At)*A^(-1)<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i22) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p12</span><span class="code_operator">:</span><span class="code_function">float</span>(<span class="code_variable">p8</span><span class="code_operator">*</span><span class="code_variable">p10</span><span class="code_operator">*</span><span class="code_variable">p9</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p12}\label{p12}\begin{pmatrix}\frac{1}{{{e}^{\frac{t}{2}}}} & 0.0\\
+0.0 & \frac{1}{{{e}^{2t}}}\end{pmatrix}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+intial values : need for IVP 'see module 1'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i25) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">x0</span>[<span class="code_number">1</span>,<span class="code_number">1</span>]<span class="code_operator">:</span><span class="code_number">1</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">x0</span>[<span class="code_number">1</span>,<span class="code_number">2</span>]<span class="code_operator">:</span><span class="code_number">0</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">p13</span><span class="code_operator">:</span><span class="code_function">transpose</span>(<span class="code_function">genmatrix</span>(<span class="code_variable">x0</span>,<span class="code_number">1</span>,<span class="code_number">2</span>,<span class="code_number">1</span>,<span class="code_number">1</span>))<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o23}\label{o23} 1\]
+\[\tag{\%{}o24}\label{o24} 0\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+intial value (IVP): vector<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i26) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p13</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o26}\label{o26} \begin{pmatrix}1\\
+0\end{pmatrix}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+solution : system of differential equations.(ps[1],ps[2])<BR>math: A*e^(At)*A^(-1)*x0 , x0 = 'vector'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i27) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p14</span><span class="code_operator">:</span><span class="code_variable">p12</span>.<span class="code_variable">p13</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p14}\label{p14}\begin{pmatrix}\frac{1}{{{e}^{\frac{t}{2}}}}\\
+0.0\end{pmatrix}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i29) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p15</span><span class="code_operator">:</span><span class="code_variable">x</span>[<span class="code_number">1</span>]<span class="code_operator">=</span> <span class="code_variable">p14</span>[<span class="code_number">1</span>,<span class="code_number">1</span>]<span class="code_endofline">;</span><BR>
+<span class="code_variable">p16</span><span class="code_operator">:</span><span class="code_variable">x</span>[<span class="code_number">2</span>]<span class="code_operator">=</span> <span class="code_variable">p14</span>[<span class="code_number">2</span>,<span class="code_number">1</span>]<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p15}\label{p15}{{x}_{1}}=\frac{1}{{{e}^{\frac{t}{2}}}}\]
+\[\tag{p16}\label{p16}{{x}_{2}}=0.0\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+check : first differential equation : &nbsp;ps(1)<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i30) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p17</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_operator">'</span><span class="code_function">diff</span>(<span class="code_function">part</span>(<span class="code_variable">p15</span>,<span class="code_number">2</span>),<span class="code_variable">t</span>)<span class="code_operator">=</span><span class="code_function">part</span>(<span class="code_variable">p16</span>,<span class="code_number">2</span>)<span class="code_operator">-</span><span class="code_number">0</span>.<span class="code_number">5</span><span class="code_operator">*</span><span class="code_function">part</span>(<span class="code_variable">p15</span>,<span class="code_number">2</span>),<span class="code_variable">nouns</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p17}\label{p17}-\frac{\log{(e)}}{2{{e}^{\frac{t}{2}}}}=-\frac{0.5}{{{e}^{\frac{t}{2}}}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+how to bring in e to %e =2.7....<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i31) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p18</span><span class="code_operator">:</span><span class="code_function">float</span>(<span class="code_operator">-</span><span class="code_function">log</span>(<span class="code_variable">%e</span>)<span class="code_operator">/</span><span class="code_number">2</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p18}\label{p18}-0.5\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i32) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p18</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p17</span>,<span class="code_variable">e</span><span class="code_operator">=</span><span class="code_variable">%e</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p18}\label{p18}-\frac{{{\%{}e}^{-\frac{t}{2}}}}{2}=-0.5{{\%{}e}^{-\frac{t}{2}}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+rem : '.' used multiply matrix with vector<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+module 2:<BR><BR>statement : zeromatrix,genmatrix,diagmatrix,transpose,uniteigenvectors<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,invert,nouns,coeff.<BR>
+</P>
+
+ <HR>
+ <SMALL> Created with <A HREF="http://wxmaxima.sourceforge.net/">wxMaxima</A>.</SMALL>
+ <script data-cfasync="false" src="../../../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></BODY>
+</HTML>

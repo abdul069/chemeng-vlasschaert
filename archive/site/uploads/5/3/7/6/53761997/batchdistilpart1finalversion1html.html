@@ -1,0 +1,197 @@
+<!DOCTYPE HTML">
+<HTML>
+ <HEAD>
+  <TITLE>batchdistilpart1finalversion1html</TITLE>
+  <META NAME="generator" CONTENT="wxMaxima">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    displayAlign: "left",
+    context: "MathJax"
+  })
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+  <link rel="stylesheet" type="text/css" href="https://petervlaschemeng.weebly.com/uploads/5/3/7/6/53761997/batchdistilpart1finalversion1html_htmlimg/batchdistilpart1finalversion1html.css"/>
+ </HEAD>
+ <BODY>
+
+<!-- ***************************************************** -->
+<!--          Created with wxMaxima version 16.04.2         -->
+<!-- ***************************************************** -->
+<noscript><div class="error message">    Please enable JavaScript in order to get a 2d display of the equations embedded in this web page.</div></noscript>\(      \DeclareMathOperator{\abs}{abs}
+      \newcommand{\ensuremath}[1]{\mbox{$#1$}}
+\)
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+BATCH DISTILLATION :part 1( equilibrium eq: y=k*x)<BR>------------------<BR>------------------<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+part1 : Integral batch distillation.<BR><a href="https://petervlaschemeng.weebly.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8fffeafbeafda1f9e3eefcfcece7eeeafdfbcfe8e2eee6e3a1ece0e2">[email&#160;protected]</a> , 18/02/2017<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">kill</span>(<span class="code_variable">all</span>)<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq1</span><span class="code_operator">:</span><span class="code_function">integrate</span>(<span class="code_variable">x</span><span class="code_operator">^</span><span class="code_number">2</span>, <span class="code_variable">x</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq1}\label{eq1}\frac{{{x}^{3}}}{3}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i2) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq1</span><span class="code_operator">:</span><span class="code_function">integrate</span>(<span class="code_variable">x</span><span class="code_operator">^</span><span class="code_number">2</span>,<span class="code_variable">x</span>,<span class="code_variable">a</span>,<span class="code_variable">b</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq1}\label{eq1}\frac{{{b}^{3}}}{3}-\frac{{{a}^{3}}}{3}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i6) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">assume</span>(<span class="code_variable">x</span> &gt;<span class="code_operator">=</span> <span class="code_number">0</span> and <span class="code_variable">x</span> &lt;<span class="code_operator">=</span> <span class="code_number">1</span>)<span class="code_endofline">;</span><BR>
+<span class="code_function">assume</span>(<span class="code_variable">y</span> &gt;<span class="code_operator">=</span> <span class="code_number">0</span> and <span class="code_variable">y</span> &lt;<span class="code_operator">=</span> <span class="code_number">1</span>)<span class="code_endofline">;</span><BR>
+<span class="code_function">assume</span>( <span class="code_variable">b</span>&gt;<span class="code_variable">a</span>)<span class="code_endofline">;</span><BR>
+<span class="code_function">assume</span>( <span class="code_variable">a</span> &gt;<span class="code_number">0</span> and <span class="code_variable">a</span> &lt; <span class="code_number">1</span> and <span class="code_variable">b</span> &lt; <span class="code_number">1</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o3}\label{o3} [x\mbox{\ensuremath{\ensuremath{&gt;}}=}0,x\mbox{\ensuremath{\ensuremath{&lt;}}=}1]\]
+\[\tag{\%{}o4}\label{o4} [y\mbox{\ensuremath{\ensuremath{&gt;}}=}0,y\mbox{\ensuremath{\ensuremath{&lt;}}=}1]\]
+\[\tag{\%{}o5}\label{o5} [b\mbox{\ensuremath{\ensuremath{&gt;}}}a]\]
+\[\tag{\%{}o6}\label{o6} [a\mbox{\ensuremath{\ensuremath{&gt;}}}0,a\mbox{\ensuremath{\ensuremath{&lt;}}}1,b\mbox{\ensuremath{\ensuremath{&lt;}}}1]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i7) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq2</span><span class="code_operator">:</span><span class="code_variable">y</span><span class="code_operator">=</span><span class="code_variable">k</span><span class="code_operator">*</span><span class="code_variable">x</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq2}\label{eq2}y=kx\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i8) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq3</span><span class="code_operator">:</span><span class="code_variable">op1</span><span class="code_operator">=</span><span class="code_operator">'</span><span class="code_function">integrate</span>(<span class="code_number">1</span><span class="code_operator">/</span>(<span class="code_function">rhs</span>(<span class="code_variable">eq2</span>)<span class="code_operator">-</span><span class="code_variable">x</span>),<span class="code_variable">x</span>,<span class="code_variable">a</span>,<span class="code_variable">b</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq3}\label{eq3}\mathit{op1}=\int_{a}^{b}{\left. \frac{1}{kx-x}dx\right.}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i9) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq4</span><span class="code_operator">:</span><span class="code_function">combine</span>(<span class="code_function">ev</span>(<span class="code_variable">eq3</span>,<span class="code_variable">nouns</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq4}\label{eq4}\mathit{op1}=\frac{\log{\left( b\,\left| k-1\right| \right) }-\log{\left( a\,\left| k-1\right| \right) }}{k-1}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i10) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq5</span><span class="code_operator">:</span><span class="code_function">radcan</span>((<span class="code_function">log</span>(<span class="code_variable">b</span><span class="code_operator">*</span><span class="code_function">abs</span>(<span class="code_variable">k</span><span class="code_operator">-</span><span class="code_number">1</span>))<span class="code_operator">-</span><span class="code_function">log</span>(<span class="code_variable">a</span><span class="code_operator">*</span><span class="code_function">abs</span>(<span class="code_variable">k</span><span class="code_operator">-</span><span class="code_number">1</span>)))<span class="code_operator">/</span>(<span class="code_variable">k</span><span class="code_operator">-</span><span class="code_number">1</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq5}\label{eq5}\frac{\log{(b)}-\log{(a)}}{k-1}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i11) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq6</span><span class="code_operator">:</span><span class="code_variable">op1</span><span class="code_operator">=</span><span class="code_function">logcontract</span>(<span class="code_variable">eq5</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq6}\label{eq6}\mathit{op1}=\frac{\log{\left( \frac{b}{a}\right) }}{k-1}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+example :<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+k= 2.3<BR>a= 0.4<BR>b= 0.7<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i12) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq7</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">eq6</span>,<span class="code_variable">k</span><span class="code_operator">=</span><span class="code_number">2</span>.<span class="code_number">3</span>,<span class="code_variable">a</span><span class="code_operator">=</span><span class="code_number">0</span>.<span class="code_number">4</span>,<span class="code_variable">b</span><span class="code_operator">=</span><span class="code_number">0</span>.<span class="code_number">7</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq7}\label{eq7}\mathit{op1}=0.4304736830272483\]
+
+ <HR>
+ <SMALL> Created with <A HREF="http://wxmaxima.sourceforge.net/">wxMaxima</A>.</SMALL>
+ <script data-cfasync="false" src="../../../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></BODY>
+</HTML>

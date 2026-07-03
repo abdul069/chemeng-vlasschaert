@@ -1,0 +1,1077 @@
+<!DOCTYPE HTML">
+<HTML>
+ <HEAD>
+  <TITLE>module3coolinglawfinalversion1html</TITLE>
+  <META NAME="generator" CONTENT="wxMaxima">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    displayAlign: "left",
+    context: "MathJax"
+  })
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+  <link rel="stylesheet" type="text/css" href="https://petervlaschemeng.weebly.com/uploads/5/3/7/6/53761997/module3coolinglawfinalversion1html_htmlimg/module3coolinglawfinalversion1html.css"/>
+ </HEAD>
+ <BODY>
+
+<!-- ***************************************************** -->
+<!--          Created with wxMaxima version 16.04.2         -->
+<!-- ***************************************************** -->
+<noscript><div class="error message">    Please enable JavaScript in order to get a 2d display of the equations embedded in this web page.</div></noscript>\(      \DeclareMathOperator{\abs}{abs}
+      \newcommand{\ensuremath}[1]{\mbox{$#1$}}
+\)
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">kill</span>(<span class="code_variable">all</span>)<span class="code_endofline">$</span><BR>
+<span class="code_function">load</span>(<span class="code_variable">eigen</span>)<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+module 3:cooling law 'system differential equations'.<BR><a href="https://petervlaschemeng.weebly.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a1d1c4d5c4d38fd7cdc0d2d2c2c9c0c4d3d5e1c6ccc0c8cd8fc2cecc">[email&#160;protected]</a> , &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;25/03/2017<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+cooling law :Newton.<BR>T0 = initial temperature ( initial state ),see below<BR>Te = ambient temperature ( final &nbsp;&nbsp;state ),see below<BR>T &nbsp;= temperature ' function of time ' = T( time ) = T(t)<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i2) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">assume</span>(<span class="code_variable">k</span>&gt;<span class="code_number">0</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o2}\label{o2} [k\mbox{\ensuremath{\ensuremath{&gt;}}}0]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i3) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">pT1</span><span class="code_operator">:</span><span class="code_operator">'</span><span class="code_function">diff</span>(<span class="code_variable">T</span>,<span class="code_variable">t</span>)<span class="code_operator">=</span><span class="code_operator">-</span><span class="code_variable">k</span><span class="code_operator">*</span>(<span class="code_variable">T</span><span class="code_operator">-</span><span class="code_variable">Te</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{pT1}\label{pT1}\frac{d}{dt}T=-\left( T-\mathit{Te}\right) k\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i4) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p1</span><span class="code_operator">:</span><span class="code_function">ode2</span>(<span class="code_variable">pT1</span>,<span class="code_variable">T</span>,<span class="code_variable">t</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p1}\label{p1}T={{\%{}e}^{-kt}}\,\left( \mathit{Te}\,{{\%{}e}^{kt}}+\mathit{\%{}c}\right) \]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+How to get '%c' &rArr; t=0 &rarr; T=T0<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i7) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p2</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p1</span>,<span class="code_variable">t</span><span class="code_operator">=</span><span class="code_number">0</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p3</span><span class="code_operator">:</span><span class="code_function">solve</span>(<span class="code_variable">p2</span>,<span class="code_variable">%c</span>)[<span class="code_number">1</span>]<span class="code_endofline">;</span><BR>
+<span class="code_variable">p4</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p3</span>,<span class="code_variable">T</span><span class="code_operator">=</span><span class="code_variable">T0</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p2}\label{p2}T=\mathit{Te}+\mathit{\%{}c}\]
+\[\tag{p3}\label{p3}\mathit{\%{}c}=T-\mathit{Te}\]
+\[\tag{p4}\label{p4}\mathit{\%{}c}=\mathit{T0}-\mathit{Te}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i8) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p5</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p1</span>,<span class="code_variable">p4</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p5}\label{p5}T={{\%{}e}^{-kt}}\,\left( \mathit{Te}\,{{\%{}e}^{kt}}-\mathit{Te}+\mathit{T0}\right) \]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+check : of the initial state of the cooling process.<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+find initial state 'p5' ' t&rarr; 0 ',time domain<BR>( Laplace transformation , s domain )<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i9) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p6</span><span class="code_operator">:</span><span class="code_function">limit</span>(<span class="code_function">part</span>(<span class="code_variable">p5</span>,<span class="code_number">2</span>), <span class="code_variable">t</span>, <span class="code_number">0</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p6}\label{p6}\mathit{T0}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i10) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p7</span><span class="code_operator">:</span><span class="code_variable">T</span><span class="code_operator">=</span><span class="code_function">ratsimp</span>(<span class="code_function">part</span>(<span class="code_variable">p5</span>,<span class="code_number">2</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p7}\label{p7}T={{\%{}e}^{-kt}}\,\left( \mathit{Te}\,{{\%{}e}^{kt}}-\mathit{Te}+\mathit{T0}\right) \]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+find steady state 'p7' ' t&rarr; infinity ',time domain<BR>( Laplace transformation , s domain )<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i11) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p8</span><span class="code_operator">:</span><span class="code_function">limit</span>(<span class="code_variable">p7</span>,<span class="code_variable">t</span>,<span class="code_variable">inf</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p8}\label{p8}T=\mathit{Te}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i12) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">kill</span>(<span class="code_variable">all</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o0}\label{o0} \mathit{done}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+three zones cooling : Te = put in egg in boiling water = 'Te' of 'Te=100*e^(-kt)'<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T2 = egg white ( = Albumen) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= T[1]<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T1 = yolk &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= T[2]<BR>-----------------------------------------------------------------------------------------------------<BR>http://www.ltz.de/en/news/lohmann-information/An-egg-a-day-the-physiology-of-egg-formation.php ,'fig'<BR>-----------------------------------------------------------------------------------------------------<BR>temperature range : Te(t) or constant , T2(t) , T1(t)<BR>-----------------------------------------------------------------------------------------------<BR>egg model :<BR>-----------------------------------------------------------------------------------------------<BR>mitopencourseware :<BR>Instructor/speaker: Prof. Arthur Mattuck<BR>Home » Courses » Mathematics » Differential Equations » Video Lectures »<BR>-----------------------------------------------------------------------------------------------<BR>-----------------------------------------------------------------------------------------------<BR>https://ocw.mit.edu/courses/mathematics/18-03-differential-equations-spring-2010/video-lectures<BR>/lecture-24-introduction-to-first-order-systems-of-odes/<BR>-----------------------------------------------------------------------------------------------<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+a,b : no physical meaning, 'different conductions = different regios'<BR>Te = 0 &nbsp;&nbsp;&nbsp;(ice bad,course mit use this)<BR>Te = 100 &nbsp;(boiling egg)<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+edit : Te:0 &nbsp;(course mit) &rarr; Te:100<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">Te</span> <span class="code_operator">:</span><span class="code_number">0</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{Te}\label{Te}0\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i2) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">depends</span>(<span class="code_variable">T</span>,<span class="code_variable">t</span>)<span class="code_endofline">;</span><BR>
+<span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o2}\label{o2} [\operatorname{T}(t)]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i4) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">pT1</span><span class="code_operator">:</span><span class="code_operator">'</span><span class="code_function">diff</span>(<span class="code_variable">T</span>[<span class="code_number">1</span>],<span class="code_variable">t</span>)<span class="code_operator">=</span><span class="code_variable">a</span><span class="code_operator">*</span>(<span class="code_variable">T</span>[<span class="code_number">2</span>]<span class="code_operator">-</span><span class="code_variable">T</span>[<span class="code_number">1</span>])<span class="code_endofline">;</span><BR>
+<span class="code_variable">pT2</span><span class="code_operator">:</span><span class="code_operator">'</span><span class="code_function">diff</span>(<span class="code_variable">T</span>[<span class="code_number">2</span>],<span class="code_variable">t</span>)<span class="code_operator">=</span><span class="code_variable">a</span><span class="code_operator">*</span>(<span class="code_variable">T</span>[<span class="code_number">1</span>]<span class="code_operator">-</span><span class="code_variable">T</span>[<span class="code_number">2</span>])<span class="code_operator">+</span><span class="code_variable">b</span><span class="code_operator">*</span>(<span class="code_variable">Te</span><span class="code_operator">-</span><span class="code_variable">T</span>[<span class="code_number">2</span>])<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{pT1}\label{pT1}\frac{d}{dt}{{T}_{1}}=\left( {{T}_{2}}-{{T}_{1}}\right) a\]
+\[\tag{pT2}\label{pT2}\frac{d}{dt}{{T}_{2}}=\left( {{T}_{1}}-{{T}_{2}}\right) a-{{T}_{2}}b\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i6) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">a</span><span class="code_operator">:</span><span class="code_number">2</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">b</span><span class="code_operator">:</span><span class="code_number">3</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{a}\label{a}2\]
+\[\tag{b}\label{b}3\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i8) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">pT11</span><span class="code_operator">:</span><span class="code_operator">'</span><span class="code_function">diff</span>(<span class="code_variable">T</span>[<span class="code_number">1</span>],<span class="code_variable">t</span>)<span class="code_operator">=</span><span class="code_variable">a</span><span class="code_operator">*</span>(<span class="code_variable">T</span>[<span class="code_number">2</span>]<span class="code_operator">-</span><span class="code_variable">T</span>[<span class="code_number">1</span>])<span class="code_endofline">;</span><BR>
+<span class="code_variable">pT22</span><span class="code_operator">:</span><span class="code_operator">'</span><span class="code_function">diff</span>(<span class="code_variable">T</span>[<span class="code_number">2</span>],<span class="code_variable">t</span>)<span class="code_operator">=</span><span class="code_operator">-</span><span class="code_variable">a</span><span class="code_operator">*</span>(<span class="code_variable">T</span>[<span class="code_number">1</span>]<span class="code_operator">-</span><span class="code_variable">T</span>[<span class="code_number">2</span>])<span class="code_operator">+</span><span class="code_variable">b</span><span class="code_operator">*</span>(<span class="code_variable">Te</span><span class="code_operator">-</span><span class="code_variable">T</span>[<span class="code_number">2</span>])<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{pT11}\label{pT11}\frac{d}{dt}{{T}_{1}}=2\left( {{T}_{2}}-{{T}_{1}}\right) \]
+\[\tag{pT22}\label{pT22}\frac{d}{dt}{{T}_{2}}=-3{{T}_{2}}-2\left( {{T}_{1}}-{{T}_{2}}\right) \]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+eliminate : T2<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i11) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p9</span><span class="code_operator">:</span><span class="code_function">solve</span>(<span class="code_variable">pT1</span>,<span class="code_variable">T</span>[<span class="code_number">2</span>])[<span class="code_number">1</span>]<span class="code_endofline">;</span><BR>
+<span class="code_variable">a</span><span class="code_operator">:</span><span class="code_number">2</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">b</span><span class="code_operator">:</span><span class="code_number">3</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p9}\label{p9}{{T}_{2}}=\frac{{{T}_{1}}a+\frac{d}{dt}{{T}_{1}}}{a}\]
+\[\tag{a}\label{a}2\]
+\[\tag{b}\label{b}3\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i12) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p10</span><span class="code_operator">:</span><span class="code_function">ratsimp</span>(<span class="code_function">ev</span>(<span class="code_variable">pT2</span>,<span class="code_variable">p9</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p10}\label{p10}\frac{d}{dt}\frac{\frac{d}{dt}{{T}_{1}}+2{{T}_{1}}}{2}=-\frac{5\left( \frac{d}{dt}{{T}_{1}}\right) +6{{T}_{1}}}{2}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i13) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p11</span><span class="code_operator">:</span><span class="code_function">ratsimp</span>(<span class="code_function">ev</span>(<span class="code_function">lhs</span>(<span class="code_variable">p10</span>)<span class="code_operator">-</span><span class="code_function">rhs</span>(<span class="code_variable">p10</span>)<span class="code_operator">=</span><span class="code_number">0</span>,<span class="code_variable">nouns</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p11}\label{p11}\frac{\frac{{{d}^{2}}}{d{{t}^{2}}}{{T}_{1}}+7\left( \frac{d}{dt}{{T}_{1}}\right) +6{{T}_{1}}}{2}=0\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+find : T<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+rem : characsteristic eq: r^2+7*r+6=0,roots = -1,6<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i14) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p12</span><span class="code_operator">:</span><span class="code_function">ode2</span>(<span class="code_variable">p11</span>,<span class="code_variable">T</span>[<span class="code_number">1</span>],<span class="code_variable">t</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p12}\label{p12}{{T}_{1}}=\mathit{\%{}k1}\,{{\%{}e}^{-t}}+\mathit{\%{}k2}\,{{\%{}e}^{-6t}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+intial conditions T[1](t=0)=40<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T[2](t=0)=45<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+find : T<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i15) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p13</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p12</span>,<span class="code_variable">%k1</span><span class="code_operator">=</span><span class="code_variable">c1</span>,<span class="code_variable">%k2</span><span class="code_operator">=</span><span class="code_variable">c2</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p13}\label{p13}{{T}_{1}}=\mathit{c1}\,{{\%{}e}^{-t}}+\mathit{c2}\,{{\%{}e}^{-6t}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+T[1](t=0)=40,initial temperature (yolk)<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i16) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p131</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p13</span>,<span class="code_variable">T</span>[<span class="code_number">1</span>]<span class="code_operator">=</span><span class="code_number">40</span>,<span class="code_variable">t</span><span class="code_operator">=</span><span class="code_number">0</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p131}\label{p131}40=\mathit{c2}+\mathit{c1}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i17) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p14</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p9</span>,<span class="code_variable">p13</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p14}\label{p14}{{T}_{2}}=\frac{\frac{d}{dt}\left( \mathit{c1}\,{{\%{}e}^{-t}}+\mathit{c2}\,{{\%{}e}^{-6t}}\right) +2\left( \mathit{c1}\,{{\%{}e}^{-t}}+\mathit{c2}\,{{\%{}e}^{-6t}}\right) }{2}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i18) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p15</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p14</span>,<span class="code_variable">nouns</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p15}\label{p15}{{T}_{2}}=\frac{2\left( \mathit{c1}\,{{\%{}e}^{-t}}+\mathit{c2}\,{{\%{}e}^{-6t}}\right) -\mathit{c1}\,{{\%{}e}^{-t}}-6\mathit{c2}\,{{\%{}e}^{-6t}}}{2}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i19) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">ratsimp</span>(<span class="code_function">ev</span>(<span class="code_variable">p14</span>,<span class="code_variable">nouns</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o19}\label{o19} {{T}_{2}}=\frac{{{\%{}e}^{-6t}}\,\left( \mathit{c1}\,{{\%{}e}^{5t}}-4\mathit{c2}\right) }{2}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+T[2](t=0)=45,initial temperature (egg white)<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i20) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p151</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p15</span>,<span class="code_variable">T</span>[<span class="code_number">2</span>]<span class="code_operator">=</span><span class="code_number">45</span>,<span class="code_variable">t</span><span class="code_operator">=</span><span class="code_number">0</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p151}\label{p151}45=\frac{2\left( \mathit{c2}+\mathit{c1}\right) -6\mathit{c2}-\mathit{c1}}{2}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+how to do this :menu<BR>Equations &rarr; solve linear system &rarr; ask questions<BR> 2 &rarr; first &nbsp;&nbsp;field : p131<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;second &nbsp;field : p151<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;third &nbsp;&nbsp;field : c1,c2<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i21) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p16</span><span class="code_operator">:</span><span class="code_function">linsolve</span>([<span class="code_variable">p131</span>, <span class="code_variable">p151</span>], [<span class="code_variable">c1</span>,<span class="code_variable">c2</span>])<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p16}\label{p16}[\mathit{c1}=50,\mathit{c2}=-10]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i23) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p17</span><span class="code_operator">:</span><span class="code_variable">p16</span>[<span class="code_number">1</span>]<span class="code_endofline">;</span><BR>
+<span class="code_variable">p18</span><span class="code_operator">:</span><span class="code_variable">p16</span>[<span class="code_number">2</span>]<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p17}\label{p17}\mathit{c1}=50\]
+\[\tag{p18}\label{p18}\mathit{c2}=-10\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+T (t) = temperature 'yolk with time'.<BR> 1<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i24) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p19</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p13</span>,<span class="code_variable">p17</span>,<span class="code_variable">p18</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p19}\label{p19}{{T}_{1}}=50{{\%{}e}^{-t}}-10{{\%{}e}^{-6t}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+T (t) = temperature 'white of the egg with time'.<BR> 2<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i25) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p20</span><span class="code_operator">:</span><span class="code_function">ratsimp</span>(<span class="code_function">ev</span>(<span class="code_variable">p15</span>,<span class="code_variable">p17</span>,<span class="code_variable">p18</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p20}\label{p20}{{T}_{2}}={{\%{}e}^{-6t}}\,\left( 25{{\%{}e}^{5t}}+20\right) \]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i26) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">kill</span>(<span class="code_variable">all</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o0}\label{o0} \mathit{done}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+solve : the above problem again ,with eigenvectors<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with eigenvalues.<BR>general method :solving system of differential equations.<BR>X = T[1]<BR>Y = T[2]<BR>mit course:<BR>https://ocw.mit.edu/courses/mathematics/18-03-differential-equations-spring-2010/video-lectures<BR>/lecture-25-homogeneous-linear-systems-with-constant-coefficients/<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i2) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">depends</span>(<span class="code_variable">X</span>,<span class="code_variable">t</span>)<span class="code_endofline">;</span><BR>
+<span class="code_function">depends</span>(<span class="code_variable">Y</span>,<span class="code_variable">t</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o1}\label{o1} [\operatorname{X}(t)]\]
+\[\tag{\%{}o2}\label{o2} [\operatorname{Y}(t)]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i4) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">pd1</span><span class="code_operator">:</span><span class="code_operator">'</span><span class="code_function">diff</span>(<span class="code_variable">X</span>,<span class="code_variable">t</span>) <span class="code_operator">=</span> <span class="code_number">-</span><span class="code_number">2</span><span class="code_operator">*</span><span class="code_variable">X</span><span class="code_operator">+</span><span class="code_number">2</span><span class="code_operator">*</span><span class="code_variable">Y</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">pd2</span><span class="code_operator">:</span><span class="code_operator">'</span><span class="code_function">diff</span>(<span class="code_variable">Y</span>,<span class="code_variable">t</span>) <span class="code_operator">=</span> <span class="code_number">2</span><span class="code_operator">*</span><span class="code_variable">X</span><span class="code_operator">-</span><span class="code_number">5</span><span class="code_operator">*</span><span class="code_variable">Y</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{pd1}\label{pd1}\frac{d}{dt}X=2Y-2X\]
+\[\tag{pd2}\label{pd2}\frac{d}{dt}Y=2X-5Y\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+what with : general 'solution'<BR>lambda = parameter<BR>X= a1*e^(lambda*t)<BR>Y= a2*e^(lambda*t)<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i6) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p21</span><span class="code_operator">:</span><span class="code_variable">X</span><span class="code_operator">=</span><span class="code_variable">a1</span><span class="code_operator">*</span><span class="code_variable">%e</span><span class="code_operator">^</span>(<span class="code_variable">lambda</span><span class="code_operator">*</span><span class="code_variable">t</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p22</span><span class="code_operator">:</span><span class="code_variable">Y</span><span class="code_operator">=</span><span class="code_variable">a2</span><span class="code_operator">*</span><span class="code_variable">%e</span><span class="code_operator">^</span>(<span class="code_variable">lambda</span><span class="code_operator">*</span><span class="code_variable">t</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p21}\label{p21}X=\mathit{a1}\,{{\%{}e}^{t\,\mathit{lambda}}}\]
+\[\tag{p22}\label{p22}Y=\mathit{a2}\,{{\%{}e}^{t\,\mathit{lambda}}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i8) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p23</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">pd1</span>,<span class="code_variable">p21</span>,<span class="code_variable">p22</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p24</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">pd2</span>,<span class="code_variable">p21</span>,<span class="code_variable">p22</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p23}\label{p23}\frac{d}{dt}\left( \mathit{a1}\,{{\%{}e}^{t\,\mathit{lambda}}}\right) =2\mathit{a2}\,{{\%{}e}^{t\,\mathit{lambda}}}-2\mathit{a1}\,{{\%{}e}^{t\,\mathit{lambda}}}\]
+\[\tag{p24}\label{p24}\frac{d}{dt}\left( \mathit{a2}\,{{\%{}e}^{t\,\mathit{lambda}}}\right) =2\mathit{a1}\,{{\%{}e}^{t\,\mathit{lambda}}}-5\mathit{a2}\,{{\%{}e}^{t\,\mathit{lambda}}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i10) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p231</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p23</span>,<span class="code_variable">nouns</span>)<span class="code_operator">/</span><span class="code_variable">%e</span><span class="code_operator">^</span>(<span class="code_variable">t</span><span class="code_operator">*</span><span class="code_variable">lambda</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p241</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p24</span>,<span class="code_variable">nouns</span>)<span class="code_operator">/</span><span class="code_variable">%e</span><span class="code_operator">^</span>(<span class="code_variable">t</span><span class="code_operator">*</span><span class="code_variable">lambda</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p231}\label{p231}\mathit{a1}\,\mathit{lambda}={{\%{}e}^{-t\,\mathit{lambda}}}\,\left( 2\mathit{a2}\,{{\%{}e}^{t\,\mathit{lambda}}}-2\mathit{a1}\,{{\%{}e}^{t\,\mathit{lambda}}}\right) \]
+\[\tag{p241}\label{p241}\mathit{a2}\,\mathit{lambda}={{\%{}e}^{-t\,\mathit{lambda}}}\,\left( 2\mathit{a1}\,{{\%{}e}^{t\,\mathit{lambda}}}-5\mathit{a2}\,{{\%{}e}^{t\,\mathit{lambda}}}\right) \]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i12) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p25</span><span class="code_operator">:</span><span class="code_function">ratsimp</span>(<span class="code_variable">p231</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p26</span><span class="code_operator">:</span><span class="code_function">ratsimp</span>(<span class="code_variable">p241</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p25}\label{p25}\mathit{a1}\,\mathit{lambda}=2\mathit{a2}-2\mathit{a1}\]
+\[\tag{p26}\label{p26}\mathit{a2}\,\mathit{lambda}=2\mathit{a1}-5\mathit{a2}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i14) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p27</span><span class="code_operator">:</span><span class="code_function">rhs</span>(<span class="code_variable">p25</span>)<span class="code_operator">-</span><span class="code_function">lhs</span>(<span class="code_variable">p25</span>)<span class="code_operator">=</span><span class="code_number">0</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">p28</span><span class="code_operator">:</span><span class="code_function">rhs</span>(<span class="code_variable">p26</span>)<span class="code_operator">-</span><span class="code_function">lhs</span>(<span class="code_variable">p26</span>)<span class="code_operator">=</span><span class="code_number">0</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p27}\label{p27}-\mathit{a1}\,\mathit{lambda}+2\mathit{a2}-2\mathit{a1}=0\]
+\[\tag{p28}\label{p28}-\mathit{a2}\,\mathit{lambda}-5\mathit{a2}+2\mathit{a1}=0\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i18) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p29</span><span class="code_operator">:</span><span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">p27</span>,<span class="code_number">1</span>),<span class="code_variable">a1</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p30</span><span class="code_operator">:</span><span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">p27</span>,<span class="code_number">1</span>),<span class="code_variable">a2</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p31</span><span class="code_operator">:</span><span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">p28</span>,<span class="code_number">1</span>),<span class="code_variable">a1</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p32</span><span class="code_operator">:</span><span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">p28</span>,<span class="code_number">1</span>),<span class="code_variable">a2</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p29}\label{p29}-\mathit{lambda}-2\]
+\[\tag{p30}\label{p30}2\]
+\[\tag{p31}\label{p31}2\]
+\[\tag{p32}\label{p32}-\mathit{lambda}-5\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+build matrix M1 ' coefficient matrix '<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i19) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">M1</span><span class="code_operator">:</span><span class="code_function">zeromatrix</span>(<span class="code_number">2</span>,<span class="code_number">2</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{M1}\label{M1}\begin{pmatrix}0 & 0\\
+0 & 0\end{pmatrix}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i23) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">M1</span>[<span class="code_number">1</span>,<span class="code_number">1</span>]<span class="code_operator">:</span><span class="code_variable">p29</span><span class="code_endofline">$</span><BR>
+<span class="code_variable">M1</span>[<span class="code_number">1</span>,<span class="code_number">2</span>]<span class="code_operator">:</span><span class="code_variable">p30</span><span class="code_endofline">$</span><BR>
+<span class="code_variable">M1</span>[<span class="code_number">2</span>,<span class="code_number">1</span>]<span class="code_operator">:</span><span class="code_variable">p31</span><span class="code_endofline">$</span><BR>
+<span class="code_variable">M1</span>[<span class="code_number">2</span>,<span class="code_number">2</span>]<span class="code_operator">:</span><span class="code_variable">p32</span><span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+coefficient matrix,p27,p28<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i24) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">M1</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o24}\label{o24} \begin{pmatrix}-\mathit{lambda}-2 & 2\\
+2 & -\mathit{lambda}-5\end{pmatrix}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+call :characteristics polynomial of a matrix<BR>module 1 : charpoly form ' load(eigen)'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i25) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p33</span><span class="code_operator">:</span><span class="code_function">ratsimp</span>(<span class="code_function">determinant</span>(<span class="code_variable">M1</span>))<span class="code_operator">=</span><span class="code_number">0</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p33}\label{p33}{{\mathit{lambda}}^{2}}+7\mathit{lambda}+6=0\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+lambda-sum*lambda+product &nbsp;= 0 'quadratic equation '<BR>sum &nbsp;&nbsp;&nbsp;&nbsp;= lambda1+lambda2<BR>product = lambda1*lambda2<BR>------------------------------<BR>example: lambda1=-6,lambda2=-1<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i26) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p34</span><span class="code_operator">:</span><span class="code_function">solve</span>(<span class="code_variable">p33</span>,<span class="code_variable">lambda</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p34}\label{p34}[\mathit{lambda}=-6,\mathit{lambda}=-1]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i28) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p35</span><span class="code_operator">:</span><span class="code_variable">p34</span>[<span class="code_number">1</span>]<span class="code_endofline">;</span><BR>
+<span class="code_variable">p36</span><span class="code_operator">:</span><span class="code_variable">p34</span>[<span class="code_number">2</span>]<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p35}\label{p35}\mathit{lambda}=-6\]
+\[\tag{p36}\label{p36}\mathit{lambda}=-1\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i30) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p351</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">p35</span>,<span class="code_number">2</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p361</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">p36</span>,<span class="code_number">2</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p351}\label{p351}-6\]
+\[\tag{p361}\label{p361}-1\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+find eigenvector corresponding to 'lambda=-1'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i32) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p37</span><span class="code_operator">:</span><span class="code_variable">a1</span><span class="code_operator">*</span><span class="code_variable">M1</span>[<span class="code_number">1</span>,<span class="code_number">1</span>]<span class="code_operator">+</span><span class="code_variable">a2</span><span class="code_operator">*</span><span class="code_variable">M1</span>[<span class="code_number">1</span>,<span class="code_number">2</span>]<span class="code_operator">=</span><span class="code_number">0</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">p38</span><span class="code_operator">:</span><span class="code_variable">a1</span><span class="code_operator">*</span><span class="code_variable">M1</span>[<span class="code_number">1</span>,<span class="code_number">1</span>]<span class="code_operator">+</span><span class="code_variable">a2</span><span class="code_operator">*</span><span class="code_variable">M1</span>[<span class="code_number">1</span>,<span class="code_number">2</span>]<span class="code_operator">=</span><span class="code_number">0</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p37}\label{p37}\mathit{a1}\,\left( -\mathit{lambda}-2\right) +2\mathit{a2}=0\]
+\[\tag{p38}\label{p38}\mathit{a1}\,\left( -\mathit{lambda}-2\right) +2\mathit{a2}=0\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+subst : lambda = -1 'p36' in to p37,p38<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i34) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p39</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p37</span>,<span class="code_variable">p36</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p40</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p38</span>,<span class="code_variable">p36</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p39}\label{p39}2\mathit{a2}-\mathit{a1}=0\]
+\[\tag{p40}\label{p40}2\mathit{a2}-\mathit{a1}=0\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+menu :equations &rarr;solve linear system 'p39,p40' for a1,a2<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+eigenvectors ( &nbsp;lambda = -1)<BR>module 1 : eigenvectors ,uniteigenvectors<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i35) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p41</span><span class="code_operator">:</span><span class="code_function">linsolve</span>([<span class="code_variable">p39</span>, <span class="code_variable">p40</span>], [<span class="code_variable">a1</span>,<span class="code_variable">a2</span>])<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\mbox{}\\\mbox{solve: dependent equations eliminated: (2)}\]
+\[\tag{p41}\label{p41}[\mathit{a1}=2\mathit{\%{}r1},\mathit{a2}=\mathit{\%{}r1}]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i36) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p42</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p41</span>,<span class="code_variable">%r1</span><span class="code_operator">=</span><span class="code_number">1</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p42}\label{p42}[\mathit{a1}=2,\mathit{a2}=1]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i38) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p43</span><span class="code_operator">:</span><span class="code_variable">p42</span>[<span class="code_number">1</span>]<span class="code_endofline">;</span><BR>
+<span class="code_variable">p44</span><span class="code_operator">:</span><span class="code_variable">p42</span>[<span class="code_number">2</span>]<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p43}\label{p43}\mathit{a1}=2\]
+\[\tag{p44}\label{p44}\mathit{a2}=1\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+subst : lambda = -6 'p35' in to p37,p38<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i40) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p45</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p37</span>,<span class="code_variable">p35</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p46</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p38</span>,<span class="code_variable">p35</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p45}\label{p45}2\mathit{a2}+4\mathit{a1}=0\]
+\[\tag{p46}\label{p46}2\mathit{a2}+4\mathit{a1}=0\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+menu :equations &rarr;solve linear system 'p45,p46' for a1,a2<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+eigenvectors ( &nbsp;lambda = -6)<BR>module 1 : eigenvectors ,uniteigenvectors<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i41) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p47</span><span class="code_operator">:</span><span class="code_function">linsolve</span>([<span class="code_variable">p45</span>, <span class="code_variable">p46</span>], [<span class="code_variable">a1</span>,<span class="code_variable">a2</span>])<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\mbox{}\\\mbox{solve: dependent equations eliminated: (2)}\]
+\[\tag{p47}\label{p47}[\mathit{a1}=-\frac{\mathit{\%{}r2}}{2},\mathit{a2}=\mathit{\%{}r2}]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i42) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p48</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p47</span>,<span class="code_variable">%r2</span><span class="code_operator">=</span><span class="code_number">-</span><span class="code_number">2</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p48}\label{p48}[\mathit{a1}=1,\mathit{a2}=-2]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i44) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p49</span><span class="code_operator">:</span><span class="code_variable">p48</span>[<span class="code_number">1</span>]<span class="code_endofline">;</span><BR>
+<span class="code_variable">p50</span><span class="code_operator">:</span><span class="code_variable">p48</span>[<span class="code_number">2</span>]<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p49}\label{p49}\mathit{a1}=1\]
+\[\tag{p50}\label{p50}\mathit{a2}=-2\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+superposition principle :C1,C2<BR>before : C11 = c1/2,C22 = c2<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i46) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p51</span><span class="code_operator">:</span><span class="code_variable">X</span><span class="code_operator">=</span><span class="code_variable">C11</span><span class="code_operator">*</span><span class="code_function">part</span>(<span class="code_variable">p43</span>,<span class="code_number">2</span>)<span class="code_operator">*</span><span class="code_variable">%e</span><span class="code_operator">^</span>(<span class="code_variable">p361</span><span class="code_operator">*</span><span class="code_variable">t</span>)<span class="code_operator">+</span><span class="code_variable">C22</span><span class="code_operator">*</span><span class="code_function">part</span>(<span class="code_variable">p49</span>,<span class="code_number">2</span>)<span class="code_operator">*</span><span class="code_variable">%e</span><span class="code_operator">^</span>(<span class="code_variable">p351</span><span class="code_operator">*</span><span class="code_variable">t</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p52</span><span class="code_operator">:</span><span class="code_variable">Y</span><span class="code_operator">=</span><span class="code_variable">C11</span><span class="code_operator">*</span><span class="code_function">part</span>(<span class="code_variable">p44</span>,<span class="code_number">2</span>)<span class="code_operator">*</span><span class="code_variable">%e</span><span class="code_operator">^</span>(<span class="code_variable">p361</span><span class="code_operator">*</span><span class="code_variable">t</span>)<span class="code_operator">+</span><span class="code_variable">C22</span><span class="code_operator">*</span><span class="code_function">part</span>(<span class="code_variable">p50</span>,<span class="code_number">2</span>)<span class="code_operator">*</span><span class="code_variable">%e</span><span class="code_operator">^</span>(<span class="code_variable">p351</span><span class="code_operator">*</span><span class="code_variable">t</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p51}\label{p51}X=2\mathit{C11}\,{{\%{}e}^{-t}}+\mathit{C22}\,{{\%{}e}^{-6t}}\]
+\[\tag{p52}\label{p52}Y=\mathit{C11}\,{{\%{}e}^{-t}}-2\mathit{C22}\,{{\%{}e}^{-6t}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+general system : without values. 'appendix'<BR>
+</P>
+
+ <HR>
+ <SMALL> Created with <A HREF="http://wxmaxima.sourceforge.net/">wxMaxima</A>.</SMALL>
+ <script data-cfasync="false" src="../../../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></BODY>
+</HTML>

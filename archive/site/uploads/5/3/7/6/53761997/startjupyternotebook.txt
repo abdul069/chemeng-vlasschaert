@@ -1,0 +1,34 @@
+@ echo off
+REM .......................................................................
+:: batch file (startjupyternotebook.bat) for jupyter notebook version 1.0
+:: peter.vlasschaert@gmail.com,20/09/2022
+REM .......................................................................
+rem : click batch file to run "jupyter notebook (JN)"
+REM BLANK LINES follows (cmd window)
+echo .
+echo .
+echo .
+REM........................................................................
+REM place where you install python on your system for juypter notebook
+cd C:\Users\science\AppData\Local\Programs\Python\Python310\Scripts
+REM open command prompt , before called dos-prompt (*.exe)
+start cmd.exe
+REM run juypter note book (*.exe)
+start jupyter-notebook.exe
+REM........................................................................
+REM kill cmd.exe without asking /F "you don't need this (JN)"
+cd C:\Windows\system32\cmd.xe
+taskkill /F /IM cmd.exe
+REM........................................................................
+REM 
+REM .......................................................................
+REM problems
+:: ------------------------------------------------------------------------
+REM restart your default browser 
+REM you can close cmd window manual when appear
+REM .......................................................................
+REM .......................................................................
+REM never close ,jupyter-notebook.exe window ,close connect to local server
+REM is lost.
+REM .......................................................................
+REM solve problem :run batch file again (*.bat), file

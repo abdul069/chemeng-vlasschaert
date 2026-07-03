@@ -1,0 +1,654 @@
+<!DOCTYPE HTML">
+<HTML>
+ <HEAD>
+  <TITLE>part7odericattifinal1html</TITLE>
+  <META NAME="generator" CONTENT="wxMaxima">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    displayAlign: "left",
+    context: "MathJax"
+  })
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+  <link rel="stylesheet" type="text/css" href="https://petervlaschemeng.weebly.com/uploads/5/3/7/6/53761997/part7odericattifinal1html_htmlimg/part7odericattifinal1html.css"/>
+ </HEAD>
+ <BODY>
+
+<!-- ***************************************************** -->
+<!--          Created with wxMaxima version 16.04.2         -->
+<!-- ***************************************************** -->
+<noscript><div class="error message">    Please enable JavaScript in order to get a 2d display of the equations embedded in this web page.</div></noscript>\(      \DeclareMathOperator{\abs}{abs}
+      \newcommand{\ensuremath}[1]{\mbox{$#1$}}
+\)
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">kill</span>(<span class="code_variable">all</span>)<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+ode : part7,intro: ricatti<BR><a href="https://petervlaschemeng.weebly.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e09085948592ce968c819393838881859294a0878d81898cce838f8d">[email&#160;protected]</a>,06/02/2017<BR>
+</P>
+
+
+<!-- Title cell -->
+
+
+<P CLASS="title">
+Theory Ricatti : ODE (reaction kinetics)<BR>
+
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+(dy/dx) = p(x)*y^2+q(x)*y+r(x)<BR>Why: Consecutive Reactions and Ricatti<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k1 &nbsp;&nbsp;k2<BR>reaction kinetics : A &rarr; B &rarr; C<BR>dCA/dt = - k1*CA^n &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1)<BR>dCB/dt = k1*CA^n-k2*CB^m &nbsp;&nbsp;&nbsp;(2)<BR>dCC/dt = k2*CC^l &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3)<BR><BR>integer values : &nbsp;n,m,l<BR>concentration &nbsp;: CA,CB,CC<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i2) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">load</span>(<span class="code_operator">'</span><span class="code_variable">contrib_ode</span>)<span class="code_endofline">$</span><BR>
+<span class="code_function">assume</span>(<span class="code_variable">t</span>&gt;<span class="code_number">0</span>,<span class="code_variable">CA</span>&gt;<span class="code_number">0</span>,<span class="code_variable">CB</span>&gt;<span class="code_number">0</span>)<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+equation (2) n=2,m=1, by 't=0 &rarr; CA=CA0'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i5) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq1</span><span class="code_operator">:</span> <span class="code_variable">CA</span> <span class="code_operator">=</span> <span class="code_variable">CA0</span><span class="code_operator">/</span>(<span class="code_number">1</span><span class="code_operator">+</span><span class="code_variable">k1</span><span class="code_operator">*</span><span class="code_variable">CA0</span><span class="code_operator">*</span><span class="code_variable">t</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq2</span><span class="code_operator">:</span><span class="code_operator">'</span><span class="code_function">diff</span>(<span class="code_variable">CB</span>,<span class="code_variable">t</span>)<span class="code_operator">=</span><span class="code_variable">k1</span><span class="code_operator">*</span><span class="code_variable">CA</span><span class="code_operator">^</span><span class="code_number">2</span><span class="code_operator">-</span><span class="code_variable">k2</span><span class="code_operator">*</span><span class="code_variable">CB</span><span class="code_operator">^</span><span class="code_number">1</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">eq3</span><span class="code_operator">:</span><span class="code_function">lhs</span>(<span class="code_variable">eq2</span>)<span class="code_operator">-</span><span class="code_function">part</span>(<span class="code_variable">eq2</span>,<span class="code_number">2</span>,<span class="code_number">2</span>)<span class="code_operator">=</span><span class="code_function">rhs</span>(<span class="code_variable">eq2</span>)<span class="code_operator">-</span><span class="code_function">part</span>(<span class="code_variable">eq2</span>,<span class="code_number">2</span>,<span class="code_number">2</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq1}\label{eq1}\mathit{CA}=\frac{\mathit{CA0}}{\mathit{CA0}\,\mathit{k1}t+1}\]
+\[\tag{eq2}\label{eq2}\frac{d}{dt}\mathit{CB}={{\mathit{CA}}^{2}}\,\mathit{k1}-\mathit{CB}\,\mathit{k2}\]
+\[\tag{eq3}\label{eq3}\mathit{CB}\,\mathit{k2}+\frac{d}{dt}\mathit{CB}={{\mathit{CA}}^{2}}\,\mathit{k1}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i7) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq4</span><span class="code_operator">:</span><span class="code_function">subst</span>(<span class="code_function">rhs</span>(<span class="code_variable">eq1</span>),<span class="code_variable">CA</span>,<span class="code_variable">eq3</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq5</span><span class="code_operator">:</span> <span class="code_function">lhs</span>(<span class="code_variable">eq3</span>)<span class="code_operator">=</span><span class="code_function">rhs</span>(<span class="code_variable">eq4</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq4}\label{eq4}\mathit{CB}\,\mathit{k2}+\frac{d}{dt}\mathit{CB}=\frac{{{\mathit{CA0}}^{2}}\,\mathit{k1}}{{{\left( \mathit{CA0}\,\mathit{k1}t+1\right) }^{2}}}\]
+\[\tag{eq5}\label{eq5}\mathit{CB}\,\mathit{k2}+\frac{d}{dt}\mathit{CB}=\frac{{{\mathit{CA0}}^{2}}\,\mathit{k1}}{{{\left( \mathit{CA0}\,\mathit{k1}t+1\right) }^{2}}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i8) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">depends</span>([<span class="code_variable">y</span>,<span class="code_variable">f</span>],[<span class="code_variable">x</span>])<span class="code_endofline">;</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o8}\label{o8} [\operatorname{y}(x),\operatorname{f}(x)]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i9) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq6</span><span class="code_operator">:</span><span class="code_operator">'</span><span class="code_function">diff</span>(<span class="code_variable">y</span>,<span class="code_variable">x</span>)<span class="code_operator">+</span><span class="code_variable">alpha</span><span class="code_operator">*</span><span class="code_variable">y</span><span class="code_operator">=</span><span class="code_variable">f</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq6}\label{eq6}\frac{d}{dx}y+\alphay=f\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i10) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">depends</span>([<span class="code_variable">I</span>],[<span class="code_variable">x</span>])<span class="code_endofline">;</span><BR>
+<span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o10}\label{o10} [\operatorname{I}(x)]\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+I is a integration factor.<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i11) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq7</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_operator">'</span><span class="code_function">diff</span>(<span class="code_variable">I</span><span class="code_operator">*</span><span class="code_variable">y</span>,<span class="code_variable">x</span>)<span class="code_operator">=</span><span class="code_variable">I</span><span class="code_operator">*</span><span class="code_variable">f</span>,<span class="code_variable">nouns</span>,<span class="code_variable">eq7</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq7}\label{eq7}I\,\left( \frac{d}{dx}y\right) +\left( \frac{d}{dx}I\right) y=If\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i12) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq8</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">eq7</span>,<span class="code_variable">I</span><span class="code_operator">=</span><span class="code_variable">%e</span><span class="code_operator">^</span>(<span class="code_variable">alpha</span><span class="code_operator">*</span><span class="code_variable">x</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq8}\label{eq8}{{\%{}e}^{\alphax}}\,\left( \frac{d}{dx}y\right) +\left( \frac{d}{dx}{{\%{}e}^{\alphax}}\right) y=f\,{{\%{}e}^{\alphax}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i13) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq9</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">eq8</span>,<span class="code_variable">nouns</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq9}\label{eq9}{{\%{}e}^{\alphax}}\,\left( \frac{d}{dx}y\right) +\alpha{{\%{}e}^{\alphax}}y=f\,{{\%{}e}^{\alphax}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+make : eq5 = eq9<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+first part : eq5<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+x = t<BR>y = CB<BR>alpha = k2<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i16) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq10</span><span class="code_operator">:</span><span class="code_function">subst</span>(<span class="code_variable">t</span>,<span class="code_variable">x</span>,<span class="code_variable">eq9</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq11</span><span class="code_operator">:</span><span class="code_function">subst</span>(<span class="code_variable">CB</span>,<span class="code_variable">y</span>,<span class="code_variable">eq10</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq12</span><span class="code_operator">:</span><span class="code_function">subst</span>(<span class="code_variable">k2</span>,<span class="code_variable">alpha</span>,<span class="code_variable">eq11</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq10}\label{eq10}{{\%{}e}^{\alphat}}\,\left( \frac{d}{dt}y\right) +\alpha{{\%{}e}^{\alphat}}y=f\,{{\%{}e}^{\alphat}}\]
+\[\tag{eq11}\label{eq11}\mathit{CB}\alpha{{\%{}e}^{\alphat}}+\left( \frac{d}{dt}\mathit{CB}\right) \,{{\%{}e}^{\alphat}}=f\,{{\%{}e}^{\alphat}}\]
+\[\tag{eq12}\label{eq12}\mathit{CB}\,\mathit{k2}\,{{\%{}e}^{\mathit{k2}t}}+\left( \frac{d}{dt}\mathit{CB}\right) \,{{\%{}e}^{\mathit{k2}t}}=f\,{{\%{}e}^{\mathit{k2}t}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+second part :eq5<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+f=(CA0^2*k1)/(CA0*k1*t+1)^2<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i18) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq13</span><span class="code_operator">:</span><span class="code_function">factor</span>(<span class="code_function">subst</span>(<span class="code_function">rhs</span>(<span class="code_variable">eq5</span>),<span class="code_variable">f</span>,<span class="code_variable">eq12</span>))<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq14</span><span class="code_operator">:</span><span class="code_variable">f</span><span class="code_operator">=</span><span class="code_function">rhs</span>(<span class="code_variable">eq5</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq13}\label{eq13}\left( \mathit{CB}\,\mathit{k2}+\frac{d}{dt}\mathit{CB}\right) \,{{\%{}e}^{\mathit{k2}t}}=\frac{{{\mathit{CA0}}^{2}}\,\mathit{k1}\,{{\%{}e}^{\mathit{k2}t}}}{{{\left( \mathit{CA0}\,\mathit{k1}t+1\right) }^{2}}}\]
+\[\tag{eq14}\label{eq14}f=\frac{{{\mathit{CA0}}^{2}}\,\mathit{k1}}{{{\left( \mathit{CA0}\,\mathit{k1}t+1\right) }^{2}}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+find integration factor I:eq5<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i19) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">dependencies</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o19}\label{o19} [\operatorname{y}(x),\operatorname{f}(x),\operatorname{I}(x)]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i20) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">depends</span>([<span class="code_variable">I</span>,<span class="code_variable">f</span>,<span class="code_variable">CB</span>],[<span class="code_variable">t</span>])<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o20}\label{o20} [\operatorname{I}(t),\operatorname{f}(t),\operatorname{CB}(t)]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i21) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">dependencies</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o21}\label{o21} [\operatorname{y}(x),\operatorname{I}(t),\operatorname{f}(t),\operatorname{CB}(t)]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i22) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq15</span><span class="code_operator">:</span><span class="code_variable">I</span><span class="code_operator">=</span><span class="code_function">part</span>(<span class="code_variable">eq13</span>,<span class="code_number">1</span>,<span class="code_number">2</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq15}\label{eq15}I={{\%{}e}^{\mathit{k2}t}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+seperated,find CB=CB(t) from eq5<BR>solve eq5:<BR>I = I(t),f=f(t),%c = integration constant<BR>formule : CB = 1/I*integration(I*f,t)+%c/I<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i23) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq16</span><span class="code_operator">:</span><span class="code_variable">CB</span> <span class="code_operator">=</span><span class="code_function">ev</span>(<span class="code_number">1</span><span class="code_operator">/</span><span class="code_function">rhs</span>(<span class="code_variable">eq15</span>)<span class="code_operator">*</span><span class="code_function">integrate</span>(<span class="code_function">rhs</span>(<span class="code_variable">eq15</span>)<span class="code_operator">*</span><span class="code_function">rhs</span>(<span class="code_variable">eq14</span>),<span class="code_variable">t</span>)<span class="code_operator">+</span><span class="code_variable">%c</span><span class="code_operator">/</span><span class="code_function">rhs</span>(<span class="code_variable">eq15</span>),<span class="code_variable">nouns</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq16}\label{eq16}\mathit{CB}=\mathit{\%{}c}\,{{\%{}e}^{-\mathit{k2}t}}-\frac{\operatorname{expintegral\_ e}\left( 2,-\frac{\mathit{k2}\,\left( \mathit{CA0}\,\mathit{k1}t+1\right) }{\mathit{CA0}\,\mathit{k1}}\right) \mathit{CA0}\,{{\%{}e}^{-\mathit{k2}t-\frac{\mathit{k2}}{\mathit{CA0}\,\mathit{k1}}}}}{\mathit{CA0}\,\mathit{k1}t+1}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+find %c , same part6, t=0 and CB=0 in eq16<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i24) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq17</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">eq16</span>,<span class="code_variable">t</span><span class="code_operator">=</span><span class="code_number">0</span>,<span class="code_variable">CB</span><span class="code_operator">=</span><span class="code_number">0</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq17}\label{eq17}0=\mathit{\%{}c}-\operatorname{expintegral\_ e}\left( 2,-\frac{\mathit{k2}}{\mathit{CA0}\,\mathit{k1}}\right) \mathit{CA0}\,{{\%{}e}^{-\frac{\mathit{k2}}{\mathit{CA0}\,\mathit{k1}}}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i25) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq18</span><span class="code_operator">:</span><span class="code_function">solve</span>(<span class="code_variable">eq17</span>,<span class="code_variable">%c</span>)[<span class="code_number">1</span>]<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq18}\label{eq18}\mathit{\%{}c}=\operatorname{expintegral\_ e}\left( 2,-\frac{\mathit{k2}}{\mathit{CA0}\,\mathit{k1}}\right) \mathit{CA0}\,{{\%{}e}^{-\frac{\mathit{k2}}{\mathit{CA0}\,\mathit{k1}}}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i26) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq19</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">eq16</span>,<span class="code_variable">eq18</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq19}\label{eq19}\mathit{CB}=\operatorname{expintegral\_ e}\left( 2,-\frac{\mathit{k2}}{\mathit{CA0}\,\mathit{k1}}\right) \mathit{CA0}\,{{\%{}e}^{-\mathit{k2}t-\frac{\mathit{k2}}{\mathit{CA0}\,\mathit{k1}}}}-\frac{\operatorname{expintegral\_ e}\left( 2,-\frac{\mathit{k2}\,\left( \mathit{CA0}\,\mathit{k1}t+1\right) }{\mathit{CA0}\,\mathit{k1}}\right) \mathit{CA0}\,{{\%{}e}^{-\mathit{k2}t-\frac{\mathit{k2}}{\mathit{CA0}\,\mathit{k1}}}}}{\mathit{CA0}\,\mathit{k1}t+1}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+integration :integration(%e^(k2*t)*f,t),f &nbsp;see eq14<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+info : gamma_incomplete,see www<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i27) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq20</span><span class="code_operator">:</span><span class="code_function">integrate</span>(<span class="code_variable">%e</span><span class="code_operator">^</span>(<span class="code_variable">alpha</span><span class="code_operator">*</span><span class="code_variable">x</span>)<span class="code_operator">/</span><span class="code_variable">x</span><span class="code_operator">^</span><span class="code_number">2</span>,<span class="code_variable">x</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq20}\label{eq20}\operatorname{gamma\_ incomplete}\left( -1,-\alphax\right) \alpha\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+make taylor expantion :<BR>go to &nbsp;' menu: Calculus &rarr; Get series.'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i28) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq21</span><span class="code_operator">:</span><span class="code_function">taylor</span>(<span class="code_variable">%e</span><span class="code_operator">^</span>(<span class="code_variable">alpha</span><span class="code_operator">*</span><span class="code_variable">x</span>)<span class="code_operator">/</span><span class="code_variable">x</span><span class="code_operator">^</span><span class="code_number">2</span>, <span class="code_variable">x</span>, <span class="code_number">0</span>, <span class="code_number">4</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq21}\label{eq21}\frac{1}{{{x}^{2}}}+\frac{\alpha}{x}+\frac{{{\alpha}^{2}}}{2}+\frac{{{\alpha}^{3}}x}{6}+\frac{{{\alpha}^{4}}\,{{x}^{2}}}{24}+\frac{{{\alpha}^{5}}\,{{x}^{3}}}{120}+\frac{{{\alpha}^{6}}\,{{x}^{4}}}{720}+\mbox{...}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i29) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq22</span><span class="code_operator">:</span><span class="code_function">integrate</span>(<span class="code_variable">eq21</span>,<span class="code_variable">x</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq22}\label{eq22}\alpha\log{(x)}+\frac{{{\alpha}^{6}}\,{{x}^{5}}}{3600}+\frac{{{\alpha}^{5}}\,{{x}^{4}}}{480}+\frac{{{\alpha}^{4}}\,{{x}^{3}}}{72}+\frac{{{\alpha}^{3}}\,{{x}^{2}}}{12}+\frac{{{\alpha}^{2}}x}{2}-\frac{1}{x}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+Integration(I*f,t),use taylor expantion to do integration.<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+subst : &nbsp;tau=CA0*k1*t+1,alpha=k2<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i30) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq23</span><span class="code_operator">:</span><span class="code_variable">tau</span><span class="code_operator">=</span><span class="code_function">part</span>(<span class="code_variable">eq14</span>,<span class="code_number">2</span>,<span class="code_number">2</span>,<span class="code_number">1</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq23}\label{eq23}\tau=\mathit{CA0}\,\mathit{k1}t+1\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i31) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq24</span><span class="code_operator">:</span><span class="code_function">diff</span>(<span class="code_function">rhs</span>(<span class="code_variable">eq23</span>),<span class="code_variable">t</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq24}\label{eq24}\mathit{CA0}\,\mathit{k1}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i32) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq25</span><span class="code_operator">:</span><span class="code_variable">k2</span><span class="code_operator">*</span><span class="code_function">solve</span>(<span class="code_variable">eq23</span>,<span class="code_variable">t</span>)[<span class="code_number">1</span>]<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq25}\label{eq25}\mathit{k2}t=\frac{\mathit{k2}\,\left( \tau-1\right) }{\mathit{CA0}\,\mathit{k1}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+build %e^(k2*t) &rArr; function of tau<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i33) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq26</span><span class="code_operator">:</span><span class="code_variable">%e</span><span class="code_operator">^</span>(<span class="code_function">lhs</span>(<span class="code_variable">eq25</span>))<span class="code_operator">=</span><span class="code_variable">%e</span><span class="code_operator">^</span>(<span class="code_function">rhs</span>(<span class="code_variable">eq25</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq26}\label{eq26}{{\%{}e}^{\mathit{k2}t}}={{\%{}e}^{\frac{\mathit{k2}\,\left( \tau-1\right) }{\mathit{CA0}\,\mathit{k1}}}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+build : %e^(k2*t)*f, f=f(tau)<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i34) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq27</span><span class="code_operator">:</span><span class="code_function">ratsubst</span>(<span class="code_variable">tau</span>,<span class="code_function">rhs</span>(<span class="code_variable">eq23</span>),<span class="code_variable">eq14</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq27}\label{eq27}f=\frac{{{\mathit{CA0}}^{2}}\,\mathit{k1}}{{{\tau}^{2}}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i35) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq28</span><span class="code_operator">:</span><span class="code_variable">v</span><span class="code_operator">=</span><span class="code_function">integrate</span>(<span class="code_function">rhs</span>(<span class="code_variable">eq25</span>)<span class="code_operator">*</span><span class="code_function">rhs</span>(<span class="code_variable">eq27</span>),<span class="code_variable">tau</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq28}\label{eq28}v=\mathit{CA0}\,\mathit{k2}\,\left( \log{\left( \tau\right) }+\frac{1}{\tau}\right) \]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i37) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq29</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">eq28</span>,<span class="code_number">2</span>,<span class="code_number">3</span>,<span class="code_number">1</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq30</span><span class="code_operator">:</span><span class="code_function">ratsubst</span>(<span class="code_function">rhs</span>(<span class="code_variable">eq23</span>),<span class="code_function">lhs</span>(<span class="code_variable">eq23</span>),<span class="code_variable">eq29</span>)<span class="code_endofline">;</span><BR>
+<span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq29}\label{eq29}\log{\left( \tau\right) }\]
+\[\tag{eq30}\label{eq30}\log{\left( \mathit{CA0}\,\mathit{k1}t+1\right) }\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i38) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">taylor</span>(<span class="code_variable">eq30</span>, <span class="code_variable">t</span>, <span class="code_number">0</span>,<span class="code_number">3</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o38)/T}\label{o38)/T} \mathit{CA0}\,\mathit{k1}t-\frac{{{\mathit{CA0}}^{2}}\,{{\mathit{k1}}^{2}}\,{{t}^{2}}}{2}+\frac{{{\mathit{CA0}}^{3}}\,{{\mathit{k1}}^{3}}\,{{t}^{3}}}{3}+\mbox{...}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i39) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq31</span><span class="code_operator">:</span><span class="code_variable">CB</span><span class="code_operator">=</span><span class="code_number">1</span><span class="code_operator">/</span><span class="code_function">rhs</span>(<span class="code_variable">eq15</span>)<span class="code_operator">*</span><span class="code_function">rhs</span>(<span class="code_variable">eq28</span>)<span class="code_operator">+</span><span class="code_variable">%c</span><span class="code_operator">/</span><span class="code_function">rhs</span>(<span class="code_variable">eq15</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq31}\label{eq31}\mathit{CB}=\mathit{CA0}\,\mathit{k2}\,{{\%{}e}^{-\mathit{k2}t}}\,\left( \log{\left( \tau\right) }+\frac{1}{\tau}\right) +\mathit{\%{}c}\,{{\%{}e}^{-\mathit{k2}t}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+t = 0 ,tau = 1+CA0*k1*t,tau = 1 and CB=0<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i45) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq32</span><span class="code_operator">:</span><span class="code_function">ratsubst</span>(<span class="code_function">lhs</span>(<span class="code_variable">eq23</span>),<span class="code_function">rhs</span>(<span class="code_variable">eq23</span>),<span class="code_variable">eq31</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq33</span><span class="code_operator">:</span><span class="code_function">solve</span>(<span class="code_variable">eq23</span>,<span class="code_variable">t</span>)[<span class="code_number">1</span>]<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq34</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">eq32</span>,<span class="code_variable">tau</span><span class="code_operator">=</span><span class="code_number">1</span>,<span class="code_variable">CB</span><span class="code_operator">=</span><span class="code_number">0</span>,<span class="code_function">lhs</span>(<span class="code_variable">eq33</span>)<span class="code_operator">=</span><span class="code_function">rhs</span>(<span class="code_variable">eq33</span>))<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq35</span><span class="code_operator">:</span><span class="code_function">solve</span>(<span class="code_variable">eq34</span>,<span class="code_variable">%c</span>)[<span class="code_number">1</span>]<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq36</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">eq32</span>,<span class="code_variable">eq33</span>,<span class="code_variable">eq35</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq37</span><span class="code_operator">:</span><span class="code_function">factor</span>(<span class="code_function">ev</span>(<span class="code_variable">eq36</span>,<span class="code_variable">eq23</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq32}\label{eq32}\mathit{CB}=\frac{{{\%{}e}^{-\mathit{k2}t}}\,\left( \mathit{CA0}\,\mathit{k2}\tau\log{\left( \tau\right) }+\mathit{\%{}c}\tau+\mathit{CA0}\,\mathit{k2}\right) }{\tau}\]
+\[\tag{eq33}\label{eq33}t=\frac{\tau-1}{\mathit{CA0}\,\mathit{k1}}\]
+\[\tag{eq34}\label{eq34}0=\mathit{CA0}\,\mathit{k2}+\mathit{\%{}c}\]
+\[\tag{eq35}\label{eq35}\mathit{\%{}c}=-\mathit{CA0}\,\mathit{k2}\]
+\[\tag{eq36}\label{eq36}\mathit{CB}=\frac{{{\%{}e}^{-\frac{\mathit{k2}\,\left( \tau-1\right) }{\mathit{CA0}\,\mathit{k1}}}}\,\left( \mathit{CA0}\,\mathit{k2}\tau\log{\left( \tau\right) }-\mathit{CA0}\,\mathit{k2}\tau+\mathit{CA0}\,\mathit{k2}\right) }{\tau}\]
+\[\tag{eq37}\label{eq37}\mathit{CB}=\frac{\mathit{CA0}\,\mathit{k2}\,{{\%{}e}^{-\mathit{k2}t}}\,\left( \mathit{CA0}\,\mathit{k1}t\,\log{\left( \mathit{CA0}\,\mathit{k1}t+1\right) }+\log{\left( \mathit{CA0}\,\mathit{k1}t+1\right) }-\mathit{CA0}\,\mathit{k1}t\right) }{\mathit{CA0}\,\mathit{k1}t+1}\]
+
+ <HR>
+ <SMALL> Created with <A HREF="http://wxmaxima.sourceforge.net/">wxMaxima</A>.</SMALL>
+ <script data-cfasync="false" src="../../../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></BODY>
+</HTML>

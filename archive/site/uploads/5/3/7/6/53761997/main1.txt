@@ -1,0 +1,64 @@
+# Project1 : quadratic equation .
+# peter.vlasschaert@gmail.com,22-08-2022
+#.....................................................
+# ref : a primer on scientic programming with python
+#     : Hans Petter Langtangen (Fifth ed.)
+#     : Springer
+# ----------------------------------------------------
+print("math presentation >")
+print("...................")
+bb='a*x^2+b*x+c'
+# https://www.codegrepper.com/ , python
+print
+print(bb)
+print("python presentation")
+print("...................")
+aa = "a*x**2+b*x+c"
+a = input(" variable a = ")
+b = input(" variable b = ")
+c = input(" variable c = ")
+print(aa[0])
+# position of a
+m1=aa.replace(aa[0],a)
+print(m1)
+# position of b
+m2=aa.find("b")
+print(m2)
+m2a=m1.replace(m1[m2],b)
+print(m2a)
+m3=len(aa)
+# position of c
+# m3-1 ,start index from 0
+m3a=m2a.replace(m2a[m3-1],c)
+print(m3a)
+# computation : eval(string)
+quadratic = lambda x:eval(m3a)
+print(quadratic(2))
+# makelist x= 1,2,3,4
+m4=[quadratic(1),quadratic(2),quadratic(3),quadratic(4)]
+print(m4)
+
+def f(x):
+    m5=eval(m3a)
+    return m5
+
+# output single value
+#...............................
+print(f(1))
+
+# output list of values ,see : m4
+#.................................
+x1=1
+list=[f(x) for x in range(x1, len(m4)+1)]
+print(list)
+# str ( = string )
+list1=[ str(f(x)) for x in range(x1, len(m4)+1)]
+print(list1)
+# convert list of strings to floats
+#..................................
+# https://www.delftstack.com/howto/python/convert-list-to-float-python/
+int_lst = [] # empty list (float_lst)
+for item in list1:
+    int_lst.append(int(item))    
+print(int_lst)
+# rem : code change: "int" to "float" 

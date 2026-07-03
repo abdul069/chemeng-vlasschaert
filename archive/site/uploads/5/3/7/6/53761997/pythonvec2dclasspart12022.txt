@@ -1,0 +1,28 @@
+# part 1 : create class vec2d,simple use.
+# peter.vlasschaert@gmail.com,24/08/2022
+#--------------------------------------------
+class vec2d():
+# vector 2 dimensional plane (xy-plane)    
+    def __init__(self,x,y): # don't forget this
+        self.x = x
+        self.y = y
+
+print( "vector 2d = vector two dimensional ")
+print( "-----------------------------------")
+print( " example = vec2d(2,3) " )
+v1 = vec2d(2,3)      
+# example : find x coordinate vec2d(x,y)
+print("x coordinate vec2d(x,y) = ",v1.x)
+# v1 = object and x,y = method = attribute
+# example : find y coordinate vec2d(x,y)
+print("y coordinate vec2d(x,y) = ",v1.y)
+print("------------------------------------")
+print("make list : v1 -> v1a ")
+print("first index start by 0")
+print("----------------------")
+v1a=[v1.x,v1.y]
+print("------------------------------------")
+print("first  element : list v1a =",v1a[0])
+print("second element : list v1a =",v1a[1])
+print("------------------------------------")
+        

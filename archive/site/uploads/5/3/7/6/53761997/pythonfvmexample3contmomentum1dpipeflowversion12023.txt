@@ -1,0 +1,88 @@
+print("-------------------------------------------------------------------------------------------")
+print("python: fvm : example 3:1d momentum equation, 1d continuity equation,pipeflow,version 1.0  ")
+print(" peter.vlasschaert@gmail.com,09/02/2023                                                    ")
+print("-------------------------------------------------------------------------------------------")
+print("                                                                                           ")
+print(" see : https://www.youtube.com/watch?v=N85HmIIgm4s&t=1333s , my website:maxima code        ")
+print("-------------------------------------------------------------------------------------------")
+from tabulate import tabulate
+# Boundary conditions
+P1 = 28
+P3 = 0
+
+# Geometry
+AA = 3
+AB = 1
+
+# Initial values
+uA = 1
+uB = 1
+P2 = 0
+
+# Set under-relaxation, tolerance and iterations
+tolerance = 0.000001
+alphaP = 0.8
+alphaU = 0.8
+imax = 100
+
+# Others variables and constants
+FA = 0
+FB = 0
+dA = 0
+dB = 0
+u_residual = 0
+c_residual = 0
+b = 0    
+P2prime = 0
+uAprime = 0
+uBprime = 0
+
+for i in range(imax):
+    # Calculate / update momentum coefficients
+    FA = uA*AA
+    FB = uB*AB
+    dA = AA/FA
+    dB = AB/FB
+
+    # Calculate residual for momentum equations
+    u_residual = (abs((FA*uA/alphaU)-(AA*(P1-P2)+FA*uA*((1-alphaU)/alphaU))) +
+                  abs((FB*uB/alphaU)-(FA*uA+AB*(P2-P3)+FB*uB*((1-alphaU)/alphaU)))) / ( abs(FA*uA/alphaU+FB*uB/alphaU) )
+                                    
+
+    # Solve momentum equations
+    uA = (AA*(P1-P2)+FA*uA*((1-alphaU)/alphaU))*(alphaU/FA)
+    uB = (FA*uA+AB*(P2-P3)+FB*uB*((1-alphaU)/alphaU))*(alphaU/FB)
+
+    # Calculate residual for the continuity equation
+    c_residual = abs(uA*AA-uB*AB)/(0.5*(abs(uA*AA)+abs(uB*AB)))
+
+    # Solve P-prime equation,see maxima filr,youtube
+    P2prime = (uA*AA-uB*AB)/(dA*AA+dB*AB)
+
+    # Correct velocities and pressure,see maxima filr,youtube
+    uAprime = -dA*P2prime
+    uBprime = +dB*P2prime
+    uA = uA + uAprime
+    uB = uB + uBprime
+    P2 = P2 + alphaP*P2prime
+
+    # Check if continuity is satisfied,see maxima filr,youtube
+    b = uA*AA-uB*AB
+
+    if i == 0:
+        print('Solving')       
+
+    if u_residual + c_residual < tolerance:
+        print("The converged solution is the following:")
+        break
+    print("Iteration:", i)
+    print("uA:", uA)
+    print("uB:", uB)
+    print("P2:", P2)
+    print("b:", b)
+    print("u_residual:", u_residual)
+    print("c_residual:", c_residual)
+    print("------------------------------")
+print(tabulate([["Iteration", i], ["uA", uA], ["uB", uB], ["P2", P2], ["b", b],
+                ["u_residual", u_residual], ["c_residual", c_residual]],
+                   headers=["Variable", "Value"]))

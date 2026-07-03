@@ -1,0 +1,26 @@
+ math lib : import -> sqr 
+sqr(2) =  1.4142135623730951
+.................................
+output : vec2d class computation 
+.................................
+ x,y component : vec2d(x,y)      
+v1=vec2d(2,3) ->
+x1 coordinate vec2d(2,3) =  2
+y1 coordinate vec2d(2,3) =  3
+print : v1=vec2d(2,3)       [2, 3]
+v2=vec2d(3,-5) ->
+x2 coordinate vec2d(2,3) =  3
+y2 coordinate vec2d(2,3) =  -5
+print : v1=vec2d(2,3)       [2, 3]
+................................
+magnitude = vec2d(2,3) -> 3.605551275463989
+....................................
+computation = calculator 
+.........................
+check =  3.605551275463989
+                                    
+dotproduct = dot(v1,v2 -> -9
+....................................
+computation = calculator 
+.........................
+check =  -9

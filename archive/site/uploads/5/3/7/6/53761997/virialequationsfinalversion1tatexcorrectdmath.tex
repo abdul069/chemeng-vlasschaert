@@ -1,0 +1,386 @@
+\documentclass[leqno]{article}
+
+%% Created with wxMaxima 17.05.0
+\usepackage{geometry}
+\geometry{
+a4paper,
+total={170mm,257mm},
+left=2mm,
+top=1mm,
+}
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+\usepackage[utf8]{luainputenc}
+\DeclareUnicodeCharacter{00B5}{\ensuremath{\mu}}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{ifthen}
+\usepackage{breqn}
+\newsavebox{\picturebox}
+\newlength{\pictureboxwidth}
+\newlength{\pictureboxheight}
+\newcommand{\includeimage}[1]{
+    \savebox{\picturebox}{\includegraphics{#1}}
+    \settoheight{\pictureboxheight}{\usebox{\picturebox}}
+    \settowidth{\pictureboxwidth}{\usebox{\picturebox}}
+    \ifthenelse{\lengthtest{\pictureboxwidth > .95\linewidth}}
+    {
+        \includegraphics[width=.95\linewidth,height=.80\textheight,keepaspectratio]{#1}
+    }
+    {
+        \ifthenelse{\lengthtest{\pictureboxheight>.80\textheight}}
+        {
+            \includegraphics[width=.95\linewidth,height=.80\textheight,keepaspectratio]{#1}
+            
+        }
+        {
+            \includegraphics{#1}
+        }
+    }
+}
+\newlength{\thislabelwidth}
+\DeclareMathOperator{\abs}{abs}
+\usepackage{animate} % This package is required because the wxMaxima configuration option
+                      % "Export animations to TeX" was enabled when this file was generated.
+
+\definecolor{labelcolor}{RGB}{100,0,0}
+
+\begin{document}
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\% i1) 
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+kill(all)\$
+
+\end{minipage}
+peter.vlasschaert\ensuremath{@}gmail.com,16/06/2017 thermodynamics : 'Equation of State' 1e) virial gas equation state 
+The virial gas equation of state ( thrid order) -------------------------------- ideal     gases: P*V=R*T*n ,' n = number mole ' non-ideal gases: Z = (P*V)/(R*T),Z ' = compressibility factor '                  z = Z1 = Z2 
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\% i1)
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+p1:(a+b+c+d)\^{}3;
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{p1}
+{{\left( d+c+b+a\right) }^{3}}\mbox{}
+\]
+%%%%%%%%%%%%%%%
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\% i2)
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+p2:expand(p1);
+\end{minipage}
+%%% OUTPUT:
+\begin{dmath}
+p2|
+{{d}^{3}}+3 c\, {{d}^{2}}+3 b\, {{d}^{2}}+3 a\, {{d}^{2}}+3 {{c}^{2}} d+6 b c d+6 a c d+3 {{b}^{2}} d+6 a b d+3 {{a}^{2}} d+{{c}^{3}}+3 b\, {{c}^{2}}+3 a\, {{c}^{2}}+3 {{b}^{2}} c+6 a b c+3 {{a}^{2}} c+{{b}^{3}}+3 a\, {{b}^{2}}+3 {{a}^{2}} b+{{a}^{3}}
+\end{dmath}
+%%%%%%%%%%%%%%%
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\% i3)
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+coeff(p2,d);
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\% o3} 
+3 {{c}^{2}}+6 b c+6 a c+3 {{b}^{2}}+6 a b+3 {{a}^{2}}\mbox{}
+\]
+%%%%%%%%%%%%%%%
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\% i4)
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+p11:(P*V)/(R*T);
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{p11}
+\frac{P V}{R T}\mbox{}
+\]
+%%%%%%%%%%%%%%%
+Z(V)=Z1=1+B/V+C/V\^{}2+D/V\^{}3 Z(P)=Z2=1+B1*P+C1*P\^{}2+D1*P\^{}3 
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\% i6)
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+p3:Z1=1+B/V+C/V\^{}2+D/V\^{}3;
+p4:Z2=1+B1*P+C1*P\^{}2+D1*P\^{}3;
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{p3}
+\mathit{Z1}=\frac{B}{V}+\frac{C}{{{V}^{2}}}+\frac{D}{{{V}^{3}}}+1\mbox{}\]
+\[\displaystyle
+\]
+\[\tag{p4}
+\mathit{Z2}=\mathit{D1}\, {{P}^{3}}+\mathit{C1}\, {{P}^{2}}+\mathit{B1} P+1\mbox{}
+\]
+%%%%%%%%%%%%%%%
+? P=P(T,Bi,Ci,Di,B,C,D)  i=1,2,3.... 
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\% i8)
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+p5:ratsubst(p11, Z1, p3);
+p6:lhs(p5)*R*T/V=rhs(p5)*R*T/V;
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{p5}
+\frac{P V}{R T}=\frac{{{V}^{3}}+B\, {{V}^{2}}+C V+D}{{{V}^{3}}}\mbox{}\]
+\[\displaystyle
+\]
+\[\tag{p6}
+P=\frac{R T\, \left( {{V}^{3}}+B\, {{V}^{2}}+C V+D\right) }{{{V}^{4}}}\mbox{}
+\]
+%%%%%%%%%%%%%%%
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\% i12)
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+p(i):=coeff(radcan(num(rhs(p6))),V\^{}i)*V\^{}i/denom(rhs(p6));
+p00:num(rhs(p6))\$
+p000:ev(p00,V=0)/denom(rhs(p6))\$
+pt:p000+p(1)+p(2)+p(3);
+\end{minipage}
+%%% OUTPUT:
+\begin{dmath}
+ o9| 
+\operatorname{p}(i):=\frac{\operatorname{coeff}\left( \operatorname{radcan}\left( \operatorname{num}\left( \operatorname{rhs}\left( \mathit{p6}\right) \right) \right) ,{{V}^{i}}\right) \, {{V}^{i}}}{\operatorname{denom}\left( \operatorname{rhs}\left( \mathit{p6}\right) \right) }
+\end{dmath}
+\begin{dmath}
+pt|
+\frac{R T}{V}+\frac{B R T}{{{V}^{2}}}+\frac{C R T}{{{V}^{3}}}+\frac{D R T}{{{V}^{4}}}
+\end{dmath}
+%%%%%%%%%%%%%%%
+ Z2=Z(T,V,Bi,Ci,Di,B,C,D)  i=1,2,3... 
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\% i13)
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+p7:subst(pt, P, p4);
+\end{minipage}
+%%% OUTPUT:
+\begin{dmath}
+p7|
+\mathit{Z2}=\mathit{B1}\, \left( \frac{R T}{V}+\frac{B R T}{{{V}^{2}}}+\frac{C R T}{{{V}^{3}}}+\frac{D R T}{{{V}^{4}}}\right) +\mathit{D1}\, {{\left( \frac{R T}{V}+\frac{B R T}{{{V}^{2}}}+\frac{C R T}{{{V}^{3}}}+\frac{D R T}{{{V}^{4}}}\right) }^{3}}+\mathit{C1}\, {{\left( \frac{R T}{V}+\frac{B R T}{{{V}^{2}}}+\frac{C R T}{{{V}^{3}}}+\frac{D R T}{{{V}^{4}}}\right) }^{2}}+1
+\end{dmath}
+%%%%%%%%%%%%%%%
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\% i14)
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+p8:expand(p7);
+\end{minipage}
+%%% OUTPUT:
+\begin{dmath}
+p8|
+\mathit{Z2}=\frac{\mathit{B1} R T}{V}+\frac{\mathit{C1}\, {{R}^{2}}\, {{T}^{2}}}{{{V}^{2}}}+\frac{B\, \mathit{B1} R T}{{{V}^{2}}}+\frac{\mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{3}}}+\frac{2 B\, \mathit{C1}\, {{R}^{2}}\, {{T}^{2}}}{{{V}^{3}}}+\frac{\mathit{B1} C R T}{{{V}^{3}}}+\frac{3 B\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{4}}}+\frac{2 C\, \mathit{C1}\, {{R}^{2}}\, {{T}^{2}}}{{{V}^{4}}}+\frac{{{B}^{2}}\, \mathit{C1}\, {{R}^{2}}\, {{T}^{2}}}{{{V}^{4}}}+\frac{\mathit{B1} D R T}{{{V}^{4}}}+\frac{3 C\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{5}}}+\frac{3 {{B}^{2}}\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{5}}}+\frac{2 \mathit{C1} D\, {{R}^{2}}\, {{T}^{2}}}{{{V}^{5}}}+\frac{2 B C\, \mathit{C1}\, {{R}^{2}}\, {{T}^{2}}}{{{V}^{5}}}+\frac{3 D\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{6}}}+\frac{6 B C\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{6}}}+\frac{{{B}^{3}}\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{6}}}+\frac{2 B\, \mathit{C1} D\, {{R}^{2}}\, {{T}^{2}}}{{{V}^{6}}}+\frac{{{C}^{2}}\, \mathit{C1}\, {{R}^{2}}\, {{T}^{2}}}{{{V}^{6}}}+\frac{6 B D\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{7}}}+\frac{3 {{C}^{2}}\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{7}}}+\frac{3 {{B}^{2}} C\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{7}}}+\frac{2 C\, \mathit{C1} D\, {{R}^{2}}\, {{T}^{2}}}{{{V}^{7}}}+\frac{6 C D\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{8}}}+\frac{3 {{B}^{2}} D\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{8}}}+\frac{3 B\, {{C}^{2}}\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{8}}}+\frac{\mathit{C1}\, {{D}^{2}}\, {{R}^{2}}\, {{T}^{2}}}{{{V}^{8}}}+\frac{3 {{D}^{2}}\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{9}}}+\frac{6 B C D\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{9}}}+\frac{{{C}^{3}}\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{9}}}+\frac{3 B\, {{D}^{2}}\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{10}}}+\frac{3 {{C}^{2}} D\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{10}}}+\frac{3 C\, {{D}^{2}}\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{11}}}+\frac{{{D}^{3}}\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{12}}}+1
+\end{dmath}
+%%%%%%%%%%%%%%%
+new Z2 with old Z1     : coefficient comparing 
+part 1 : new Z2 
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\% i16)
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+for i:1 thru 12 do
+pp(i):=subst(x\^{}i, 1/V\^{}i, p8)\$
+ppp(i):=coeff(rhs(pp(i)),x\^{}(i))\$
+\end{minipage}
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\% i18)
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+pp(2);
+ppp(2);
+\end{minipage}
+%%% OUTPUT:
+\begin{dmath}
+o17| 
+\mathit{Z2}=\mathit{C1}\, {{R}^{2}}\, {{T}^{2}}\, {{x}^{2}}+B\, \mathit{B1} R T\, {{x}^{2}}+\frac{\mathit{B1} R T}{V}+\frac{\mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{3}}}+\frac{2 B\, \mathit{C1}\, {{R}^{2}}\, {{T}^{2}}}{{{V}^{3}}}+\frac{\mathit{B1} C R T}{{{V}^{3}}}+\frac{3 B\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{4}}}+\frac{2 C\, \mathit{C1}\, {{R}^{2}}\, {{T}^{2}}}{{{V}^{4}}}+\frac{{{B}^{2}}\, \mathit{C1}\, {{R}^{2}}\, {{T}^{2}}}{{{V}^{4}}}+\frac{\mathit{B1} D R T}{{{V}^{4}}}+\frac{3 C\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{5}}}+\frac{3 {{B}^{2}}\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{5}}}+\frac{2 \mathit{C1} D\, {{R}^{2}}\, {{T}^{2}}}{{{V}^{5}}}+\frac{2 B C\, \mathit{C1}\, {{R}^{2}}\, {{T}^{2}}}{{{V}^{5}}}+\frac{3 D\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{6}}}+\frac{6 B C\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{6}}}+\frac{{{B}^{3}}\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{6}}}+\frac{2 B\, \mathit{C1} D\, {{R}^{2}}\, {{T}^{2}}}{{{V}^{6}}}+\frac{{{C}^{2}}\, \mathit{C1}\, {{R}^{2}}\, {{T}^{2}}}{{{V}^{6}}}+\frac{6 B D\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{7}}}+\frac{3 {{C}^{2}}\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{7}}}+\frac{3 {{B}^{2}} C\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{7}}}+\frac{2 C\, \mathit{C1} D\, {{R}^{2}}\, {{T}^{2}}}{{{V}^{7}}}+\frac{6 C D\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{8}}}+\frac{3 {{B}^{2}} D\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{8}}}+\frac{3 B\, {{C}^{2}}\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{8}}}+\frac{\mathit{C1}\, {{D}^{2}}\, {{R}^{2}}\, {{T}^{2}}}{{{V}^{8}}}+\frac{3 {{D}^{2}}\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{9}}}+\frac{6 B C D\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{9}}}+\frac{{{C}^{3}}\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{9}}}+\frac{3 B\, {{D}^{2}}\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{10}}}+\frac{3 {{C}^{2}} D\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{10}}}+\frac{3 C\, {{D}^{2}}\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{11}}}+\frac{{{D}^{3}}\, \mathit{D1}\, {{R}^{3}}\, {{T}^{3}}}{{{V}^{12}}}+1
+\end{dmath}
+
+\[\displaystyle
+\]
+\[\tag{\% o18} 
+\mathit{C1}\, {{R}^{2}}\, {{T}^{2}}+B\, \mathit{B1} R T\mbox{}
+\]
+%%%%%%%%%%%%%%%
+part 2 : old Z1 
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\% i20)
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+for i:1 thru 4 do
+qq(i):=subst(x\^{}i, 1/V\^{}i, p3)\$
+qqq(i):=coeff(rhs(qq(i)),x\^{}(i))\$
+\end{minipage}
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\% i22)
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+qq(2);
+qqq(2);
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\% o21} 
+\mathit{Z1}=C\, {{x}^{2}}+\frac{B}{V}+\frac{D}{{{V}^{3}}}+1\mbox{}\]
+\[\displaystyle
+\]
+\[\tag{\% o22} 
+C\mbox{}
+\]
+%%%%%%%%%%%%%%%
+coefficient : old Z2 ( 'p4') 
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\% i25)
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+q1:part(solve(ppp(1)=qqq(1),B1),1);
+q2:part(solve(ppp(2)=qqq(2),C1),1);
+q3:part(solve(ppp(3)=qqq(3),D1),1);
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{q1}
+\mathit{B1}=\frac{B}{R T}\mbox{}\]
+\[\displaystyle
+\]
+\[\tag{q2}
+\mathit{C1}=-\frac{B\, \mathit{B1} R T-C}{{{R}^{2}}\, {{T}^{2}}}\mbox{}\]
+\[\displaystyle
+\]
+\[\tag{q3}
+\mathit{D1}=-\frac{2 B\, \mathit{C1}\, {{R}^{2}}\, {{T}^{2}}+\mathit{B1} C R T-D}{{{R}^{3}}\, {{T}^{3}}}\mbox{}
+\]
+%%%%%%%%%%%%%%%
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\% i28)
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+qq1:q1;
+qq2:ev(q2,q1);
+qq3:ev(q3,q1,qq2);
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{qq1}
+\mathit{B1}=\frac{B}{R T}\mbox{}\]
+\[\displaystyle
+\]
+\[\tag{qq2}
+\mathit{C1}=-\frac{{{B}^{2}}-C}{{{R}^{2}}\, {{T}^{2}}}\mbox{}\]
+\[\displaystyle
+\]
+\[\tag{qq3}
+\mathit{D1}=-\frac{-D+B C-2 B\, \left( {{B}^{2}}-C\right) }{{{R}^{3}}\, {{T}^{3}}}\mbox{}
+\]
+%%%%%%%%%%%%%%%
+find : Z2=Z(P,T,C,B,D) 
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\% i29)
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+pq:ev(p4,qq1,qq2,qq3);
+\end{minipage}
+%%% OUTPUT:
+\begin{dmath}
+pq|
+\mathit{Z2}=\frac{B P}{R T}-\frac{\left( {{B}^{2}}-C\right) \, {{P}^{2}}}{{{R}^{2}}\, {{T}^{2}}}-\frac{\left( -D+B C-2 B\, \left( {{B}^{2}}-C\right) \right) \, {{P}^{3}}}{{{R}^{3}}\, {{T}^{3}}}+1
+\end{dmath}
+%%%%%%%%%%%%%%%
+general : v=volume           p=pressure           Z=compressibility factor           n= integer ---------------------------  Z=1+sum(a(i)*1/v\^{}i,i=1..n)  z=1+sum(a1(i)*p\^{}i ,i=1..n) --------------------------- 
+\end{document}

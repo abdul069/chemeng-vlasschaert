@@ -1,0 +1,23 @@
+peter.vlasschaert@gmail.com    26/02/2021
+How to make : exe  (use : with pyinstaller )
+----------------------------------------------------------------------------------
+
+1e)  step : find directory ,uselistandset.py
+2e)  step : edit path above in the folder      (right mouse click,edit)
+3e)  step : delete path 
+4e)  step : type :cmd 
+5e)  step : get path ,dos window.
+6e)  step : c:\path ...> pyinstaller --onefile uselistandset.py
+7e)  step : wait compile : to build , 'uselistandset.exe'
+8e)  step : you find uselistandset.exe , into : 'dst folder'
+9e)  step : edit path above in the 'dst folder'(right mouse click,edit)
+10e) step : delete path 
+11e) step :type :cmd ,dos window
+12e) step :c:\path.....\dst>uselistandset      (excute : dos window)
+(rem :see output)
+
+---------------------------------------------------------------------------------
+reason : check : get file approx 7Mb, 'uselistandset.exe'
+=> try out yourself
+
+

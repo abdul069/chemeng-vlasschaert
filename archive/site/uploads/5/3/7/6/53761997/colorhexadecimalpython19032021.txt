@@ -1,0 +1,80 @@
+from tkinter import *
+from tkinter.colorchooser import *
+import random  # doesn't : pip install random
+
+# init
+win = Tk()
+win.geometry("800x350+50+50")
+win.title("peter.vlasschaert@gmail.com ,18/03/2021:  Hexadecimal representation of a color (version 1.0) ")
+win.resizable(False,False)
+# code
+# control :def => command 'button'
+
+def select_mycolor():
+    color = askcolor()   
+    myl =Label(win,text = "preferred color selected",bg =color[1],font="Times 12 bold",width = 36).grid(row=0,column=0)               
+    myl1 =Label(win,text = color,font = "Timed 12 bold",width = 36,bg="yellow").grid(row=1,column=0)
+    c1=color[1]
+    myl3 =Label(win,text = "Hexadecimal Color Code = "+color[1],font = "Timed 12 bold",
+	width = 36,bg="yellow").grid(row=4,column=0)    
+   
+def submit():  
+   colorget = color_var.get()  # get value from Entry box
+   if colorget != "":       
+      myl2 =Label(win,text = "color",font = "Timed 12 bold",bg=colorget,width = 33).grid(row=3,column=1)      
+   else:
+      sub_btn['state']='disable'
+      
+def submit_reenter():    
+    sub_btn['state']='active'  # set state of button
+    color_var.set("")
+    # clear Entry box
+    
+def random_color():
+    # randomize the hex code,lamba used : command = lambda: 'Button'
+    r = lambda: random.randint(0,255)
+    color1_entry.set('#%02X%02X%02X' % (r(),r(),r()))    
+    
+ 
+btn=Button(win,text ='select color',command = select_mycolor,width = 36,font="Times 12 bold",
+           bg="red").grid(row=2,column=0)             
+myl=Label(win,text = "preferred selected color",font="Times 12 bold",width = 36,
+          bg="green").grid(row=0,column=0)
+
+# input hexadecimal code: #...... example :#ff2178
+
+color_var=StringVar()       
+    
+color_label = Label(win, text = 'Hexadecimal Code:#.....:example: #ff2178', font=("Times 12 bold"),width = 36,
+                    bg="yellow")
+color_label.grid(row=0,column=1,pady=10)
+color_entry = Entry(win,textvariable = color_var, font=("Times 12 bold"),width=36)
+color_entry.focus() # cursor blinking in the Entry
+color_entry.grid(row=1,column=1,pady=10)
+sub_btn=Button(win,text = 'Submit Color Code ', command = submit,width =36,
+               font="Times 12 bold" )
+sub_btn.grid(row=2,column=1)
+sub_btn1=Button(win,text = 'Re_enter The Color', command = submit_reenter,width =36,
+               font="Times 12 bold" )
+sub_btn1.grid(row=4,column=1,pady = 0)
+
+# random color generator
+
+color1_entry = StringVar()
+
+butradom = Button(
+    win,
+    text=' <=  Random Color ',
+    width=36,
+    font="Times 12 bold",
+    command=random_color
+).grid(row = 5,column=1,pady=21)
+myl4  =Label(win,textvariable = color1_entry  ,
+             font="Times 12 bold",relief = SUNKEN,width = 36,bg="green").grid(row=5,column=0,pady=12)
+
+# destroy the window = win
+
+butquit =Button(win,text = " Quit " ,relief = RAISED ,font="Times 12 bold",
+         width = 36,command = win.destroy,bg="red").grid(row=7,columnspan=2,pady=50)
+# end code
+win.mainloop()

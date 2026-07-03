@@ -1,0 +1,52 @@
+The Easiest Way to Run Python:https://thonny.org/
+
+
+===================================================================
+1e) how install package : not installed thonny 
+example : numpy (info:path:menu:tools ->open system shell)
+2e) see below : how to change directory
+3e) how install package : 'pip install numpy', 'see below'
+====================================================================
+
+my system :example
+==================
+
+rem : namecomputer = Chem1 ( <> with your computer:1e)
+
+Some Python commands in the PATH of this session:
+ - python    == C:\python\Thonny\python.exe
+ - pip       == C:\python\Thonny\Scripts\pip.bat
+ - pip3      == C:\python\Thonny\Scripts\pip3.bat
+ - pip3.7    == C:\python\Thonny\Scripts\pip3.7.BAT
+ - pip3.8    == C:\Python38\Scripts\pip3.8.EXE
+
+********************************************************************************
+
+C:\Users\Chem1>cd..
+
+C:\Users>cd..
+
+C:\>cd python
+C:\python\Thonny>pip install numpy
+C:\python>cd Thonny
+
+
+Collecting numpy
+  Downloading numpy-1.20.1-cp37-cp37m-win32.whl (11.3 MB)
+     |████████████████████████████████| 11.3 MB 159 kB/s
+Installing collected packages: numpy
+Successfully installed numpy-1.20.1
+WARNING: You are using pip version 20.1.1; however, version 21.0.1 is available.
+You should consider upgrading via the 'C:\python\Thonny\python.exe -m pip install --upgrade pip' command.
+
+C:\python\Thonny>python.exe -m pip install --upgrade pip
+Collecting pip
+  Using cached pip-21.0.1-py3-none-any.whl (1.5 MB)
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 20.1.1
+    Uninstalling pip-20.1.1:
+      Successfully uninstalled pip-20.1.1
+Successfully installed pip-21.0.1
+
+C:\python\Thonny>

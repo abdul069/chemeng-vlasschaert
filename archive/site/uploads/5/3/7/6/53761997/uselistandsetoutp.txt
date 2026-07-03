@@ -1,0 +1,43 @@
+peter.vlasschaert@gmail.com , 26/02/2021version (1.0)
+==================================================
+ref : search in google
+
+ how to work with list & set
+-------------------------
+ sorted list
+[2, 7, 8, 8, 3, 5]
+[2, 3, 5, 7, 8, 8]
+list & set
+[2, 3, 3, 1, 4, 2, 5]
+[2, 3, 3, 1, 4, 2, 5, 9] [2, 3, 3, 1, 4, 2, 5, 9]
+{1, 2, 3, 4, 5, 9}
+[1, 2, 3, 4, 5, 9]
+ range & for
+----------
+6
+7
+8
+9
+range(6, 10)
+ append two lists
+---------------
+['apple', 'banana', 'cherry']
+['Ford', 'BMW', 'Volvo']
+a= ['apple', 'banana', 'cherry', ['Ford', 'BMW', 'Volvo']]
+a[0]= apple
+a[1]= banana
+a[3]= [3]
+a[3][0] = Ford
+a[:1] =  ['apple']
+a[1:] =  ['banana', 'cherry', ['Ford', 'BMW', 'Volvo']]
+ list & range
+---------------
+-> method 1
+ output = method 1
+[*range(10, 16, 1)] =  [10, 11, 12, 13, 14, 15]
+->  method 2
+output = method 2
+[10, 11, 12, 13, 14, 15]
+==========================================================================================
+make exe ,from the file = uselistandset.py -> uselistandset.exe
+>>>

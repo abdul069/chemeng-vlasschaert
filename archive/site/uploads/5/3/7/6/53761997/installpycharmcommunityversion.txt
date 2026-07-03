@@ -1,0 +1,44 @@
+How to use : pycharm
+peter.vlasschaert@gmail.com
+
+install :
+1e) step : google search > pycharm download
+2e) step :https://www.jetbrains.com/pycharm/download/#section=windows
+3e) step :Community > download
+4e) step :install > double click :pycharm-community-2022.2.1.exe
+5e) step : show in folder :pycharm-community-2022.2.1.exe> double click
+6e) step : click next
+7e) step : default : next
+8e) step : select directory of your choose : next
+9e) step : enable :Run Pycharm Community Edition
+10e) step : click finish
+11e) step : enable : accept terms...........
+12e) step : click : continue
+
+how to use :
+step 1: click + 
+step 2:location :c:\prog\pycharm\pythonProject
+step 3:enable :welcome script
+step 4:create
+rem : New environment using
+step 5: see script ,click run in the above menu (Run)
+result : output
+C:\prog\pycharm\pythonProject\venv\Scripts\python.exe C:/prog/pycharm/pythonProject/main.py 
+Hi, PyCharm
+
+Process finished with exit code 0
+
+result output: pycharm ,see rem ,above
+
+how to use own code :
+step 1:File > New project> create
+rem :c:\prog\pycharm\pythonProject1
+see : below main.py
+step 2 : clear the window:main.py
+test 
+step 3 : print(2+3)
+step 4 : output result
+C:\prog\pycharm\pythonProject1\venv\Scripts\python.exe C:/prog/pycharm/pythonProject1/main.py 
+5
+
+Process finished with exit code 0

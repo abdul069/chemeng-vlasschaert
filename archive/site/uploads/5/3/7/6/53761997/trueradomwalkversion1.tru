@@ -1,0 +1,96 @@
+option nolet
+randomize
+print "**************************************************"
+print "* programming :truebasic, random_walk 'version 1'*"
+print "* peter.vlasschaert@gmail.com,22/01/2020         *"
+print "**************************************************"
+!*********************************************************
+! see website :
+! maxima :programming :random walk ([N,S,W,E]),version 1.0
+! peter.vlasschaert@gmail.com,21/01/2019.
+!*********************************************************
+print
+input prompt " example = 1, random = 2 => ":s
+print
+x = 0
+y = 0 
+print "***********"
+print " input =>  "
+print "***********"
+print " x = ";x
+print " y = ";y
+print
+dim l(1)
+if s = 2 then
+nn =10
+mat redim l(nn)
+for i=1 to nn
+  l(i) =int (4*rnd)+1
+next i
+else 
+nn = 8
+mat redim l(nn)
+l(1) = 1
+l(2) = 4
+l(3) = 4
+l(4) = 2
+l(5) = 4
+l(6) = 1
+l(7) = 1
+l(8) = 4
+END IF
+
+print "***************************"
+print " random list ={1,2,3,4} => "
+print "***************************"
+a0$ = ","
+a1$ = "North= N =1"
+a2$ = "South= S =2"
+a3$ = "West = W =3"
+a4$ = "East = E =4"
+print a1$ & a0$ & a2$ & a0$ & a3$ & a0$ & a4$
+print
+mat print l
+! algo :
+for i=1 to nn
+call random_walk(l(),i,x,y)
+next i
+! end algo
+print "***********"
+print " output => "
+print "***********"
+IF s =1 then
+print "*****************"
+print "*example :output*"
+print "*****************"
+print
+b1$ = "N"
+b2$ = "S"
+b3$ = "W"
+b4$ = "E"
+print "****************************************************"
+print " list = direction for home (0,0) to some place (4,2)"
+print "****************************************************"
+print
+print "***************"
+print "N,E,E,S,E,N,N,E"
+print "***************"
+print
+END IF
+print
+print " x = ";x
+print " y = ";y
+end
+
+sub random_walk(l(),k,x,y)
+! How to use 'ELSE IF'
+IF 1 = l(k) THEN      ! North
+y = y+1
+ELSE IF 2 = l(k) then ! South
+y = y-1
+ELSE IF 3 = l(k) then ! West
+x = x-1
+ELSE                  ! East
+x = x+1
+END IF
+end sub

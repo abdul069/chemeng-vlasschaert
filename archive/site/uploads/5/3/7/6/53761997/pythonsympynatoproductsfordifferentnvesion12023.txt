@@ -1,0 +1,90 @@
+from sympy import Function, dsolve, Eq, Derivative, sin, cos, symbols
+print("..........................................")
+print("python:sympy , nA -> products ,version 1.0")
+print(" peter.vlasschaert@gmail.com,16/01/2023   ")
+print("..........................................")
+# from sympy.abc import t
+CA = Function('CA')
+# n,k = symbols('n,k')
+n,k,t,CA0 = symbols('n,k,t,CA0')
+sol=[]
+print(" nA  -> products ")
+print( "n=integer → dCA(t)/dt =-k*CA(t)**n                        ")
+print("...........................................................")
+print(" depending on n: n=1,mono,n=2,bi,n=3,tri molecular reaction")
+print(" k  =reaction rate constant                                ")
+print(" CA = Concentation of A as function of time :CA(t)         ")
+print("...........................................................")
+# initial condition CA(t) ,@t=0 -> CA0
+ics = {CA(t).subs(t, 0): CA0}
+solt=dsolve(Derivative(CA(t), t)+k*(CA(t))**n, CA(t))
+v1=solt[0]
+print(v1)
+v2=solt[1]
+print(v2)
+sol1=[]
+print( "n=integer, dCA(t)/dt =-k*CA(t)**1")
+print("..................................")
+sol1=dsolve(Derivative(CA(t), t)+k*(CA(t))**1, CA(t),ics=ics)
+print(sol1)
+print( "n≠1, dCA(t)/dt =-k*CA(t)**n ,n=2")
+print("..................................")
+m1=2
+sol2=[]
+sol2=dsolve(Derivative(CA(t), t)+k*(CA(t))**m1, CA(t),ics=ics)
+print(sol2.rhs)
+print( "n≠1, dCA(t)/dt =-k*CA(t)**n ,n≠1")
+print(".................................")
+print(solt[0].rhs)
+from sympy import Piecewise,Ne,nan,simplify
+v3=solt[0].rhs
+extracted_symbols   = v3.free_symbols
+v4=list(extracted_symbols) # set to list
+# list order different after other run of the program 
+print("list of symbols =",v4)                  # find C1
+C1= symbols('C1')
+#.....................................................................................
+expr = v3
+print ( "...........................................................................")
+print ( "....................")
+print ( "analysis : Piecewise")
+print ( "....................")
+print(" Piecewise(((-C1*n + C1 + k*n*t - k*t)**(-1/(n - 1)), Ne(n, 1)), (nan, True))")
+print ( "...........................................................................")
+first_piece = expr.args[0]
+print( first_piece)
+second_piece =expr.args[0][0]
+print(second_piece)
+print ( "....................")
+print ( "find : C1,solve     ")
+print ( "....................")
+from sympy import  solve
+v6=second_piece
+eq = Eq(v6, CA(t))
+print(" eq = ",eq)
+t_val  = 0
+eq1 = eq.subs(t, t_val)
+print("eq1 = ",eq1)
+solutions1 = solve(eq1, C1)
+solutions1 = solutions1[0]
+eq2=Eq(C1,solutions1)
+print("eq2 = ",eq2)
+print("....................")
+print(" C1 into solutions1 ")
+print("....................")
+eq3 = eq.subs(C1, solutions1)
+print("eq3 = ",eq3)
+print(" -> simplify ")
+eq4 = simplify(eq3)
+print("eq4 = ",eq4)
+#..................check................
+print( "check :solt =",solt)
+m2 = 1
+print( " check ,n=2,reason see above ")
+eqsol=eq4.subs(t, t_val)
+eq5 = eqsol.subs(n,m2)
+print("eq5 = ",eq5)
+print( " check ,n=1,reason see above ")
+eqsol1=eq4.subs(t, t_val)
+eq6 = eqsol.subs(n,m2)
+print("eq6 = ",eq6)

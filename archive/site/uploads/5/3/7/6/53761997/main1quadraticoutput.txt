@@ -1,0 +1,19 @@
+math presentation >
+...................
+a*x^2+b*x+c
+python presentation
+...................
+ variable a = 1
+ variable b = 2
+ variable c = 3
+a
+1*x**2+b*x+c
+7
+1*x**2+2*x+c
+1*x**2+2*x+3
+11
+[6, 11, 18, 27]
+6
+[6, 11, 18, 27]
+['6', '11', '18', '27']
+[6, 11, 18, 27]

@@ -1,0 +1,325 @@
+<!DOCTYPE HTML">
+<HTML>
+ <HEAD>
+  <TITLE>pollutionlakemaximaintrofinalhtml</TITLE>
+  <META NAME="generator" CONTENT="wxMaxima">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    displayAlign: "left",
+    context: "MathJax"
+  })
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+  <link rel="stylesheet" type="text/css" href="https://petervlaschemeng.weebly.com/uploads/5/3/7/6/53761997/pollutionlakemaximaintrofinalhtml_htmlimg/pollutionlakemaximaintrofinalhtml.css"/>
+ </HEAD>
+ <BODY>
+
+<!-- ***************************************************** -->
+<!--          Created with wxMaxima version 16.04.2         -->
+<!-- ***************************************************** -->
+<noscript><div class="error message">    Please enable JavaScript in order to get a 2d display of the equations embedded in this web page.</div></noscript>\(      \DeclareMathOperator{\abs}{abs}
+      \newcommand{\ensuremath}[1]{\mbox{$#1$}}
+\)
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">kill</span>(<span class="code_variable">all</span>)<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+<a href="https://petervlaschemeng.weebly.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8efeebfaebfca0f8e2effdfdede6efebfcfacee9e3efe7e2a0ede1e3">[email&#160;protected]</a>, 16/12/2016<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+ part : intro<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+discrete : first-order nonhomogeous dynamical system<BR>----------------------------------------------------<BR>amount pollution &rArr; simplification to understand principles.<BR><BR>Lake Ontari:a(n)<BR>Lake Eri &nbsp;&nbsp;:b(n)<BR><BR>system of equations :difference equations<BR><BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a(n+1)=0.87*a(n)+0.38*b(n) &nbsp;&nbsp;&nbsp;'1'<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b(n+1)=0.62*b(n) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'2'<BR><BR>solution : a(k) = c1*(0.87)^k+c2*(0.62)^k<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a(k) = general solution + particular solution<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rem : k= number of years &gt; 0<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;? &nbsp;&nbsp;&nbsp;&nbsp;a(k)<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;? &nbsp;&nbsp;&nbsp;&nbsp;How to find c1,c2<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;? &nbsp;&nbsp;&nbsp;&nbsp;How to get &nbsp;eqn<BR>pollutionlakemaximamodelsolvefinal.wxmx<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eqn</span><span class="code_operator">:</span><span class="code_number">4</span>.<span class="code_number">52</span><span class="code_operator">*</span>(<span class="code_number">0</span>.<span class="code_number">87</span>)<span class="code_operator">^</span><span class="code_variable">k</span><span class="code_operator">-</span><span class="code_number">1</span>.<span class="code_number">52</span><span class="code_operator">*</span>(<span class="code_number">0</span>.<span class="code_number">62</span>)<span class="code_operator">^</span><span class="code_variable">k</span><span class="code_operator">-</span><span class="code_number">0</span>.<span class="code_number">3</span><span class="code_operator">=</span><span class="code_number">0</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eqn}\label{eqn}4.52{{0.87}^{k}}-1.52{{0.62}^{k}}-0.3=0\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+eqn: not 'polynomial'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i2) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">soln</span><span class="code_operator">:</span><span class="code_function">allroots</span>(<span class="code_variable">eqn</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\mbox{}\\\mbox{allroots: expected a polynomial; found }4.52{{0.87}^{k}}-1.52{{0.62}^{k}}-0.3\mbox{ -- an error. To debug this try: debugmode(true);}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+differentiation : &nbsp;&nbsp;d(eqn)/dk<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i4) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">deqn</span> &nbsp;<span class="code_operator">:</span><span class="code_operator">'</span><span class="code_function">diff</span>(<span class="code_variable">eqn</span>,<span class="code_variable">k</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">dkeqn</span> <span class="code_operator">:</span> <span class="code_function">diff</span>(<span class="code_variable">eqn</span>,<span class="code_variable">k</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{deqn}\label{deqn}\frac{d}{dk}\left( 4.52{{0.87}^{k}}-1.52{{0.62}^{k}}-0.3=0\right) \]
+\[\tag{dkeqn}\label{dkeqn}0.7266144174333597{{0.62}^{k}}-0.6294645443474546{{0.87}^{k}}=0\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+find zeros : eqn, ( for k &gt; 0 ,year positiv number always)<BR>&rArr; close plot2d x<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i5) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">plot2d</span>(<span class="code_function">part</span>(<span class="code_variable">eqn</span>,<span class="code_number">1</span>),[<span class="code_variable">k</span>,<span class="code_number">0</span>,<span class="code_number">100</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i6) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">nu_f</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_function">part</span>(<span class="code_variable">eqn</span>,<span class="code_number">1</span>),<span class="code_variable">k</span><span class="code_operator">=</span><span class="code_number">19</span>.<span class="code_number">472</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{nu\_ f}\label{nu\_ f}9.442236950424343{{10}^{-5}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+number of years :Lake Ontario becomes : unpolluted<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i7) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">find_root</span>(<span class="code_variable">eqn</span>,<span class="code_variable">k</span>,<span class="code_number">0</span>,<span class="code_number">100</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o7}\label{o7} 19.47426223504164\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+algo:Newton-Raphson Method (example)<BR>------------------------------------<BR>func &nbsp;&nbsp;: &nbsp;equation<BR>x0 &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;initial value<BR>xf &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;final value<BR>step_ &nbsp;: &nbsp;steps<BR>var &nbsp;&nbsp;&nbsp;: &nbsp;variable ,k<BR>eps &nbsp;&nbsp;&nbsp;: &nbsp;error<BR> &nbsp;&nbsp;-----------------------------------------<BR> &nbsp;&nbsp;math : x(i+1) = x(i)-f(x(i))/(df(x(i)/dx)<BR> &nbsp;&nbsp;prog : xi &nbsp;&nbsp;&nbsp;&nbsp;= xi - func/dfunc<BR> &nbsp;&nbsp;-----------------------------------------<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+one value &nbsp;&nbsp;&nbsp;&rArr; (loop,go)<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i8) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">newton</span>(<span class="code_variable">func</span>,<span class="code_variable">var</span>,<span class="code_variable">x0</span>,<span class="code_variable">eps</span>)<span class="code_operator">:</span><span class="code_operator">=</span><BR>
+<span class="code_function">block</span>([<span class="code_variable">xi</span>,<span class="code_variable">dfunc</span>],<BR>
+<span class="code_variable">dfunc</span><span class="code_operator">:</span><span class="code_function">diff</span>(<span class="code_variable">func</span>,<span class="code_variable">var</span>),<BR>
+<span class="code_variable">xi</span><span class="code_operator">:</span><span class="code_variable">x0</span>,<BR>
+<span class="code_variable">loop</span>,<BR>
+ &nbsp;&nbsp;&nbsp;<span class="code_variable">xi</span><span class="code_operator">:</span><span class="code_variable">xi</span><span class="code_operator">-</span><span class="code_function">subst</span>(<span class="code_variable">xi</span>,<span class="code_variable">var</span>,<span class="code_variable">func</span>)<span class="code_operator">/</span><span class="code_function">subst</span>(<span class="code_variable">xi</span>,<span class="code_variable">var</span>,<span class="code_variable">dfunc</span>),<BR>
+ &nbsp;&nbsp;&nbsp;if <span class="code_function">abs</span>(<span class="code_function">subst</span>(<span class="code_variable">xi</span>,<span class="code_variable">var</span>,<span class="code_variable">func</span>))&lt;<span class="code_variable">eps</span> then <span class="code_function">return</span>(<span class="code_variable">xi</span>),<BR>
+<span class="code_function">go</span>(<span class="code_variable">loop</span>)<BR>
+ &nbsp;&nbsp;&nbsp;)<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i9) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">func</span><span class="code_operator">:</span><span class="code_function">lhs</span>(<span class="code_variable">eqn</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{func}\label{func}4.52{{0.87}^{k}}-1.52{{0.62}^{k}}-0.3\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i10) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">newton</span>(<span class="code_variable">func</span>,<span class="code_variable">k</span>,<span class="code_number">19</span>.<span class="code_number">0</span>,<span class="code_number">10</span><span class="code_operator">^</span>(<span class="code_number">-</span><span class="code_number">4</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o10}\label{o10} 19.47424609727112\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+range values &rArr; (for,do)<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i11) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">newtonadv</span>(<span class="code_variable">func</span>,<span class="code_variable">var</span>,<span class="code_variable">x0</span>,<span class="code_variable">xf</span>,<span class="code_variable">step_</span>,<span class="code_variable">eps</span>)<span class="code_operator">:</span><span class="code_operator">=</span><BR>
+<span class="code_function">block</span>([<span class="code_variable">xi</span>,<span class="code_variable">dfunc</span>],<BR>
+<span class="code_variable">dfunc</span><span class="code_operator">:</span><span class="code_function">diff</span>(<span class="code_variable">func</span>,<span class="code_variable">var</span>),<BR>
+for <span class="code_variable">xi</span><span class="code_operator">:</span><span class="code_variable">x0</span> thru <span class="code_variable">xf</span> step <span class="code_variable">step_</span> do <BR>
+ &nbsp;( &nbsp;&nbsp;&nbsp;<BR>
+ &nbsp;&nbsp;&nbsp;<span class="code_variable">xi</span><span class="code_operator">:</span><span class="code_variable">xi</span><span class="code_operator">-</span><span class="code_function">subst</span>(<span class="code_variable">xi</span>,<span class="code_variable">var</span>,<span class="code_variable">func</span>)<span class="code_operator">/</span><span class="code_function">subst</span>(<span class="code_variable">xi</span>,<span class="code_variable">var</span>,<span class="code_variable">dfunc</span>), &nbsp;&nbsp;&nbsp;<BR>
+ &nbsp;&nbsp;&nbsp;if <span class="code_function">abs</span>(<span class="code_function">subst</span>(<span class="code_variable">xi</span>,<span class="code_variable">var</span>,<span class="code_variable">func</span>))&lt;<span class="code_variable">eps</span> then <span class="code_function">return</span>(<span class="code_variable">xi</span>)<BR>
+ &nbsp;) &nbsp;&nbsp;<BR>
+ )<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+rem: don't place ',' after return(xi),you get a error.<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+we want positive value,years,k&gt;0<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i12) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">newtonadv</span>(<span class="code_variable">func</span>,<span class="code_variable">k</span>,<span class="code_number">0</span>,<span class="code_number">20</span>,<span class="code_number">0</span>.<span class="code_number">0001</span>,<span class="code_number">10</span><span class="code_operator">^</span>(<span class="code_number">-</span><span class="code_number">4</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o12}\label{o12} -3.086601656930104\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i13) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">newtonadv</span>(<span class="code_variable">func</span>,<span class="code_variable">k</span>,<span class="code_number">1</span>,<span class="code_number">20</span>,<span class="code_number">0</span>.<span class="code_number">0001</span>,<span class="code_number">10</span><span class="code_operator">^</span>(<span class="code_number">-</span><span class="code_number">4</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o13}\label{o13} \mathit{done}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i14) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">newtonadv</span>(<span class="code_variable">func</span>,<span class="code_variable">k</span>,<span class="code_number">1</span>.<span class="code_number">4</span>,<span class="code_number">20</span>,<span class="code_number">0</span>.<span class="code_number">0001</span>,<span class="code_number">10</span><span class="code_operator">^</span>(<span class="code_number">-</span><span class="code_number">4</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o14}\label{o14} 19.47419607178667\]
+
+ <HR>
+ <SMALL> Created with <A HREF="http://wxmaxima.sourceforge.net/">wxMaxima</A>.</SMALL>
+ <script data-cfasync="false" src="../../../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></BODY>
+</HTML>

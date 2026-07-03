@@ -1,0 +1,38 @@
+
+document : How to change : Reference Handbook in Smath
+peter.vlasschaert@gmail.com, 13/02/2022
+rem : Smath exit only for window. 
+
+1e) question where install :Smath on your computer
+step 1: find Smath solver icon on your desktop .
+step 2: click rhs of the mouse , select properies
+step 3: copy start in: link, without " "
+step 4: open windows explorer, 'yellow map'
+step 5: edit path > edit adress 'rhs mouse click'
+step 6: delete link inside
+step 7: past link of step 3,click end of the string,press return
+step 8: open book folder
+
+2e) book: backup  old files 
+step 1: create new folder : oldbook.
+step 2: copy all files in book directory to oldbook or drag them oldbook
+step 3: top directory : clean now ,only sub directory exit : oldbook
+
+3e) where to find new reference handbook.
+step 1: google search  type : math studio forum
+step 2: click to open : https://en.smath.com/forum/
+step 3: Forum > SMath Studio > Extensions (click:Registered Extension)
+step 4: https://smath.com/?extensions=SMathStudio_Desktop
+step 5: scroll down : until you reach:		Interactive SMath Handbook
+step 6:https://smath.com/file/FXnQw
+step 7:click >	Interactive SMath Handbook > activebook.zip
+step 8:copy files inside book directory, how to find see 1e)
+
+4e) restart : smath solver
+
+5e) where to find book now
+
+step 1:Menu> Help > Reference BOoK
+step 2:click on Reference Book item.(opens other floating window)
+step 3:Links works :Click or Ctrl-Click or Strg-Click
+rem : Ctrl or Strg down and click.

@@ -1,0 +1,86 @@
+option nolet 
+print "******************************************"
+print "* find local max,min ,version 1.0        *"
+print "* peter.vlasschaert@gmail.com,12/01/2018 *"
+print "******************************************"
+print
+!*************************************************
+! info : 
+! local max : before min ,after min
+! global max : max value in the range.
+
+! local min : before max ,after max
+! global min : min value in the range.
+!**************************************************
+rem : excel version see, youtube: Mohammed Mohammed
+dim a(1,1)
+! range 3 to 7 => values 25,74,92,75,18
+nu = 5         ! number values in the range
+mat redim a(nu,2)
+! read data matrix 'a'
+for j=1 to 2
+    for i=1 to nu
+        read a(i,j) 
+    next i
+next j
+print " range ", " value "
+print
+mat print a
+! find local max ,column ,see : info see above.
+rem  : 'first point' in the range can't be local 'max' or 'min'.
+rem  :  search for values in the second column of 'a'
+!  column vector b , length = nu
+dim b(1,1)
+mat redim b(nu,2)
+! algo : local max, first column of b => ' > if '
+for i=2 to nu-1
+  if a(i,2) > a(i-1,2) and a(i,2) > a(i+1,2) then
+     b(i,1) = a(i,2)
+  else
+     b(i,1) = 0
+  end if
+next i
+! algo : local min, second column of b => ' <if '
+for i=2 to nu-1
+  if a(i,2) < a(i-1,2) and a(i,2) < a(i+1,2) then
+     b(i,2) = a(i,2)
+  else
+     b(i,2) = 0
+  end if
+next i
+print "local max (range)";" local min (range)"
+print
+mat print b
+! How to find max in the range.
+print
+print "*********************************"
+print " find max and min two numbers => "
+print "*********************************"
+print
+print " max(2,5) = ", max(2,5)
+print " min(2,5) = ", min(2,5)
+! algo : Max of the range. 'if  < ' 
+for i=1 to nu-1
+ if a(i,2) < a(i+1,2) then
+    rmax = max(a(i,2),a(i+1,2)) 
+ end if 
+next i
+!******************************
+! analog max,min, function exit
+!******************************
+! algo : Min of the range. 'if > '
+for i=1 to nu-1
+ if a(i,2) >  a(i+1,2) then
+    rmin = min(a(i,2),a(i+1,2)) 
+ end if 
+next i
+print
+print "*******************************"
+print " global max ,min of a range => "
+print "*******************************"
+print
+print " max value of the range => "; rmax
+print " min value of the range => "; rmin
+data 3,4,5,6,7
+data 25,74,92,75,18
+end

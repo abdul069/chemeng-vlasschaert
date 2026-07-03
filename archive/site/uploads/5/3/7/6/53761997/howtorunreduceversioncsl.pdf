@@ -1,0 +1,28 @@
+How to run reduce easy way. (windows)
+--------------------------------------
+
+peter.vlasschaert@gmail.com , 15/02/2022
+
+first download  : reduce (csl,psl)
+=========================================
+
+https://sourceforge.net/projects/reduce-algebra/postdownload
+
+second download : run-reduce(version 3.0)
+=========================================
+
+info:https://fjwright.github.io/Run-REDUCE/
+https://sourceforge.net/projects/reduce-algebra/files/latest/download
+
+
+install : combination of two above
+==================================
+step 1: install reduce       'exmample :c:\math '
+step 2: install run-reduce   'default directory '
+
+configure installation :win-reduce (run : csl'reduce')
+======================================================
+step 1:run win-reduce
+step 2:Menu -> REDUCE -> Configure Reduce
+step 3:see :finalrunreduce3.png
+step 4: doesn't work, Menu -> REDUCE -> ' configure : select auto,run : csl '

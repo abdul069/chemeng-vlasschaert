@@ -1,0 +1,63 @@
+option nolet
+print "----------------------------------------------------"
+print "-temperature Antione eq (Solve Nonlinear Equation) -"
+print "- peter.vlasschaert@gmail.com,14/08/2020           -"
+print "----------------------------------------------------"
+! filename :TRUEBASICTEMPANTIONEEQVERSIONFINAL
+!----------------------------------------------------------
+print
+print
+print "************************************************************"
+print " find : temperature of mixture (total pressure = p = given) "
+print "************************************************************"
+print
+print "---------------------------------------------"
+print " solve nonlinear : equation , Newton Raphson "
+print " equation (solve: B6) => f(B6)=0             " 
+print "---------------------------------------------"
+print
+print
+print " f(B6) = B3*%e^(C3-D3/(E3+B6))+B2*%e^(C2-D2/(E2+B6))-p "
+print
+print
+declare function f,df
+! first component (physical)
+B2=0.9337    ! /*mole fraction*/
+C2=14.3916
+D2=2795.82
+E2=230
+! second component(physical)
+B3=1-B2      ! /*mole fraction*/
+C3=16.262
+D3=3799.89
+E3=226.25
+! total pressure P
+p=101.325
+! error control eps
+eps = 0.001
+! start value B6
+B6 = 60  ! Maxima Document
+! algorithm : Newton Raphson ( Do while structure)
+do while abs(f(B6,B2,C2,D2,E2,B3,C3,D3,E3,p)) > eps 
+  ra = f(B6,B2,C2,D2,E2,B3,C3,D3,E3,p)
+  rb = df(B6,B2,C2,D2,E2,B3,C3,D3,E3,p)
+  r = ra/rb   
+ B6 = B6-r 
+loop
+print " final temperature (mixture) 'b6'=";B6;"°C"
+end
+
+Function f(m,m11,m21,m31,m41,m12,m22,m32,m42,p1)
+r1= m11*exp(m21-m31/(m+m41))
+r2= m12*exp(m22-m32/(m+m42))
+f=10*(r1+r2 - p1)/10! notation correction
+end function
+
+Function df(m,m11,m21,m31,m41,m12,m22,m32,m42,p1)
+! formula : see Maxima : MaximetempAntioneEqversionfinal.wmx
+! formula = 'p1c'
+r3=(m12*m32*exp(m22-m32/(m42+m)))/(m42+m)^2
+r4=(m11*m31*exp(m21-m31/(m41+m)))/(m41+m)^2
+df = r3+r4
+end function
+

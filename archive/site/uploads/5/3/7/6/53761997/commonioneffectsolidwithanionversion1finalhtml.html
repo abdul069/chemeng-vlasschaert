@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>New3 *</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="generator" content="Fatesoft.com HTML exporter" />
+<style type="text/css">
+<!--
+body { color: #000000; background-color: #FFFFFF; }
+.vb1-comment { color: #008080; font-style: italic; }
+.vb1-identifier { color: #000080; }
+.vb1-number { color: #FF0000; }
+.vb1-reservedword { color: #0000FF; font-weight: bold; }
+.vb1-space { color: #FFFFFF; }
+.vb1-string { color: #800080; }
+.vb1-symbol { color: #FF00FF; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<code><span style="font: 10pt Courier New;"><span class="vb1-reservedword">option</span><span class="vb1-space"> </span><span class="vb1-identifier">nolet
+!</span><span class="vb1-space"> </span><span class="vb1-identifier">serie</span><span class="vb1-space"> </span><span class="vb1-symbol">:</span><span class="vb1-space"> </span><span class="vb1-identifier">analytical</span><span class="vb1-space"> </span><span class="vb1-identifier">chemistry
+!</span><span class="vb1-space"> </span><span class="vb1-identifier">principle</span><span class="vb1-space"> </span><span class="vb1-identifier">of</span><span class="vb1-space"> </span><span class="vb1-identifier">approximations</span><span class="vb1-space"> </span><span class="vb1-comment">'solubility'
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;*************************************************&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; Solubility M(p)A(q) common ion effect         '*&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;*************************************************&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;*calculation : given M(p)A(q)'solid' solved in  *&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;*anion of the precipitat through MM(n)A(m).     *&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;*solid : M(p)A(q),          'general n=1'       *&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;*solved: MM(n)A(m),BaSO4 in Na2SO4 (version 1.0)*&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;*************************************************&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;use     with:common anion (salt of anion )      &quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;not use with:complex formation,anion of weak acid&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;-------------------------------------------------&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; <a href="https://petervlaschemeng.weebly.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="85f5e0f1e0f7abf3e9e4f6e6ede4e0f7f1c5e2e8e4ece9abe6eae8">[email&#160;protected]</a>,        15/09/2016   &quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;-------------------------------------------------&quot;
+</span><span class="vb1-identifier">!file</span><span class="vb1-symbol">:</span><span class="vb1-identifier">commonioneffectsolidwithanionversion1final
+!</span><span class="vb1-symbol">*******************************************************
+</span><span class="vb1-identifier">!</span><span class="vb1-space"> </span><span class="vb1-identifier">M</span><span class="vb1-symbol">(</span><span class="vb1-identifier">p</span><span class="vb1-symbol">)</span><span class="vb1-identifier">A</span><span class="vb1-symbol">(</span><span class="vb1-identifier">q</span><span class="vb1-symbol">)</span><span class="vb1-space">  </span><span class="vb1-symbol">=&gt;</span><span class="vb1-space">   </span><span class="vb1-symbol">(</span><span class="vb1-identifier">salt</span><span class="vb1-symbol">)</span><span class="vb1-space"> </span><span class="vb1-identifier">anion</span><span class="vb1-space"> </span><span class="vb1-identifier">MM</span><span class="vb1-symbol">(</span><span class="vb1-identifier">m</span><span class="vb1-symbol">)</span><span class="vb1-identifier">A</span><span class="vb1-symbol">(</span><span class="vb1-identifier">n</span><span class="vb1-symbol">)</span><span class="vb1-space"> </span><span class="vb1-symbol">,</span><span class="vb1-comment">'general n=1'
+</span><span class="vb1-identifier">!</span><span class="vb1-symbol">*******************************************************
+</span><span class="vb1-identifier">!</span><span class="vb1-space"> </span><span class="vb1-identifier">examples</span><span class="vb1-space"> </span><span class="vb1-symbol">:</span><span class="vb1-space">    </span><span class="vb1-comment">' precipitate '
+</span><span class="vb1-identifier">!</span><span class="vb1-symbol">*******************************************************
+</span><span class="vb1-identifier">!</span><span class="vb1-space"> </span><span class="vb1-number">1e</span><span class="vb1-symbol">)</span><span class="vb1-space"> </span><span class="vb1-identifier">BaSO4</span><span class="vb1-space">  </span><span class="vb1-symbol">(</span><span class="vb1-space"> </span><span class="vb1-identifier">anion</span><span class="vb1-space"> </span><span class="vb1-identifier">salt</span><span class="vb1-space"> </span><span class="vb1-comment">' Na(2)SO4)
+</span><span class="vb1-identifier">!</span><span class="vb1-space">     </span><span class="vb1-identifier">p</span><span class="vb1-symbol">=</span><span class="vb1-number">1</span><span class="vb1-symbol">,</span><span class="vb1-identifier">q</span><span class="vb1-symbol">=</span><span class="vb1-number">1</span><span class="vb1-symbol">,</span><span class="vb1-identifier">m</span><span class="vb1-symbol">=</span><span class="vb1-number">2</span><span class="vb1-symbol">,</span><span class="vb1-identifier">n</span><span class="vb1-symbol">=</span><span class="vb1-number">1
+</span><span class="vb1-identifier">!</span><span class="vb1-symbol">*******************************************************
+</span><span class="vb1-identifier">!</span><span class="vb1-symbol">*******************************************************
+</span><span class="vb1-identifier">!</span><span class="vb1-space"> </span><span class="vb1-identifier">conclusion</span><span class="vb1-space"> </span><span class="vb1-symbol">:</span><span class="vb1-space"> </span><span class="vb1-identifier">take</span><span class="vb1-space"> </span><span class="vb1-identifier">n</span><span class="vb1-symbol">=</span><span class="vb1-number">1</span><span class="vb1-space"> </span><span class="vb1-symbol">:</span><span class="vb1-space">   </span><span class="vb1-comment">'version 1.0' p,q,m only
+</span><span class="vb1-identifier">!!</span><span class="vb1-symbol">******************************************************
+</span><span class="vb1-identifier">!</span><span class="vb1-symbol">*******************************************************
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;************************************************&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; given : concentration 'salt anion'  = C        &quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;************************************************&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; Solubility 'S' M(p)A(q)'Ksp' in anion salt     &quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;ksp =(p*S)^p*(q*s + n*c)^q                      &quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;S=( ksp/(p^p*(n*C)^q*(1+((q*s)/(n*C)))^q))^(1/p)&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;************************************************&quot;
+</span><span class="vb1-identifier">!file</span><span class="vb1-symbol">:</span><span class="vb1-identifier">commonioneffectsolidwithanionversion1final</span><span class="vb1-symbol">.</span><span class="vb1-identifier">tru
+!</span><span class="vb1-symbol">*******************************************************
+</span><span class="vb1-reservedword">print
+print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;*********&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; given = &quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;*********&quot;
+</span><span class="vb1-reservedword">print
+print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; M(p)A(q) 'solid' : BaSO4,p=1,q=1 &quot;
+</span><span class="vb1-identifier">p</span><span class="vb1-symbol">=</span><span class="vb1-number">1
+</span><span class="vb1-identifier">q</span><span class="vb1-symbol">=</span><span class="vb1-number">1
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; M(p)A(q)              p  = &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">p</span><span class="vb1-symbol">;</span><span class="vb1-string">&quot;, q = &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">q
+</span><span class="vb1-reservedword">print
+print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; MM(m)A(n): salt Na(2)S04,m=2,n=1 &quot;
+</span><span class="vb1-identifier">m</span><span class="vb1-symbol">=</span><span class="vb1-number">2
+</span><span class="vb1-identifier">n</span><span class="vb1-symbol">=</span><span class="vb1-number">1
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; MM(m)A(n)             m  = &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">m</span><span class="vb1-symbol">;</span><span class="vb1-string">&quot;, n = &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">n
+ksp</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-number">1.08E</span><span class="vb1-symbol">-</span><span class="vb1-number">10</span><span class="vb1-space">         </span><span class="vb1-identifier">!</span><span class="vb1-space"> </span><span class="vb1-identifier">ksp</span><span class="vb1-space"> </span><span class="vb1-comment">'solid' M(p)A(q) ,BaSO4
+</span><span class="vb1-reservedword">print
+print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;Solubility product   (ksp) = &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">ksp
+C</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-number">0.001
+</span><span class="vb1-reservedword">print
+print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;concentration  MM(m)A(n) C = &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">C</span><span class="vb1-symbol">;</span><span class="vb1-string">&quot; M&quot;
+</span><span class="vb1-reservedword">print
+print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;***********&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;  result = &quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;***********&quot;
+</span><span class="vb1-reservedword">print
+</span><span class="vb1-identifier">!</span><span class="vb1-space"> </span><span class="vb1-identifier">first</span><span class="vb1-space"> </span><span class="vb1-identifier">approximation</span><span class="vb1-space"> </span><span class="vb1-identifier">S1
+S1</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-symbol">(</span><span class="vb1-identifier">ksp</span><span class="vb1-symbol">/(</span><span class="vb1-identifier">p</span><span class="vb1-symbol">^</span><span class="vb1-identifier">p</span><span class="vb1-symbol">*(</span><span class="vb1-identifier">n</span><span class="vb1-symbol">*</span><span class="vb1-identifier">C</span><span class="vb1-symbol">)^</span><span class="vb1-identifier">q</span><span class="vb1-symbol">))^(</span><span class="vb1-number">1</span><span class="vb1-symbol">/</span><span class="vb1-identifier">p</span><span class="vb1-symbol">)
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; first approximation  ' S1 ' = &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">S1
+!</span><span class="vb1-space"> </span><span class="vb1-reservedword">second</span><span class="vb1-space"> </span><span class="vb1-identifier">approximation</span><span class="vb1-space"> </span><span class="vb1-identifier">S2
+</span><span class="vb1-reservedword">call</span><span class="vb1-space"> </span><span class="vb1-identifier">solubility</span><span class="vb1-symbol">(</span><span class="vb1-identifier">ksp</span><span class="vb1-symbol">,</span><span class="vb1-identifier">p</span><span class="vb1-symbol">,</span><span class="vb1-identifier">q</span><span class="vb1-symbol">,</span><span class="vb1-identifier">m</span><span class="vb1-symbol">,</span><span class="vb1-identifier">n</span><span class="vb1-symbol">,</span><span class="vb1-identifier">c</span><span class="vb1-symbol">,</span><span class="vb1-identifier">s1</span><span class="vb1-symbol">,</span><span class="vb1-identifier">s2</span><span class="vb1-symbol">)
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; second approximation ' S2 ' = &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">S2
+!</span><span class="vb1-space"> </span><span class="vb1-identifier">third</span><span class="vb1-space"> </span><span class="vb1-identifier">approximation</span><span class="vb1-space"> </span><span class="vb1-identifier">S3
+</span><span class="vb1-reservedword">call</span><span class="vb1-space"> </span><span class="vb1-identifier">solubility</span><span class="vb1-symbol">(</span><span class="vb1-identifier">ksp</span><span class="vb1-symbol">,</span><span class="vb1-identifier">p</span><span class="vb1-symbol">,</span><span class="vb1-identifier">q</span><span class="vb1-symbol">,</span><span class="vb1-identifier">m</span><span class="vb1-symbol">,</span><span class="vb1-identifier">n</span><span class="vb1-symbol">,</span><span class="vb1-identifier">c</span><span class="vb1-symbol">,</span><span class="vb1-identifier">s2</span><span class="vb1-symbol">,</span><span class="vb1-identifier">s3</span><span class="vb1-symbol">)
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;  third approximation ' S3 ' = &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">S3
+</span><span class="vb1-reservedword">end
+
+sub</span><span class="vb1-space"> </span><span class="vb1-identifier">solubility</span><span class="vb1-symbol">(</span><span class="vb1-identifier">ksp</span><span class="vb1-symbol">,</span><span class="vb1-identifier">p</span><span class="vb1-symbol">,</span><span class="vb1-identifier">q</span><span class="vb1-symbol">,</span><span class="vb1-identifier">m</span><span class="vb1-symbol">,</span><span class="vb1-identifier">n</span><span class="vb1-symbol">,</span><span class="vb1-identifier">c</span><span class="vb1-symbol">,</span><span class="vb1-identifier">ss</span><span class="vb1-symbol">,</span><span class="vb1-identifier">s</span><span class="vb1-space"> </span><span class="vb1-symbol">)
+</span><span class="vb1-identifier">S</span><span class="vb1-symbol">=(</span><span class="vb1-space"> </span><span class="vb1-identifier">ksp</span><span class="vb1-symbol">/(</span><span class="vb1-identifier">p</span><span class="vb1-symbol">^</span><span class="vb1-identifier">p</span><span class="vb1-symbol">*(</span><span class="vb1-identifier">n</span><span class="vb1-symbol">*</span><span class="vb1-identifier">C</span><span class="vb1-symbol">)^</span><span class="vb1-identifier">q</span><span class="vb1-symbol">*(</span><span class="vb1-number">1</span><span class="vb1-symbol">+((</span><span class="vb1-identifier">q</span><span class="vb1-symbol">*</span><span class="vb1-identifier">ss</span><span class="vb1-symbol">)/(</span><span class="vb1-identifier">n</span><span class="vb1-symbol">*</span><span class="vb1-identifier">C</span><span class="vb1-symbol">)))^</span><span class="vb1-identifier">q</span><span class="vb1-symbol">))^(</span><span class="vb1-number">1</span><span class="vb1-symbol">/</span><span class="vb1-identifier">p</span><span class="vb1-symbol">)
+</span><span class="vb1-reservedword">end</span><span class="vb1-space"> </span><span class="vb1-reservedword">sub
+
+
+</span></span>
+</code></pre>
+<script data-cfasync="false" src="../../../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

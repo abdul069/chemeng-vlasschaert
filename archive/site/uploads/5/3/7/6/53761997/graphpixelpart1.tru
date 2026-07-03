@@ -1,0 +1,38 @@
+option nolet
+ask pixels z1,z2
+print "----------------------------------------------------------"
+print " graph pixel   : part 1 ,                    version 1.0  "
+print " peter.vlasschaert@gmail.com,09/02/2019                   "
+print "----------------------------------------------------------"
+print " max pixels x-direction (z1) = "; z1
+print " max pixels y-direction (z2) = "; z2
+print
+print "---------------------------------------------------"
+print " observe screen : from the front view of the screen"
+print "---------------------------------------------------"
+print " below= keyboard "
+print " above= camera   "
+print
+print " draw a line : (x_mid,y_mid) to (x_mid+50,y_mid+50) "
+x_mid = z1/2
+y_mid = z2/2
+x_1 = x_mid +50
+y_1 = y_mid +50
+set window 0,z1-1,0,z2-1
+print
+set color "red"
+print "set window 0,z1-1,0,z2-1, color = red "
+print " origin : below left bottom"
+plot lines: x_mid,y_mid;x_1,y_1
+set window 0,z1-1,z2-1,0
+set color "blue"
+print
+print "-----------------------------------------"
+print " used : book , A world tour of true Basic"
+print " by : John R.Arscott                     "
+print "-----------------------------------------"
+print
+print "set window 0,z1-1,z2-1,0, color = blue "
+print " origin : above left top "
+plot lines: x_mid,y_mid;x_1,y_1
+end

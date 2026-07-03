@@ -1,0 +1,70 @@
+# part 6 : create class vec2d,operator overloading ,use 'self and other'
+# peter.vlasschaert@gmail.com,26/08/2022
+#----------------------------------------------------------------------
+class vec2d():
+# vector 2 dimensional plane (xy-plane)    
+    def __init__(self,x,y): # don't forget this
+        self.x = x
+        self.y = y
+# change ve ,part: 5 -> other
+    def add(self,other):
+        return vec2d(self.x+other.x,self.y+other.y)
+# part 5 . minus -> sub , see : appendix ( simple math class )   
+    def sub(self,other):
+        return vec2d(self.x-other.x,self.y-other.y)
+# doesn't change  
+    def scale(self,scalar):
+        return vec2d(scalar*self.x,scalar*self.y)
+# doesn't change    
+    def __eq__(self,other):   # see: logic and,eq = equality
+       return self.x == other.x and self.y == other.y
+# part operator overloading
+    def __add__(self,other):   
+        return self.add(other)
+    def __sub__(self,other):   
+        return self.sub(other)
+# other = SCALAR    
+    def __mul__(self,scalar):   # multiplication =*,mul
+        return self.scale(scalar)
+    def __rmul__(self,scalar):  # scalar multiplication=*,rmul  
+        return self.scale(scalar)
+# representation vec2d(x,y)
+    def __repr__(self):   
+        return str([self.x,self.y])
+# same output as input, "see .part 5"
+#.......................................................
+# def __repr__(self):      # see: repr = representation 
+#    return "vec2d({},{})".format(self.x,self.y)
+#.......................................................
+print("--------------------------------------")
+print( " input != output -> see:part 5,same  ")
+print("--------------------------------------")
+print("                                      ")
+print(".................................")    
+print("output : vec2d class computation ")
+print(".................................")
+print(" x,y component : vec2d(x,y)      ")
+v1 = vec2d(2,3)
+print("x coordinate vec2d(2,3) = ",v1.x)        
+print("y coordinate vec2d(2,3) = ",v1.y)
+print("print : v1=vec2d(2,3)      ")
+print(".................................")
+print(v1)
+print(" substraction : vec2d(5,3)-vec2d(3,1) =")
+print(".......................................")
+v2a=vec2d(5,3)
+v2b=vec2d(3,1)
+print("vec2d(5,3)-vec2d(3,1) =",vec2d(5,3)-vec2d(3,1))
+print(" combination : vec2d(5,3)-2*vec2d(3,1) =")
+print("........................................")
+print("vec2d(5,3)-2*vec2d(3,1) =",vec2d(5,3)-2*vec2d(3,1))
+print(" output : is not list = ")
+print("........................")
+v3=vec2d(5,3)-2*vec2d(3,1)
+print ( " v3=vec2d(5,3)-2*vec2d(3,1) ", v3)
+print(type(v3))
+print("make output :list       ")
+print("........................")
+v4=[v3.x,v3.y]
+print ( " v4=[v3.x,v3.y] = ", v4)
+print(type(v4))

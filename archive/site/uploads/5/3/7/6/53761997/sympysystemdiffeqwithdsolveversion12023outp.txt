@@ -1,0 +1,29 @@
+..................................................................
+ appendix :How to solve :odes in sympy,check:solution,version 1.0 
+ peter.vlasschaert@gmail.com,06/01/2023                           
+..................................................................
+a = ? positive => False
+sym.symbols('t, C1, C2') = <class 'tuple'>
+Function =  x(t) y(t)
+de1 = Eq(x(t) + 3*Derivative(x(t), t), 1)
+de2 = Eq(-a*y(t) - 15*x(t) + Derivative(y(t), t) + 4, 1)
+[Eq(x(t), -C1*(3*a + 1)*exp(-t/3)/45 + 1), Eq(y(t), C1*exp(-t/3) + C2*exp(a*t) - 12/a)]
+check the solution
+..................
+sym.checkodesol((de1,de1), deq) = (True, [0, 0])
+use:sympy.solvers.ode.systems => 
+.................................
+[[Eq(x(t), -C1*(3*a + 1)*exp(-t/3)/45 + exp(-t/3)*Integral(exp(t/3), t)/3), Eq(y(t), C1*exp(-t/3) + C2*exp(a*t) - 3*(3*a - 4)*exp(a*t)*Integral(exp(-a*t), t)/(3*a + 1) - 15*exp(-t/3)*Integral(exp(t/3), t)/(3*a + 1))]]
+ => C1:1,C2:2,a:-4     
+ =>  x(t),y(t) =  exp(-t/3)*Integral(exp(t/3), t)/3 + 11*exp(-t/3)/45 -48*exp(-4*t)*Integral(exp(4*t), t)/11 + 2*exp(-4*t) + 15*exp(-t/3)*Integral(exp(t/3), t)/11 + exp(-t/3)
+....................................................................................................
+print : output...,odes   
+.........................
+x(t) =  -C1*(3*a + 1)*exp(-t/3)/45 + 1
+y(t) =  C1*exp(-t/3) + C2*exp(a*t) - 12/a
+latex : output...,odes
+.........................
+x(t) = x{\left(t \right)} + 3 \frac{d}{d t} x{\left(t \right)} = 1
+y(t) = - a y{\left(t \right)} - 15 x{\left(t \right)} + \frac{d}{d t} y{\left(t \right)} + 4 = 1
+x(t)= 1 + 11*exp(-t/3)/45
+y(t)= 3 + 2*exp(-4*t) + exp(-t/3)

@@ -1,0 +1,29 @@
+-----------------------------------
+numerical operations:classes python
+-----------------------------------
+                                   
+class method | instatantiation
+__add___  | self + other
+__sub___  | self - other
+__mul___  | self * other
+__div___  | self / other
+__floordiv___  | self // other
+__mod___  | self % other
+__divmod___  | self divmod other
+__lshift___  | self << other
+__rshift___  | self >> other
+__and___  | self & other
+__or___  | self | other
+ right : Numerical operations    
+__radd___  | self + other
+__rsub___  | self - other
+__rmul___  | self * other
+__rdiv___  | self / other
+__rfloordiv___  | self // other
+__rmod___  | self % other
+__rdivmod___  | self divmod other
+__rlshift___  | self << other
+__rrshift___  | self >> other
+__rand___  | self & other
+__ror___  | self | other
+see: vec2d ,class, __rmul__

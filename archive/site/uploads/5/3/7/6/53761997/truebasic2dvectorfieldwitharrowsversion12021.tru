@@ -1,0 +1,71 @@
+option nolet
+print "-----------------------------------------------------------"
+print "- truebasic : vector field 2d : with arrows , version 1.0 -"
+print "- peter.vlasschaert@gmail.com,11/01/2021                  -"
+print "-----------------------------------------------------------"
+! info : without trajectories inside 2d vector field 
+! filename TRUEBASIC2DVECTORFIELDWITHARROWSVERSION12021
+! correction for aspect ratio
+ask pixels hpix,vpix
+pratio=hpix/vpix
+pl=15
+vr=pl
+hr=pl*pratio
+set window -hr/2,hr/2,-vr/2,vr/2
+z1$="blue" ! color of axes
+! draw axes
+set color z1$
+plot -hr/2,0;hr/2,0
+plot 0,-vr/2;0,vr
+! coef coupled: linear diffeq: odes
+a11=2
+a12=-7
+a21=3
+a22=4
+stap=.4
+w=0.07      ! value for length of arrow
+z2$="green" ! color of arrow
+for x=-hr/2 to hr/2 step stap
+  for y=-vr/2 to vr/2 step stap
+     dfx=a11*x+a12*y
+     dfy=a21*x+a22*y
+     ss=sqr(dfx*dfx+dfy*dfy)
+   if ss>0 then
+x1=10*(x-w*dfx/ss)/10! notation correction
+y1=10*(y-w*dfy/ss)/10! notation correction
+x2=10*(x+w*dfx/ss)/10! notation correction
+y2=10*(y+w*dfy/ss)/10! notation correction
+        call arrow(x1,y1,x2,y2,w,z2$)
+   end if 
+ next y
+next x
+end
+
+sub arrow(x1,y1,x2,y2,w,z2$)
+ set color z2$
+plot x1,y1;x2,y2
+dx=x2-x1
+dy=y2-y1
+lgth=sqr(dx*dx+dy*dy)
+a=x1+((lgth-w)/lgth)*dx
+b=y1+((lgth-w)/lgth)*dy
+rico1=dy/dx
+! line on right angle on other line
+! y=rico2*x+n
+rico2=-1/rico1
+n=b-a*rico2
+! calculation of circle
+r=sqr((x2-a)^2+(y2-b)^2)
+! solve vkv
+va=1+(rico2)^2
+vb=-2*(a-rico2*(n-b))
+vc=a^2+(n-b)^2-r^2
+disc=vb^2-4*va*vc
+px1=(-vb+sqr(disc))/(2*va)
+px2=(-vb-sqr(disc))/(2*va)
+! fill in 
+py1=rico2*px1+n
+py2=rico2*px2+n
+plot px1,py1;x2,y2
+plot px2,py2;x2,y2
+end sub

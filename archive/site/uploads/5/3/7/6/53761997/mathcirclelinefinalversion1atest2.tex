@@ -1,0 +1,614 @@
+\documentclass{article}
+\usepackage{geometry}
+\geometry{
+a4paper,
+total={170mm,257mm},
+left=2mm,
+top=1mm,
+}
+%% Created with wxMaxima 16.04.2
+
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+\usepackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{00B5}{\ensuremath{\mu}}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{ifthen}
+\usepackage{breqn}
+\newsavebox{\picturebox}
+\newlength{\pictureboxwidth}
+\newlength{\pictureboxheight}
+\newcommand{\includeimage}[1]{
+    \savebox{\picturebox}{\includegraphics{#1}}
+    \settoheight{\pictureboxheight}{\usebox{\picturebox}}
+    \settowidth{\pictureboxwidth}{\usebox{\picturebox}}
+    \ifthenelse{\lengthtest{\pictureboxwidth > .95\linewidth}}
+    {
+        \includegraphics[width=.95\linewidth,height=.80\textheight,keepaspectratio]{#1}
+    }
+    {
+        \ifthenelse{\lengthtest{\pictureboxheight>.80\textheight}}
+        {
+            \includegraphics[width=.95\linewidth,height=.80\textheight,keepaspectratio]{#1}
+            
+        }
+        {
+            \includegraphics{#1}
+        }
+    }
+}
+\newlength{\thislabelwidth}
+\DeclareMathOperator{\abs}{abs}
+\usepackage{animate} % This package is required because the wxMaxima configuration option
+                      % "Export animations to TeX" was enabled when this file was generated.
+
+\definecolor{labelcolor}{RGB}{100,0,0}
+
+\begin{document}
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+kill(all)\$
+\end{minipage}
+
+\pagebreak{}
+{\Huge {\sc combination : circle and line}}
+\setcounter{section}{0}
+\setcounter{subsection}{0}
+\setcounter{figure}{0}
+
+peter.vlasschaert\ensuremath{@}gmail.com,10/07/2017 version 1 : math "circle and line" 
+equations : lines p1,p2  =\ensuremath{>} m,n     (implicit)             circle p3,p4 =\ensuremath{>} a,b,r   (explicit) 
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+p1:y=m1*x+n1;
+p2:y=m2*x+n2;
+p3:(x-a1)\^{}2+(y-b1)\^{}2=r1\^{}2;
+p4:(x-a2)\^{}2+(y-b2)\^{}2=r2\^{}2;
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\%{}o1}\label{o1}
+y=\mathit{m1}x+\mathit{n1}\mbox{}\]
+\[\displaystyle
+\]
+\[\tag{\%{}o2}\label{o2}
+y=\mathit{m2}x+\mathit{n2}\mbox{}\]
+\[\displaystyle
+\]
+\[\tag{\%{}o3}\label{o3}
+{{\left( y-\mathit{b1}\right) }^{2}}+{{\left( x-\mathit{a1}\right) }^{2}}={{\mathit{r1}}^{2}}\mbox{}\]
+\[\displaystyle
+\]
+\[\tag{\%{}o4}\label{o4}
+{{\left( y-\mathit{b2}\right) }^{2}}+{{\left( x-\mathit{a2}\right) }^{2}}={{\mathit{r2}}^{2}}\mbox{}
+\]
+%%%%%%%%%%%%%%%
+line p1,line p2 
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+q1:part(p1,2)=part(p2,2);
+q2:part(solve([q1], [x]),1);
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\%{}o5}\label{o5}
+\mathit{m1}x+\mathit{n1}=\mathit{m2}x+\mathit{n2}\mbox{}\]
+\[\displaystyle
+\]
+\[\tag{\%{}o6}\label{o6}
+x=-\frac{\mathit{n2}-\mathit{n1}}{\mathit{m2}-\mathit{m1}}\mbox{}
+\]
+%%%%%%%%%%%%%%%
+subst  : q2 in p1 rem :  abs(m2-m1) \ensuremath{<}\ensuremath{>} 0 for intersection 
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+q3:ratsimp(ev(p1,q2));
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\%{}o7}\label{o7}
+y=-\frac{\mathit{m1}\,\mathit{n2}-\mathit{m2}\,\mathit{n1}}{\mathit{m2}-\mathit{m1}}\mbox{}
+\]
+%%%%%%%%%%%%%%%
+line p1,circle p3 
+a) find : intersection (p1,p3) 
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+q4:ev(p3,p1);
+q5:lhs(q4)-rhs(q4)=0;
+q6:expand(q5);
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\%{}o8}\label{o8}
+{{\left( \mathit{m1}x+\mathit{n1}-\mathit{b1}\right) }^{2}}+{{\left( x-\mathit{a1}\right) }^{2}}={{\mathit{r1}}^{2}}\mbox{}\]
+\[\displaystyle
+\]
+\[\tag{\%{}o9}\label{o9}
+{{\left( \mathit{m1}x+\mathit{n1}-\mathit{b1}\right) }^{2}}+{{\left( x-\mathit{a1}\right) }^{2}}-{{\mathit{r1}}^{2}}=0\mbox{}\]
+\[\displaystyle
+\]
+\[\tag{\%{}o10}\label{o10}
+{{\mathit{m1}}^{2}}\,{{x}^{2}}+{{x}^{2}}+2\mathit{m1}\,\mathit{n1}x-2\mathit{b1}\,\mathit{m1}x-2\mathit{a1}x-{{\mathit{r1}}^{2}}+{{\mathit{n1}}^{2}}-2\mathit{b1}\,\mathit{n1}+{{\mathit{b1}}^{2}}+{{\mathit{a1}}^{2}}=0\mbox{}
+\]
+%%%%%%%%%%%%%%%
+b)find: a*x\^{}2+b*x+c=0              a=\ensuremath{>}q7a             b=\ensuremath{>}q7b             c=\ensuremath{>}q7c 
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+q7a: part(coeff(q6,x,2),1);
+q7b:part(coeff(q6,x,1),1);
+q7c:part(coeff(q6,x,0),1);
+
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\%{}o11}\label{o11}
+{{\mathit{m1}}^{2}}+1\mbox{}\]
+\[\displaystyle
+\]
+\[\tag{\%{}o12}\label{o12}
+2\mathit{m1}\,\mathit{n1}-2\mathit{b1}\,\mathit{m1}-2\mathit{a1}\mbox{}\]
+\[\displaystyle
+\]
+\[\tag{\%{}o13}\label{o13}
+-{{\mathit{r1}}^{2}}+{{\mathit{n1}}^{2}}-2\mathit{b1}\,\mathit{n1}+{{\mathit{b1}}^{2}}+{{\mathit{a1}}^{2}}\mbox{}
+\]
+%%%%%%%%%%%%%%%
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+ q8: q7a*x\^{}2+q7b*x+q7c=0;
+q9:solve([ q8: q7a*x\^{}2+q7b*x+q7c=0], [x]);
+\end{minipage}
+%%% OUTPUT:
+\begin{dmath}
+\left( {{\mathit{m1}}^{2}}+1\right) \,{{x}^{2}}+\left( 2\mathit{m1}\,\mathit{n1}-2\mathit{b1}\,\mathit{m1}-2\mathit{a1}\right) x-{{\mathit{r1}}^{2}}+{{\mathit{n1}}^{2}}-2\mathit{b1}\,\mathit{n1}+{{\mathit{b1}}^{2}}+{{\mathit{a1}}^{2}}=0
+\end{dmath}
+\begin{dmath}
+x=-\frac{\sqrt{\left( {{\mathit{m1}}^{2}}+1\right) \,{{\mathit{r1}}^{2}}-{{\mathit{n1}}^{2}}+\left( 2\mathit{b1}-2\mathit{a1}\,\mathit{m1}\right) \,\mathit{n1}-{{\mathit{a1}}^{2}}\,{{\mathit{m1}}^{2}}+2\mathit{a1}\,\mathit{b1}\,\mathit{m1}-{{\mathit{b1}}^{2}}}+\mathit{m1}\,\mathit{n1}-\mathit{b1}\,\mathit{m1}-\mathit{a1}}{{{\mathit{m1}}^{2}}+1},x=\frac{\sqrt{\left( {{\mathit{m1}}^{2}}+1\right) \,{{\mathit{r1}}^{2}}-{{\mathit{n1}}^{2}}+\left( 2\mathit{b1}-2\mathit{a1}\,\mathit{m1}\right) \,\mathit{n1}-{{\mathit{a1}}^{2}}\,{{\mathit{m1}}^{2}}+2\mathit{a1}\,\mathit{b1}\,\mathit{m1}-{{\mathit{b1}}^{2}}}-\mathit{m1}\,\mathit{n1}+\mathit{b1}\,\mathit{m1}+\mathit{a1}}{{{\mathit{m1}}^{2}}+1}
+\end{dmath}
+%%%%%%%%%%%%%%%
+c)find : (m1\^{}2+1)*r1\^{}2-n1\^{}2+(2*b1-2*a1*m1)*n1-a1\^{}2*m1\^{}2+2*a1*b1*m1-b1\^{}2 \ensuremath{>}= 0    =\ensuremath{>}   real  solution 
+circle p3,circle p4 
+solve: system(p3,p4) 
+a)  -1*p3 
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+q10:-1*expand(p3);
+q10a:expand(p3);
+q11:expand(p4);
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\%{}o16}\label{o16}
+-{{y}^{2}}+2\mathit{b1}y-{{x}^{2}}+2\mathit{a1}x-{{\mathit{b1}}^{2}}-{{\mathit{a1}}^{2}}=-{{\mathit{r1}}^{2}}\mbox{}\]
+\[\displaystyle
+\]
+\[\tag{\%{}o17}\label{o17}
+{{y}^{2}}-2\mathit{b1}y+{{x}^{2}}-2\mathit{a1}x+{{\mathit{b1}}^{2}}+{{\mathit{a1}}^{2}}={{\mathit{r1}}^{2}}\mbox{}\]
+\[\displaystyle
+\]
+\[\tag{\%{}o18}\label{o18}
+{{y}^{2}}-2\mathit{b2}y+{{x}^{2}}-2\mathit{a2}x+{{\mathit{b2}}^{2}}+{{\mathit{a2}}^{2}}={{\mathit{r2}}^{2}}\mbox{}
+\]
+%%%%%%%%%%%%%%%
+b) add(q10,q11) result :  a*x+b*y +c = 0               a = q13a               b = q13b               c = q13c rem :  y= -a/b*x -c/b  , m = -a/b , n = -c/b 
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+q12:q11+q10\$
+q13:rhs(q12)-lhs(q12)=0;
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\%{}o20}\label{o20}
+2\mathit{b2}y-2\mathit{b1}y+2\mathit{a2}x-2\mathit{a1}x+{{\mathit{r2}}^{2}}-{{\mathit{r1}}^{2}}-{{\mathit{b2}}^{2}}+{{\mathit{b1}}^{2}}-{{\mathit{a2}}^{2}}+{{\mathit{a1}}^{2}}=0\mbox{}
+\]
+%%%%%%%%%%%%%%%
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+q13a : part(coeff(q13,x,1),1);
+q13b :part(coeff(q13,y,1),1);
+q13c :ev(part(q13,1),x=0,y=0);
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\%{}o21}\label{o21}
+2\mathit{a2}-2\mathit{a1}\mbox{}\]
+\[\displaystyle
+\]
+\[\tag{\%{}o22}\label{o22}
+2\mathit{b2}-2\mathit{b1}\mbox{}\]
+\[\displaystyle
+\]
+\[\tag{\%{}o23}\label{o23}
+{{\mathit{r2}}^{2}}-{{\mathit{r1}}^{2}}-{{\mathit{b2}}^{2}}+{{\mathit{b1}}^{2}}-{{\mathit{a2}}^{2}}+{{\mathit{a1}}^{2}}\mbox{}
+\]
+%%%%%%%%%%%%%%%
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+q14:q13a*x+q13b*y+q13c=0;
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\%{}o24}\label{o24}
+\left( 2\mathit{b2}-2\mathit{b1}\right) y+\left( 2\mathit{a2}-2\mathit{a1}\right) x+{{\mathit{r2}}^{2}}-{{\mathit{r1}}^{2}}-{{\mathit{b2}}^{2}}+{{\mathit{b1}}^{2}}-{{\mathit{a2}}^{2}}+{{\mathit{a1}}^{2}}=0\mbox{}
+\]
+%%%%%%%%%%%%%%%
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+q14lm:m=-q13a/q13b;
+q14ln:n=-q13c/q13b;
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\%{}o25}\label{o25}
+m=\frac{2\mathit{a1}-2\mathit{a2}}{2\mathit{b2}-2\mathit{b1}}\mbox{}\]
+\[\displaystyle
+\]
+\[\tag{\%{}o26}\label{o26}
+n=\frac{-{{\mathit{r2}}^{2}}+{{\mathit{r1}}^{2}}+{{\mathit{b2}}^{2}}-{{\mathit{b1}}^{2}}+{{\mathit{a2}}^{2}}-{{\mathit{a1}}^{2}}}{2\mathit{b2}-2\mathit{b1}}\mbox{}
+\]
+%%%%%%%%%%%%%%%
+c) solve q14  for  x 
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+q15:part(solve([q14], [x]),1);
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\%{}o27}\label{o27}
+x=-\frac{\left( 2\mathit{b2}-2\mathit{b1}\right) y+{{\mathit{r2}}^{2}}-{{\mathit{r1}}^{2}}-{{\mathit{b2}}^{2}}+{{\mathit{b1}}^{2}}-{{\mathit{a2}}^{2}}+{{\mathit{a1}}^{2}}}{2\mathit{a2}-2\mathit{a1}}\mbox{}
+\]
+%%%%%%%%%%%%%%%
+d)  insert x into  q10a,numerator(q17)=num.        ratio = num/denom 
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+q16:ratsimp(ev(q10a,q15))\$
+q17: part(q16,1,1)=0;
+\end{minipage}
+%%% OUTPUT:
+\begin{dmath}
+\left( 4{{\mathit{b2}}^{2}}-8\mathit{b1}\,\mathit{b2}+4{{\mathit{b1}}^{2}}+4{{\mathit{a2}}^{2}}-8\mathit{a1}\,\mathit{a2}+4{{\mathit{a1}}^{2}}\right) \,{{y}^{2}}+\left( \left( 4\mathit{b2}-4\mathit{b1}\right) \,{{\mathit{r2}}^{2}}+\left( 4\mathit{b1}-4\mathit{b2}\right) \,{{\mathit{r1}}^{2}}-4{{\mathit{b2}}^{3}}+4\mathit{b1}\,{{\mathit{b2}}^{2}}+\left( 4{{\mathit{b1}}^{2}}-4{{\mathit{a2}}^{2}}+8\mathit{a1}\,\mathit{a2}-4{{\mathit{a1}}^{2}}\right) \,\mathit{b2}-4{{\mathit{b1}}^{3}}+\left( -4{{\mathit{a2}}^{2}}+8\mathit{a1}\,\mathit{a2}-4{{\mathit{a1}}^{2}}\right) \,\mathit{b1}\right) y+{{\mathit{r2}}^{4}}+\left( -2{{\mathit{r1}}^{2}}-2{{\mathit{b2}}^{2}}+2{{\mathit{b1}}^{2}}-2{{\mathit{a2}}^{2}}+4\mathit{a1}\,\mathit{a2}-2{{\mathit{a1}}^{2}}\right) \,{{\mathit{r2}}^{2}}+{{\mathit{r1}}^{4}}+\left( 2{{\mathit{b2}}^{2}}-2{{\mathit{b1}}^{2}}+2{{\mathit{a2}}^{2}}-4\mathit{a1}\,\mathit{a2}+2{{\mathit{a1}}^{2}}\right) \,{{\mathit{r1}}^{2}}+{{\mathit{b2}}^{4}}+\left( -2{{\mathit{b1}}^{2}}+2{{\mathit{a2}}^{2}}-4\mathit{a1}\,\mathit{a2}+2{{\mathit{a1}}^{2}}\right) \,{{\mathit{b2}}^{2}}+{{\mathit{b1}}^{4}}+\left( 2{{\mathit{a2}}^{2}}-4\mathit{a1}\,\mathit{a2}+2{{\mathit{a1}}^{2}}\right) \,{{\mathit{b1}}^{2}}+{{\mathit{a2}}^{4}}-4\mathit{a1}\,{{\mathit{a2}}^{3}}+6{{\mathit{a1}}^{2}}\,{{\mathit{a2}}^{2}}-4{{\mathit{a1}}^{3}}\,\mathit{a2}+{{\mathit{a1}}^{4}}=0
+\end{dmath}
+%%%%%%%%%%%%%%%
+e) find : coef's      aa*y\^{}2+bb*y+cc = 0                               aa =q17a                               bb =q17b                               cc =q17c 
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+q17a:part(coeff(q17,y,2),1);
+q17b:part(coeff(q17,y,1),1);
+q17c:ev(part(q17,1),y=0);
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\%{}o30}\label{o30}
+4{{\mathit{b2}}^{2}}-8\mathit{b1}\,\mathit{b2}+4{{\mathit{b1}}^{2}}+4{{\mathit{a2}}^{2}}-8\mathit{a1}\,\mathit{a2}+4{{\mathit{a1}}^{2}}\mbox{}\]
+\begin{dmath}
+\left( 4\mathit{b2}-4\mathit{b1}\right) \,{{\mathit{r2}}^{2}}+\left( 4\mathit{b1}-4\mathit{b2}\right) \,{{\mathit{r1}}^{2}}-4{{\mathit{b2}}^{3}}+4\mathit{b1}\,{{\mathit{b2}}^{2}}+\left( 4{{\mathit{b1}}^{2}}-4{{\mathit{a2}}^{2}}+8\mathit{a1}\,\mathit{a2}-4{{\mathit{a1}}^{2}}\right) \,\mathit{b2}-4{{\mathit{b1}}^{3}}+\left( -4{{\mathit{a2}}^{2}}+8\mathit{a1}\,\mathit{a2}-4{{\mathit{a1}}^{2}}\right) \,\mathit{b1}\end{dmath}
+\begin{dmath}
+{{\mathit{r2}}^{4}}+\left( -2{{\mathit{r1}}^{2}}-2{{\mathit{b2}}^{2}}+2{{\mathit{b1}}^{2}}-2{{\mathit{a2}}^{2}}+4\mathit{a1}\,\mathit{a2}-2{{\mathit{a1}}^{2}}\right) \,{{\mathit{r2}}^{2}}+{{\mathit{r1}}^{4}}+\left( 2{{\mathit{b2}}^{2}}-2{{\mathit{b1}}^{2}}+2{{\mathit{a2}}^{2}}-4\mathit{a1}\,\mathit{a2}+2{{\mathit{a1}}^{2}}\right) \,{{\mathit{r1}}^{2}}+{{\mathit{b2}}^{4}}+\left( -2{{\mathit{b1}}^{2}}+2{{\mathit{a2}}^{2}}-4\mathit{a1}\,\mathit{a2}+2{{\mathit{a1}}^{2}}\right) \,{{\mathit{b2}}^{2}}+{{\mathit{b1}}^{4}}+\left( 2{{\mathit{a2}}^{2}}-4\mathit{a1}\,\mathit{a2}+2{{\mathit{a1}}^{2}}\right) \,{{\mathit{b1}}^{2}}+{{\mathit{a2}}^{4}}-4\mathit{a1}\,{{\mathit{a2}}^{3}}+6{{\mathit{a1}}^{2}}\,{{\mathit{a2}}^{2}}-4{{\mathit{a1}}^{3}}\,\mathit{a2}+{{\mathit{a1}}^{4}}
+\end{dmath}
+%%%%%%%%%%%%%%%
+f)find : two solutions ,one sol,two sol,no sol 
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+q18:solve(q17,y)\$
+q18a:part(q18,1);
+q18b:part(q18,2);
+
+\end{minipage}
+%%% OUTPUT:
+\begin{dmath}
+y=-(\left( \mathit{b2}-\mathit{b1}+\%{}i\mathit{a2}-\%{}i\mathit{a1}\right) \,{{\mathit{r2}}^{2}}+\left( -\mathit{b2}+\mathit{b1}-\%{}i\mathit{a2}+\%{}i\mathit{a1}\right) \,{{\mathit{r1}}^{2}}-{{\mathit{b2}}^{3}}+\left( \mathit{b1}-\%{}i\mathit{a2}+\%{}i\mathit{a1}\right) \,{{\mathit{b2}}^{2}}+\left( {{\mathit{b1}}^{2}}+\left( 2\%{}i\mathit{a2}-2\%{}i\mathit{a1}\right) \,\mathit{b1}-{{\mathit{a2}}^{2}}+2\mathit{a1}\,\mathit{a2}-{{\mathit{a1}}^{2}}\right) \,\mathit{b2}-{{\mathit{b1}}^{3}}+\left( \%{}i\mathit{a1}-\%{}i\mathit{a2}\right) \,{{\mathit{b1}}^{2}}+\left( -{{\mathit{a2}}^{2}}+2\mathit{a1}\,\mathit{a2}-{{\mathit{a1}}^{2}}\right) \,\mathit{b1}-\%{}i{{\mathit{a2}}^{3}}+3\%{}i\mathit{a1}\,{{\mathit{a2}}^{2}}-3\%{}i{{\mathit{a1}}^{2}}\,\mathit{a2}+\%{}i{{\mathit{a1}}^{3}})/(2{{\mathit{b2}}^{2}}-4\mathit{b1}\,\mathit{b2}+2{{\mathit{b1}}^{2}}+2{{\mathit{a2}}^{2}}-4\mathit{a1}\,\mathit{a2}+2{{\mathit{a1}}^{2}})
+\end{dmath}
+\begin{dmath}
+y=-(\left( \mathit{b2}-\mathit{b1}-\%{}i\mathit{a2}+\%{}i\mathit{a1}\right) \,{{\mathit{r2}}^{2}}+\left( -\mathit{b2}+\mathit{b1}+\%{}i\mathit{a2}-\%{}i\mathit{a1}\right) \,{{\mathit{r1}}^{2}}-{{\mathit{b2}}^{3}}+\left( \mathit{b1}+\%{}i\mathit{a2}-\%{}i\mathit{a1}\right) \,{{\mathit{b2}}^{2}}+\left( {{\mathit{b1}}^{2}}+\left( 2\%{}i\mathit{a1}-2\%{}i\mathit{a2}\right) \,\mathit{b1}-{{\mathit{a2}}^{2}}+2\mathit{a1}\,\mathit{a2}-{{\mathit{a1}}^{2}}\right) \,\mathit{b2}-{{\mathit{b1}}^{3}}+\left( \%{}i\mathit{a2}-\%{}i\mathit{a1}\right) \,{{\mathit{b1}}^{2}}+\left( -{{\mathit{a2}}^{2}}+2\mathit{a1}\,\mathit{a2}-{{\mathit{a1}}^{2}}\right) \,\mathit{b1}+\%{}i{{\mathit{a2}}^{3}}-3\%{}i\mathit{a1}\,{{\mathit{a2}}^{2}}+3\%{}i{{\mathit{a1}}^{2}}\,\mathit{a2}-\%{}i{{\mathit{a1}}^{3}})/(2{{\mathit{b2}}^{2}}-4\mathit{b1}\,\mathit{b2}+2{{\mathit{b1}}^{2}}+2{{\mathit{a2}}^{2}}-4\mathit{a1}\,\mathit{a2}+2{{\mathit{a1}}^{2}})
+\end{dmath}
+%%%%%%%%%%%%%%%
+q18a  : y -\ensuremath{>}x (from q15) q18b :  y -\ensuremath{>}x(from q15) 
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+q19a:ev(q15,q18a);
+q19b:ev(q15,q18b);
+\end{minipage}
+%%% OUTPUT:
+\begin{dmath}
+x=-(-(\left( 2\mathit{b2}-2\mathit{b1}\right) (\left( \mathit{b2}-\mathit{b1}+\%{}i\mathit{a2}-\%{}i\mathit{a1}\right) \mbox{}\\\,{{\mathit{r2}}^{2}}+\left( -\mathit{b2}+\mathit{b1}-\%{}i\mathit{a2}+\%{}i\mathit{a1}\right) \,{{\mathit{r1}}^{2}}-{{\mathit{b2}}^{3}}+\left( \mathit{b1}-\%{}i\mathit{a2}+\%{}i\mathit{a1}\right) \,{{\mathit{b2}}^{2}}+\left( {{\mathit{b1}}^{2}}+\left( 2\%{}i\mathit{a2}-2\%{}i\mathit{a1}\right) \,\mathit{b1}-{{\mathit{a2}}^{2}}+2\mathit{a1}\,\mathit{a2}-{{\mathit{a1}}^{2}}\right) \,\mathit{b2}-{{\mathit{b1}}^{3}}+\left( \%{}i\mathit{a1}-\%{}i\mathit{a2}\right) \,{{\mathit{b1}}^{2}}+\left( -{{\mathit{a2}}^{2}}+2\mathit{a1}\,\mathit{a2}-{{\mathit{a1}}^{2}}\right) \,\mathit{b1}-\%{}i{{\mathit{a2}}^{3}}+3\%{}i\mathit{a1}\,{{\mathit{a2}}^{2}}-3\%{}i{{\mathit{a1}}^{2}}\,\mathit{a2}+\%{}i{{\mathit{a1}}^{3}}))/(2{{\mathit{b2}}^{2}}-4\mathit{b1}\,\mathit{b2}+2{{\mathit{b1}}^{2}}+2{{\mathit{a2}}^{2}}-4\mathit{a1}\,\mathit{a2}+2{{\mathit{a1}}^{2}})+{{\mathit{r2}}^{2}}-{{\mathit{r1}}^{2}}-{{\mathit{b2}}^{2}}+{{\mathit{b1}}^{2}}-{{\mathit{a2}}^{2}}+{{\mathit{a1}}^{2}})/(2\mathit{a2}-2\mathit{a1})
+\end{dmath}
+\[\displaystyle
+\]
+\begin{dmath}
+x=-(-(\left( 2\mathit{b2}-2\mathit{b1}\right) (\left( \mathit{b2}-\mathit{b1}-\%{}i\mathit{a2}+\%{}i\mathit{a1}\right) \mbox{}\\\,{{\mathit{r2}}^{2}}+\left( -\mathit{b2}+\mathit{b1}+\%{}i\mathit{a2}-\%{}i\mathit{a1}\right) \,{{\mathit{r1}}^{2}}-{{\mathit{b2}}^{3}}+\left( \mathit{b1}+\%{}i\mathit{a2}-\%{}i\mathit{a1}\right) \,{{\mathit{b2}}^{2}}+\left( {{\mathit{b1}}^{2}}+\left( 2\%{}i\mathit{a1}-2\%{}i\mathit{a2}\right) \,\mathit{b1}-{{\mathit{a2}}^{2}}+2\mathit{a1}\,\mathit{a2}-{{\mathit{a1}}^{2}}\right) \,\mathit{b2}-{{\mathit{b1}}^{3}}+\left( \%{}i\mathit{a2}-\%{}i\mathit{a1}\right) \,{{\mathit{b1}}^{2}}+\left( -{{\mathit{a2}}^{2}}+2\mathit{a1}\,\mathit{a2}-{{\mathit{a1}}^{2}}\right) \,\mathit{b1}+\%{}i{{\mathit{a2}}^{3}}-3\%{}i\mathit{a1}\,{{\mathit{a2}}^{2}}+3\%{}i{{\mathit{a1}}^{2}}\,\mathit{a2}-\%{}i{{\mathit{a1}}^{3}}))/(2{{\mathit{b2}}^{2}}-4\mathit{b1}\,\mathit{b2}+2{{\mathit{b1}}^{2}}+2{{\mathit{a2}}^{2}}-4\mathit{a1}\,\mathit{a2}+2{{\mathit{a1}}^{2}})+{{\mathit{r2}}^{2}}-{{\mathit{r1}}^{2}}-{{\mathit{b2}}^{2}}+{{\mathit{b1}}^{2}}-{{\mathit{a2}}^{2}}+{{\mathit{a1}}^{2}})/(2\mathit{a2}-2\mathit{a1})
+\end{dmath}
+%%%%%%%%%%%%%%%
+example : circle1 and circle 2 
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+v1:a1=2\$
+v2:b1=3\$
+v3:r1=3\$
+v4:a2=1\$
+v5:b2=-1\$
+v6:r2=4\$
+\end{minipage}
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+z1:(-1)*expand(ev(p3,v1,v2,v3));
+z2:expand(ev(p4,v4,v5,v6));
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\%{}o44}\label{o44}
+-{{y}^{2}}+6y-{{x}^{2}}+4x-13=-9\mbox{}\]
+\[\displaystyle
+\]
+\[\tag{\%{}o45}\label{o45}
+{{y}^{2}}+2y+{{x}^{2}}-2x+2=16\mbox{}
+\]
+%%%%%%%%%%%%%%%
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+z3:z1+z2;
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\%{}o46}\label{o46}
+8y+2x-11=7\mbox{}
+\]
+%%%%%%%%%%%%%%%
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+z4:lhs(z3)-rhs(z3)=0;
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\%{}o47}\label{o47}
+8y+2x-18=0\mbox{}
+\]
+%%%%%%%%%%%%%%%
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+z5:part(solve(z4,x),1);
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\%{}o48}\label{o48}
+x=9-4y\mbox{}
+\]
+%%%%%%%%%%%%%%%
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+z6:(-1)*expand(ev(z1,z5));
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\%{}o49}\label{o49}
+17{{y}^{2}}-62y+58=9\mbox{}
+\]
+%%%%%%%%%%%%%%%
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+z7:solve(z6,y);
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\%{}o50}\label{o50}
+[y=-\frac{{{2}^{\frac{7}{2}}}-31}{17},y=\frac{{{2}^{\frac{7}{2}}}+31}{17}]\mbox{}
+\]
+%%%%%%%%%%%%%%%
+y1,y2 
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+z7a:float(part(z7,1,2));
+z7b:float(part(z7,2,2));
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\%{}o51}\label{o51}
+1.158017147118543\mbox{}\]
+\[\displaystyle
+\]
+\[\tag{\%{}o52}\label{o52}
+2.489041676410868\mbox{}
+\]
+%%%%%%%%%%%%%%%
+x1,x2 
+
+
+\noindent
+%%%%%%%%%%%%%%%
+%%% INPUT:
+\begin{minipage}[t]{8ex}\color{red}\bf
+--\ensuremath{\ensuremath{>}}  
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+z8a:subst(z7a, y, z5);
+z8b:subst(z7b, y, z5);
+\end{minipage}
+%%% OUTPUT:
+\[\displaystyle
+\tag{\%{}o53}\label{o53}
+x=4.367931411525827\mbox{}\]
+\[\displaystyle
+\]
+\[\tag{\%{}o54}\label{o54}
+x=-0.956166705643474\mbox{}
+\]
+%%%%%%%%%%%%%%%
+two points (x1,y1)  and (x2,y2) 
+\end{document}

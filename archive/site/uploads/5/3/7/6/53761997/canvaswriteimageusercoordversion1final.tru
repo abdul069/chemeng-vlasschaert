@@ -1,0 +1,55 @@
+option nolet
+! =>  black default color
+print "----------------------------------------------------------"
+print " How to make picture from the canvas (*.BMP),version 1.0  "
+print " peter.vlasschaert@gmail.com,09/02/2019       'user'      "
+print "----------------------------------------------------------"
+! =>  user coordinates
+! =>  filename :canvaswriteimageusercoordversion1final.tru
+print
+! ------------- SET UP SCREEN--------------------------------------------,
+xmin = -10
+xmax = 10
+ymin = -10
+ymax = 10
+set window xmin,xmax, ymin, ymax ! coordinates given for the 'main window'
+! -------------- create something to keep in a boxkeep ------------------,
+set color "green"
+print "-------------------------------------------"
+print " dimension of the canvas(user coordinates) "
+print "-------------------------------------------"
+print "xmin,xmax = "; xmin,xmax
+print "ymin,ymax = "; ymin,ymax
+print
+print "------------------------------"
+print " cursor values of the canvas  "
+print "------------------------------"
+ask max cursor h,w
+!********************************************************
+! may be depend on the resolution of the screen (monitor)
+!********************************************************
+print " height (cursor max) = ";h," width (cursor max) = ";w
+set cursor 30,50
+set color "black"
+print "plot :( x ,ymax*sin(x) )"
+set color "blue"
+! horizontal line (axes)
+plot lines : xmin,0;xmax,0
+! vertical line (axes)
+plot lines : 0,ymin;0,ymax
+! plot function
+set color "red" 
+for x= xmin to xmax step 0.001
+ plot points: x,ymax*sin(x)
+next x
+
+box keep xmin, xmax, ymin, ymax in keep$ ! area for the picture (*.bmp)
+!------------------------------------------------------------------------,
+!  Create a filename. Don't need an extention; the SUB will put ".bmp"
+!------------------------------------------------------------------------,
+ ff$="C:\download\testzzz.bmp" ! make sure this is a valid path...
+ CALL Write_Image("MS BMP", keep$, ff$) ! or you can use this 
+get key k
+END
+
+

@@ -1,0 +1,40 @@
+ nA  -> products 
+n=integer → dCA(t)/dt =-k*CA(t)**n                        
+...........................................................
+ depending on n: n=1,mono,n=2,bi,n=3,tri molecular reaction
+ k  =reaction rate constant                                
+ CA = Concentation of A as function of time :CA(t)         
+...........................................................
+Eq(CA(t), Piecewise(((-C1*n + C1 + k*n*t - k*t)**(-1/(n - 1)), Ne(n, 1)), (nan, True)))
+Eq(CA(t), Piecewise((C1*exp(-k*t), Eq(n, 1)), (nan, True)))
+n=integer, dCA(t)/dt =-k*CA(t)**1
+..................................
+Eq(CA(t), CA0*exp(-k*t))
+n≠1, dCA(t)/dt =-k*CA(t)**n ,n=2
+..................................
+1/(k*t + 1/CA0)
+n≠1, dCA(t)/dt =-k*CA(t)**n ,n≠1
+.................................
+Piecewise(((-C1*n + C1 + k*n*t - k*t)**(-1/(n - 1)), Ne(n, 1)), (nan, True))
+list of symbols = [t, k, n, C1]
+...........................................................................
+....................
+analysis : Piecewise
+....................
+ Piecewise(((-C1*n + C1 + k*n*t - k*t)**(-1/(n - 1)), Ne(n, 1)), (nan, True))
+...........................................................................
+((-C1*n + C1 + k*n*t - k*t)**(-1/(n - 1)), Ne(n, 1))
+(-C1*n + C1 + k*n*t - k*t)**(-1/(n - 1))
+....................
+find : C1,solve     
+....................
+ eq =  Eq((-C1*n + C1 + k*n*t - k*t)**(-1/(n - 1)), CA(t))
+eq1 =  Eq((-C1*n + C1)**(-1/(n - 1)), CA(0))
+eq2 =  Eq(C1, -(1/CA(0))**(n - 1)/(n - 1))
+eq3 =  Eq((k*n*t - k*t + n*(1/CA(0))**(n - 1)/(n - 1) - (1/CA(0))**(n - 1)/(n - 1))**(-1/(n - 1)), CA(t))
+eq4 =  Eq(CA(t), ((k*t*(n - 1)**2 + n*(1/CA(0))**(n - 1) - (1/CA(0))**(n - 1))/(n - 1))**(-1/(n - 1)))
+check :solt = [Eq(CA(t), Piecewise(((-C1*n + C1 + k*n*t - k*t)**(-1/(n - 1)), Ne(n, 1)), (nan, True))), Eq(CA(t), Piecewise((C1*exp(-k*t), Eq(n, 1)), (nan, True)))]
+ check ,n=2,reason see above 
+eq5 =  False
+ check ,n=1,reason see above 
+eq6 =  False

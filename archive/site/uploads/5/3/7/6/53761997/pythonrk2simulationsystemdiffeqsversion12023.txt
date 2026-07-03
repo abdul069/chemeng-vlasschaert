@@ -1,0 +1,83 @@
+import numpy as np
+print( "..............................................................................................")
+print( " python :x'(t)=x+y and y'(t) =2*x+y x0=1,y0=.4, solve rk2,version 1.0                         ")
+print( " peter.vlasschaert@gmail.com,16/01/2023                                                       ")
+print( "..............................................................................................")
+def rk2(f, x0, y0, t0, t_end, h):
+    """
+    Solves a system of two differential equations
+    ......................................................................
+    x'(t) = fx(t, x(t), y(t)) = x+y
+    y'(t) = fy(t, x(t), y(t)) = 2*x+y
+    with initial conditions x(t0) = x0 and y(t0) = y0 using the RK2 method.
+    The solution is returned at the time t_end with a step size of h.
+    .......................................................................
+    """
+    t = t0
+    x = x0  # initial value x
+    y = y0  # initial value y
+    times = [t0]
+    solutions_x = [x] # all output during simulation in list
+    solutions_y = [y] # all output during simulation in list
+    while t < t_end:
+        k1x, k1y = f(t, x, y)
+        k2x, k2y = f(t + h, x + h*k1x, y + h*k1y)
+        
+        x_next = x + (h/2)*(k1x + k2x)
+        y_next = y + (h/2)*(k1y + k2y)
+        t += h
+        x = x_next
+        y = y_next
+        times.append(t)       # append for values
+        solutions_x.append(x)
+        solutions_y.append(y)
+    return times, solutions_x, solutions_y
+
+# differential system of equations, "see above"
+def f(t, x, y):
+    fx = x+y
+    fy = 2*x+y
+    return fx, fy
+
+x0 = 1    # initial condition x ,@t=0
+y0 = 0.4  # initial condition y ,@t=0
+t0 = 0    # start of simulation
+t_end = 1 # final time of simulation
+h = 0.1   # step-value
+
+times, solutions_x, solutions_y = rk2(f, x0, y0, t0, t_end, h)
+
+import matplotlib.pyplot as plt
+# find max values x(t),y(t)
+max_y = np.max(solutions_y)
+max_x = np.max(solutions_x)
+# two plot
+# Plot the solutions for x(t), ouput : figure1
+plt.figure()
+plt.plot(times, solutions_x,color='green', label='x(t),x(0)=1')
+plt.ylim(0, max_x)
+plt.xlabel('Time')
+plt.ylabel('x(t)')
+plt.title('RK2 solutions for x(t)')
+plt.legend()
+
+# Plot the solutions for y(t),output : figure2
+plt.figure()
+plt.plot(times, solutions_y,color='blue', label='y(t),y(0)=.4')
+plt.ylim(0, max_y)
+plt.xlabel('Time')
+plt.ylabel('y(t)')
+plt.title('RK2 solutions for y(t)')
+plt.legend()
+#one plot
+#------------------------------------------------------
+# Plot the solutions for x(t) and y(t) on the same plot
+# plt.plot(times, solutions_x, label='x(t)')
+#plt.plot(times, solutions_y, label='y(t)')
+#plt.xlabel('Time')
+#plt.ylabel('Solution')
+#plt.title('RK2 solutions')
+#plt.legend()
+#---------------------------------------------------------
+# Show the plots
+plt.show()

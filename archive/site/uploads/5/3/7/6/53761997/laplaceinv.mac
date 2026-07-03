@@ -1,0 +1,59 @@
+laplaceInv(_Lf,_s,_t):=block(
+[iltsum,facterm,pp,toffset,ilti,Lfrhs],
+if is(equal(op(_Lf),"=")) then 
+     Lfrhs:rhs(_Lf)
+   else
+     Lfrhs:_Lf,
+iltsum:0,
+assume(_s>0),
+/* split into simpler fractions  */
+/* display(_Lf), */
+_Lfpf:partfrac(Lfrhs,_s),
+/* display(_Lfpf), */
+_Lfpfe:expand(_Lfpf),
+/* display(_Lfpfe), */
+for i:1 thru nterms(_Lfpfe) do (
+   if nterms(_Lfpfe)=1 then
+      facterm:_Lfpfe
+    else
+      facterm:factor(part(_Lfpfe,i)),
+   /* display(facterm), */
+   if not freeof(%e,facterm) then ( /*Heaviside Function*/
+      if not is(equal(op(facterm),"^")) then (
+        pp:partition(factor(facterm),%e),
+	    lpp:log(pp[2]),
+		if nterms(lpp)=1 then (
+            toffset:log(pp[2])/_s,
+			efac:1
+			)
+		else(
+		    pplpp:partition(lpp,_s),
+			toffset:pplpp[2]/_s,
+			efac:exp(pplpp[1])
+		),
+		if is(equal(op(facterm),"-")) then pm:-1 else pm:1,
+        ilti:pm*ilt(pm*pp[1],_s,_t),
+        ilti:subst(_t=_t+toffset,ilti)*unit_step(_t+toffset),
+        iltsum:iltsum+efac*ilti
+        /* display(iltsum) */
+	  )
+	  else( /* Dirac delta */
+	    toffset:log(facterm)/_s,
+        ilti:delta(_t+toffset),
+        iltsum:iltsum+ilti
+		/* display(iltsum) */
+	    )
+   )
+   else ( /*no exponential in this term */
+      if is(equal(op(facterm),"-")) then pm:-1 else pm:1,
+      ilti:pm*ilt(pm*facterm,_s,_t),
+      iltsum:iltsum+ilti
+      /* display(iltsum) */
+   )
+   ),
+   if is(equal(op(_Lf),"=")) then 
+     ilt(lhs(_Lf),s,t)=iltsum
+   else
+     iltsum
+)$
+

@@ -1,0 +1,77 @@
+option nolet
+randomize
+print "**************************************************************"
+print "* programming :truebasic, random_walk (begin,end) 'version 1'*"
+print "* peter.vlasschaert@gmail.com,29/01/2020                     *"
+print "**************************************************************"
+x0 = 4
+y0 = 0
+print " begin point x coord. => ";x0
+print " begin point y coord. => ";y0
+x = x0
+y = y0 
+print "*********************"
+print " end point (h,k) =>  "
+print "*********************"
+h = 5
+k = 2
+print " end point x = ";h
+print " end point y = ";k
+print
+print "*********************"
+print " domain (p,q) =>     "
+print "*********************"
+p = 12
+q = 10
+print "max: dimension  x-values = ";p
+print "max: dimension  y-values = ";q
+dim l(1)
+nn = 0
+ns = 0
+do 
+
+  dx = 2*x-p
+  dy = 2*y-q
+
+ done = 0
+if abs(dx) = p then
+ done = 1
+ns = ns+1
+x=x-sgn(dx)
+end if
+  
+  
+if abs(dy) = q then 
+  done = 1
+ns = ns+1
+y=y-sgn(dy)
+end if
+   
+if done = 0 then
+  done = 1
+    nn = nn+1
+   print " nn = "; nn
+   mat redim l(nn)
+l(nn) = int(4*rnd)+1
+call random_walk(l(),nn,x,y)
+end if
+if x=h and y=k then exit do
+loop
+print " number of steps :nn "; nn
+print " number of steps :ns "; ns
+end
+
+sub random_walk(l(),kk,x,y)
+! How to use 'ELSE IF'
+if 1= l(kk) then
+y = y+1
+else if 2= l(kk) then
+y = y-1
+else if 3=l(kk) then
+x = x-1
+ELSE                
+x = x+1
+END IF
+end sub
+
+

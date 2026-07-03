@@ -1,0 +1,60 @@
+option nolet  ! don't need let statement
+print "************************************************"
+print "* math  : factorial 'error catch ',version1    *"
+print "* peter.vlasschaert@gmail.com ,16/05/2018      *"
+print "************************************************"
+declare function factorial
+print
+print "*******"
+print " x < 0 "
+print "*******"
+x=-5
+print " x = ";x
+call test_factorial(x)
+print "*******"
+print " y = 0 "
+print "*******"
+y=0
+print " y = ";y
+call test_factorial(y)
+print "******"
+print " u >0 "
+print "******"
+u=5
+print " u = ";u
+call test_factorial(u)
+print "*******"
+print " v=170 "
+print "*******"
+v=170
+print " v = ";v
+call test_factorial(v)
+print "*******"
+print " w=171 "
+print "*******"
+w=171
+print " w = ";w
+call test_factorial(w)
+end
+
+sub test_factorial(m)
+declare function factorial
+if factorial(m) <> 0 then
+   print " factorial("& str$(m) & ")= ";factorial(m)
+end if
+end sub
+
+function factorial(x)
+if x < 0 or x <> int(x) then
+   a$ = "error :factorial of negative or non-integer." 
+   print " factorial("& str$(x) & ")= " & a$
+elseif  x > 170 then
+  b$ = "error:overflow"
+  print " factorial("& str$(x) & ")= " &  b$
+  exit function
+elseif x >1 and x <= 170 then
+  factorial = x*factorial(x-1)
+else
+  factorial = 1
+end if
+end function

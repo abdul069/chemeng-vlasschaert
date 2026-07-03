@@ -1,0 +1,45 @@
+option nolet  ! don't need let statement
+print "************************************************"
+print "* math  :cursor,example ,'version 1.0'         *"
+print "* peter.vlasschaert@gmail.com ,16/05/2018      *"
+print "************************************************"
+print
+!******************************
+! find out position max cursor.
+!******************************
+ask max cursor cx,cy
+!******************************
+! default color 'black'
+!******************************
+print "*********************"
+print " output :window   => "
+print "*********************"
+print
+print "************************************"
+print " number of positions  x-direction = ";cx
+print " number of positions  y-direction = ";cy
+print "************************************"
+!*******************************
+! initial position of the cursor
+!*******************************
+set cursor 20,10
+set color "green"
+print " => test - begin "
+i = 0       ! counter
+randomize   ! random  values
+m =15       ! integer value
+!***********************************
+! conditional loop 'do while - loop'
+!***********************************
+do while i < m
+     i=i+1     ! update counter
+  set color int(rnd*i+1)
+  set cursor 20+i,10+i
+  ! condition for last print i=m
+   if i=m then
+          print "test - end => "
+      else
+          print "test"
+   end if 
+loop
+end

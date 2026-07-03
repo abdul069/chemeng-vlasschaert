@@ -1,0 +1,72 @@
+option nolet
+print "*****************************************************************"
+print " programming:bet game play(monte carlo:simulation),'version 1.0'*"
+print " peter.vlasschaert@gmail.com,22/01/2020                         *"
+print "*****************************************************************"
+print
+randomize  ! random generator ,rnd
+!*********************
+! before play the game
+!*********************
+account = 100000   !money in your account
+b_money = 10000    !money for every bet
+nu_times = 100     !number of times to bet
+b        = 0       !initial counter 'number of persons: broke'
+c        = 0       !initial counter 'get more money after    '
+np       = 15      !number of players
+print "*****************************************"
+print " every player : use below               *"
+print "*****************************************"
+print " money for every bet                    :";b_money
+print " number of times to bet                 :";nu_times
+print " your account ( = before play the game) :";account
+print "*****************************************"
+print " number of players to bet               :";np
+print "*****************************************"
+print 
+i = 0    ! counter of people playing games
+do while i <  np
+call bet_money(a,b,account,b_money,nu_times,val,roll)
+!********************
+! after play the game
+!********************
+print " your account(=after play the game),person ";i+1;":";val
+i =i+1
+loop
+print
+print " number persons 'broke'  : ";b
+end
+
+sub roll_dice(roll,a)
+! programming : part of bet_money 'sub'
+roll = int(100*rnd)+1
+if roll = 100 then
+     a = 0  !true
+else if  roll <= 50 then
+     a = 0 !false
+else   
+     a = 1 !true
+end if  
+end sub
+
+sub bet_money(a,b,account,b_money,nu_times,val,roll)
+!***************************************
+! nu_times : number of times you to play
+! nu_times => counter 'nu_initial'
+!****************************************
+     val = account    ! money in your account
+     money = b_money  ! money use for every bet
+     nu_initial =0    ! start of counter
+do while nu_initial < nu_times
+   call roll_dice(roll,a)
+if a=0 then val= val-money
+if a=1 then val= val+money
+   nu_initial = nu_initial +1
+if val < 0 then 
+   val = 0
+   print " player : broke => ";val
+   b = b+1
+   exit do
+end if
+loop
+end sub

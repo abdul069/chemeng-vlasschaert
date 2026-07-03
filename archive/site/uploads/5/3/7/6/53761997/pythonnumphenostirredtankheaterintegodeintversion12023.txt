@@ -1,0 +1,90 @@
+import numpy as np
+from scipy.integrate import odeint
+import matplotlib.pyplot as plt
+from tabulate import tabulate
+#---------------------------------------------------------------------
+# ref : maxima,see weebsite. "simple introduction thermodynamics
+# maxima:numerical phenomena,stirred tank heater,version 1.0
+# peter.vlasschaert@gmail.com,01/03/2023
+# Define constants
+#---------------------------------------------------------------------
+print("--------------------------------------------------------------")
+print("python:numerical phenomena,stirred tank heater,version 1.0    ")
+print(" solve : with odeint                                          ")
+print(" peter.vlasschaert@gmail.com,01/03/2023                       ")
+print("--------------------------------------------------------------")
+print("")
+print ("-------------------------")
+print (" < stirred tank heater > ")
+print ("-------------------------")
+print ("")
+print ("---------------------------------")
+print (" make table output:with tabulate ")
+print ("---------------------------------")
+V = 1.0    # volume (m^3)
+rho = 1000.0   # density (kg/m^3)
+Cp = 4186.0   # heat capacity (J/(kg*K))
+
+# Define initial conditions
+T0 = 25.0   # initial temperature (°C)
+t0 = 0.0   # start time (s)
+
+# Define input profiles
+def F(t):
+    return 0.1*t   # flow rate (m^3/s)
+
+def Q(t):
+    return 1000.0 + 10.0*t   # heat added to system (W)
+
+def Ti(t):
+    return 20.0 + 5.0*t/3600.0   # input temperature (°C)
+# define ode
+def dTdt(T, t):
+    # Calculate the temperature derivative at time t
+    dTdt = Q(t)/(V*Cp*rho) + (F(t)*(Ti(t) - T))/V
+    return dTdt
+
+# Define time vector
+t = np.linspace(t0, 50, 50)   # simulate for 50 sec (1h =3600 s)
+
+# Solve the differential equation using odeint
+sol = odeint(dTdt, T0, t)
+
+# Output the results as a table
+table1 = np.column_stack((t, sol))
+table2 = np.column_stack((t, Ti(t), Q(t), F(t)))
+headers1 = ['Time (s)', 'Temperature (°C)']
+headers2 = ['Time (s)', 'Ti (°C)', 'Q (W)', 'F (m^3/s)']
+print ("---------------------------------")
+print ("output table : time , T(t)       ")
+print ("---------------------------------")
+print(tabulate(table1, headers=headers1, tablefmt='fancy_grid', floatfmt=".2f"))
+print ("-------------------------------------")
+print ("output table : time , input profiles ")
+print ("-------------------------------------")
+print(tabulate(table2, headers=headers2, tablefmt='fancy_grid', floatfmt=".2f"))
+
+# Plot the temperature, input profiles, and flow rate
+fig, ax1 = plt.subplots(figsize=(8, 6))
+color = 'tab:red'
+ax1.set_xlabel('Time (s)')
+ax1.set_ylabel('Temperature (°C)', color=color)
+ax1.plot(t, sol, color=color)
+ax1.tick_params(axis='y', labelcolor=color)
+
+ax2 = ax1.twinx()
+color = 'tab:green'
+ax2.set_ylabel('Input Profiles', color=color)
+ax2.plot(t, Ti(t), label='Ti', color=color)
+ax2.plot(t, Q(t), label='Q', linestyle='--', color=color)
+ax2.plot(t, F(t), label='F', linestyle=':', color=color)
+# ax2.plot(t, F(t)*(Ti(t) - sol)/Q(t), label='Efficiency', linestyle='-.', color='tab:orange')
+ax2.tick_params(axis='y', labelcolor=color)
+ax2.legend(loc='center right')
+
+fig.subplots_adjust(right=0.85)
+# set general title
+ax1.set_title('Stirred Tank Heater Simulation,version 1.0 ')
+plt.show()
+
+

@@ -1,0 +1,85 @@
+option nolet
+print "------------------------------------------------------------"
+print "- muller method :sub (Solve Nonlinear Equation),version 1.0-"
+print "- peter.vlasschaert@gmail.com,21/08/2020                   -"
+print "------------------------------------------------------------"
+! filename :TRUEBASICMULLERMETHODVERSION1SUB
+!----------------------------------------------------------
+print 
+print" 3 value : start 'method,see : h' "
+print
+print "---------------------------------------------"
+print " solve nonlinear : equation , Newton Raphson "
+print " equation (solve: x) => f(x)=x^2-2 => f(x)=0 " 
+print "---------------------------------------------"
+print
+print
+print " f(x) = x^3-1,see below : function"
+print 
+print "input => "
+print
+xr = 0.1
+h  = 0.001
+eps = 0.0001
+maxit = 20
+print " start value            = ";xr
+print " h : xr ,xr(1+h),xr(1-h)= ";h
+print " error                  = ";eps
+print " max number of iteration= ";maxit
+print
+! algorithm : mullermethod ( Do while structure)
+print "output => "
+print
+print " iter ,xr"
+print "---------"
+print
+call mullermethod(xr,h,eps,maxit,iter)
+print "final solution f(x) = 0 =>"
+print
+print "                                 number iteration   x"
+print " final: iter ,x value f(x) = 0 =>  ";iter,xr
+end
+
+Function f(x)
+f=x^3-1
+! other f = x^2-2
+end function
+
+sub mullermethod(xr,h,eps,maxit,iter)
+declare function f ! otherwise truebasic = matrix 'f'
+
+x2 =xr       ! 1e value
+x1 =xr*(1+h) ! 2e value
+x0 =xr*(1-h) ! 3e value
+
+do
+ iter = iter + 1
+ h0 = x1-x0
+ h1 = x2-x1
+ d0 = (f(x1)-f(x0))/h0
+ d1 = (f(x2)-f(x1))/h1
+ a=(d1-d0)/(h1+h0)
+ b=a*h1+d1
+ c=f(x2)
+ rat = sqr(b^2-4*a*c)  
+!*****************************************
+! othermethod to find sign before +/-'rat'
+!*****************************************
+ if abs(b+rat) > abs(b-rat) then
+   den = b + rat
+ else
+   den = b - rat
+ end if
+   dxr  = -2*c/den
+   xr = x2 +dxr
+ print  iter , xr
+if abs(dxr) < eps*xr or iter => maxit then
+   exit do
+end if
+
+ x0=x1
+ x1=x2
+ x2=xr
+loop
+exit sub
+end sub

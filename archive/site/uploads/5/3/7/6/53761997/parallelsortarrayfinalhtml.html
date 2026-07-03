@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>New1 *</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="generator" content="Fatesoft.com HTML exporter" />
+<style type="text/css">
+<!--
+body { color: #000000; background-color: #FFFFFF; }
+.general1-comment { color: #008080; font-style: italic; }
+.general1-identifier { color: #000080; }
+.general1-number { color: #FF0000; }
+.general1-preprocessor { color: #800000; font-style: italic; }
+.general1-reservedword { color: #0000FF; font-weight: bold; }
+.general1-space { color: #FFFFFF; }
+.general1-string { color: #800080; }
+.general1-symbol { color: #FF00FF; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<code><span style="font: 10pt Courier New;"><span class="general1-reservedword">option</span><span class="general1-space"> </span><span class="general1-identifier">nolet
+print</span><span class="general1-space"> </span><span class="general1-string">&quot;***************************************&quot;
+</span><span class="general1-identifier">print</span><span class="general1-space"> </span><span class="general1-string">&quot;* sort parallel arrays (2d,matrix)    *&quot;
+</span><span class="general1-identifier">print</span><span class="general1-space"> </span><span class="general1-string">&quot;***************************************&quot;
+</span><span class="general1-identifier">print</span><span class="general1-space"> </span><span class="general1-string">&quot; <a href="https://petervlaschemeng.weebly.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7e0e1b0a1b0c5008121f0d0d1d161f1b0c0a3e19131f1712501d1113">[email&#160;protected]</a>,24/10/2016&quot;
+</span><span class="general1-identifier">print</span><span class="general1-space"> </span><span class="general1-string">&quot;***************************************&quot;
+</span><span class="general1-identifier">print
+</span><span class="general1-symbol">!</span><span class="general1-space"> </span><span class="general1-identifier">filename</span><span class="general1-space"> </span><span class="general1-symbol">:</span><span class="general1-space">  </span><span class="general1-identifier">PARALLELSORTarrayfinal
+ns</span><span class="general1-space"> </span><span class="general1-symbol">=</span><span class="general1-space"> </span><span class="general1-number">6</span><span class="general1-space"> </span><span class="general1-symbol">!</span><span class="general1-identifier">number</span><span class="general1-space"> </span><span class="general1-reservedword">of</span><span class="general1-space"> </span><span class="general1-identifier">data</span><span class="general1-space"> </span><span class="general1-reservedword">from</span><span class="general1-space"> </span><span class="general1-identifier">one</span><span class="general1-space"> </span><span class="general1-identifier">column
+print</span><span class="general1-space"> </span><span class="general1-string">&quot; number data ,first  column = &quot;</span><span class="general1-symbol">;</span><span class="general1-identifier">ns
+print</span><span class="general1-space"> </span><span class="general1-string">&quot; number data ,second column = &quot;</span><span class="general1-symbol">;</span><span class="general1-identifier">ns
+</span><span class="general1-reservedword">dim</span><span class="general1-space"> </span><span class="general1-identifier">data_b</span><span class="general1-symbol">(</span><span class="general1-number">1</span><span class="general1-symbol">,</span><span class="general1-number">2</span><span class="general1-symbol">)
+</span><span class="general1-identifier">mat</span><span class="general1-space"> </span><span class="general1-reservedword">redim</span><span class="general1-space"> </span><span class="general1-identifier">data_b</span><span class="general1-symbol">(</span><span class="general1-identifier">ns</span><span class="general1-symbol">,</span><span class="general1-number">2</span><span class="general1-symbol">)
+</span><span class="general1-reservedword">for</span><span class="general1-space"> </span><span class="general1-identifier">i</span><span class="general1-symbol">=</span><span class="general1-number">1</span><span class="general1-space"> </span><span class="general1-reservedword">to</span><span class="general1-space"> </span><span class="general1-number">6
+</span><span class="general1-space">  </span><span class="general1-identifier">read</span><span class="general1-space"> </span><span class="general1-identifier">data_b</span><span class="general1-symbol">(</span><span class="general1-identifier">i</span><span class="general1-symbol">,</span><span class="general1-number">1</span><span class="general1-symbol">)
+</span><span class="general1-reservedword">next</span><span class="general1-space"> </span><span class="general1-identifier">i
+</span><span class="general1-reservedword">for</span><span class="general1-space"> </span><span class="general1-identifier">i</span><span class="general1-symbol">=</span><span class="general1-number">1</span><span class="general1-space"> </span><span class="general1-reservedword">to</span><span class="general1-space"> </span><span class="general1-number">6
+</span><span class="general1-space">  </span><span class="general1-identifier">read</span><span class="general1-space"> </span><span class="general1-identifier">data_b</span><span class="general1-symbol">(</span><span class="general1-identifier">i</span><span class="general1-symbol">,</span><span class="general1-number">2</span><span class="general1-symbol">)
+</span><span class="general1-reservedword">next</span><span class="general1-space"> </span><span class="general1-identifier">i
+h1</span><span class="general1-symbol">=</span><span class="general1-number">1
+</span><span class="general1-identifier">print
+print</span><span class="general1-space"> </span><span class="general1-string">&quot; sort based on first column = &quot;</span><span class="general1-symbol">;</span><span class="general1-identifier">h1
+print
+print</span><span class="general1-space"> </span><span class="general1-string">&quot;***************&quot;
+</span><span class="general1-identifier">print</span><span class="general1-space"> </span><span class="general1-string">&quot; before sort =&gt;&quot;
+</span><span class="general1-identifier">print</span><span class="general1-space"> </span><span class="general1-string">&quot;***************&quot;
+</span><span class="general1-identifier">print
+mat</span><span class="general1-space"> </span><span class="general1-identifier">print</span><span class="general1-space"> </span><span class="general1-identifier">data_b
+</span><span class="general1-reservedword">call</span><span class="general1-space"> </span><span class="general1-identifier">sort_qp</span><span class="general1-symbol">(</span><span class="general1-identifier">ns</span><span class="general1-symbol">,</span><span class="general1-identifier">h1</span><span class="general1-symbol">,</span><span class="general1-identifier">data_b</span><span class="general1-symbol">(,))
+</span><span class="general1-identifier">print</span><span class="general1-space"> </span><span class="general1-string">&quot;***************&quot;
+</span><span class="general1-identifier">print</span><span class="general1-space"> </span><span class="general1-string">&quot; after sort  =&gt;&quot;
+</span><span class="general1-identifier">print</span><span class="general1-space"> </span><span class="general1-string">&quot;***************&quot;
+</span><span class="general1-identifier">print
+mat</span><span class="general1-space"> </span><span class="general1-identifier">print</span><span class="general1-space"> </span><span class="general1-identifier">data_b
+data</span><span class="general1-space"> </span><span class="general1-number">2</span><span class="general1-symbol">,</span><span class="general1-number">4</span><span class="general1-symbol">,</span><span class="general1-number">1</span><span class="general1-symbol">,</span><span class="general1-number">6</span><span class="general1-symbol">,</span><span class="general1-number">7</span><span class="general1-symbol">,</span><span class="general1-number">5
+</span><span class="general1-identifier">data</span><span class="general1-space"> </span><span class="general1-number">1</span><span class="general1-symbol">,</span><span class="general1-number">2</span><span class="general1-symbol">,</span><span class="general1-number">3</span><span class="general1-symbol">,</span><span class="general1-number">4</span><span class="general1-symbol">,</span><span class="general1-number">5</span><span class="general1-symbol">,</span><span class="general1-number">6
+</span><span class="general1-reservedword">end
+
+sub</span><span class="general1-space"> </span><span class="general1-identifier">sort_qp</span><span class="general1-symbol">(</span><span class="general1-identifier">ns</span><span class="general1-symbol">,</span><span class="general1-identifier">h1</span><span class="general1-symbol">,</span><span class="general1-identifier">aq</span><span class="general1-symbol">(,))
+!****************************************
+!****************************************
+!</span><span class="general1-space"> </span><span class="general1-identifier">algo</span><span class="general1-symbol">:</span><span class="general1-identifier">bubble</span><span class="general1-space"> </span><span class="general1-identifier">sort
+</span><span class="general1-symbol">!****************************************
+!</span><span class="general1-space"> </span><span class="general1-identifier">small</span><span class="general1-space"> </span><span class="general1-reservedword">to</span><span class="general1-space"> </span><span class="general1-identifier">big
+</span><span class="general1-symbol">!****************************************
+!****************************************
+</span><span class="general1-identifier">flag</span><span class="general1-symbol">=</span><span class="general1-number">0
+</span><span class="general1-reservedword">do
+</span><span class="general1-space">  </span><span class="general1-identifier">flag</span><span class="general1-symbol">=</span><span class="general1-number">1</span><span class="general1-space"> </span><span class="general1-symbol">!</span><span class="general1-space"> </span><span class="general1-identifier">otherwise</span><span class="general1-space"> </span><span class="general1-reservedword">exit</span><span class="general1-space"> </span><span class="general1-reservedword">do
+</span><span class="general1-space">   </span><span class="general1-reservedword">for</span><span class="general1-space"> </span><span class="general1-identifier">i</span><span class="general1-symbol">=</span><span class="general1-number">1</span><span class="general1-space"> </span><span class="general1-reservedword">to</span><span class="general1-space"> </span><span class="general1-identifier">ns</span><span class="general1-symbol">-</span><span class="general1-number">1
+</span><span class="general1-space">      </span><span class="general1-reservedword">if</span><span class="general1-space"> </span><span class="general1-identifier">aq</span><span class="general1-symbol">(</span><span class="general1-identifier">i</span><span class="general1-symbol">,</span><span class="general1-identifier">h1</span><span class="general1-symbol">)&gt;</span><span class="general1-space"> </span><span class="general1-identifier">aq</span><span class="general1-symbol">(</span><span class="general1-identifier">i</span><span class="general1-symbol">+</span><span class="general1-number">1</span><span class="general1-symbol">,</span><span class="general1-identifier">h1</span><span class="general1-symbol">)</span><span class="general1-space"> </span><span class="general1-reservedword">then</span><span class="general1-space">  </span><span class="general1-symbol">!
+</span><span class="general1-space">         </span><span class="general1-reservedword">call</span><span class="general1-space"> </span><span class="general1-identifier">swap</span><span class="general1-symbol">(</span><span class="general1-identifier">aq</span><span class="general1-symbol">(,),</span><span class="general1-identifier">i</span><span class="general1-symbol">,</span><span class="general1-identifier">h1</span><span class="general1-symbol">)
+</span><span class="general1-space">      </span><span class="general1-symbol">!</span><span class="general1-space"> </span><span class="general1-identifier">parallel</span><span class="general1-space"> </span><span class="general1-reservedword">array</span><span class="general1-space"> </span><span class="general1-symbol">(</span><span class="general1-identifier">one</span><span class="general1-space"> </span><span class="general1-identifier">column</span><span class="general1-symbol">=</span><span class="general1-reservedword">second</span><span class="general1-space"> </span><span class="general1-identifier">column</span><span class="general1-symbol">)
+</span><span class="general1-space">         </span><span class="general1-reservedword">call</span><span class="general1-space"> </span><span class="general1-identifier">swap</span><span class="general1-symbol">(</span><span class="general1-identifier">aq</span><span class="general1-symbol">(,),</span><span class="general1-identifier">i</span><span class="general1-symbol">,</span><span class="general1-number">2</span><span class="general1-symbol">)
+</span><span class="general1-space">               </span><span class="general1-identifier">flag</span><span class="general1-symbol">=</span><span class="general1-number">0
+</span><span class="general1-space">      </span><span class="general1-reservedword">end</span><span class="general1-space"> </span><span class="general1-reservedword">if
+</span><span class="general1-space">  </span><span class="general1-reservedword">next</span><span class="general1-space"> </span><span class="general1-identifier">i
+</span><span class="general1-reservedword">loop</span><span class="general1-space"> </span><span class="general1-reservedword">while</span><span class="general1-space"> </span><span class="general1-symbol">(</span><span class="general1-identifier">flag</span><span class="general1-symbol">=</span><span class="general1-number">0</span><span class="general1-symbol">)
+!****************************************
+</span><span class="general1-reservedword">end</span><span class="general1-space"> </span><span class="general1-reservedword">sub
+
+sub</span><span class="general1-space"> </span><span class="general1-identifier">swap</span><span class="general1-symbol">(</span><span class="general1-identifier">aq</span><span class="general1-symbol">(,),</span><span class="general1-identifier">i</span><span class="general1-symbol">,</span><span class="general1-identifier">h1</span><span class="general1-symbol">)
+!===</span><span class="general1-identifier">swap</span><span class="general1-symbol">=======
+</span><span class="general1-space">    </span><span class="general1-identifier">temp</span><span class="general1-space">  </span><span class="general1-symbol">=</span><span class="general1-identifier">aq</span><span class="general1-symbol">(</span><span class="general1-identifier">i</span><span class="general1-symbol">,</span><span class="general1-identifier">h1</span><span class="general1-symbol">)
+</span><span class="general1-space">    </span><span class="general1-identifier">aq</span><span class="general1-symbol">(</span><span class="general1-identifier">i</span><span class="general1-symbol">,</span><span class="general1-identifier">h1</span><span class="general1-symbol">)</span><span class="general1-space">  </span><span class="general1-symbol">=</span><span class="general1-identifier">aq</span><span class="general1-symbol">(</span><span class="general1-identifier">i</span><span class="general1-symbol">+</span><span class="general1-number">1</span><span class="general1-symbol">,</span><span class="general1-identifier">h1</span><span class="general1-symbol">)
+</span><span class="general1-space">    </span><span class="general1-identifier">aq</span><span class="general1-symbol">(</span><span class="general1-identifier">i</span><span class="general1-symbol">+</span><span class="general1-number">1</span><span class="general1-symbol">,</span><span class="general1-identifier">h1</span><span class="general1-symbol">)=</span><span class="general1-identifier">temp
+</span><span class="general1-symbol">!==============
+</span><span class="general1-reservedword">end</span><span class="general1-space"> </span><span class="general1-reservedword">sub
+
+
+</span></span>
+</code></pre>
+<script data-cfasync="false" src="../../../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

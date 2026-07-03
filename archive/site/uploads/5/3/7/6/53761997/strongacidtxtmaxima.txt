@@ -1,0 +1,123 @@
+(%i1) kill(all)$
+ find:general equations for strong acids H(n)A,n=1,2
+ peter.vlasschaert@gmail.com, 25/09/2016
+ calculus ,infinity limit of rational expression.
+(%i1) p1:(5*x^3+x+9)/(3*x^3+5);
+(p1)(5*x^3+x+9)/(3*x^3+5)
+(%i2) limit(p1, x, infinity);
+(%o2) 5/3
+ general equation for (di)protic acid : (n=2,H(n)A)
+(%i3) p2:h^4+k1*h^3+(k1*k2-kw-k1*ca)*h^2-h*(k1*kw+2*k1*k2*ca)-k1*k2*kw=0;
+(p2)-h*(k1*kw+2*ca*k1*k2)-k1*k2*kw+h^2*(-kw+k1*k2-ca*k1)+h^3*k1+h^4=0
+ monoprotic strong acid (n=1,H(n)A)
+[H(+)] = h ,ka(1)=k1 = infinity , ka(2)=k2= 0
+(%i4) p3:ev(lhs(p2),k2=0);
+(p3)-h*k1*kw+h^2*(-kw-ca*k1)+h^3*k1+h^4
+(%i5) p4:limit(lhs(p3/k1), k1, infinity);
+(p4)-h*kw+h^3-ca*h^2
+(%i6) p5:factor(lhs(p4))=0;
+(p5)-h*(kw-h^2+ca*h)=0
+(%i7) p6:part(p5,1,1,2);
+(p6)kw-h^2+ca*h
+ formula : monoprotic strong acid,HA
+(%i8) p7:(-1)*lhs(p6)=0;
+(p7)-kw+h^2-ca*h=0
+ first approximation : monoprotic strong acid HA
+(%i9) ap:ev(lhs(p7),kw=0);
+(ap)h^2-ca*h
+(%i10) ap1:factor(ap);
+(ap1)h*(h-ca)
+(%i11) ap2:part(ap1,2)=0;
+(ap2)h-ca=0
+(%i12) ap3:part(solve(ap2,h),1);
+(ap3)h=ca
+ pH = - log(ca)
+ diprotic strong acid (n=2,H(n)A)
+[H(+)] = h ,ka(1) = k1 = infinity , ka(2)=k2 = infinity,k1*k2 = infinity
+ replace :  k1*k2 by k1*k2 = k, k -> infinity
+(%i13) p8:ratsubst(k, k1*k2, lhs(p2))=0;
+(p8)(-h*k1-k-h^2)*kw+(h^3-ca*h^2)*k1+h^2*k-2*ca*h*k+h^4=0
+ first step : find coef,h^4,h^3...
+(%i18) n1:ev(lhs(p2),h=0);
+n2:coeff(lhs(p2),h^1);
+n3:coeff(lhs(p2),h^2);
+n4:coeff(lhs(p2),h^3);
+n5:coeff(lhs(p2),h^4);
+(n1)-k1*k2*kw
+(n2)-k1*kw-2*ca*k1*k2
+(n3)-kw+k1*k2-ca*k1
+(n4)k1
+(n5)1
+(%i19) p9:n5*h^4+n4*h^3+n3*h^2+n2*h+n1=0;
+(p9)h*(-k1*kw-2*ca*k1*k2)-k1*k2*kw+h^2*(-kw+k1*k2-ca*k1)+h^3*k1+h^4=0
+ replace : coef's => k1*k2 = k divide every coef of h^i,i=0..4 through k
+          n._k  -> * (k1*k2)  
+          n._k1 -> *  k1     -> limit k2-> infinity
+          n._k2 -> *  k2     -> limit k1-> infinity
+          n._c  -> *  1      -> limit k -> infinity
+. = 1,2,3,4,5
+(%i24) p10:ratsubst(k,k1*k2,n1)$
+n1_k:ratsubst(k1*k2,k,(coeff(p10,k)/(k)))*(k1*k2);
+n1_k1:limit(ratsubst(k1*k2,k,(coeff(p10,k1)/(k)))*k1,k2,infinity);
+n1_k2:limit(ratsubst(k1*k2,k,(coeff(p10,k2)/(k)))*k2,k1,infinity);
+n1_c:limit(ev(p10,k1=0,k2=0,k=0)/(k),k,infinity);
+(n1_k)-kw
+(n1_k1)0
+(n1_k2)0
+(n1_c)0
+(%i29) p11:ratsubst(k,k1*k2,n2)$
+n2_k:ratsubst(k1*k2,k,(coeff(p11,k)/(k)))*(k1*k2);
+n2_k1:limit(ratsubst(k1*k2,k,(coeff(p11,k1)/(k)))*k1,k2,infinity);
+n2_k2:limit(ratsubst(k1*k2,k,(coeff(p11,k2)/(k)))*k2,k1,infinity);
+n2_c:limit(ev(p11,k1=0,k2=0,k=0)/(k),k,infinity);
+(n2_k)-2*ca
+(n2_k1)0
+(n2_k2)0
+(n2_c)0
+(%i34) p12:ratsubst(k,k1*k2,n3)$
+n3_k:ratsubst(k1*k2,k,(coeff(p12,k)/(k)))*(k1*k2);
+n3_k1:limit(ratsubst(k1*k2,k,(coeff(p12,k1)/(k)))*k1,k2,infinity);
+n3_k2:limit(ratsubst(k1*k2,k,(coeff(p12,k2)/(k)))*k2,k1,infinity);
+n3_c:limit(ev(p12,k1=0,k2=0,k=0)/(k),k,infinity);
+(n3_k)1
+(n3_k1)0
+(n3_k2)0
+(n3_c)0
+(%i39) p13:ratsubst(k,k1*k2,n4)$
+n4_k:ratsubst(k1*k2,k,(coeff(p13,k)/(k)))*(k1*k2);
+n4_k1:limit(ratsubst(k1*k2,k,(coeff(p13,k1)/(k)))*k1,k2,infinity);
+n4_k2:limit(ratsubst(k1*k2,k,(coeff(p13,k2)/(k)))*k2,k1,infinity);
+n4_c:limit(ev(p13,k1=0,k2=0,k=0)/(k),k,infinity);
+(n4_k)0
+(n4_k1)0
+(n4_k2)0
+(n4_c)0
+(%i44) p14:ratsubst(k,k1*k2,n5)$
+n5_k:ratsubst(k1*k2,k,(coeff(p14,k)/(k)))*(k1*k2);
+n5_k1:limit(ratsubst(k1*k2,k,(coeff(p14,k1)/(k)))*k1,k2,infinity);
+n5_k2:limit(ratsubst(k1*k2,k,(coeff(p14,k2)/(k)))*k2,k1,infinity);
+n5_c:limit(ev(p14,k1=0,k2=0,k=0)/(k),k,infinity);
+(n5_k)0
+(n5_k1)0
+(n5_k2)0
+(n5_c)0
+ formula : diprotic strong acid,H2A
+(%i50) t1:n1_k+n1_k1+n1_k2+n1_c$
+t2:n2_k+n2_k1+n2_k2+n2_c$
+t3:n3_k+n3_k1+n3_k2+n3_c$
+t4:n4_k+n4_k1+n4_k2+n4_c$
+t5:n5_k+n5_k1+n5_k2+n5_c$
+p15:t5*h^4+t4*h^3+t3*h^2+t2*h+t1=0;
+(p15)-kw+h^2-2*ca*h=0
+ first approximation : diprotic strong acid H2A
+(%i51) aq:ev(lhs(p15),kw=0)=0;
+(aq)h^2-2*ca*h=0
+(%i52) aq1:factor(lhs(aq))=0;
+(aq1)h*(h-2*ca)=0
+(%i53) aq2:part(lhs(aq1),2)=0;
+(aq2)h-2*ca=0
+(%i54) aq3:solve(aq2,h);
+(aq3)[h=2*ca]
+(%i55) aq4:part(aq3,1);
+(aq4)h=2*ca
+ pH = - log(2*ca)

@@ -1,0 +1,222 @@
+option nolet
+print "-----------------------------------------------------------------------"
+print " user-pixel coord.:part4 save output of a program (*.bmp)  version 1.0 "
+print " peter.vlasschaert@gmail.com,19/02/2019                                "
+print "-----------------------------------------------------------------------"
+print
+!************************
+! to find aspect ratio =>
+!************************
+ask pixels z1,z2
+asp = z1/z2
+!*************************************************
+! default output : window (activ),only:save, *.bmp
+!*************************************************
+! filename : graphuserpixelpart4finalsub.tru 
+!*******************************************
+! online : help
+! info : https://www.truebasic.com/node/1025
+!*******************************************
+! select : user or pixels  ? 'select case'
+!*******************************************
+input prompt "number : user = 1 , pixel = 2 => ":q
+xmin = -7
+xmax = 7
+ymin = -7
+ymax = 7
+Lx = xmax-xmin
+Ly = ymax-ymin 
+select case q
+case 1
+!*******************************************
+! user coordinates =>
+!*******************************************
+     set window xmin,xmax,ymin,ymax
+print
+print " set window xmin,xmax,ymin,ymax "
+print
+print " asp ( = aspectratio): ";asp
+case else
+!*******************************************
+! pixel coordinates =>
+!*******************************************
+x_pix = z1
+y_pix = z2
+end select
+!*********************************************
+! from : part 1 (choose 'origin of zero ')
+!*********************************************
+! two ways : 1e) left bottom  (Mathematics   )
+!            2e) left top     (book :John.A  )
+!*********************************************
+print
+if q <> 1 then
+input prompt "number : origin  lbottom = 1 ,ltop = 2 => ":qq
+select case qq
+case 1
+   print
+   print " origin :leftbottom "   
+   set window 0,x_pix-1,0,y_pix -1
+print " set window 0,x_pix-1,0,y_pix -1 "
+print
+print " asp ( = aspectratio): ";asp
+print
+case else
+   print
+   print " origin :lefttop    "  
+   set window 0,x_pix-1,y_pix -1,0
+print " set window 0,x_pix-1,y_pix -1,0 "
+print
+print " asp ( = aspectratio): ";asp
+print
+end select
+end if
+print
+print "--------------------------"
+print " draw a function =>       "
+print "--------------------------"
+print
+print "--------------------------------------------"
+print " How to save pixel window  => funcpict4.bmp "
+print "--------------------------------------------"
+print
+!********************************************************************
+! draw F(x) => circle (parametric plot),cos(x)
+!********************************************************************
+print " x = rr*cos(theta);y = rr*sin(theta), 'red '| cos(x) 'green' "
+!********************************************************************
+! < user coordinates > ' only graphics '  ( only when q = 1)
+!********************************************************************
+!*************************************
+! parametric plot of circle "red"
+!*************************************
+set color "red"
+rr  = 1           ! radius circle
+val = 0.01        ! step value
+!*************************************
+! need have same axis for both x and y
+!*************************************
+for theta = 0 to 6.28 step val
+!*******************************
+! parametric equation of circle
+!*******************************
+     x = rr*cos(theta)
+     y = rr*sin(theta)
+ plot points :x,y*asp
+next theta
+!******************************
+! F(x) => example : cos(x)
+!******************************
+set color "green"
+for  x = xmin to xmax step val
+     y = cos(x) 
+     plot x,y*asp
+next x
+!******************************
+! draw x-axis and y-axis
+!******************************
+set color "blue"
+call draw_xas_user(xmin,xmax)
+call draw_yas_user(ymin,ymax)
+!***********************************
+! box :  xl < x < xr , yb < y < yt *
+!***********************************
+! corrected with asp 'see above
+box keep 0-rr,0+rr,(0-rr)*asp,(0+rr)*asp in kep1$
+!*************************************************
+! draw box " circle + some parts of the function "
+!*************************************************
+cor = 0.5 ! corrected position txt
+!*************************************************
+! math : first quadrant (x>0,y>0), also here.
+!*************************************************
+BOX SHOW kep1$ at 1,1 ! Draw at new position circle
+set color "black"
+PLOT TEXT, at 1+cor,1-cor : "new circle"
+!********************************************************************
+! < user coordinates > ' end user coordinates '
+!********************************************************************
+
+!********************************************************************
+! How to save canvas as a picture. (funcpict.bmp)
+!********************************************************************
+if q = 1 then
+   call save_userfullwin(xmin,xmax,ymin,ymax,keep$)
+else 
+     if qq = 1 then 
+
+        call save_pixfullwin_math(x_pix,y_pix,keep$) 
+        print
+        print " no graphics "
+
+     else
+
+        call save_pixfullwin_JA(x_pix,y_pix,keep$)
+        print
+        print " no graphics "
+
+     end if
+end if
+!------------------------------------------------------------------------,
+!  Create a filename. Don't need an extention; the SUB will put ".bmp"
+!------------------------------------------------------------------------,
+ff$="C:\download\funcpict4.bmp" ! make sure this is a valid path...
+CALL Write_Image("MS BMP", keep$, ff$) ! or you can use this 
+print
+end
+
+sub save_pixfullwin_math(z11,z22,kep$)
+! <help> 
+! z11 : number of pixels x-direction , start :0 to z11-1,integer >0
+! z22 : number of pixels y-direction , start :0 to z22-1,integer >0
+! picture hold string : kep$
+!************************************************
+box keep 0, z11-1, 0, z22-1 in kep$ ! kep$ memory
+end sub
+
+sub save_pixfullwin_JA(z11,z22,kep$)
+! <help> 
+! z11 : number of pixels x-direction , start :0 to z11-1,integer >0
+! z22 : number of pixels y-direction , start :0 to z22-1,integer >0
+! picture hold string : kep$
+!************************************************
+box keep 0, z11-1, z22-1, 0 in kep$ ! kep$ memory
+end sub
+
+
+sub save_userfullwin(x_min,x_max,y_min,y_max,kep$)
+! <help>
+! x-direction : x_min < =  x < = x_max , float
+! y-direction : y_min < =  x < = x_max , float
+! picture hold string : kep$
+!***************************************************
+box keep x_min, x_max, y_min, y_max in kep$ ! kep$ memory
+end sub
+
+
+sub draw_xas_user(x_min,x_max)
+! <help>
+! x-direction : x_min < =  x < = x_max , float
+! picture hold string : kep$
+!***************************************************
+pxa = 0
+pxb = x_min
+pxc = 0
+pxd = x_max
+plot lines : pxa,pxb ;pxc,pxd
+end sub
+
+sub draw_yas_user(y_min,y_max)
+! <help>
+! y-direction : y_min < =  x < = x_max , float
+! picture hold string : kep$
+!***************************************************
+pxaa = y_min
+pxbb = 0
+pxcc = y_max
+pxdd = 0
+plot lines : pxaa,pxbb ;pxcc,pxdd
+end sub
+
+
+

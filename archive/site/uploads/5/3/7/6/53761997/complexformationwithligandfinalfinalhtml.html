@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>COMPLEXFORMATIONWITHLIGANDFINALFINAL.TRU</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="generator" content="Fatesoft.com HTML exporter" />
+<style type="text/css">
+<!--
+body { color: #000000; background-color: #FFFFFF; }
+.vb1-comment { color: #008080; font-style: italic; }
+.vb1-identifier { color: #000080; }
+.vb1-number { color: #FF0000; }
+.vb1-reservedword { color: #0000FF; font-weight: bold; }
+.vb1-space { color: #FFFFFF; }
+.vb1-string { color: #800080; }
+.vb1-symbol { color: #FF00FF; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<code><span style="font: 10pt Courier New;"><span class="vb1-reservedword">option</span><span class="vb1-space"> </span><span class="vb1-identifier">nolet
+</span><span class="vb1-reservedword">print
+</span><span class="vb1-identifier">!</span><span class="vb1-space"> </span><span class="vb1-identifier">serie</span><span class="vb1-space"> </span><span class="vb1-symbol">:</span><span class="vb1-space"> </span><span class="vb1-identifier">analytical</span><span class="vb1-space"> </span><span class="vb1-identifier">chemistry
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;************************************************&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;* find : (S)olubility = S 'AgBr(solid)'        *&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;* calculation : complex formation with a ligand*&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;* added  to the solid.                         *&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;* AgBr(solid) solved with NH(3)='ligand'= X    *&quot;</span><span class="vb1-space"> 
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;  M(p)A(q):example M = Ag(+),A = Br(-),p=1,q=1 *&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;* example: AgBr(solid)    = Ag(+)+Br(-)   Ksp  *&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;        Ag(+)+NH(3)       = Ag(NH(3))(+)     k1*&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;        Ag(NH(3))(+)+NH(3)= Ag(NH(3))(2)(+)  k2*&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; general:  k1,k2,k3 to kn     (version 1.0)    *&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;************************************************&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;------------------------------------------------&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; <a href="https://petervlaschemeng.weebly.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2050455445520e564c415343484145525460474d41494c0e434f4d">[email&#160;protected]</a> ,10/09/2016         &quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;------------------------------------------------&quot;
+</span><span class="vb1-identifier">!</span><span class="vb1-space"> </span><span class="vb1-identifier">filename</span><span class="vb1-space"> </span><span class="vb1-symbol">:</span><span class="vb1-identifier">complexformationwithligandfinalfinal</span><span class="vb1-symbol">.</span><span class="vb1-identifier">tru
+</span><span class="vb1-reservedword">print
+print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;***************************************************&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;* M =&gt; beta_c(0) ?                                *&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; MX(+) = k1*[M(+)][X],[MX(2)(+)] = k2*[MX(+)][x]  *&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; beta_c(0) = [M(+)]/([M(+)]+[MX(+)]+[MX(2)(+)])   *&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; example : k1,k2                                  *&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; beta_c(0) = 1/(1+k1*[X]+k1*k2*[x]^2)             *&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;***************************************************&quot;
+</span><span class="vb1-reservedword">print
+print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;********************************************************&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; general : k1,k2,...kn  'n formations complexes with X'*&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;beta_c(0) = 1/(1+k1*[X]+k1*k2*[x]^2+..+k1*k2..kn*[x]^n)*&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;********************************************************&quot;
+</span><span class="vb1-reservedword">print
+print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;*********&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; given = &quot;</span><span class="vb1-space">  
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;*********&quot;
+</span><span class="vb1-reservedword">print
+</span><span class="vb1-identifier">Ksp</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-number">5.25E</span><span class="vb1-symbol">-</span><span class="vb1-number">13</span><span class="vb1-space">  </span><span class="vb1-identifier">!</span><span class="vb1-space"> </span><span class="vb1-identifier">solubility</span><span class="vb1-space"> </span><span class="vb1-identifier">product</span><span class="vb1-space"> </span><span class="vb1-identifier">M</span><span class="vb1-symbol">(</span><span class="vb1-identifier">p</span><span class="vb1-symbol">)</span><span class="vb1-identifier">A</span><span class="vb1-symbol">(</span><span class="vb1-identifier">q</span><span class="vb1-symbol">)</span><span class="vb1-space"> </span><span class="vb1-symbol">(</span><span class="vb1-identifier">solid</span><span class="vb1-symbol">)
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; Ksp = solubility product(equilibrium) = &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">Ksp
+</span><span class="vb1-reservedword">print
+print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;!************************************************!&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;! examples : AgBr =&gt; p=1,q=1,Ag(2)CrO4 =&gt; p=2,q=1!&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;!************************************************!&quot;
+</span><span class="vb1-identifier">p</span><span class="vb1-symbol">=</span><span class="vb1-number">1
+</span><span class="vb1-identifier">q</span><span class="vb1-symbol">=</span><span class="vb1-number">1
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; M(p)A(q), p = &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">p</span><span class="vb1-symbol">;</span><span class="vb1-string">&quot; q = &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">q
+!</span><span class="vb1-space"> </span><span class="vb1-identifier">k1</span><span class="vb1-symbol">,</span><span class="vb1-identifier">k2</span><span class="vb1-symbol">.....</span><span class="vb1-identifier">kn</span><span class="vb1-space"> </span><span class="vb1-symbol">=&gt;</span><span class="vb1-space"> </span><span class="vb1-identifier">formation</span><span class="vb1-space"> </span><span class="vb1-identifier">constant</span><span class="vb1-space"> </span><span class="vb1-reservedword">for</span><span class="vb1-space"> </span><span class="vb1-identifier">complex
+number_ligand</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-number">2
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; number_ligand = &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">number_ligand
+</span><span class="vb1-reservedword">dim</span><span class="vb1-space"> </span><span class="vb1-identifier">k</span><span class="vb1-symbol">(</span><span class="vb1-number">1</span><span class="vb1-symbol">)
+</span><span class="vb1-identifier">mat</span><span class="vb1-space"> </span><span class="vb1-reservedword">redim</span><span class="vb1-space"> </span><span class="vb1-identifier">k</span><span class="vb1-symbol">(</span><span class="vb1-identifier">number_ligand</span><span class="vb1-symbol">)
+</span><span class="vb1-reservedword">for</span><span class="vb1-space"> </span><span class="vb1-identifier">i</span><span class="vb1-symbol">=</span><span class="vb1-number">1</span><span class="vb1-space"> </span><span class="vb1-reservedword">to</span><span class="vb1-space"> </span><span class="vb1-identifier">number_ligand
+</span><span class="vb1-space">  </span><span class="vb1-identifier">read</span><span class="vb1-space"> </span><span class="vb1-identifier">k</span><span class="vb1-symbol">(</span><span class="vb1-identifier">i</span><span class="vb1-symbol">)
+</span><span class="vb1-reservedword">next</span><span class="vb1-space"> </span><span class="vb1-identifier">i
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;*****************************************&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;* equilibrium constant for the complexes*&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;*****************************************&quot;
+</span><span class="vb1-reservedword">for</span><span class="vb1-space"> </span><span class="vb1-identifier">i</span><span class="vb1-symbol">=</span><span class="vb1-number">1</span><span class="vb1-space"> </span><span class="vb1-reservedword">to</span><span class="vb1-space"> </span><span class="vb1-identifier">number_ligand
+</span><span class="vb1-space">  </span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;k(&quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">i</span><span class="vb1-symbol">;</span><span class="vb1-string">&quot;)= &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">k</span><span class="vb1-symbol">(</span><span class="vb1-identifier">i</span><span class="vb1-symbol">)
+</span><span class="vb1-reservedword">next</span><span class="vb1-space"> </span><span class="vb1-identifier">i
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;*******************************&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;*ligand 'x' conc in M: X=NH(3)*&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;*******************************&quot;
+</span><span class="vb1-identifier">x</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-number">0.1
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; conc X in 'M' = &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">x</span><span class="vb1-symbol">;</span><span class="vb1-string">&quot; M&quot;
+</span><span class="vb1-reservedword">print
+print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;**********&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; result = &quot;</span><span class="vb1-space">  
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;**********&quot;
+</span><span class="vb1-reservedword">print
+call</span><span class="vb1-space"> </span><span class="vb1-identifier">beta_complex_c0</span><span class="vb1-symbol">(</span><span class="vb1-identifier">number_ligand</span><span class="vb1-symbol">,</span><span class="vb1-identifier">k</span><span class="vb1-symbol">(),</span><span class="vb1-identifier">x</span><span class="vb1-symbol">,</span><span class="vb1-identifier">beta_c0</span><span class="vb1-symbol">)
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; beta0 'beta_c(0)'  = &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">beta_c0
+</span><span class="vb1-reservedword">call</span><span class="vb1-space"> </span><span class="vb1-identifier">solubility</span><span class="vb1-symbol">(</span><span class="vb1-identifier">Ksp</span><span class="vb1-symbol">,</span><span class="vb1-identifier">p</span><span class="vb1-symbol">,</span><span class="vb1-identifier">q</span><span class="vb1-symbol">,</span><span class="vb1-identifier">beta_c0</span><span class="vb1-symbol">,</span><span class="vb1-identifier">s</span><span class="vb1-symbol">)
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; S = ' Solubility of M(p)A(q)(solid) ' =&gt; &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">s</span><span class="vb1-symbol">;</span><span class="vb1-string">&quot; M&quot;
+</span><span class="vb1-identifier">data</span><span class="vb1-space"> </span><span class="vb1-number">1585</span><span class="vb1-symbol">,</span><span class="vb1-number">6761
+</span><span class="vb1-reservedword">end
+
+sub</span><span class="vb1-space"> </span><span class="vb1-identifier">solubility</span><span class="vb1-symbol">(</span><span class="vb1-identifier">Ksp</span><span class="vb1-symbol">,</span><span class="vb1-identifier">p</span><span class="vb1-symbol">,</span><span class="vb1-identifier">q</span><span class="vb1-symbol">,</span><span class="vb1-identifier">beta_c0</span><span class="vb1-symbol">,</span><span class="vb1-identifier">s</span><span class="vb1-symbol">)
+</span><span class="vb1-identifier">tel</span><span class="vb1-space">  </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-identifier">ksp
+noem</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-identifier">p</span><span class="vb1-symbol">^</span><span class="vb1-identifier">p</span><span class="vb1-symbol">*</span><span class="vb1-identifier">q</span><span class="vb1-symbol">^</span><span class="vb1-identifier">q</span><span class="vb1-symbol">*(</span><span class="vb1-identifier">beta_c0</span><span class="vb1-symbol">)^</span><span class="vb1-identifier">p
+ratio</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-identifier">tel</span><span class="vb1-symbol">/</span><span class="vb1-identifier">noem
+root</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-identifier">p</span><span class="vb1-symbol">+</span><span class="vb1-identifier">q
+s</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-symbol">(</span><span class="vb1-identifier">ratio</span><span class="vb1-symbol">)^(</span><span class="vb1-number">1</span><span class="vb1-symbol">/</span><span class="vb1-identifier">root</span><span class="vb1-symbol">)
+</span><span class="vb1-reservedword">end</span><span class="vb1-space"> </span><span class="vb1-reservedword">sub
+
+sub</span><span class="vb1-space"> </span><span class="vb1-identifier">beta_complex_c0</span><span class="vb1-symbol">(</span><span class="vb1-identifier">number_ligand</span><span class="vb1-symbol">,</span><span class="vb1-identifier">k</span><span class="vb1-symbol">(),</span><span class="vb1-identifier">x</span><span class="vb1-symbol">,</span><span class="vb1-identifier">beta_c0</span><span class="vb1-symbol">)
+</span><span class="vb1-identifier">w</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-identifier">number_ligand</span><span class="vb1-symbol">+</span><span class="vb1-number">1
+</span><span class="vb1-identifier">som</span><span class="vb1-space">  </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-number">1
+</span><span class="vb1-reservedword">for</span><span class="vb1-space"> </span><span class="vb1-identifier">i</span><span class="vb1-symbol">=</span><span class="vb1-number">1</span><span class="vb1-space"> </span><span class="vb1-reservedword">to</span><span class="vb1-space"> </span><span class="vb1-identifier">w</span><span class="vb1-symbol">-</span><span class="vb1-number">1
+</span><span class="vb1-space"> </span><span class="vb1-identifier">prod</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-number">1
+</span><span class="vb1-space"> </span><span class="vb1-reservedword">for</span><span class="vb1-space"> </span><span class="vb1-identifier">j</span><span class="vb1-symbol">=</span><span class="vb1-number">1</span><span class="vb1-space"> </span><span class="vb1-reservedword">to</span><span class="vb1-space"> </span><span class="vb1-identifier">i</span><span class="vb1-space">  
+   </span><span class="vb1-identifier">prod</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-identifier">prod</span><span class="vb1-space"> </span><span class="vb1-symbol">*</span><span class="vb1-space"> </span><span class="vb1-identifier">x</span><span class="vb1-symbol">^(</span><span class="vb1-identifier">w</span><span class="vb1-symbol">-</span><span class="vb1-identifier">i</span><span class="vb1-symbol">)*</span><span class="vb1-identifier">k</span><span class="vb1-symbol">(</span><span class="vb1-identifier">j</span><span class="vb1-symbol">)</span><span class="vb1-space">  
+  </span><span class="vb1-identifier">!</span><span class="vb1-space"> </span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-identifier">i</span><span class="vb1-symbol">,</span><span class="vb1-identifier">j</span><span class="vb1-symbol">,</span><span class="vb1-identifier">prod
+</span><span class="vb1-space"> </span><span class="vb1-reservedword">next</span><span class="vb1-space"> </span><span class="vb1-identifier">j
+som</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-identifier">som</span><span class="vb1-space"> </span><span class="vb1-symbol">+</span><span class="vb1-space"> </span><span class="vb1-identifier">prod
+</span><span class="vb1-reservedword">next</span><span class="vb1-space"> </span><span class="vb1-identifier">i
+beta_c0</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-number">1</span><span class="vb1-symbol">/</span><span class="vb1-identifier">som</span><span class="vb1-space"> 
+</span><span class="vb1-reservedword">end</span><span class="vb1-space"> </span><span class="vb1-reservedword">sub
+
+</span></span>
+</code></pre>
+<script data-cfasync="false" src="../../../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

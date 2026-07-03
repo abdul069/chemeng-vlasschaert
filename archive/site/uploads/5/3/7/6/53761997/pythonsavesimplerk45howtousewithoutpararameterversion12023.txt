@@ -1,0 +1,50 @@
+import numpy as np
+
+def rk45(f, y0, t0, t_end, h):
+    """
+    Solves the ODE y'(t) = f(t, y(t)) with initial condition y(t0) = y0 using the RK45 method.
+    The solution is returned at the time t_end with a step size of h.
+    """
+    t = t0
+    y = y0
+    solutions = [y] # all output during simulation
+    while t < t_end:
+        k1 = h * f(t, y)
+        k2 = h * f(t + h/4, y + k1/4)
+        k3 = h * f(t + 3*h/8, y + 3*k1/32 + 9*k2/32)
+        k4 = h * f(t + 12*h/13, y + 1932*k1/2197 - 7200*k2/2197 + 7296*k3/2197)
+        k5 = h * f(t + h, y + 439*k1/216 - 8*k2 + 3680*k3/513 - 845*k4/4104)
+        k6 = h * f(t + h/2, y - 8*k1/27 + 2*k2 - 3544*k3/2565 + 1859*k4/4104 - 11*k5/40)
+        
+        y_next = y + 25*k1/216 + 1408*k3/2565 + 2197*k4/4104 - k5/5
+        t += h
+        y = y_next
+        solutions.append(y) # all output during simulation
+    return solutions
+
+
+def f(t, y):
+    return t * y
+
+y0 = 1
+t0 = 0
+t_end = 1
+h = 0.1
+
+import matplotlib.pyplot as plt
+
+solutions = rk45(f, y0, t0, t_end, h)
+print("dim : solutions = ",len(solutions))
+# Create a list of time points
+times = np.arange(t0, t_end+2*h, h)
+print("dim : times  =    ",len(times))
+# Plot the solutions
+plt.plot(times, solutions)
+
+# Add labels and title
+plt.xlabel('Time')
+plt.ylabel('Solution')
+plt.title('RK45 solutions')
+
+# Show the plot
+plt.show()

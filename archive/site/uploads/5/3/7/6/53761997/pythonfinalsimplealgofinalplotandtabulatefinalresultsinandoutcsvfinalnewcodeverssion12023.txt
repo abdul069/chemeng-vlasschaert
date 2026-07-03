@@ -1,0 +1,159 @@
+import numpy as np
+import matplotlib.pyplot as plt
+print("--------------------------------------------------------------------------------------------------- ")
+print("python: fvm : example 3:1d momentum equation, 1d continuity equation,pipeflow,new code,version 1.0  ")
+print(" peter.vlasschaert@gmail.com,13/02/2023                                                             ")
+print("----------------------------------------------------------------------------------------------------")
+print(" new code :more easy to understand,write the output csv file (=results.csv)                         ")
+print("--------------------------------------------------------------------------------------------------- ")
+#---------------------------------------------------------------------------
+# fig :
+#---------------------------------------------------------------------------
+#            uA      uB
+# ->         ->      ->
+#  -------° ------°-------°
+#         1   A   2   B   3
+# u=0     p1      p2      p3
+#---------------------------------------------------------------------------
+# ref :https://www.youtube.com/watch?v=xPnzJ4gt9eE
+# explain : => matlab code.
+#---------------------------------------------------------------------------
+# fig : {uA,uB},pi, i=1,2,3
+#---------------------------------------------------------------------------
+# my website
+# new:10/02/2023:maxima   : fvm : example 3:1d momentum equation,
+#                                 1d continuity equation,pipeflow,version 1.0
+# youtube : https://www.youtube.com/watch?v=N85HmIIgm4s&t=1333s
+# download  (maxima,code)       :maximafvmexample3moment1dcont1dversion12023
+#---------------------------------------------------------------------------
+rho = 1 # density
+AA = 3  # cross-section
+AB = 1  # cross-section
+p1 = 28 # pressure given, no correction
+p3 = 0  # pressure given, no correction
+alpha = 0.5  # relaxation factor (under relaxation)
+# why pressure difference is higher.
+nu = 100 # number of iterations
+lp = 200 # number of loops
+# initial guesses for uA and uB and p2
+uA = np.array([5/3])
+uB = np.array([5])
+p2 = 12
+
+# initialize matrix to store results
+results = np.zeros((nu, 4))
+counter = 0 # reduce matrix :results 
+# start overall loop, until convergence
+# F = rho*u*cross-section
+for loop in range(lp):
+    uA_old = uA
+    uB_old = uB
+    for i in range(1, nu):
+        # maxima code
+        # u[A]·F2=-A(A)·(p2-p1)
+        uA_new = (p1 - p2) * AA / (rho * uA_old * AA)
+        # u[B]·F3-u[A]·F2=-A(B)·(p3-p2)
+        uB_new = ((rho * uA_old * AA) * uA_old + (p2 - p3) * AB) / (rho * uB_old * AB)
+        uA_old = uA_old + (uA_new - uA_old) * alpha 
+        uB_old = uB_old + (uB_new - uB_old) * alpha
+        if (abs(uB_old - uB) + abs(uA_old - uA)).all() < 0.001:
+            break
+    uA = uA_old
+    uB = uB_old
+    # check convergence F(A)=F(B),F = rho*u*cross-section
+    if np.all(abs(rho * uA * AA - rho * uB * AB) < 0.01):
+        break
+    # use velocities to get pressure corrections
+    dA = (rho * uA)**(-1)
+    dB = (rho * uB)**(-1)
+    # pressure correction equation
+    # maxima
+    # p2^∄=(A(B)·u[B]^°-A(A)·u[A]^°)/(A(B)·d[B]+A(A)·d[A])
+    p2p = (uA * AA - uB * AB) / (dA * AA + dB * AB)
+    # p2 = p2 + p2p * alpha
+    p2 += p2p * alpha
+    # correction for velocities, given values p = 0 here
+    # maxima
+    # uA = uA + dA * (p1 - p2)
+    uA = uA + dA * (0 - p2p)
+    # maxima
+    # uB = uB + dB * (p2 - p3)
+    uB = uB + dB * (p2p - 0)
+# ----------------------------------------------------------    
+# how find what to use : dA & dB =dx
+# ----------------------------------------------------------
+# =>  units :
+#-----------------------------------------------------------
+# [m/s] = dx*[N/m^2] = dx*[(kg*m/s^2)/m^2] =dx*[kg/(m*s^2)]
+# 1/dx =[kg/(m^2*s)] =[u*rho] = [m/s*kg/m^3] = [kg/(m^2*s)]
+#-----------------------------------------------------------
+# x=A,B
+#----------------------------------------------------------
+    # store results in matrix
+    counter += 1
+    results[loop, 0] = loop
+    results[loop, 1] = uA[0]
+    results[loop, 2] = uB[0]
+    results[loop, 3] = p2
+print(results)    
+# remove values after cvg     
+results = results[:counter, :]
+#---------------------------------------
+# how to read them csv file ,in ,out
+#---------------------------------------
+np.savetxt("results.csv", results, delimiter=",")
+loaded_results = np.loadtxt("results.csv", delimiter=",")
+print(loaded_results)
+##-----------------------------------------------------
+## Remove the extra dimension to hold only [[],[],...]
+##-----------------------------------------------------
+# Write the results array to a CSV file
+np.savetxt("results.csv", results, delimiter=",")
+# Read the results from the CSV file
+results1 = np.loadtxt("results.csv", delimiter=",")
+results1 = results1.tolist()
+print(results1)
+#--------------------------------------
+# tabulate
+#--------------------------------------
+from tabulate import tabulate
+
+# Create the table of results
+header = ["Iteration", "uA", "uB", "p2"]
+table = []
+for i in range(len(results)):
+    table.append([int(results[i, 0]), results[i, 1], results[i, 2], results[i, 3]])
+
+print(tabulate(table, headers=header, tablefmt='plain'))
+#-----------------------------------------------
+# Plot the results
+#-----------------------------------------------
+fig, axs = plt.subplots(3, 1, figsize=(10, 15))
+
+# Plot uA
+# axs[0].plot(results[:, 0], results[:, 1], '-o', color='red')
+axs[0].set_xlabel('Iteration')
+axs[0].set_ylabel('uA')
+axs[0].scatter(results[:, 0], results[:, 1], color='red', zorder=10)
+axs[0].plot(results[:, 0], results[:, 1], '-', color='blue', zorder=1)
+#----------------------------------
+# axs[?].set_ylim(bottom=0, top=10)
+# i=1 ,uA; i=2,uB ; i=3,p2
+#lower_limit = np.min(results[:, i])
+#upper_limit = np.max(results[:, i])
+# reason : for i ,see : table above.
+#-----------------------------------
+# Plot uB
+axs[1].plot(results[:, 0], results[:, 2], '-o')
+axs[1].set_xlabel('Iteration')
+axs[1].set_ylabel('uB')
+axs[1].scatter(results[:, 0], results[:, 2], color='red', zorder=10)
+axs[1].plot(results[:, 0], results[:, 2], '-', color='blue', zorder=1)
+# Plot p2
+axs[2].plot(results[:, 0], results[:, 3], '-o')
+axs[2].set_xlabel('Iteration')
+axs[2].set_ylabel('p2')
+axs[2].scatter(results[:, 0], results[:, 3], color='red', zorder=10)
+axs[2].plot(results[:, 0], results[:, 3], '-', color='blue', zorder=1)
+plt.tight_layout()
+plt.show()

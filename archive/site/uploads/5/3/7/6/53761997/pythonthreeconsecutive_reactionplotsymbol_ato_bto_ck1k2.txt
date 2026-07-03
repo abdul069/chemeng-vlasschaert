@@ -1,0 +1,32 @@
+import matplotlib.pyplot as plt
+import numpy as np
+#  maxima : consective reaction ,A→B→C;k1,k2.version 1.0
+# peter.vlasschaert@gmail.com,03/01/2023
+# Constants
+A0 = 1
+k1 = 0.5
+k2 = 1
+
+# Time points
+t = np.linspace(0, 5, 100)
+
+# Function A
+def A(t):
+    return A0 * np.exp(-k1*t)
+
+# Function B
+def B(t):
+    return (k1*A0*(np.exp(k2*t) - np.exp(k1*t))*np.exp(-k2*t - k1*t))/(k2 - k1)
+
+# Function C
+def C(t):
+    return (A0*np.exp(-k2*t - k1*t)*(k2*np.exp(k2*t + k1*t) - k1*np.exp(k2*t + k1*t) - k2*np.exp(k2*t) + k1*np.exp(k1*t)))/(k2 - k1)
+print("A0 =",A0,"k1=",k1,"k2=",k2)
+# Plot the functions
+plt.plot(t, A(t), label='A(t),A0=1')
+plt.plot(t, B(t), label='B(t),B0=0')
+plt.plot(t, C(t), label='C(t),C0=0')
+
+# Add a legend and show the plot
+plt.legend()
+plt.show()

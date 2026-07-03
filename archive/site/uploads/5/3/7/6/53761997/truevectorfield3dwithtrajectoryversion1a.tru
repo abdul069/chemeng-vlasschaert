@@ -1,0 +1,139 @@
+option nolet
+!+++++++++++++++++++++++++++++
+! coordinates of the window  +
+!+++++++++++++++++++++++++++++
+! x values window
+xmax = 7
+xmin = -xmax
+! y values window
+ymax = 7
+ymin = -ymax
+set window xmin,xmax,ymin,ymax
+!+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+!+ correction 'total': dx=dx0=f1(x,y,z) -> dy=dy0=f2(x,y,z)-> dz=dz0=f3(x,y,z) +
+!+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+! info programma,title,author,time                                             +
+!+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+set color "blue"
+plot text,at xmin +.5,ymax -.5:"vector field 3d with trajectory,version 1.0a"
+plot text,at xmin+.5,ymax - .75:"peter.vlasschaert@gmail.com,11/10/2020"
+set color "black"
+!+++++++++++++++++++++++++++++++++++++++++++
+! general parameter , compass needles
+!+++++++++++++++++++++++++++++++++++++++++++
+w =0.05   !( dimension compass needle )
+!+++++++++++++++++++++++++++++++++++++++++++
+! general parameter , differential equations
+!+++++++++++++++++++++++++++++++++++++++++++
+a=2
+b=1
+c=-3
+d=4
+!+++++++++++++++++++++++++++++++++++++++++++
+xm =4.5 ! x-range
+xstep = .25
+ym =4.5 ! y-yrange
+ystep = .25
+zm =4.5 ! z-range
+zstep = 2
+!++++++++++++++++++++++++++++++++++++++++++
+for z=-zm to zm step  zstep
+ for x=-xm to xm step  xstep
+  for y=-ym to ym step ystep
+!++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+! system three differential equations ,'example:see parameters above'
+!++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  dx = a*x+b*y*x
+  dy = c*x+d*y-z
+  dz = 2*z
+!++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   ds=sqr(dx^2+dy^2+dz^2)
+  ma=dx/ds
+  mb=dy/ds
+  mc=dz/ds
+!++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   call cor2to3(x,y,z,xs,ys)
+   call cor2to3(ma,mb,mc,nx,ny)
+!+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+! compass needle are tangent to curve,(dy/ds)/(dx/ds) = dy/dx
+!++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ if ds>0 then plot xs-w*nx,ys-w*ny;xs+w*nx,ys+w*ny
+    next y
+  next x
+next z
+plot ! disconnect
+!  z=0,rectangle, 'black'
+call cor2to3(xm+3,ym+3,0,xs,ys)
+plot -xs,0;xs,0
+plot 0,-ys;0,ys
+plot -xs,ys;xs,-ys
+plot -xs,-ys;xs,-ys
+plot xs,-ys;xs,ys
+plot xs,-ys;-xs,ys
+plot xs,ys;xs,-ys
+plot xs,ys;-xs,-ys
+plot xs,ys;-xs,ys
+plot -xs,-ys;-xs,ys
+set color "red"
+!+++++++++++++++++++++++++++++
+! conversion 3d to 2d
+!++++++++++++++++++++++++++++++
+! axis z,1e) + axis ,2e) - axis
+plot 0,0;0,zm+2
+PLOT TEXT, AT 0.25,zm+1:"z axis"
+plot 0,0;0,-zm-2
+set color "green"
+! axis x,1e) + axis ,2e) - axis
+plot 0,0;-xm/2-2,-xm/2-2
+PLOT TEXT, AT +xm/2+2,+xm/2+2.1:"x axis"
+plot 0,0;+xm/2+2,+xm/2+2
+set color "blue"
+! axis y,1e) + axis ,2e) - axis
+plot 0,0;ym+2,0
+PLOT TEXT, AT ym+2,0+0.2:"y axis"
+plot 0,0;-ym-2,0
+! origin of graphics
+! number for simple color 1-16
+set color 13
+PLOT TEXT, AT 0,0+0.1:"(0,0,0)"
+!******************************************
+! see :https://www.truebasic.com/node/1075
+plot ! Stop connecting points
+!******************************************
+! trajectory file 3d to 2d
+nn=10
+x0=3  ! initial values trajectory
+y0=3
+z0=2
+set color 4 
+
+for i=1 to nn step 0.05
+
+  dx0 = a*x0+b*y0*x0
+  dy0 = c*x0+d*y0-z0
+  dz0 = 2*z0
+ ds0=sqr(dx0^2+dy0^2+dz0^2)
+m1=dx0/ds0
+m2=dy0/ds0
+m3=dz0/ds0
+x1=10*(x0+w*m1)/10! notation correction
+y1=10*(y0+w*m2)/10! notation correction
+z1=10*(z0+w*m3)/10! notation correction
+call cor2to3(x0,y0,z0,xx0s,yy0s)
+call cor2to3(x1,y1,z1,xxs,yys)
+call cor2to3(m1,m2,m3,mx,my)
+plot xx0s+w*mx,yy0s+w*my;xxs+w*mx,yys+w*my
+x0=x1
+y0=y1
+z0=z1
+next i
+end
+
+!++++++++++++++++++++++++++++++++++++++++++++++++
+!3d to 2d:world coordinates to screen coordinates
+!++++++++++++++++++++++++++++++++++++++++++++++++
+
+sub cor2to3(x11,y11,z11,xas,yas)
+xas=y11-x11/2
+yas=z11-x11/2
+end sub

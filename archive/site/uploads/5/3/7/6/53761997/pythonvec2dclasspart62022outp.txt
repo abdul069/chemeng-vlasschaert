@@ -1,0 +1,53 @@
+--------------------------------------
+ input != output -> see:part 5,same  
+--------------------------------------
+                                      
+.................................
+output : vec2d class computation 
+.................................
+ x,y component : vec2d(x,y)      
+x coordinate vec2d(2,3) =  2
+y coordinate vec2d(2,3) =  3
+print : v1=vec2d(2,3)      
+.................................
+[2, 3]
+ substraction : vec2d(5,3)-vec2d(3,1) =
+.......................................
+vec2d(5,3)-vec2d(3,1) = [2, 2]
+ combination : vec2d(5,3)-2*vec2d(3,1) =
+........................................
+vec2d(5,3)-2*vec2d(3,1) = [-1, 1]
+ output : is not list = 
+ v3=vec2d(5,3)-2*vec2d(3,1)  [-1, 1]
+<class '__main__.vec2d'>
+make output :list       
+ v4=[v3.x,v3.y] =  [-1, 1]
+<class 'list'>
+>>> %Run test9..py
+--------------------------------------
+ input != output -> see:part 5,same  
+--------------------------------------
+                                      
+.................................
+output : vec2d class computation 
+.................................
+ x,y component : vec2d(x,y)      
+x coordinate vec2d(2,3) =  2
+y coordinate vec2d(2,3) =  3
+print : v1=vec2d(2,3)      
+.................................
+[2, 3]
+ substraction : vec2d(5,3)-vec2d(3,1) =
+.......................................
+vec2d(5,3)-vec2d(3,1) = [2, 2]
+ combination : vec2d(5,3)-2*vec2d(3,1) =
+........................................
+vec2d(5,3)-2*vec2d(3,1) = [-1, 1]
+ output : is not list = 
+........................
+ v3=vec2d(5,3)-2*vec2d(3,1)  [-1, 1]
+<class '__main__.vec2d'>
+make output :list       
+........................
+ v4=[v3.x,v3.y] =  [-1, 1]
+<class 'list'>

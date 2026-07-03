@@ -1,0 +1,45 @@
+ example = vec2d(2,3) 
+x coordinate vec2d(x,y) =  2
+y coordinate vec2d(x,y) =  3
+>>> %Run test3.py
+vector 2d = vector two dimensional 
+ example = vec2d(2,3) 
+x coordinate vec2d(x,y) =  2
+y coordinate vec2d(x,y) =  3
+>>> %Run test3.py
+vector 2d = vector two dimensional 
+-----------------------------------
+ example = vec2d(2,3) 
+x coordinate vec2d(x,y) =  2
+y coordinate vec2d(x,y) =  3
+------------------------------------
+make list : v1 
+first index start by 0
+first  element : list v1a 2
+second element : list v1a 3
+------------------------------------
+>>> %Run test3.py
+vector 2d = vector two dimensional 
+-----------------------------------
+ example = vec2d(2,3) 
+x coordinate vec2d(x,y) =  2
+y coordinate vec2d(x,y) =  3
+------------------------------------
+make list : v1 -> v1a 
+first index start by 0
+first  element : list v1a = 2
+second element : list v1a = 3
+------------------------------------
+>>> %Run test3.py
+vector 2d = vector two dimensional 
+-----------------------------------
+ example = vec2d(2,3) 
+x coordinate vec2d(x,y) =  2
+y coordinate vec2d(x,y) =  3
+------------------------------------
+make list : v1 -> v1a 
+first index start by 0
+----------------------
+first  element : list v1a = 2
+second element : list v1a = 3
+------------------------------------

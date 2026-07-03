@@ -1,0 +1,49 @@
+import numpy as np
+
+rho = 1  # density
+AA = 3  # cross-section
+AB = 1  # cross-section
+p1 = 28
+p3 = 0
+alpha = 0.5  # relaxation factor
+
+# initial guesses for uA and uB and p2
+uA = np.array([5/3])
+uB = np.array([5])
+p2 = 12
+
+# initialize matrix to store results
+results = np.zeros((100, 4))
+
+# start overall loop, until convergence
+for loop in range(100):
+    for i in range(1, 100):
+        uA_new = (p1 - p2) * AA / (rho * uA[-1] * AA)
+        uB_new = ((rho * uA[-1] * AA) * uA[-1] + (p2 - p3) * AB) / (rho * uB[-1] * AB)
+        uA = np.append(uA, uA[-1] + (uA_new - uA[-1]) * alpha)
+        uB = np.append(uB, uB[-1] + (uB_new - uB[-1]) * alpha)
+        if (abs(uB[-1] - uB[-2]) + abs(uA[-1] - uA[-2])) < 0.01:
+            break
+    # redefine the two velocities
+    uA_old = uA
+    uB_old = uB
+    # check convergence
+    if np.all(abs(rho * uA * AA - rho * uB * AB) < 0.01):
+        break
+    # use velocities to get pressure corrections
+    dA = (rho * uA_old)**(-1)
+    dB = (rho * uB_old)**(-1)
+    # pressure correction equation
+    p2p = (uA_old * AA - uB_old * AB) / (dA * AA + dB * AB)
+    p2p = p2p[-1]
+    p2 = p2 + p2p * alpha
+    # correction for velocities
+    uA = uA_old + dA * (0 - p2p)
+    uB = uB_old + dB * (p2p - 0)
+
+    # store results in matrix
+    results[loop, 0] = loop
+    results[loop, 1] = uA[-1]
+    results[loop, 2] = uB[-1]
+    results[loop, 3] = p2
+print(results)

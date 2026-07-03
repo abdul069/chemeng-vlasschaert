@@ -1,0 +1,149 @@
+option nolet
+print "----------------------------------------------------------------------------------"
+print "- truebasic :vector field 2d:with arrows,trajectory,aspectratio,sub version 1.0b -"
+print "- peter.vlasschaert@gmail.com,21/01/2021                                         -"
+print "----------------------------------------------------------------------------------"
+!*****************************************************************************************
+! info : with trajectories inside 2d vector field ,corrected aspect ratio,sub.
+! filename TRUEBASIC2DVECTORFIELDWITHARROWSVERSION12021trajectaspectfinal1b  . 
+! peter.vlasschaert@gmail.com,21/01/2021
+!*****************************************************************************************
+!***************************************************************************
+! correction for aspect ratio, 'window ,axes '
+!***************************************************************************
+ask pixels hpix,vpix 
+pratio=hpix/vpix  ! correct dimension of the canvas horizontal > vertical
+pl=15             ! value: dimension of the window ,axes 
+vr=pl
+hr=pl*pratio
+set window -hr/2,hr/2,-vr/2,vr/2
+!***************************************************************************
+! parameters
+!***************************************************************************
+z1$="blue"        ! color of axes
+w=0.07            ! value for length of arrow
+nn=100            ! divide ,both,direction,trajectory
+!***************************************************************************
+! draw axes
+!***************************************************************************
+set color z1$
+plot -hr/2,0;hr/2,0
+plot 0,-vr/2;0,vr
+!*********************************************************************
+! coef coupled: linear diffeq: odes,try your self with other values.
+!*********************************************************************
+a11=2
+a12=-1
+a21=1
+a22=4
+!*********************************************************************
+! '=> plot vector field 2D',corrected 'pratio'
+!*********************************************************************
+z2$="green"        ! color of arrows
+xmax = hr/2
+xmin = -xmax
+ymax = vr/2
+ymin = -ymax
+call vec_2dfield(nn,xmax,ymax,a11,a12,a21,a22,w,z2$,pratio)
+!*********************************************************************
+!=> init value trajectory
+!*********************************************************************
+dim xt(0:1),yt(0:1)
+nu_step = 1000     ! number of steps init value -> end value.
+mat redim xt(0:nu_step+1),yt(0:nu_step+1)
+xt(0) = 1          ! use 0 ,division by zero or xmin < xt(0)< xmax
+yt(0) = 1          ! use 0 ,division by zero or ymin < yt(0)< ymax
+set color 2        ! green
+!*********************************************************************
+! '=> plot trajectory init -> final'
+!*********************************************************************
+set color 4        ! red,integer value > 0
+call traject(nu_step,a11,a12,a21,a22,xt(),yt(),w,pratio)
+!*********************************************************************
+! draw unit circle, corrected integer value , for next loop.
+!*********************************************************************
+call cirle_draw    ! circle drawn in the center.
+end
+
+sub traject(nu_step,a11,a12,a21,a22,xt(),yt(),w,pratio)
+for i=0 to nu_step !  'integer values'
+    dx0 = a11*xt(i)+a12*yt(i) ! dfx =dx0
+    dy0 = a21*xt(i)+a22*yt(i) ! dfy =dy0
+    ds0 =sqr((dx0)^2+(dy0)^2)
+! don't forget w values here : otherwise wrong , try out your self
+       xt(i+1) = xt(i) +w*dx0/ds0
+       yt(i+1) = yt(i) +w*dy0/ds0
+       plot lines:xt(i),yt(i)*pratio;xt(i+1),yt(i+1)*pratio
+    xt(i) =xt(i+1)  ! connect lines,x values
+    yt(i) =yt(i+1)  ! connect lines,y values
+next i
+end sub
+
+sub vec_2dfield(nn,xmax,ymax,a11,a12,a21,a22,w,z2$,pratio)
+xmin = -xmax
+ymin = -ymax
+di = (xmax-xmin)/nn
+dj = (ymax-ymin)/nn
+for ii=1 to nn
+    for jj= 1 to nn
+  x=xmin+(ii)*di
+  y=ymin+(jj)*dj
+    ! differential system
+     dfx=a11*x+a12*y  ! dfx = f1(x,y)
+     dfy=a21*x+a22*y  ! dfy = f2(x,y)
+     ss=sqr(dfx*dfx+dfy*dfy)
+   if ss>0 then
+x1=10*(x-w*dfx/ss)/10
+y1=10*(y-w*dfy/ss)/10*pratio
+x2=10*(x+w*dfx/ss)/10
+y2=10*(y+w*dfy/ss)/10*pratio
+        call arrow(x1,y1,x2,y2,w,z2$)
+   end if 
+   next jj
+next ii
+end sub
+
+sub cirle_draw
+r=1            ! r=1 ,unit circle
+q=3.14159      ! pi = value.
+theta0  = 0    ! initial value for theta
+thetaf  = 2*q  ! final value for theta (one time around circle) = 2*pi*r
+nn = 1000
+dii = (theta0-thetaf)/nn
+for jj=0 to nn 
+ theta =theta0+jj*dii
+ x=r*cos(theta)
+ y=r*sin(theta)
+plot x,y
+next jj
+end sub
+
+sub arrow(x1,y1,x2,y2,w,z2$)
+! draw arrows vector field
+ set color z2$
+plot x1,y1;x2,y2
+dx=x2-x1
+dy=y2-y1
+lgth=sqr(dx*dx+dy*dy)
+a=x1+((lgth-w)/lgth)*dx
+b=y1+((lgth-w)/lgth)*dy
+rico1=dy/dx
+! line on right angle on other line
+! y=rico2*x+n
+rico2=-1/rico1
+n=b-a*rico2
+! calculation of circle
+r=sqr((x2-a)^2+(y2-b)^2)
+! solve vkv
+va=1+(rico2)^2
+vb=-2*(a-rico2*(n-b))
+vc=a^2+(n-b)^2-r^2
+disc=vb^2-4*va*vc
+px1=(-vb+sqr(disc))/(2*va)
+px2=(-vb-sqr(disc))/(2*va)
+! fill in 
+py1=rico2*px1+n
+py2=rico2*px2+n
+plot px1,py1;x2,y2
+plot px2,py2;x2,y2
+end sub

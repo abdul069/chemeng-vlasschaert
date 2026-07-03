@@ -1,0 +1,34 @@
+How to install packages in python  (version 3.10),version 1.0
+peter.vlasschaert@gmail.com,19/09/2022
+
+see: also : ref
+new: 18/09/2022:python : How install : jupyter notebook ( version python from your choice),1.0
+new: 19/09/2022:python : How install : jupyter notebook ( version python from your choice),1.0a
+
+best way : install package commamd prompt
+
+1e) python installation where find : see ref
+---------------------------------------------
+
+python directory :3.10 version > sub directory scripts
+install directory rem folder (yellow :default)
+C:\Users\science\AppData\Local\Programs\Python\Python310\
+
+2e) How to install packages
+----------------------------
+C:\Users\science\AppData\Local\Programs\Python\Python310\Scripts
+edit
+delete :C:\Users\science\AppData\Local\Programs\Python\Python310\Scripts
+rem : command prompt
+cmd.exe
+rem : result
+
+C:\Users\science\AppData\Local\Programs\Python\Python310\Scripts>
+type after prompt : command window > package you want install
+syntax :pip install package
+rem : install package matplotlib
+type : pip install matplotlib 
+
+-------------------------------------------------------------------------
+
+

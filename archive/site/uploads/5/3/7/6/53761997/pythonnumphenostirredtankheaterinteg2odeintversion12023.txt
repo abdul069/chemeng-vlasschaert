@@ -1,0 +1,157 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from tabulate import tabulate
+from scipy.integrate import odeint
+#---------------------------------------------------------------------
+# ref : maxima,see weebsite. "simple introduction thermodynamics
+# maxima:numerical phenomena,stirred tank heater,version 1.0
+# peter.vlasschaert@gmail.com,01/03/2023
+# Define constants
+#---------------------------------------------------------------------
+print("----------------------------------------------------------------------------")
+print("python:numerical phenomena,stirred tank heater both balances,version 1.0    ")
+print(" solve : with odeint                                                        ")
+print(" peter.vlasschaert@gmail.com,01/03/2023                                     ")
+print("----------------------------------------------------------------------------")
+print("")
+print ("-------------------------")
+print (" < stirred tank heater > ")
+print ("-------------------------")
+print ("")
+print ("---------------------------------")
+print (" make table output:with tabulate ")
+print ("---------------------------------")
+# Constants
+V = 1.0  # Volume (m^3)
+Cp = 4186.0  # Heat capacity (J/kg/K)
+T0 = 25.0  # Initial temperature (°C)
+F_in = 0.1  # Inlet flow rate (m^3/s)
+rho = 1000.0  # Density (kg/m^3)
+
+# Define the differential equations, 2 odes
+# Energy Balance
+def dTdt(T, t, Q, F):
+    return (Q(t)/(V*Cp)) + (F(t)*(T0 - T))/V
+# Material Balance
+def dVdt(V, t, F):
+    return F_in - F(t)
+
+# Define the input profiles
+def Ti(t):
+    if t < 300.0:
+        return T0 + 0.05*t
+    else:
+        return 40.0
+
+def Q(t):
+    if t < 150.0:
+        return 5000.0
+    elif t < 450.0:
+        return 5000.0 - 10.0*(t-150.0)
+    else:
+        return 4550.0
+
+def F(t):
+    if t < 250.0:
+        return 0.1 + 0.0002*t
+    elif t < 500.0:
+        return 0.15 - 0.0001*(t-250.0)
+    else:
+        return 0.12
+
+# Initial conditions
+T0 = 20.0  # Initial temperature (°C)
+V0 = V  # Initial volume (m^3)
+t_sim = 600
+# Solve the differential equations
+t_span = np.linspace(0.0, t_sim, t_sim+1)  # Time span to solve over (s)
+sol = odeint(dTdt, T0, t_span, args=(Q, F))
+T = sol[:, 0]
+
+sol = odeint(dVdt, V0, t_span, args=(F,))
+V = sol[:, 0]
+# Plot the temperature, input profiles, and flow rates
+fig, ax1 = plt.subplots(figsize=(8, 6))
+color = 'tab:red'
+ax1.set_xlabel('Time (s)')
+ax1.set_ylabel('Temperature (°C)', color=color)
+ax1.plot(t_span, T, color=color, label='Temperature')
+ax1.tick_params(axis='y', labelcolor=color)
+
+ax2 = ax1.twinx()
+color = 'tab:green'
+ax2.set_ylabel('Flow Rates (m^3/s)', color=color)
+ax2.plot(t_span, [F(t) for t in t_span], color=color, label='Flow Rate')
+ax2.tick_params(axis='y', labelcolor=color)
+
+ax3 = ax1.twinx()
+color = 'tab:blue'
+ax3.spines['right'].set_position(('axes', 1.1))
+ax3.set_ylabel('Heat Input (W)', color=color)
+ax3.plot(t_span, [Q(t)*(T0 - Ti(t)) for t in t_span], color=color, label='Heat Input')
+ax3.tick_params(axis='y', labelcolor=color)
+#----------------------------------------------------------------------------------------------------------
+# explain code ,twinx()
+#----------------------------------------------------------------------------------------------------------
+#This code is responsible for plotting the temperature, input profiles,
+# and flow rates on the same graph. It creates a figure and sets the size to be 8 by 6 inches.
+#It then defines the first set of axes (ax1) for the temperature plot and sets the x-label to "Time (s)"
+#and y-label to "Temperature (°C)" with the color of the label set to red.
+
+#ax1.plot(t_span, T, color=color, label='Temperature')
+#plots the temperature values (T) against the time values (t_span)
+#with a red line color and a label "Temperature".
+
+#It then creates a second set of axes (ax2) using ax1.twinx().
+#This is because we want to plot the flow rates on the same graph but with a different y-axis scale.
+#The y-label is set to "Flow Rates (m^3/s)" with the color of the label set to green.
+#ax2.plot(t_span, [F(t) for t in t_span], color=color, label='Flow Rate') plots the flow rate values
+#([F(t) for t in t_span]) against the time values (t_span) with a green line color and a label "Flow Rate".
+
+#Finally, it creates a third set of axes (ax3) also using ax1.twinx().
+#This is because we want to plot the heat input on the same graph but with a different y-axis scale.
+#The y-label is set to "Heat Input (W)" with the color of the label set to blue.
+#ax3.plot(t_span, [Q(t)*(T0 - Ti(t)) for t in t_span], color=color, label='Heat Input')
+#plots the heat input values ([Q(t)*(T0 - Ti(t)) for t in t_span]) against
+#the time values (t_span) with a blue line color and a label "Heat Input".
+
+#The ax3.spines['right'].set_position(('axes', 1.1)) line sets the position of the right spine to 1.1 times
+#the width of the axis, which helps to prevent overlapping of the y-labels.
+
+#The ax3.spines['right'].set_position(('axes', 1.1)) line sets the position of the right spine to 1.1 times
+#the width of the axis, which helps to prevent overlapping of the y-labels.
+#----------------------------------------------------------------------------------------------------------------
+# Finally, ax1.legend(loc='upper left') adds a legend to the plot with the labels specified in the previous plots.
+#-----------------------------------------------------------------------------------------------------------------
+#
+# Create legend
+lines1, labels1 = ax1.get_legend_handles_labels()
+lines2, labels2 = ax2.get_legend_handles_labels()
+lines3, labels3 = ax3.get_legend_handles_labels()
+lines = lines1 + lines2 + lines3
+labels = labels1 + labels2 + labels3
+ax1.legend(lines, labels, loc='upper left')
+fig.subplots_adjust(right=0.65) # 0.85
+ax1.set_title('Stirred Tank Heater Simulation ode for (material,energy),version 1.0')
+plt.show()
+# Generate table
+time_outp =t_sim/60 
+table1_data = []
+table2_data = []
+for i in range(0, len(t_span), int(time_outp)):# don't forget intt ,range
+    time = t_span[i]
+    t_val = T[i]
+    table1_data.append([time, t_val])
+    
+    ti_val = Ti(time)
+    q_val = Q(time)
+    f_val = F(time)
+    table2_data.append([time, ti_val, q_val, f_val])
+
+# Print tables
+print("Table 1: Temperature vs. Time")
+print(tabulate(table1_data, headers=["Time (s)", "Temperature (°C)"]))
+
+print("\nTable 2: Input Profiles vs. Time")
+print(tabulate(table2_data, headers=["Time (s)", "Ti (°C)", "Q (J/s)", "F (m^3/s)"]))
+

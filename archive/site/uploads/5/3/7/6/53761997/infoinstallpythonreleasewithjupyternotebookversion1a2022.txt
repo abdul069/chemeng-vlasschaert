@@ -1,0 +1,98 @@
+How install : jupyter notebook ( version python from your choice)
+,windows 10 . version 1.0a
+peter.vlasschaert@gmail.com,19/09/2022
+
+How install juypter notebook (recent : release python),windows 10
+-------------------------------------------------------
+check version in your path of python
+------------------------------------
+I) step : cmd.exe
+------------------
+
+Type here to search  >  cmd
+click : Command prompt
+output : c:\Users\computername>
+
+II) step : path 
+----------------
+
+  c:\Users\computername>python --version
+ 
+ rem :execute >  c:\Users\computername>python
+      reason :already installed because this is
+              part of a other software. 
+
+------------------------------------------------------------------
+
+before : install
+-----------------
+folder : (Menu : file,computer,view,...)
+goto : view -> show hidden files (= visible)
+
+-------------------------------------------------------------------
+
+1e step : install (python release : windows system)
+---------------------------------------------------
+https://www.python.org/downloads/release/python-3107/
+select :windows 64 ( other see website)
+rem : select python version compatible with your (system)
+rem : description = Recommended
+install: estup
+--------
+Install Python 3.10.7(64-bit)
+-> Install Now
+C:\Users\science\AppData\Local\Programs\Python\Python310
+
+check : Install launcher for all users( Make active)
+check : Add Python 3.10 to PATH       ( Make active)
+
+2e) step : install jupyter notebook.
+------------------------------------
+a) directory : scripts 
+----------------------
+edit
+C:\Users\science\AppData\Local\Programs\Python\Python310\Scripts
+delete      rem :"delete sting above in the folder "
+cmd.exe     rem :" command prompt ",black window with white letters
+rem : <output : command prompt >
+b) instal :notebook
+-------------------
+Microsoft Windows [Version 10.0.19043.2006]
+(c) Microsoft Corporation. All rights reserved.
+
+Microsoft Windows [Version 10.0.19043.2006]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\science\AppData\Local\Programs\Python\Python310\Scripts>
+
+after scripts: type >
+pip install notebook
+
+c) put one of this file in the browser (some will work)
+-------------------------------------------------------
+
+ To access the notebook, open this file in a browser:
+file:///C:/Users/science/AppData/Roaming/jupyter/runtime/nbserver-10716-open.html
+Or copy and paste one of these URLs:
+http://localhost:8888/?token=7ff32506930816a2d606ecc240ad4bbd105999ba0d4f2563
+or http://127.0.0.1:8888/?token=7ff32506930816a2d606ecc240ad4bbd105999ba0d4f2563
+	 
+d) to remove notebook.
+----------------------	 
+same as above : c)
+Microsoft Windows [Version 10.0.19043.2006]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\science\AppData\Local\Programs\Python\Python310\Scripts>
+type after prompt : pip install pip-autoremove
+rem : same prompt
+C:\Users\science\AppData\Local\Programs\Python\Python310\Scripts>
+type after prompt : pip-autoremove jupyter -y
+
+---------------------------------------------------------------------------------------	 
+rem : science : computername , may be different on your system.	 
+example : version of python
+----------------------------
+C:\Users\science\AppData\Local\Programs\Python\Python310>python --version
+output : command window (black window)
+Python 3.10.7

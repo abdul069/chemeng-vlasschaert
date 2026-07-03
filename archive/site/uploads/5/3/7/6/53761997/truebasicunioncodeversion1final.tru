@@ -1,0 +1,162 @@
+option nolet
+print "------------------------------------------"
+print " general code :Union code,version 1.0     "
+print " peter.vlasschaert@gmail.com,12/11/2019   "
+print "------------------------------------------"
+!*************************************************
+! file name = TRUEBASICunioncodeversion1final
+!*************************************************
+! ref : code Prof Denis Constales , UGent
+!*************************************************
+! #include<stdio.h>
+!
+!int
+!main (void)
+!{
+!  int arr[20], i0, i, j, size;
+!  printf ("\nEnter array size : ");
+!  scanf ("%d", &size);
+!  printf ("\nAccept Numbers : ");
+!  for (i = 0; i < size; i++)
+!    scanf ("%d", &arr[i]);
+!  printf ("\nArray with Unique list  : ");
+!  i0 = 0;
+!  for (i = 0; i < size; i++)
+!    {
+!      j = 0;
+!      while (j < i && arr[j] != arr[i])
+!{
+! j++;
+!}
+!      if (j >= i)
+!{
+! if (i0 != i)
+!   arr[i0] = arr[i];
+! i0++;
+!}
+!    }
+!  size = i0;
+!  for (i = 0; i < size; i++)
+!    {
+!      printf ("%d ", arr[i]);
+!    }
+!
+!  return (0);
+!**********************************************
+print
+!************************************
+! matrix input : read -data statement
+!************************************
+dim A0$(1),A$(1)      ! init matrix string
+print "******************************************************"
+print " example = 1 , example = 2 ,input 'matrix:string' = 3 "
+print "******************************************************"
+print
+input prompt " input 'number of elemnts' integer : from '1 to 3' => ":s
+print
+print
+!*******************
+! first example = 1
+!*******************
+if s=1 then 
+m0 = 8    ! number of elements
+mat redim A0$(m0)
+for i = 1 to  m0  
+  read  A0$(i)  
+next i
+end if
+!*******************
+! second example = 2
+!*******************
+if s=2 then 
+m0 = 5    ! number of elements
+mat redim A0$(m0)
+for i = 1 to  m0  
+  read  A0$(i)   
+next i
+end if
+!**********************
+! thrid 'input matrix'
+!**********************
+if s=3 then
+print "-----------------"
+print "data Na,S,O,H,S  "
+print "-----------------"
+print
+input prompt " number of elements   (m) = ":m0
+print
+mat redim A0$(m0)
+for i = 1 to m0  
+print "element(";i;")= ";
+input A0$(i)
+next  i
+end if 
+print
+print "******************************"
+print " input 'string of elements'=> "
+print "******************************"
+print
+mat print A0$
+print
+print "******************************"
+print " ouput 'string of elements'=> "
+print "******************************"
+print
+!***********************************************************
+! algo : call function : ' union_string(A0$), 'sub' & 'call'
+!***********************************************************
+! call function : ' union_string(A0$)
+!***********************************************************
+call union_string(m0,A0$(),A$())
+mat print A$
+!*******************
+! input : strings
+!*******************
+data Na,Na,S,O,V,Xe,Al,B
+!********************
+! input : strings
+!********************
+! example
+!********************
+data Na,O,S,H,S
+end
+
+
+sub union_string(sz,A0$(),A$())
+! see above : C- code
+!***************************************
+! rem : c-code , works only for integer
+!****************************************
+i0 = 0
+for i =0 to sz-1
+j = 0
+!*****************************************
+! c-code :  array index j -> j+1, i -> i+1
+!*****************************************
+     do while (j < i and  A0$(j+1) <> A0$(i+1))
+         j = j+1
+     loop
+   if j >=   i then
+     if i0 <> i then
+!*******************************************
+! c-code :  array index j -> j+1, i -> i+1 *
+! i0 = i0+1 => after  A0$(i0+1) = A0$(i+1) *
+!*******************************************
+          i0 =i0+1 
+!*******************************************
+! c-code :  array index i0 -> i0+1, i -> i+1
+!*******************************************
+       A0$(i0+1) = A0$(i+1)        
+     end if
+   end if
+next i
+sz =i0
+!*********************
+! output : A$
+!*********************
+mat redim A$(sz+1)
+for ii=0 to sz
+  A$(ii+1) = A0$(ii+1)
+next ii
+end sub
+

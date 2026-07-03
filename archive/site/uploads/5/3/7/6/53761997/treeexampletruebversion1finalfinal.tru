@@ -1,0 +1,134 @@
+option nolet
+print "****************************************************"
+print "* programming : tree example ,version 1.0          *"
+print "* peter.vlasschaert@gmail.com,26/02/2020           *"
+print "****************************************************"
+print
+n=0
+! we don't know number of data, data statement
+! read - data statement,only as a string of elements
+dim x$(1)
+do while more data
+n=n+1
+mat redim x$(n)
+  read x$(n)
+loop
+print "******************"
+print " tree structure : "
+print "******************"
+print
+mat print x$
+print
+print " number elements :tree "
+print n
+print
+! how to find number childeren, from person.
+! find number of childeren: zoe,and their names
+a$ = "zoe"
+m = 0 ! counter number of times the name:a$
+for i=1 to n
+ if a$ =x$(i) then 
+   nu = i   ! find second time in  x$ : example , zoe.
+   m=m+1  
+ end if
+next i
+print " number of times ";a$;" in the list x$ = ";m
+print " number of childeren : ";a$;"="; val(x$(nu+1))
+print
+for i=1 to val(x$(nu+1))
+print " child = ";i;"name = ";x$(nu+1+i)
+next i
+print
+dim y$(1)
+mat redim y$(n)
+mat y$ = "a"
+print " dummie array for x$,data "
+print
+mat print y$
+for j=1 to n
+when error in
+kk=10*(val(x$(j)))/10! notation correction
+use
+ if extype = 4001 then
+    y$(j) = "b"
+  end if
+end when 
+if y$(j) = "a" then
+  y$(j) = x$(j)
+end if
+next j
+print " find numbers in a tree "
+print
+mat print y$
+print " max depth of a tree "
+print
+nd = 0
+for i = 1 to n
+  if y$(i) <> "b" and y$(i) <> "0" then
+  nd = nd+1
+  end if
+next i
+print " maxdepth = ",nd+1
+print
+print "******************************"
+print " max of childeren : v ,integer"
+print "******************************"
+print
+dim z(1),zi(1)
+mat redim z(nd),zi(nd)
+nd1 =0
+for i = 1 to n
+  if y$(i) <> "b" and y$(i) <> "0" then
+     nd1 = nd1+1
+z(nd1)=10*(val(y$(i)))/10! notation correction
+zi(nd1)= i
+  end if
+next i
+mat print z
+print " position ,number of childeren,string 'x$' "
+mat print zi
+for i=1 to size(z) 
+  print "number of childeren on every";i+1;"e) level = ";z(i)
+next i
+s=0
+for i=1 to size(z)
+  s = s + z(i)
+next i
+print "max childeren : ";s
+! find name of all childeren of the vater
+print "**************************"
+print " name of all childeren : v"
+print "**************************"
+!print x$(zi(1)+1)
+!print x$(zi(1)+2)
+!print x$(zi(2)+1)
+!print x$(zi(2)+2)
+! put all values in matrix.
+dim q$(1,1)
+mat redim q$(size(z),size(z))
+for i=1 to size(z)
+  for j=1 to size(z)
+      print x$(zi(i)+j)
+      q$(i,j) = x$(zi(i)+j)
+  next j
+next i
+print
+print "*****************"
+print " output : matrix "
+print "*****************"
+print
+mat print q$
+!***********************************************************
+!data = tree , read data -statement
+!***********************************************************
+data john,2,jim,zoe
+data jim,0
+data zoe,2,kyle,sophie
+data kyle,0
+data sophie,0
+!***********************************************************
+end
+
+
+
+

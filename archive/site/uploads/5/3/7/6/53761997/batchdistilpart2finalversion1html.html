@@ -1,0 +1,288 @@
+<!DOCTYPE HTML">
+<HTML>
+ <HEAD>
+  <TITLE>batchdistilpart2finalversion1html</TITLE>
+  <META NAME="generator" CONTENT="wxMaxima">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    displayAlign: "left",
+    context: "MathJax"
+  })
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+  <link rel="stylesheet" type="text/css" href="https://petervlaschemeng.weebly.com/uploads/5/3/7/6/53761997/batchdistilpart2finalversion1html_htmlimg/batchdistilpart2finalversion1html.css"/>
+ </HEAD>
+ <BODY>
+
+<!-- ***************************************************** -->
+<!--          Created with wxMaxima version 16.04.2         -->
+<!-- ***************************************************** -->
+<noscript><div class="error message">    Please enable JavaScript in order to get a 2d display of the equations embedded in this web page.</div></noscript>\(      \DeclareMathOperator{\abs}{abs}
+      \newcommand{\ensuremath}[1]{\mbox{$#1$}}
+\)
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+BATCH DISTILLATION :part 2(equilbrium y=(alpha*x)/((alpha-1)*x+1))<BR>------------------<BR>------------------<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+part2 : Integral batch distillation.<BR><a href="https://petervlaschemeng.weebly.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4232273627306c342e233131212a2327303602252f232b2e6c212d2f">[email&#160;protected]</a> , 18/02/2017<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+principle : integral<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">kill</span>(<span class="code_variable">all</span>)<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq1</span><span class="code_operator">:</span><span class="code_operator">'</span><span class="code_function">integrate</span>(<span class="code_variable">x</span><span class="code_operator">^</span><span class="code_number">2</span>,<span class="code_variable">x</span>)<span class="code_operator">=</span><span class="code_function">integrate</span>(<span class="code_variable">x</span><span class="code_operator">^</span><span class="code_number">2</span>,<span class="code_variable">x</span>)<span class="code_operator">+</span><span class="code_variable">constant</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq1}\label{eq1}\int {\left. {{x}^{2}}dx\right.}=\frac{{{x}^{3}}}{3}+\mathit{constant}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i2) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq2</span><span class="code_operator">:</span><span class="code_operator">'</span><span class="code_function">integrate</span>(<span class="code_variable">x</span><span class="code_operator">^</span><span class="code_number">2</span>,<span class="code_variable">x</span>,<span class="code_variable">a</span>,<span class="code_variable">b</span>)<span class="code_operator">=</span><span class="code_function">integrate</span>(<span class="code_variable">x</span><span class="code_operator">^</span><span class="code_number">2</span>,<span class="code_variable">x</span>,<span class="code_variable">a</span>,<span class="code_variable">b</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq2}\label{eq2}\int_{a}^{b}{\left. {{x}^{2}}dx\right.}=\frac{{{b}^{3}}}{3}-\frac{{{a}^{3}}}{3}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+equilibrium equation :' y '<BR>alpha = relative volatility ( = constant )<BR>info: https://en.wikipedia.org/wiki/Relative_volatility<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i3) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq11</span><span class="code_operator">:</span><span class="code_variable">y</span><span class="code_operator">=</span>(<span class="code_variable">alpha</span><span class="code_operator">*</span><span class="code_variable">x</span>)<span class="code_operator">/</span>(<span class="code_number">1</span><span class="code_operator">+</span>(<span class="code_variable">alpha</span><span class="code_operator">-</span><span class="code_number">1</span>)<span class="code_operator">*</span><span class="code_variable">x</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq11}\label{eq11}y=\frac{\alphax}{\left( \alpha-1\right) x+1}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+A : alpha &gt; &nbsp;1<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i7) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">assume</span>(<span class="code_variable">x</span> &gt;<span class="code_operator">=</span> <span class="code_number">0</span> and <span class="code_variable">x</span> &lt;<span class="code_operator">=</span> <span class="code_number">1</span>)<span class="code_endofline">;</span><BR>
+<span class="code_function">assume</span>(<span class="code_variable">y</span> &gt;<span class="code_operator">=</span> <span class="code_number">0</span> and <span class="code_variable">y</span> &lt;<span class="code_operator">=</span> <span class="code_number">1</span>)<span class="code_endofline">;</span><BR>
+<span class="code_function">assume</span>( <span class="code_variable">alpha</span> &gt;<span class="code_number">1</span>,<span class="code_variable">b</span>&gt;<span class="code_variable">a</span>)<span class="code_endofline">;</span><BR>
+<span class="code_function">assume</span>( <span class="code_variable">a</span> &gt;<span class="code_number">0</span> and <span class="code_variable">a</span> &lt; <span class="code_number">1</span> and <span class="code_variable">b</span> &lt; <span class="code_number">1</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o4}\label{o4} [x\mbox{\ensuremath{\ensuremath{&gt;}}=}0,x\mbox{\ensuremath{\ensuremath{&lt;}}=}1]\]
+\[\tag{\%{}o5}\label{o5} [y\mbox{\ensuremath{\ensuremath{&gt;}}=}0,y\mbox{\ensuremath{\ensuremath{&lt;}}=}1]\]
+\[\tag{\%{}o6}\label{o6} [\alpha\mbox{\ensuremath{\ensuremath{&gt;}}}1,b\mbox{\ensuremath{\ensuremath{&gt;}}}a]\]
+\[\tag{\%{}o7}\label{o7} [a\mbox{\ensuremath{\ensuremath{&gt;}}}0,a\mbox{\ensuremath{\ensuremath{&lt;}}}1,b\mbox{\ensuremath{\ensuremath{&lt;}}}1]\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+1e) integral for batch distillation.<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i8) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq22</span><span class="code_operator">:</span><span class="code_variable">op1</span><span class="code_operator">=</span><span class="code_operator">'</span><span class="code_function">integrate</span>(<span class="code_number">1</span><span class="code_operator">/</span>(<span class="code_function">rhs</span>(<span class="code_variable">eq11</span>)<span class="code_operator">-</span><span class="code_variable">x</span>),<span class="code_variable">x</span>,<span class="code_variable">a</span>,<span class="code_variable">b</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq22}\label{eq22}\mathit{op1}=\int_{a}^{b}{\left. \frac{1}{\frac{\alphax}{\left( \alpha-1\right) x+1}-x}dx\right.}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+alpha = value given.<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i9) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq23</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">eq22</span>,<span class="code_variable">alpha</span><span class="code_operator">=</span><span class="code_number">2</span>.<span class="code_number">48</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq23}\label{eq23}\mathit{op1}=\int_{a}^{b}{\left. \frac{1}{\frac{2.48x}{1.48x+1}-x}dx\right.}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+integration values &nbsp;a&lt;b,a&lt;1,b&lt;1<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i10) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq24</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">eq23</span>,<span class="code_variable">a</span><span class="code_operator">=</span><span class="code_number">0</span>.<span class="code_number">4</span>,<span class="code_variable">b</span><span class="code_operator">=</span><span class="code_number">0</span>.<span class="code_number">7</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq24}\label{eq24}\mathit{op1}=\int_{0.4}^{0.7}{\left. \frac{1}{\frac{2.48x}{1.48x+1}-x}dx\right.}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i11) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq25</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">eq24</span>,<span class="code_variable">nouns</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\mbox{}\\\mbox{rat: replaced 0.2999999999999999 by 3/10 = 0.3}\mbox{}\\\mbox{rat: replaced 0.4 by 2/5 = 0.4}\mbox{}\\\mbox{rat: replaced 0.7 by 7/10 = 0.7}\mbox{}\\\mbox{rat: replaced 0.2999999999999999 by 3/10 = 0.3}\mbox{}\\\mbox{rat: replaced 2.48 by 62/25 = 2.48}\mbox{}\\\mbox{rat: replaced 1.48 by 37/25 = 1.48}\mbox{}\\\mbox{rat: replaced -2.48 by -62/25 = -2.48}\mbox{}\\\mbox{rat: replaced -1.48 by -37/25 = -1.48}\mbox{}\\\mbox{rat: replaced 2.48 by 62/25 = 2.48}\mbox{}\\\mbox{rat: replaced 1.48 by 37/25 = 1.48}\mbox{}\\\mbox{rat: replaced 0.2999999999999999 by 3/10 = 0.3}\mbox{}\\\mbox{rat: replaced 0.4 by 2/5 = 0.4}\mbox{}\\\mbox{rat: replaced 0.7 by 7/10 = 0.7}\mbox{}\\\mbox{rat: replaced 0.2999999999999999 by 3/10 = 0.3}\mbox{}\\\mbox{rat: replaced 2.48 by 62/25 = 2.48}\mbox{}\\\mbox{rat: replaced 1.48 by 37/25 = 1.48}\mbox{}\\\mbox{rat: replaced 2.48 by 62/25 = 2.48}\mbox{}\\\mbox{rat: replaced 1.48 by 37/25 = 1.48}\mbox{}\\\mbox{rat: replaced 0.2999999999999999 by 3/10 = 0.3}\mbox{}\\\mbox{rat: replaced 0.4 by 2/5 = 0.4}\mbox{}\\\mbox{rat: replaced 0.7 by 7/10 = 0.7}\mbox{}\\\mbox{rat: replaced 0.2999999999999999 by 3/10 = 0.3}\]
+\[\tag{eq25}\label{eq25}\mathit{op1}=1.539608645759518\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+&rArr; ' op1 (= eq22) = op2 '<BR> input : alpha &gt;1<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(begin = a,end = b of the interval for integration).<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i12) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq25</span><span class="code_operator">:</span><span class="code_variable">op2</span><span class="code_operator">=</span><span class="code_function">integrate</span>(<span class="code_number">1</span><span class="code_operator">/</span>(<span class="code_function">rhs</span>(<span class="code_variable">eq11</span>)<span class="code_operator">-</span><span class="code_variable">x</span>),<span class="code_variable">x</span>,<span class="code_variable">a</span>,<span class="code_variable">b</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq25}\label{eq25}\mathit{op2}=\frac{\log{(b)}}{\alpha-1}-\frac{\alpha\log{\left( 1-b\right) }}{\alpha-1}+\frac{\log{\left( 1-a\right) }\alpha}{\alpha-1}-\frac{\log{(a)}}{\alpha-1}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i13) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq26</span><span class="code_operator">:</span><span class="code_function">logcontract</span>(<span class="code_variable">eq25</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq26}\label{eq26}\mathit{op2}=\frac{\log{\left( \frac{b}{a}\right) }+\alpha\log{\left( \frac{a-1}{b-1}\right) }}{\alpha-1}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+example :<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+B : alpha = 2.1<BR> &nbsp;&nbsp;&nbsp;a &nbsp;&nbsp;&nbsp;&nbsp;= .4<BR> &nbsp;&nbsp;&nbsp;b &nbsp;&nbsp;&nbsp;&nbsp;= .7<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i14) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq26</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">eq25</span>,<span class="code_variable">alpha</span><span class="code_operator">=</span><span class="code_number">2</span>.<span class="code_number">1</span>,<span class="code_variable">a</span><span class="code_operator">=</span><span class="code_number">0</span>.<span class="code_number">4</span>,<span class="code_variable">b</span><span class="code_operator">=</span><span class="code_number">0</span>.<span class="code_number">7</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq26}\label{eq26}\mathit{op2}=1.832022606464825\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+alpha = 1 ? division by zero.<BR>
+</P>
+
+ <HR>
+ <SMALL> Created with <A HREF="http://wxmaxima.sourceforge.net/">wxMaxima</A>.</SMALL>
+ <script data-cfasync="false" src="../../../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></BODY>
+</HTML>

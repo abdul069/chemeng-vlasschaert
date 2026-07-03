@@ -1,0 +1,88 @@
+import sympy as sym
+from sympy.plotting import plot
+import matplotlib.pyplot as plt
+print("..................................................................")
+print(" appendix :How to solve :odes in sympy,check:solution,version 1.0 ")
+print(" peter.vlasschaert@gmail.com,06/01/2023                           ")
+print("..................................................................")
+# Set the font to 'times'
+sym.init_printing(font='times')
+# Assume that a is negative
+a =sym. Symbol('a', negative=True)
+print("a = ? positive =>",a.is_positive)
+# Define symbols
+t, C1, C2 = sym.symbols('t, C1, C2')
+# type "sym.symbols('t, C1, C2') ="
+print("sym.symbols('t, C1, C2') =",type(sym.symbols('t, C1, C2')))
+# Define functions
+x = sym.Function("x")(t)
+y = sym.Function("y")(t)
+print("Function = ",x,y)
+# Define the differential equations
+de1 = sym.Eq(3 * x.diff(t,1)+x,1)
+de2 = sym.Eq(y.diff(t,1)- a * y - 15 * x + 4 ,1)
+print("de1 =",de1)
+print("de2 =",de2)
+# Solve the system of differential equation
+deq =sym.dsolve((de1,de2))
+print(deq)
+# check solution
+print("check the solution")
+print("..................")
+print("sym.checkodesol((de1,de1), deq) =",sym.checkodesol((de1,de2), deq) )
+from sympy.solvers.ode.systems import dsolve_system
+deqs = [de1, de2]
+solsys = dsolve_system(deqs)
+print("use:sympy.solvers.ode.systems => ")
+print(".................................")
+print(solsys)
+# subs : a=-4
+xs = solsys[0][0].rhs
+ys = solsys[0][1].rhs
+xs = xs.subs({C1: 1, C2: 2,a:-4})
+ys = ys.subs({C1: 1, C2: 2,a:-4})
+print(" => C1:1,C2:2,a:-4     ")
+print(" =>  x(t),y(t) = ",xs,ys)
+# Extract the expressions for x(t) and y(t) from the output of dsolve
+print("....................................................................................................")
+print("print : output...,odes   ")
+print(".........................")
+x = deq[0].rhs
+y = deq[1].rhs
+print("x(t) = ",x)
+print("y(t) = ",y)
+# Print the equations in LaTeX form
+print("latex : output...,odes")
+print(".........................")
+print("x(t) =", sym.latex(de1))
+print("y(t) =", sym.latex(de2))
+print
+# Substitute specific values for C1 and C2
+x = x.subs({C1: 1, C2: 2})
+y = y.subs({C1: 1, C2: 2})
+# before plot you must give a value to a: a=-4
+# Substitute a specific value for a
+x = x.subs({a: -4})
+print( "x(t)=",x)
+y = y.subs({a: -4})
+print( "y(t)=",y)
+# Create the first subplot
+p1 = plot(x, (t, 0, 10), show=False, line_color='red',
+          legend=True, label='x(t),deq', grid=True)
+# Create the second subplot
+p2 = plot(y, (t, 0, 10), show=False, line_color='blue',
+          legend=True, label='y(t),deq', grid=True)
+# Add the second subplot to the first one
+p1.extend(p2)
+# Add a title to the plot
+p1.title = 'Plot of x(t) and y(t) from the odes'
+# Add a label to the x-axis
+p1.xlabel = 't'
+# Add a label to the y-axis
+p1.ylabel = 'x(t), y(t)'
+# Display the combined plot
+p1.show()
+
+
+
+

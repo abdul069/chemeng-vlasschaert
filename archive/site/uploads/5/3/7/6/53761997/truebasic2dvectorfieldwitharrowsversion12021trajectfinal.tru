@@ -1,0 +1,100 @@
+option nolet
+print "--------------------------------------------------------------------"
+print "- truebasic : vector field 2d : with arrows,trajectory version 1.0 -"
+print "- peter.vlasschaert@gmail.com,18/01/2021                           -"
+print "--------------------------------------------------------------------"
+! info : without trajectories inside 2d vector field 
+! filename TRUEBASIC2DVECTORFIELDWITHARROWSVERSION12021trajectfinal
+! correction for aspect ratio
+ask pixels hpix,vpix
+pratio=hpix/vpix
+pl=15
+vr=pl
+hr=pl*pratio
+set window -hr/2,hr/2,-vr/2,vr/2
+z1$="blue" ! color of axes
+! draw axes
+set color z1$
+plot -hr/2,0;hr/2,0
+plot 0,-vr/2;0,vr
+! coef coupled: linear diffeq: odes
+a11=2
+a12=-1
+a21=1
+a22=4
+stap=.4
+w=0.07      ! value for length of arrow
+n=100       ! divide ,both,direction,trajectory
+z2$="green" ! color of arrow
+for x=-hr/2 to hr/2 step stap
+  for y=-vr/2 to vr/2 step stap
+    ! differential system
+     dfx=a11*x+a12*y  ! dfx = f1(x,y)
+     dfy=a21*x+a22*y  ! dfy = f2(x,y)
+     ss=sqr(dfx*dfx+dfy*dfy)
+   if ss>0 then
+x1=10*(x-w*dfx/ss)/10! notation correction
+y1=10*(y-w*dfy/ss)/10! notation correction
+x2=10*(x+w*dfx/ss)/10! notation correction
+y2=10*(y+w*dfy/ss)/10! notation correction
+        call arrow(x1,y1,x2,y2,w,z2$)
+   end if 
+ next y
+next x
+!'=> trajectory parameters '
+dim xt(0:1),yt(0:1)
+nu_step = 1000   ! number of steps init value to end 
+mat redim xt(0:nu_step+1),yt(0:nu_step+1)
+!=> init value trajectory
+xt(0) = 1 ! use 0 ,division by zero or xmin < xt(0)< xmax
+yt(0) = 1 ! use 0 ,division by zero or ymin < yt(0)< ymax
+set color 2 ! green
+! '=> plot vector field 2D'
+xmax = hr/2
+xmin = -xmax
+ymax = vr/2
+ymin = -ymax
+di =(xmax-xmin)/n
+dj =(ymax-ymin)/n
+! '=> plot trajectory init -> final'
+set color 4 ! red
+for i=0 to nu_step !  'integer values'
+    dx0 = a11*xt(i)+a12*yt(i)
+    dy0 = a21*xt(i)+a22*yt(i)
+    ds0 =sqr((dx0)^2+(dy0)^2)
+       xt(i+1) = xt(i) + w*dx0/ds0
+       yt(i+1) = yt(i) + w*dy0/ds0
+       plot lines:xt(i),yt(i);xt(i+1),yt(i+1)
+    xt(i) =xt(i+1)  ! connect lines,x values
+    yt(i) =yt(i+1)  ! connect lines,y values
+next i
+end
+
+sub arrow(x1,y1,x2,y2,w,z2$)
+ set color z2$
+plot x1,y1;x2,y2
+dx=x2-x1
+dy=y2-y1
+lgth=sqr(dx*dx+dy*dy)
+a=x1+((lgth-w)/lgth)*dx
+b=y1+((lgth-w)/lgth)*dy
+rico1=dy/dx
+! line on right angle on other line
+! y=rico2*x+n
+rico2=-1/rico1
+n=b-a*rico2
+! calculation of circle
+r=sqr((x2-a)^2+(y2-b)^2)
+! solve vkv
+va=1+(rico2)^2
+vb=-2*(a-rico2*(n-b))
+vc=a^2+(n-b)^2-r^2
+disc=vb^2-4*va*vc
+px1=(-vb+sqr(disc))/(2*va)
+px2=(-vb-sqr(disc))/(2*va)
+! fill in 
+py1=rico2*px1+n
+py2=rico2*px2+n
+plot px1,py1;x2,y2
+plot px2,py2;x2,y2
+end sub

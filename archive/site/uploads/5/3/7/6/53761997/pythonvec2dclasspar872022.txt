@@ -1,0 +1,37 @@
+# part 8 : implimentation @staticmethod in the class vec2d
+# peter.vlasschaert@gmail.com , 29/08/2022
+# ref : Prof Denis C (UGent)
+class vec2d():
+    counter = 0
+
+    # vector 2 dimensional plane (xy-plane)
+    def __init__(self, x, y):  # don't forget this
+        # do first
+        vec2d.counter = vec2d.counter + 1
+        # do second
+        self.x = x
+        self.y = y
+
+    # representation vec2d(x,y)
+    def __repr__(self):
+        return str([self.x, self.y])
+
+    # create addNumbers static method
+    @staticmethod
+    def count():
+        return vec2d.counter
+
+print( " result : output " )
+print( "................." )
+print( " first time , you call vec2d " )
+v1 = vec2d(3, 4)
+print(vec2d.count())
+print( " second time , you call vec2d " )
+v2 = vec2d(3, 4)
+print(vec2d.count())
+
+print ("..........................................")
+print (" output => print(counter)          = error")
+print (" NameError: name 'counter' is not defined ")
+print ("..........................................")
+# print(" output = ", counter )

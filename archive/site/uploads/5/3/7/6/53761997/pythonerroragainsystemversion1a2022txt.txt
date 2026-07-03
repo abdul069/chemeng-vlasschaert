@@ -1,0 +1,21 @@
+# : good format input       
+# peter.vlasschaert@gmail.com,31/08/2022
+print (".........................................................")
+print (" python :simple error catching, input again ,version 1.0 ")
+print ("peter.vlasschaert@gmail.com,01/09/2022                   ")
+print (".........................................................")
+print ("                                                         ")
+print (" good format : input ")
+print (".....................")       
+wrong = True    # (T)rue and (F)alse
+print( " output (The Input Values) ")
+while wrong == True:
+    try:
+       x=int(input("Enter an Integer = ")) # int => float 
+       print("you entered an Integer = ",x)
+       wrong = False
+       break
+    except ValueError : # type of error
+       print("Error! Enter an Integer") 
+print ("                             ")
+print("Good Bye ")        

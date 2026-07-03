@@ -1,0 +1,183 @@
+option nolet
+!****************************************************************
+! example 3 : graphics programming (to make figure on the canvas)
+!****************************************************************
+print "*********************************************"
+print "date    :27/06/2017  'example graphics 3'    "
+print "author  :peter.vlasschaert@gmail.com         "
+print "version :torus (3d)  'version 1.0'           "
+print "*********************************************"
+print
+print "*************************************"
+print "* example: torus (3d)               *"
+print "*                                   *"
+print "*    x = (b+a*cos(theta))*cos(phi)  *"
+print "*    y = (b+a*cos(theta))*sin(phi)  *"
+print "*    z = a*sin(theta)               *"
+print "*  a,b = fixed values               *"
+print "*************************************"
+!*******************************************
+!rem: 3d -> 2d (= canvas 's=screen')
+! projection : 3d -> 2d => (x,y,z)->(xs,ys)
+! method 1 : 45 degree oblique projection
+!            xs = y - x/2
+!            ys = z - x/2
+! method 2 : orthograhic projection
+!            xs = y
+!            ys = z
+!**********************************************
+! parametric : given a,b,r (= fixed)
+!              f(x,y,z)=f(x(u,v),y(u,v),z(u,v))
+! example :    torus 3d (website) (b > a)
+!           x = (b+a*cos(theta))*cos(phi)
+!           y = (b+a*cos(theta))*sin(phi)
+!           z = a*sin(theta)
+! u=theta , v=phi
+!**********************************************
+! rem : u=cte=pi/2,v 
+!       x = b*cos(phi)
+!       y = b*sin(phi)
+!       z = a
+! result :circle // x,y plane
+! rem : parametric equation circle
+!       f(x,y) = f( r*cos(theta),r*sin(theta))
+!       r = fixed
+! ? theta = dummie = phi = v
+!**********************************************
+!filename:drawtorus3dwireframeversion1final
+print
+test = 1         ! plot axis x,y : test=1 else not
+r1=10            ! draw window dimension
+!v=pi/180        ! conversion grad -> rad
+!****************************************************
+! " aspect ratio correction ----->                  "
+!****************************************************
+r=r1
+Ask pixels hpix,vpix
+pratio=hpix/vpix
+vr=2*r
+hr=2*r*pratio
+! set window xmin,xmax,ymin,ymax
+set window -hr/2-1,hr/2+1,-vr/2-1,vr/2+1
+!**** plot axis *************************************
+  if test = 1 then
+     set color "black"
+     plot lines:-hr/2-1,0;hr/2+1,0
+     plot lines: 0,-vr/2-1;0,vr/2+1
+  else
+     plot text, at 0,0 :"+"
+  end if
+!****************************************************
+! parametric equation : torus (3d)
+!****************************************************
+! -> begin
+! input     :1e) fixed values (b>a,see above)
+a=2
+b=3.5
+print " a= ";a
+print " b= ";b
+! function  :2e) parametric equations
+def fnx(theta,phi,a,b) = (b+a*cos(theta))*cos(phi)
+def fny(theta,phi,a,b) = (b+a*cos(theta))*sin(phi)
+def fnz(theta,phi,a,b) =  a*sin(theta)
+!end
+!****************************************************
+! projection :functions (3d->2d) 'see above'
+!****************************************************
+def projx(x,y,z) = y - x/2
+def projy(x,y,z) = z - x/2
+! 'see above '
+! method 2 : removes code x or put x=0 ( x = fixed)
+!****************************************************
+! wireframe: torus (3d)
+!****************************************************
+!********************************************
+! first: boundary ((l)ower,(u)pper ,stepsize)
+!********************************************
+u_l = -pi ! lower of u
+u_u = pi  ! upper of u
+v_l = -pi ! lower of v
+v_u = pi  ! upper of v
+uu=100
+vv=100
+du=(u_u-u_l)/uu ! stepsize du
+dv=(v_u-v_l)/vv ! stepsize dv
+!***********************************************
+! second: wirefame projection 3d->2d 'see above'
+!***********************************************
+! u=change 'blue color'
+!****************************
+! 1e) : v=fixed=v_l ,u=change
+!****************************
+ set color "blue"
+ for u=u_l to u_u step 2*du
+    x=fnx(u,v_l,a,b)
+    y=fny(u,v_l,a,b)
+    z=fnz(u,v_l,a,b)
+   !****************************************************
+   ! projection 3d->2d (first point (x1,y1) of the line)
+   !****************************************************
+    x1 = projx(x,y,z)
+    y1 = projy(x,y,z)
+  for v=v_l to v_u step dv
+    x=fnx(u,v,a,b)
+    y=fny(u,v,a,b)
+    z=fnz(u,v,a,b)
+!print x1,y1
+   !****************************************************
+   ! projection 3d->2d (second point (x2,y2) of the line)
+   !****************************************************
+    x2 = projx(x,y,z)
+    y2 = projy(x,y,z)
+   !****************************
+   ! conect (x1,y1) with (x2,y2)
+   !****************************
+   plot lines:  x1,y1;x2,y2;
+   !********************************************
+   ! to start with end of line for the next line
+   !********************************************
+   x1=x2
+   y1=y2
+ next v
+next u
+!********************************************************
+ set color "red"
+!****************************
+! v=change 'red color'
+!****************************
+! 2e) : u=fixed=u_l ,v=change
+!****************************
+ for v=v_l to v_u step 2*dv
+    x=fnx(u_l,v,a,b)
+    y=fny(u_l,v,a,b)
+    z=fnz(u_l,v,a,b)
+   !****************************************************
+   ! projection 3d->2d (first point (x1,y1) of the line)
+   !****************************************************
+    x1 = projx(x,y,z)
+    y1 = projy(x,y,z)
+  for u=u_l to u_u step du
+    x=fnx(u,v,a,b)
+    y=fny(u,v,a,b)
+    z=fnz(u,v,a,b)
+   !****************************************************
+   ! projection 3d->2d (second point (x2,y2) of the line)
+   !****************************************************
+    x2 = projx(x,y,z)
+    y2 = projy(x,y,z)
+   !****************************
+   ! conect (x1,y1) with (x2,y2)
+   !****************************
+   plot lines:  x1,y1;x2,y2;
+   !********************************************
+   ! to start with end of line for the next line
+   !********************************************
+   x1=x2
+   y1=y2
+ next u
+next v
+  
+end
+
+
+

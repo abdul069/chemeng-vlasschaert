@@ -1,0 +1,79 @@
+from tkinter import *
+#---------------------------------------------------------
+# peter.vlasschaert@gmail.com, 10/04/2021, 'version 1.O'
+# scientific : computing
+#---------------------------------------------------------
+
+#-------------------------------------------------------------
+# identation very important , otherwise error or wrong result
+#-------------------------------------------------------------
+
+# default : window @ canvas ,coordinates upper left,orgin = (0,0)
+canvas_width = 1000
+canvas_height = 500
+
+global l # get result also outside function : paint
+l=[] # empty list for circle coordinates ( = center of the circle)
+
+# => function paint event driven and capture points froom the mouse (x,y) location.
+def paint( event):
+    #--------------------------------------------
+    #python_green = "#476042"   
+    # radius of the circles to draw on the canvas
+    #---------------------------------------------
+    r=2
+    # capture event of the center of the circle   
+    x1, y1 = ( event.x), ( event.y)     
+    # create the circles
+    w.create_oval( x1+r, y1+r, x1-r, y1-r )
+    #--------------------------------------------------------------------------
+    # origin (0,0) @ lower left, 'display coordinates , positiv values x and y'
+    # mathematical : transformation to change position of the origin.
+    #--------------------------------------------------------------------------
+    message['text'] = "coordinates (point)  = "+"("+ str(x1) + ","+ str(canvas_height-y1) +")"  
+    # list of all mouse coordinates and append to list l
+    l.append([x1,canvas_height-y1])
+    # print(l)
+    # update the canvas to draw
+    w.update()
+    
+# => function : print coordinates in python editor .   
+def result(l):
+    # find first point from => l[0]
+    print(l)    
+   
+# => function : to close gui interface.    
+def _quit():
+    win.quit()
+    win.destroy()
+    
+    
+ # to place widgets on Canvas we use : grid method ( rows ,columns)  
+win = Tk() # we will open window , name = win
+win.title( "Draw points on the Canvas:  origin= (0,0) on the lower left" )
+# construct Canvas on the win
+w = Canvas(win, 
+           width=canvas_width, 
+           height=canvas_height)
+# put Canvas on the win.
+w.grid(row=0,column=0)
+# display : coordinates (x,y)
+message = Label( win)
+message.grid( row =1,column=0)
+# function:paint  interaction with the Canvas.
+w.bind( "<B1-Motion>", paint)
+# get list of coordinates of the center of circles,first point => l[0]
+btn1 = Button(win, width = 30 ,text = " result = ",command=lambda: result(l))
+btn1.grid(row = 1,column = 1)
+# destroy win 
+btn2 = Button(win, width = 30 ,text = " quit   = ",command = _quit)
+btn2.grid(row = 1,column = 2)
+
+#--------------------------------------
+# shell : Thonny
+#--------------------------------------
+# inside the editor we get values for l
+# >>> l
+#--------------------------------------
+win.mainloop()
+

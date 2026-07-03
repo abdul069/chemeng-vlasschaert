@@ -1,0 +1,29 @@
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.spatial import Delaunay
+#
+print(" ............................................................")
+print(" PYTHON : How to plot delaunay from random points,version 1.0")
+print(" peter.vlasschaert@gmail.com,07/01/2023                      ")
+print(" ............................................................")
+#
+# Number of points to generate
+num_points = 10  
+# Generate random points
+points = np.random.rand(num_points, 2)
+# Perform Delaunay triangulation
+tri = Delaunay(points)  
+# Plot the triangulation
+plt.triplot(points[:,0], points[:,1], tri.simplices.copy())
+# Plot the points
+plt.plot(points[:,0], points[:,1], 'o')  
+# number points
+for i, point in enumerate(points):
+    plt.text(point[0], point[1], f"{i}")  # Label the point with its number
+# numbering of triangles ,@ centroid
+for i, triangle in enumerate(tri.simplices):
+    x = sum(points[triangle][:,0])/3  # Compute the x-coordinate of the triangle's centroid
+    y = sum(points[triangle][:,1])/3  # Compute the y-coordinate of the triangle's centroid
+    plt.text(x, y, f"{i}")            # Label the triangle with its number
+# Display the plot
+plt.show() 

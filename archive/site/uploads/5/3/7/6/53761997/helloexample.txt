@@ -1,0 +1,21 @@
+How compile : your first fortran program : Hello World
+------------------------------------------------------
+peter.vlasschaert@gmail.com,12/07/2022
+
+1e) step : make directory on your harddisc:
+vb : C:\test
+
+2e) step : menu > File > New > Project
+3e) step : New from template : Project > Fortran application.
+4e) step : Next
+5e) step : a) project title : firstpr
+           b) folder : browse ... (C:\test)
+6e) step : Compiler : GNU Fortran Compiler
+7e) step : Finish
+8e) step : Management>Projects>Workspace>firstpr>Fortran Sources
+9e) step : click on Fortran Sources
+10e) step :click main.f90
+11e) step : your first fortran program "Hello World "
+12e) step : excute
+            a) Menu : click on Build > Build  (Logs windows : process terminated)
+            b) green arrow : cmd "window" > Hello World

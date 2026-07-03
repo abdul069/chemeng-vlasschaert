@@ -1,0 +1,19 @@
+option nolet
+set window -3,3,-2,2
+w =0.05
+a=2
+b=-1
+c=1
+d=4
+plot -3,0;3,0
+plot 0,-2;0,2
+for x=-3 to 3 step .25
+  for y=-2 to 2 step .25
+  dx = a*x+b*y
+  dy = c*x+d*y
+   ds=sqr(dx^2+dy^2)
+ if ds>0 then plot x-w*dx/ds,y-w*dy/ds;x+w*dx/ds,y+w*dy/ds
+  next y
+next x
+end
+

@@ -1,0 +1,337 @@
+<!DOCTYPE HTML">
+<HTML>
+ <HEAD>
+  <TITLE>ricattipart2modelhtml</TITLE>
+  <META NAME="generator" CONTENT="wxMaxima">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    displayAlign: "left",
+    context: "MathJax"
+  })
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+  <link rel="stylesheet" type="text/css" href="https://petervlaschemeng.weebly.com/uploads/5/3/7/6/53761997/ricattipart2modelhtml_htmlimg/ricattipart2modelhtml.css"/>
+ </HEAD>
+ <BODY>
+
+<!-- ***************************************************** -->
+<!--          Created with wxMaxima version 16.04.2         -->
+<!-- ***************************************************** -->
+<noscript><div class="error message">    Please enable JavaScript in order to get a 2d display of the equations embedded in this web page.</div></noscript>\(      \DeclareMathOperator{\abs}{abs}
+      \newcommand{\ensuremath}[1]{\mbox{$#1$}}
+\)
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">kill</span>(<span class="code_variable">all</span>)<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+part 2 : intro staged-process models ( problem model )<BR><a href="https://petervlaschemeng.weebly.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="06766372637428706a677575656e6763747246616b676f6a2865696b">[email&#160;protected]</a>,31/01/2017<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+problem :(n+1)= log(phi)/log(theta)<BR><BR>theta = L/(k*V)<BR><BR>1e)if log(theta)= 0 and log(phi)= value : (n+1) &rarr; infinity<BR><BR>2e)if log(theta)= 0 and log(phi)= 0 &nbsp;&nbsp;&nbsp;&nbsp;: (n+1) &rarr; indeterminate<BR><BR> &nbsp;&nbsp;theta = 1 = L/(k*V)<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i5) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq1</span><span class="code_operator">:</span><span class="code_variable">phi1</span> <span class="code_operator">=</span> <span class="code_operator">-</span>(<span class="code_variable">y</span>[<span class="code_variable">i</span><span class="code_operator">+</span><span class="code_number">1</span>]<span class="code_operator">-</span><span class="code_variable">x</span>[<span class="code_number">0</span>]<span class="code_operator">*</span><span class="code_variable">k</span>)<span class="code_operator">*</span><span class="code_variable">theta</span><span class="code_operator">-</span><span class="code_variable">y</span>[<span class="code_variable">i</span><span class="code_operator">+</span><span class="code_number">1</span>]<span class="code_operator">+</span><span class="code_variable">y</span>[<span class="code_number">1</span>]<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq2</span><span class="code_operator">:</span><span class="code_variable">phi2</span> <span class="code_operator">=</span> <span class="code_variable">x</span>[<span class="code_number">0</span>]<span class="code_operator">*</span><span class="code_variable">k</span><span class="code_operator">-</span><span class="code_variable">y</span>[<span class="code_number">1</span>]<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq3</span><span class="code_operator">:</span><span class="code_variable">phi</span> <span class="code_operator">=</span> <span class="code_function">rhs</span>(<span class="code_variable">eq1</span>)<span class="code_operator">/</span><span class="code_function">rhs</span>(<span class="code_variable">eq2</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq4</span><span class="code_operator">:</span><span class="code_variable">theta</span> <span class="code_operator">=</span> <span class="code_variable">L</span><span class="code_operator">/</span>(<span class="code_variable">k</span><span class="code_operator">*</span><span class="code_variable">V</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq</span><span class="code_operator">:</span> <span class="code_variable">m</span> <span class="code_operator">=</span> <span class="code_variable">n</span><span class="code_operator">+</span><span class="code_number">1</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq1}\label{eq1}\mathit{phi1}=\left( {{x}_{0}}k-{{y}_{i+1}}\right) \theta-{{y}_{i+1}}+{{y}_{1}}\]
+\[\tag{eq2}\label{eq2}\mathit{phi2}={{x}_{0}}k-{{y}_{1}}\]
+\[\tag{eq3}\label{eq3}\phi=\frac{\left( {{x}_{0}}k-{{y}_{i+1}}\right) \theta-{{y}_{i+1}}+{{y}_{1}}}{{{x}_{0}}k-{{y}_{1}}}\]
+\[\tag{eq4}\label{eq4}\theta=\frac{L}{Vk}\]
+\[\tag{eq}\label{eq}m=n+1\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+indeterminate &rArr; L'Hopital rule = 0/0 = phi'/theta'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i8) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq5</span><span class="code_operator">:</span><span class="code_function">diff</span>(<span class="code_function">rhs</span>(<span class="code_variable">eq3</span>),<span class="code_variable">theta</span>,<span class="code_number">1</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq6</span><span class="code_operator">:</span><span class="code_function">diff</span>(<span class="code_function">lhs</span>(<span class="code_variable">eq4</span>),<span class="code_variable">theta</span>,<span class="code_number">1</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq7</span><span class="code_operator">:</span><span class="code_function">rhs</span>(<span class="code_variable">eq</span>) <span class="code_operator">=</span> <span class="code_variable">eq5</span><span class="code_operator">/</span><span class="code_variable">eq6</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq5}\label{eq5}\frac{{{x}_{0}}k-{{y}_{i+1}}}{{{x}_{0}}k-{{y}_{1}}}\]
+\[\tag{eq6}\label{eq6}1\]
+\[\tag{eq7}\label{eq7}n+1=\frac{{{x}_{0}}k-{{y}_{i+1}}}{{{x}_{0}}k-{{y}_{1}}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+cascade: plate : &nbsp;distillation operation<BR><BR>1e) operating line &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: y[i+1]=a*x[i]+b<BR>2e) relative volatility &nbsp;: alpha = y[i]/x[i]/((1-y[i])/(1-x[i]))<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+1e) operating line :<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i10) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq8</span><span class="code_operator">:</span><span class="code_variable">a</span> <span class="code_operator">=</span> <span class="code_variable">L</span><span class="code_operator">/</span><span class="code_variable">V</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">eq9</span><span class="code_operator">:</span><span class="code_variable">b</span> <span class="code_operator">=</span> <span class="code_variable">y</span>[<span class="code_number">1</span>]<span class="code_operator">-</span><span class="code_variable">x</span>[<span class="code_number">0</span>]<span class="code_operator">*</span><span class="code_variable">L</span><span class="code_operator">/</span><span class="code_variable">V</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq8}\label{eq8}a=\frac{L}{V}\]
+\[\tag{eq9}\label{eq9}b={{y}_{1}}-\frac{{{x}_{0}}L}{V}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i11) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq10</span><span class="code_operator">:</span><span class="code_variable">y</span>[<span class="code_variable">i</span><span class="code_operator">+</span><span class="code_number">1</span>]<span class="code_operator">=</span><span class="code_function">rhs</span>(<span class="code_variable">eq8</span>)<span class="code_operator">*</span><span class="code_variable">x</span>[<span class="code_variable">i</span>]<span class="code_operator">+</span><span class="code_function">rhs</span>(<span class="code_variable">eq9</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq10}\label{eq10}{{y}_{i+1}}=\frac{L\,{{x}_{i}}}{V}-\frac{{{x}_{0}}L}{V}+{{y}_{1}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+2e) relative volatility = alpha :<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i12) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq11</span><span class="code_operator">:</span><span class="code_variable">alpha</span> <span class="code_operator">=</span> <span class="code_variable">y</span>[<span class="code_variable">i</span>]<span class="code_operator">/</span><span class="code_variable">x</span>[<span class="code_variable">i</span>]<span class="code_operator">/</span>((<span class="code_number">1</span><span class="code_operator">-</span><span class="code_variable">y</span>[<span class="code_variable">i</span>])<span class="code_operator">/</span>(<span class="code_number">1</span><span class="code_operator">-</span><span class="code_variable">x</span>[<span class="code_variable">i</span>]))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq11}\label{eq11}\alpha=\frac{\left( 1-{{x}_{i}}\right) \,{{y}_{i}}}{{{x}_{i}}\,\left( 1-{{y}_{i}}\right) }\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i13) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq12</span><span class="code_operator">:</span><span class="code_function">solve</span>(<span class="code_variable">eq11</span>,<span class="code_variable">y</span>[<span class="code_variable">i</span>])[<span class="code_number">1</span>]<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq12}\label{eq12}{{y}_{i}}=\frac{\alpha{{x}_{i}}}{\left( \alpha-1\right) \,{{x}_{i}}+1}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i14) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq13</span><span class="code_operator">:</span><span class="code_function">subst</span>(<span class="code_variable">i</span><span class="code_operator">+</span><span class="code_number">1</span>,<span class="code_variable">i</span>,<span class="code_variable">eq12</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq13}\label{eq13}{{y}_{i+1}}=\frac{\alpha{{x}_{i+1}}}{\left( \alpha-1\right) \,{{x}_{i+1}}+1}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i15) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq14</span><span class="code_operator">:</span><span class="code_function">rhs</span>(<span class="code_variable">eq10</span>)<span class="code_operator">=</span><span class="code_function">rhs</span>(<span class="code_variable">eq13</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq14}\label{eq14}\frac{L\,{{x}_{i}}}{V}-\frac{{{x}_{0}}L}{V}+{{y}_{1}}=\frac{\alpha{{x}_{i+1}}}{\left( \alpha-1\right) \,{{x}_{i+1}}+1}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i16) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq15</span><span class="code_operator">:</span><span class="code_function">lhs</span>(<span class="code_variable">eq14</span>)<span class="code_operator">-</span><span class="code_function">rhs</span>(<span class="code_variable">eq14</span>)<span class="code_operator">=</span><span class="code_number">0</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq15}\label{eq15}-\frac{\alpha{{x}_{i+1}}}{\left( \alpha-1\right) \,{{x}_{i+1}}+1}+\frac{L\,{{x}_{i}}}{V}-\frac{{{x}_{0}}L}{V}+{{y}_{1}}=0\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+total condenser : y[1]=x[0]<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i17) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq16</span><span class="code_operator">:</span><span class="code_function">subst</span>(<span class="code_variable">x</span>[<span class="code_number">0</span>],<span class="code_variable">y</span>[<span class="code_number">1</span>],<span class="code_variable">eq15</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq16}\label{eq16}-\frac{\alpha{{x}_{i+1}}}{\left( \alpha-1\right) \,{{x}_{i+1}}+1}+\frac{L\,{{x}_{i}}}{V}-\frac{{{x}_{0}}L}{V}+{{x}_{0}}=0\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i18) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq17</span><span class="code_operator">:</span><span class="code_function">radcan</span>(<span class="code_operator">-</span>(<span class="code_variable">alpha</span><span class="code_operator">*</span><span class="code_variable">x</span>[<span class="code_variable">i</span><span class="code_operator">+</span><span class="code_number">1</span>])<span class="code_operator">/</span>((<span class="code_variable">alpha</span><span class="code_operator">-</span><span class="code_number">1</span>)<span class="code_operator">*</span><span class="code_variable">x</span>[<span class="code_variable">i</span><span class="code_operator">+</span><span class="code_number">1</span>]<span class="code_operator">+</span><span class="code_number">1</span>)<span class="code_operator">+</span>(<span class="code_variable">L</span><span class="code_operator">*</span><span class="code_variable">x</span>[<span class="code_variable">i</span>])<span class="code_operator">/</span><span class="code_variable">V</span><span class="code_operator">-</span>(<span class="code_variable">x</span>[<span class="code_number">0</span>]<span class="code_operator">*</span><span class="code_variable">L</span>)<span class="code_operator">/</span><span class="code_variable">V</span><span class="code_operator">+</span><span class="code_variable">x</span>[<span class="code_number">0</span>])<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq17}\label{eq17}\frac{\left( \left( L\alpha-L\right) \,{{x}_{i}}+\left( \left( {{x}_{0}}-1\right) V-{{x}_{0}}L\right) \alpha-{{x}_{0}}V+{{x}_{0}}L\right) \,{{x}_{i+1}}+L\,{{x}_{i}}+{{x}_{0}}V-{{x}_{0}}L}{\left( V\alpha-V\right) \,{{x}_{i+1}}+V}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i20) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq18</span><span class="code_operator">:</span><span class="code_function">factor</span>(<span class="code_function">part</span>(<span class="code_variable">eq17</span>,<span class="code_number">1</span>))<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq19</span><span class="code_operator">:</span><span class="code_function">factor</span>(<span class="code_function">part</span>(<span class="code_variable">eq17</span>,<span class="code_number">2</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq18}\label{eq18}L\alpha{{x}_{i}}\,{{x}_{i+1}}-L\,{{x}_{i}}\,{{x}_{i+1}}+{{x}_{0}}V\alpha{{x}_{i+1}}-V\alpha{{x}_{i+1}}-{{x}_{0}}L\alpha{{x}_{i+1}}-{{x}_{0}}V\,{{x}_{i+1}}+{{x}_{0}}L\,{{x}_{i+1}}+L\,{{x}_{i}}+{{x}_{0}}V-{{x}_{0}}L\]
+\[\tag{eq19}\label{eq19}V\,\left( \alpha{{x}_{i+1}}-{{x}_{i+1}}+1\right) \]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i23) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq20</span><span class="code_operator">:</span><span class="code_function">coeff</span>(<span class="code_variable">eq18</span>,<span class="code_variable">x</span>[<span class="code_variable">i</span>])<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq21</span><span class="code_operator">:</span><span class="code_function">coeff</span>(<span class="code_variable">eq18</span>,<span class="code_variable">x</span>[<span class="code_variable">i</span><span class="code_operator">+</span><span class="code_number">1</span>])<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq22</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">eq18</span>,<span class="code_variable">x</span>[<span class="code_variable">i</span>]<span class="code_operator">=</span><span class="code_number">0</span>,<span class="code_variable">x</span>[<span class="code_variable">i</span><span class="code_operator">+</span><span class="code_number">1</span>]<span class="code_operator">=</span><span class="code_number">0</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq20}\label{eq20}L\alpha{{x}_{i+1}}-L\,{{x}_{i+1}}+L\]
+\[\tag{eq21}\label{eq21}L\alpha{{x}_{i}}-L\,{{x}_{i}}+{{x}_{0}}V\alpha-V\alpha-{{x}_{0}}L\alpha-{{x}_{0}}V+{{x}_{0}}L\]
+\[\tag{eq22}\label{eq22}{{x}_{0}}V-{{x}_{0}}L\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i26) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq23</span><span class="code_operator">:</span><span class="code_function">factor</span>(<span class="code_function">ratsubst</span>(<span class="code_variable">t</span>,<span class="code_variable">x</span>[<span class="code_variable">i</span>]<span class="code_operator">*</span><span class="code_variable">x</span>[<span class="code_variable">i</span><span class="code_operator">+</span><span class="code_number">1</span>],<span class="code_variable">eq18</span>))<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq24</span><span class="code_operator">:</span><span class="code_function">coeff</span>(<span class="code_variable">eq23</span>,<span class="code_variable">t</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq25</span><span class="code_operator">:</span><span class="code_variable">t</span><span class="code_operator">=</span><span class="code_variable">x</span>[<span class="code_variable">i</span><span class="code_operator">+</span><span class="code_number">1</span>]<span class="code_operator">*</span><span class="code_variable">x</span>[<span class="code_variable">i</span>]<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq23}\label{eq23}L\alphat-Lt+{{x}_{0}}V\alpha{{x}_{i+1}}-V\alpha{{x}_{i+1}}-{{x}_{0}}L\alpha{{x}_{i+1}}-{{x}_{0}}V\,{{x}_{i+1}}+{{x}_{0}}L\,{{x}_{i+1}}+L\,{{x}_{i}}+{{x}_{0}}V-{{x}_{0}}L\]
+\[\tag{eq24}\label{eq24}L\alpha-L\]
+\[\tag{eq25}\label{eq25}t={{x}_{i}}\,{{x}_{i+1}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+Ricatti : equation<BR>part 3: How to solve Ricatti equation<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+x[i+1]*x[i]+A*x[i+1]+B*x[i]+C = 0<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i30) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq26</span><span class="code_operator">:</span> <span class="code_variable">A</span> <span class="code_operator">=</span> <span class="code_variable">eq21</span><span class="code_operator">/</span><span class="code_variable">eq24</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">eq27</span><span class="code_operator">:</span> <span class="code_variable">B</span> <span class="code_operator">=</span> <span class="code_variable">eq20</span><span class="code_operator">/</span><span class="code_variable">eq24</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">eq28</span><span class="code_operator">:</span> <span class="code_variable">C</span> <span class="code_operator">=</span> <span class="code_variable">eq22</span><span class="code_operator">/</span><span class="code_variable">eq24</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq26}\label{eq26}A=\frac{L\alpha{{x}_{i}}-L\,{{x}_{i}}+{{x}_{0}}V\alpha-V\alpha-{{x}_{0}}L\alpha-{{x}_{0}}V+{{x}_{0}}L}{L\alpha-L}\]
+\[\tag{eq27}\label{eq27}B=\frac{L\alpha{{x}_{i+1}}-L\,{{x}_{i+1}}+L}{L\alpha-L}\]
+\[\tag{eq28}\label{eq28}C=\frac{{{x}_{0}}V-{{x}_{0}}L}{L\alpha-L}\]
+
+ <HR>
+ <SMALL> Created with <A HREF="http://wxmaxima.sourceforge.net/">wxMaxima</A>.</SMALL>
+ <script data-cfasync="false" src="../../../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></BODY>
+</HTML>

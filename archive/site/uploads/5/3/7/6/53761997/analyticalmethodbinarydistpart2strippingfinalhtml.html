@@ -1,0 +1,566 @@
+<!DOCTYPE HTML">
+<HTML>
+ <HEAD>
+  <TITLE>analyticalmethodbinarydistpart2strippingfinalhtml</TITLE>
+  <META NAME="generator" CONTENT="wxMaxima">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    displayAlign: "left",
+    context: "MathJax"
+  })
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+  <link rel="stylesheet" type="text/css" href="https://petervlaschemeng.weebly.com/uploads/5/3/7/6/53761997/analyticalmethodbinarydistpart2strippingfinalhtml_htmlimg/analyticalmethodbinarydistpart2strippingfinalhtml.css"/>
+ </HEAD>
+ <BODY>
+
+<!-- ***************************************************** -->
+<!--          Created with wxMaxima version 16.04.2         -->
+<!-- ***************************************************** -->
+<noscript><div class="error message">    Please enable JavaScript in order to get a 2d display of the equations embedded in this web page.</div></noscript>\(      \DeclareMathOperator{\abs}{abs}
+      \newcommand{\ensuremath}[1]{\mbox{$#1$}}
+\)
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">kill</span>(<span class="code_variable">all</span>)<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+analytical method : binary distillation<BR><a href="https://petervlaschemeng.weebly.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dfafbaabbaadf1a9b3beacacbcb7bebaadab9fb8b2beb6b3f1bcb0b2">[email&#160;protected]</a>,05/04/2017<BR>part2:stripping-section 'operating line'<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+alpha :constant relative volatility<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">assume</span>(<span class="code_variable">alpha</span> &gt;<span class="code_operator">=</span> <span class="code_number">1</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o1}\label{o1} [\alpha\mbox{\ensuremath{\ensuremath{&gt;}}=}1]\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+p1:hyperbole &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: equilbrium equation.<BR>p2:linear equation : operating line.<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i3) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p1</span><span class="code_operator">:</span><span class="code_variable">y</span><span class="code_operator">=</span>(<span class="code_variable">alpha</span><span class="code_operator">*</span><span class="code_variable">x</span>)<span class="code_operator">/</span>(<span class="code_number">1</span><span class="code_operator">+</span>(<span class="code_variable">alpha</span><span class="code_operator">-</span><span class="code_number">1</span>)<span class="code_operator">*</span><span class="code_variable">x</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p2</span><span class="code_operator">:</span><span class="code_variable">y</span><span class="code_operator">=</span><span class="code_variable">m</span><span class="code_operator">*</span><span class="code_variable">x</span><span class="code_operator">+</span><span class="code_variable">b</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p1}\label{p1}y=\frac{\alphax}{\left( \alpha-1\right) x+1}\]
+\[\tag{p2}\label{p2}y=mx+b\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+removes (p1,p2),solve for x<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i5) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p3</span><span class="code_operator">:</span><span class="code_function">ratsimp</span>(<span class="code_function">rhs</span>(<span class="code_variable">p1</span>)<span class="code_operator">-</span><span class="code_function">rhs</span>(<span class="code_variable">p2</span>))<span class="code_operator">=</span><span class="code_number">0</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">p4</span><span class="code_operator">:</span>(<span class="code_number">-</span><span class="code_number">1</span>)<span class="code_operator">*</span><span class="code_function">num</span>(<span class="code_function">part</span>(<span class="code_variable">p3</span>,<span class="code_number">1</span>))<span class="code_operator">=</span><span class="code_number">0</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p3}\label{p3}-\frac{\left( \alpha-1\right) m\,{{x}^{2}}+\left( m+\left( \alpha-1\right) b-\alpha\right) x+b}{\left( \alpha-1\right) x+1}=0\]
+\[\tag{p4}\label{p4}\left( \alpha-1\right) m\,{{x}^{2}}+\left( m+\left( \alpha-1\right) b-\alpha\right) x+b=0\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i8) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p5</span><span class="code_operator">:</span><span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">p4</span>,<span class="code_number">1</span>),<span class="code_variable">x</span><span class="code_operator">^</span><span class="code_number">2</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p6</span><span class="code_operator">:</span><span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">p4</span>,<span class="code_number">1</span>),<span class="code_variable">x</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p7</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_function">part</span>(<span class="code_variable">p4</span>,<span class="code_number">1</span>),<span class="code_variable">x</span><span class="code_operator">=</span><span class="code_number">0</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p5}\label{p5}\left( \alpha-1\right) m\]
+\[\tag{p6}\label{p6}m+\left( \alpha-1\right) b-\alpha\]
+\[\tag{p7}\label{p7}b\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+solve : quadratic equation ,two roots.<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i10) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p8</span><span class="code_operator">:</span><span class="code_function">float</span>(<span class="code_function">solve</span>([<span class="code_variable">p4</span>], [<span class="code_variable">x</span>])[<span class="code_number">1</span>])<span class="code_endofline">;</span><BR>
+<span class="code_variable">p9</span><span class="code_operator">:</span><span class="code_function">float</span>(<span class="code_function">solve</span>([<span class="code_variable">p4</span>], [<span class="code_variable">x</span>])[<span class="code_number">2</span>])<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p8}\label{p8}x=-\frac{1.0\left( \sqrt{{{m}^{2}}+\left( \left( 2.0-2.0\alpha\right) b-2.0\alpha\right) m+\left( {{\alpha}^{2}}-2.0\alpha+1.0\right) \,{{b}^{2}}+\left( 2.0\alpha-2.0{{\alpha}^{2}}\right) b+{{\alpha}^{2}}}+m+\left( \alpha-1.0\right) b-1.0\alpha\right) }{\left( 2.0\alpha-2.0\right) m}\]
+\[\tag{p9}\label{p9}x=\frac{\sqrt{{{m}^{2}}+\left( \left( 2.0-2.0\alpha\right) b-2.0\alpha\right) m+\left( {{\alpha}^{2}}-2.0\alpha+1.0\right) \,{{b}^{2}}+\left( 2.0\alpha-2.0{{\alpha}^{2}}\right) b+{{\alpha}^{2}}}-1.0m+\left( 1.0-1.0\alpha\right) b+\alpha}{\left( 2.0\alpha-2.0\right) m}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i13) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">m</span><span class="code_operator">:</span><span class="code_number">0</span>.<span class="code_number">501</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">b</span><span class="code_operator">:</span><span class="code_number">0</span>.<span class="code_number">43</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">alpha</span><span class="code_operator">:</span><span class="code_number">5</span>.<span class="code_number">5</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{m}\label{m}0.501\]
+\[\tag{b}\label{b}0.43\]
+\[\tag{alpha}\label{alpha}5.5\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+y=x ,45 degree line.'ref line'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i14) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p10</span><span class="code_operator">:</span><span class="code_variable">y</span><span class="code_operator">=</span><span class="code_variable">x</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p10}\label{p10}y=x\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i17) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p11</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">p1</span>,<span class="code_number">2</span>)<span class="code_endofline">$</span><BR>
+<span class="code_variable">p12</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">p10</span>,<span class="code_number">2</span>)<span class="code_endofline">$</span><BR>
+<span class="code_variable">p13</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">p2</span>,<span class="code_number">2</span>)<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i18) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">plot2d</span>([<span class="code_variable">p11</span>,<span class="code_variable">p12</span>,<span class="code_variable">p13</span>],<BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">x</span>,<span class="code_operator">-</span>.<span class="code_number">5</span>,<span class="code_number">1</span>.<span class="code_number">3</span>],[<span class="code_variable">y</span>,<span class="code_operator">-</span>.<span class="code_number">5</span>,<span class="code_number">1</span>.<span class="code_number">3</span>],<BR>
+ [<span class="code_variable">plot_format</span>, <span class="code_variable">gnuplot</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\mbox{}\\\mbox{plot2d: some values were clipped.}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+x=zf =.4 : feed of tower ? yf value for zf<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i20) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p14</span><span class="code_operator">:</span><span class="code_variable">zf</span><span class="code_operator">=</span><span class="code_number">0</span>.<span class="code_number">4</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">p15</span><span class="code_operator">:</span><span class="code_variable">yf</span><span class="code_operator">=</span><span class="code_variable">m</span><span class="code_operator">*</span><span class="code_function">part</span>(<span class="code_variable">p14</span>,<span class="code_number">2</span>)<span class="code_operator">+</span><span class="code_variable">b</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p14}\label{p14}\mathit{zf}=0.4\]
+\[\tag{p15}\label{p15}\mathit{yf}=0.6304000000000001\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i22) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p141</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">p14</span>,<span class="code_number">2</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p151</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">p15</span>,<span class="code_number">2</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p141}\label{p141}0.4\]
+\[\tag{p151}\label{p151}0.6304000000000001\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+xb &lt; zf : b=bottom 'tower'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i24) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p16</span><span class="code_operator">:</span><span class="code_variable">xb</span><span class="code_operator">=</span><span class="code_number">0</span>.<span class="code_number">2</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">p17</span><span class="code_operator">:</span><span class="code_variable">yb</span><span class="code_operator">=</span><span class="code_function">part</span>(<span class="code_variable">p16</span>,<span class="code_number">2</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p16}\label{p16}\mathit{xb}=0.2\]
+\[\tag{p17}\label{p17}\mathit{yb}=0.2\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i26) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p161</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">p16</span>,<span class="code_number">2</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p171</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">p17</span>,<span class="code_number">2</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p161}\label{p161}0.2\]
+\[\tag{p171}\label{p171}0.2\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+line (zf,yf)-(xb,yb)<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i27) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p18</span><span class="code_operator">:</span><span class="code_variable">y</span><span class="code_operator">=</span><span class="code_variable">p151</span><span class="code_operator">+</span>((<span class="code_variable">p171</span><span class="code_operator">-</span><span class="code_variable">p151</span>)<span class="code_operator">/</span>(<span class="code_variable">p161</span><span class="code_operator">-</span><span class="code_variable">p141</span>))<span class="code_operator">*</span>(<span class="code_variable">x</span><span class="code_operator">-</span><span class="code_variable">p141</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p18}\label{p18}y=2.152\left( x-0.4\right) +0.6304000000000001\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i28) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p181</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">p18</span>,<span class="code_number">2</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p181}\label{p181}2.152\left( x-0.4\right) +0.6304000000000001\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i29) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">plot2d</span>([<span class="code_variable">p11</span>,<span class="code_variable">p12</span>,<span class="code_variable">p13</span>,<span class="code_variable">p181</span>],<BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">x</span>,<span class="code_operator">-</span>.<span class="code_number">5</span>,<span class="code_number">1</span>.<span class="code_number">3</span>],[<span class="code_variable">y</span>,<span class="code_operator">-</span>.<span class="code_number">5</span>,<span class="code_number">1</span>.<span class="code_number">3</span>],<BR>
+ [<span class="code_variable">plot_format</span>, <span class="code_variable">gnuplot</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\mbox{}\\\mbox{plot2d: some values were clipped.}\mbox{}\\\mbox{plot2d: some values were clipped.}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+intersection'magenta line' and 'blue curve'<BR>symbolic: y = m1*x+b1<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i30) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p19</span><span class="code_operator">:</span><span class="code_variable">y</span><span class="code_operator">=</span><span class="code_variable">m1</span><span class="code_operator">*</span><span class="code_variable">x</span><span class="code_operator">+</span><span class="code_variable">b1</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p19}\label{p19}y=\mathit{m1}x+\mathit{b1}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i32) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p20</span><span class="code_operator">:</span><span class="code_function">ratsimp</span>(<span class="code_function">rhs</span>(<span class="code_variable">p1</span>)<span class="code_operator">-</span><span class="code_function">rhs</span>(<span class="code_variable">p19</span>))<span class="code_operator">=</span><span class="code_number">0</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">p21</span><span class="code_operator">:</span>(<span class="code_number">-</span><span class="code_number">1</span>)<span class="code_operator">*</span><span class="code_function">num</span>(<span class="code_function">part</span>(<span class="code_variable">p20</span>,<span class="code_number">1</span>))<span class="code_operator">=</span><span class="code_number">0</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p20}\label{p20}-\frac{\left( \alpha-1\right) \,\mathit{m1}\,{{x}^{2}}+\left( \mathit{m1}+\left( \alpha-1\right) \,\mathit{b1}-\alpha\right) x+\mathit{b1}}{\left( \alpha-1\right) x+1}=0\]
+\[\tag{p21}\label{p21}\left( \alpha-1\right) \,\mathit{m1}\,{{x}^{2}}+\left( \mathit{m1}+\left( \alpha-1\right) \,\mathit{b1}-\alpha\right) x+\mathit{b1}=0\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i35) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p22</span><span class="code_operator">:</span><span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">p21</span>,<span class="code_number">1</span>),<span class="code_variable">x</span><span class="code_operator">^</span><span class="code_number">2</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p23</span><span class="code_operator">:</span><span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">p21</span>,<span class="code_number">1</span>),<span class="code_variable">x</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p24</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_function">part</span>(<span class="code_variable">p21</span>,<span class="code_number">1</span>),<span class="code_variable">x</span><span class="code_operator">=</span><span class="code_number">0</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p22}\label{p22}\left( \alpha-1\right) \,\mathit{m1}\]
+\[\tag{p23}\label{p23}\mathit{m1}+\left( \alpha-1\right) \,\mathit{b1}-\alpha\]
+\[\tag{p24}\label{p24}\mathit{b1}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i37) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p25</span><span class="code_operator">:</span><span class="code_function">float</span>(<span class="code_function">solve</span>([<span class="code_variable">p21</span>], [<span class="code_variable">x</span>])[<span class="code_number">1</span>])<span class="code_endofline">;</span><BR>
+<span class="code_variable">p26</span><span class="code_operator">:</span><span class="code_function">float</span>(<span class="code_function">solve</span>([<span class="code_variable">p21</span>], [<span class="code_variable">x</span>])[<span class="code_number">2</span>])<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\mbox{}\\\mbox{rat: replaced -5.5 by -11/2 = -5.5}\mbox{}\\\mbox{rat: replaced 4.5 by 9/2 = 4.5}\mbox{}\\\mbox{rat: replaced 4.5 by 9/2 = 4.5}\]
+\[\tag{p25}\label{p25}x=-\frac{0.05555555555555555\left( \sqrt{4.0{{\mathit{m1}}^{2}}+\left( -36.0\mathit{b1}-44.0\right) \,\mathit{m1}+81.0{{\mathit{b1}}^{2}}-198.0\mathit{b1}+121.0}+2.0\mathit{m1}+9.0\mathit{b1}-11.0\right) }{\mathit{m1}}\mbox{}\\\mbox{rat: replaced -5.5 by -11/2 = -5.5}\mbox{}\\\mbox{rat: replaced 4.5 by 9/2 = 4.5}\mbox{}\\\mbox{rat: replaced 4.5 by 9/2 = 4.5}\]
+\[\tag{p26}\label{p26}x=\frac{0.05555555555555555\left( \sqrt{4.0{{\mathit{m1}}^{2}}+\left( -36.0\mathit{b1}-44.0\right) \,\mathit{m1}+81.0{{\mathit{b1}}^{2}}-198.0\mathit{b1}+121.0}-2.0\mathit{m1}-9.0\mathit{b1}+11.0\right) }{\mathit{m1}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+general equation : between two points (point1-point2)<BR>point1 : (x1,y1)<BR>point2 : (x2,y2)<BR>m1=(y2-y1)/(x2-x1)<BR>y=y1+m1*(x-x1) &rArr; m1=slope<BR>b1=y1-m1*x1 &nbsp;&nbsp;&nbsp;&rArr; y=m1*x+b1<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i39) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p27</span><span class="code_operator">:</span><span class="code_variable">m1</span><span class="code_operator">=</span>(<span class="code_variable">p151</span><span class="code_operator">-</span><span class="code_variable">p171</span>)<span class="code_operator">/</span>(<span class="code_variable">p141</span><span class="code_operator">-</span><span class="code_variable">p161</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p28</span><span class="code_operator">:</span><span class="code_variable">b1</span><span class="code_operator">=</span><span class="code_variable">p171</span><span class="code_operator">-</span><span class="code_function">part</span>(<span class="code_variable">p27</span>,<span class="code_number">2</span>)<span class="code_operator">*</span><span class="code_variable">p161</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p27}\label{p27}\mathit{m1}=2.152\]
+\[\tag{p28}\label{p28}\mathit{b1}=-0.2304\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+intersection : &nbsp;&nbsp;'purple line' and<BR>'blue curve = equilibrium equation'<BR>symbolic: y = m1*x+b1 : stripping 'operating line'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i41) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p271</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">p27</span>,<span class="code_number">2</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p281</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">p28</span>,<span class="code_number">2</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p271}\label{p271}2.152\]
+\[\tag{p281}\label{p281}-0.2304\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+negative root: p25 (quadratic equation 'p21')<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i42) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p29</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_function">part</span>(<span class="code_variable">p25</span>,<span class="code_number">2</span>),<span class="code_variable">p27</span>,<span class="code_variable">p28</span>)<span class="code_endofline">;</span><BR>
+<span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p29}\label{p29}-0.04755135923748453\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+y value :'p29'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i43) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p291</span><span class="code_operator">:</span><span class="code_variable">y</span><span class="code_operator">=</span><span class="code_variable">p271</span><span class="code_operator">*</span><span class="code_variable">p29</span><span class="code_operator">+</span><span class="code_variable">p281</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p291}\label{p291}y=-0.3327305250790668\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+stripping-line x&lt;0 ,first point<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+positive root: p26 (quadratic equation 'p21')<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i44) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p30</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_function">part</span>(<span class="code_variable">p26</span>,<span class="code_number">2</span>),<span class="code_variable">p27</span>,<span class="code_variable">p28</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p30}\label{p30}0.5003394633267039\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+y value :'p30'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i45) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p301</span><span class="code_operator">:</span><span class="code_variable">y</span><span class="code_operator">=</span><span class="code_variable">p271</span><span class="code_operator">*</span><span class="code_variable">p30</span><span class="code_operator">+</span><span class="code_variable">p281</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p301}\label{p301}y=0.8463305250790668\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+stripping-line x&gt;0 ,second point<BR>
+</P>
+
+ <HR>
+ <SMALL> Created with <A HREF="http://wxmaxima.sourceforge.net/">wxMaxima</A>.</SMALL>
+ <script data-cfasync="false" src="../../../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></BODY>
+</HTML>

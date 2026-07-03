@@ -1,0 +1,110 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+# database instruction needed for table output : first ten rows (0 to 9)
+import pandas as pd
+from tabulate import tabulate # very nice table method 2,see output console.
+#-------------------------------------------------------------------------------
+# reaction kinetics:2A=C,C=A+B,table output:panda,tabulate ,version 1.0
+# peter.vlasschaert@gmail.com,08/01/2023
+# maxima : code >maximareactionkinetics2AequalCandCequalAplusBversion12023.wmx
+#-------------------------------------------------------------------------------
+# 1e) reaction : 2A = C ,forward = k[1],backwards = k[2]
+# reaction : r1 ⇒ (2)*A→ C  ,k[1] ⇒ forward
+# reaction : r2 ⇒ C   → 2*A ,k[2] ⇒ forward
+# 2e) reaction : C = A+B ,forward = k[2],backwards = k[3]
+# reaction : r3 ⇒ C→ A+B  , k[3] ⇒ forward
+# reaction : r4 ⇒ A+B → C , k[4] ⇒ forward
+#-------------------------------------------------------------------------------
+# show in maxima
+#-------------------------------------------------------------------------------
+#rem : python index start by zero : k[i] in code k[i-1],see reaction,below
+#-------------------------------------------------------------------------------
+# Initial conditions
+A0 = 2
+B0 = 0.5
+C0 = 0
+t = np.linspace(0, 10, 1000)
+# Rate constants
+k = [1.2, 0.8, 0.3,1.4]
+# Set the initial conditions for the differential equations
+y0 = [A0, B0, C0]
+#-----------------------------------------------------------
+# reaction differential equations : use with of odeint
+# error :reaction(t,y) => correct:reaction(y,t)
+#-----------------------------------------------------------
+def reaction(y,t):
+    A, B, C = y
+    dAdt = k[2] * C + 2 * k[1] * C - k[3] * A * B - 2 * k[0] * A**2
+    dBdt = k[3] * A * B - k[2] * C
+    dCdt = k[2] * C - k[1] * C + k[3] * A * B + k[0] * A**2
+    return [dAdt, dBdt, dCdt]
+solution = odeint(reaction, y0, t)
+A, B, C = solution.T
+print("solution ")
+print(".........")
+print(solution) # without time 
+print(" save:csv ,make numpy array : alldata ,see :python code")
+print(".......................................................")
+# >>>>> save all data solution : solution csv
+# Create a dataframe from the entire solution array
+# The time values are in the 't' array
+df = pd.DataFrame({'time': t, 'A': solution[:,0], 'B': solution[:,1], 'C': solution[:,2]})
+# Save the dataframe to a CSV file with the specified filename
+df.to_csv('setdata4.csv', index=False, header=['time', 'A', 'B', 'C'])
+#>>>>>> open csv and read numpy array
+# Read the CSV file into a dataframe using pandas
+df = pd.read_csv('setdata4.csv')
+# Convert the dataframe to a NumPy array
+alldata = df.to_numpy()
+# other way
+# Read the CSV file into a NumPy array using pandas
+# alldata = pd.read_csv('setdata4.csv').to_numpy()
+print("tables : panda ,tabulate") # first then rows
+print("........................")
+# Extract the first ten rows of the solution array
+solution_subset = solution[:10]
+print("table : pandas ,packages ")
+print(".........................")
+# >>>>>>>  panda output
+# Create a dataframe from the solution_subset array
+# The time values are in the 't' array
+df = pd.DataFrame({'time': t[:10], 'A': solution_subset[:,0], 'B': solution_subset[:,1], 'C': solution_subset[:,2]})
+# Save the dataframe to a CSV file with the specified header
+df.to_csv('setdata3.csv', index=False, header=['time', 'A', 'B', 'C'])
+# Read the CSV file into a dataframe
+df = pd.read_csv('setdata3.csv')
+# Print the dataframe to the console
+print(df)
+print("table : tabulate ,packages,method 1 ")
+print("....................................")
+# >>>>>>> tabulate output
+# Extract the first ten rows of the solution array
+solution_subset = solution[:10]
+# Create a list of lists with the time, A, B, and C values
+table = [[t[i], solution_subset[i][0], solution_subset[i][1], solution_subset[i][2]] for i in range(10)]
+# Print the table to the console using tabulate
+print(tabulate(table, headers=['time', 'A', 'B', 'C']))
+print("table : tabulate ,packages,method 2 ")
+print("....................................")
+# Read the CSV file into a dataframe
+df = pd.read_csv('setdata3.csv')
+# Print the dataframe to the console using tabulate
+print(tabulate(df, headers='keys', tablefmt='psql'))
+print("..............................................................................")
+print("output: plot > (A(t),B(t),C(t)) ")
+# Plot the concentrations of A, B, and C on the same plot
+#extract ,see above :   A, B, C = solution.T
+plt.plot(t, A, 'b', label='A(t),A0')
+plt.plot(t, B, 'g', label='B(t),B0')
+plt.plot(t, C, 'r', label='C(t),C0')
+plt.legend(loc='best')
+plt.xlabel('Time')
+plt.ylabel('Concentration')
+plt.title('Concentrations of A, B, and C')
+plt.show()
+
+
+
+
+

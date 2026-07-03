@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>BUFFERINDEXWEAKACIDVERSUSSTONGACIDFINALVERSION1.TRU</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="generator" content="Fatesoft.com HTML exporter" />
+<style type="text/css">
+<!--
+body { color: #000000; background-color: #FFFFFF; }
+.vb1-comment { color: #008080; font-style: italic; }
+.vb1-identifier { color: #000080; }
+.vb1-number { color: #FF0000; }
+.vb1-reservedword { color: #0000FF; font-weight: bold; }
+.vb1-space { color: #FFFFFF; }
+.vb1-string { color: #800080; }
+.vb1-symbol { color: #FF00FF; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<code><span style="font: 10pt Courier New;"><span class="vb1-reservedword">option</span><span class="vb1-space"> </span><span class="vb1-identifier">nolet
+!</span><span class="vb1-space"> </span><span class="vb1-identifier">serie</span><span class="vb1-space"> </span><span class="vb1-symbol">:</span><span class="vb1-space"> </span><span class="vb1-identifier">analytical</span><span class="vb1-space"> </span><span class="vb1-identifier">chemistry
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;************************************************&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;* calculation : relation between buffer index  *&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;* Beta(buffer monoprotic acid/salt: HA/MA)added*&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;* strong acid (HCl) ? Ph   A=Ac'(-)' ,M=Na'(+)'*&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;* ( version 1.0 )                              *&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;************************************************&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;------------------------------------------------&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; <a href="https://petervlaschemeng.weebly.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="77071203120559011b1604141f1612050337101a161e1b5914181a">[email&#160;protected]</a>,09/09/2016          &quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;------------------------------------------------&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; Beta = dCb/dpH = - dCa/dpH   'buffer index'    &quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;************************************************&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; monoprotic acid: HA = H(+) + A(-) =&gt; ka        &quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;************************************************&quot;
+</span><span class="vb1-identifier">!</span><span class="vb1-space"> </span><span class="vb1-identifier">HA</span><span class="vb1-space"> </span><span class="vb1-identifier">monoprotic</span><span class="vb1-space"> </span><span class="vb1-identifier">weak</span><span class="vb1-space"> </span><span class="vb1-identifier">acid</span><span class="vb1-space"> </span><span class="vb1-symbol">(</span><span class="vb1-space"> </span><span class="vb1-identifier">example</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-identifier">HAc</span><span class="vb1-space"> </span><span class="vb1-symbol">)
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;******************************************************&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;* ka = ([H(+)][A(-)])/[HA]  (1)                      *&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;* Cb = moles NaOH = [Na(+)],Ca = moles HCl = [Cl(-)] *&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;* C = [HA]+[A(-)]           (2)                      *&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;* (1) and (2) [A(-)] = C*ka/([H(+)]+ ka)       (3)   *&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;******************************************************&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; Charge Balance :                                    *&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;[H(+)]+[Na(+)] = [OH(-)]+[Cl(-)]+[A(-)]        (4)   *&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; Cb=Ca+kw/[H(+)]-[H(+)]+C*ka/([H(+)]+ ka)      (5)   *&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;******************************************************&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; rem : pH = - log(10)[H(+)] = -1/ln(10) * ln[H(+)]   *&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; *****************************************************&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; Beta = dCb/dpH = dCb/d[H(+)]*d[H(+)]/dpH             &quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;***********************************************************&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;*Beta = ln(10)*(kw/[H(+)]+[H(+)]+C*ka*[H(+)]/(ka+[H(+)])^2*&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;***********************************************************&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; del_pH = -del_Ca/Beta                                     &quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;***********************************************************&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; pH=pka + log([HA])/([A(-)]) + del_pH =pH_buffer + del_pH  &quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;***********************************************************&quot;
+</span><span class="vb1-identifier">!file</span><span class="vb1-space"> </span><span class="vb1-symbol">:</span><span class="vb1-identifier">Bufferindexweakacidversusstongacidfinalversion1</span><span class="vb1-symbol">.</span><span class="vb1-identifier">tru
+</span><span class="vb1-reservedword">print
+print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;*********&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; given = &quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;*********&quot;
+</span><span class="vb1-identifier">ka</span><span class="vb1-space">     </span><span class="vb1-symbol">=</span><span class="vb1-number">1.75E</span><span class="vb1-symbol">-</span><span class="vb1-number">5</span><span class="vb1-space"> </span><span class="vb1-identifier">!</span><span class="vb1-space"> </span><span class="vb1-identifier">ka</span><span class="vb1-space"> </span><span class="vb1-identifier">from</span><span class="vb1-space"> </span><span class="vb1-identifier">HAc</span><span class="vb1-space"> </span><span class="vb1-identifier">equilibrium
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; ka from HA          = &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">ka
+Ca</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-identifier">ad_HCL
+ad_HCL</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-number">0.001
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; added (strong acid) = &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">ad_HCl</span><span class="vb1-symbol">;</span><span class="vb1-string">&quot; mole&quot;
+</span><span class="vb1-reservedword">print
+print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;***********&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;*Buffer pH*&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;***********&quot;
+</span><span class="vb1-identifier">MA</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-number">0.010</span><span class="vb1-space"> 
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; NaAc 'Sodium acetate' = &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">MA</span><span class="vb1-symbol">;</span><span class="vb1-string">&quot; M&quot;
+</span><span class="vb1-identifier">HA</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-number">0.010
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; HAc  'Acetic acid   ' = &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">HA</span><span class="vb1-symbol">;</span><span class="vb1-string">&quot; M&quot;
+</span><span class="vb1-identifier">ratio</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-identifier">HA</span><span class="vb1-symbol">/</span><span class="vb1-identifier">MA
+C</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-identifier">HA</span><span class="vb1-space"> </span><span class="vb1-symbol">+</span><span class="vb1-space"> </span><span class="vb1-identifier">MA</span><span class="vb1-space"> </span><span class="vb1-identifier">!</span><span class="vb1-space"> </span><span class="vb1-identifier">see</span><span class="vb1-space"> </span><span class="vb1-identifier">above</span><span class="vb1-space"> </span><span class="vb1-identifier">NaAc</span><span class="vb1-space"> </span><span class="vb1-symbol">-&gt;</span><span class="vb1-space"> </span><span class="vb1-identifier">Na</span><span class="vb1-symbol">(+)</span><span class="vb1-space"> </span><span class="vb1-symbol">+</span><span class="vb1-space"> </span><span class="vb1-identifier">Ac</span><span class="vb1-symbol">(-)
+</span><span class="vb1-identifier">x</span><span class="vb1-symbol">=</span><span class="vb1-identifier">ka</span><span class="vb1-symbol">*</span><span class="vb1-identifier">ratio
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; [H(+)] concentration 'buffer' = &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">x
+pH_buffer</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-symbol">-(</span><span class="vb1-number">1</span><span class="vb1-symbol">/</span><span class="vb1-reservedword">log</span><span class="vb1-symbol">(</span><span class="vb1-number">10</span><span class="vb1-symbol">))*</span><span class="vb1-reservedword">log</span><span class="vb1-symbol">(</span><span class="vb1-identifier">x</span><span class="vb1-symbol">)
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; pH                   'buffer' = &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">pH_buffer
+</span><span class="vb1-reservedword">call</span><span class="vb1-space"> </span><span class="vb1-identifier">beta_index</span><span class="vb1-symbol">(</span><span class="vb1-identifier">x</span><span class="vb1-symbol">,</span><span class="vb1-identifier">ka</span><span class="vb1-symbol">,</span><span class="vb1-identifier">C</span><span class="vb1-symbol">,</span><span class="vb1-identifier">Beta</span><span class="vb1-symbol">)
+</span><span class="vb1-reservedword">print
+print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; Beta (index) = &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">Beta
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;************************************&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;*pH = Buffer +  added (strong Acid)*&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;************************************&quot;
+</span><span class="vb1-identifier">del_pH</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-symbol">-</span><span class="vb1-space"> </span><span class="vb1-identifier">ad_HCL</span><span class="vb1-symbol">/</span><span class="vb1-identifier">Beta
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; change in pH = &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">del_pH
+pH</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-identifier">pH_buffer</span><span class="vb1-space"> </span><span class="vb1-symbol">+</span><span class="vb1-space"> </span><span class="vb1-identifier">del_pH
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;******************************&quot;
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot; pH after added strong acid = &quot;</span><span class="vb1-symbol">;</span><span class="vb1-identifier">pH
+</span><span class="vb1-reservedword">print</span><span class="vb1-space"> </span><span class="vb1-string">&quot;******************************&quot;
+</span><span class="vb1-reservedword">end
+
+sub</span><span class="vb1-space"> </span><span class="vb1-identifier">beta_index</span><span class="vb1-symbol">(</span><span class="vb1-identifier">x</span><span class="vb1-symbol">,</span><span class="vb1-identifier">ka</span><span class="vb1-symbol">,</span><span class="vb1-identifier">C</span><span class="vb1-symbol">,</span><span class="vb1-identifier">Beta</span><span class="vb1-symbol">)
+</span><span class="vb1-identifier">kw</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-number">1E</span><span class="vb1-symbol">-</span><span class="vb1-number">14
+</span><span class="vb1-identifier">q1</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-identifier">C</span><span class="vb1-symbol">*</span><span class="vb1-identifier">ka</span><span class="vb1-symbol">*</span><span class="vb1-identifier">x
+q2</span><span class="vb1-space"> </span><span class="vb1-symbol">=(</span><span class="vb1-identifier">ka</span><span class="vb1-symbol">+</span><span class="vb1-identifier">x</span><span class="vb1-symbol">)^</span><span class="vb1-number">2
+</span><span class="vb1-identifier">q</span><span class="vb1-symbol">=</span><span class="vb1-identifier">q1</span><span class="vb1-symbol">/</span><span class="vb1-identifier">q2
+Beta</span><span class="vb1-space"> </span><span class="vb1-symbol">=</span><span class="vb1-space"> </span><span class="vb1-reservedword">log</span><span class="vb1-symbol">(</span><span class="vb1-number">10</span><span class="vb1-symbol">)*(</span><span class="vb1-identifier">kw</span><span class="vb1-symbol">/</span><span class="vb1-identifier">x</span><span class="vb1-symbol">+</span><span class="vb1-identifier">x</span><span class="vb1-symbol">+</span><span class="vb1-identifier">q</span><span class="vb1-symbol">)
+</span><span class="vb1-reservedword">end</span><span class="vb1-space">  </span><span class="vb1-reservedword">sub
+
+
+</span></span>
+</code></pre>
+<script data-cfasync="false" src="../../../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

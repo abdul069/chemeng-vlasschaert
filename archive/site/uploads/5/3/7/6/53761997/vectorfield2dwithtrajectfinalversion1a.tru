@@ -1,0 +1,57 @@
+option nolet
+print"******************************************************"
+print"* vector field 2d : with trajectory , version 1.0a   *"
+print"* peter.vlasschaert@gmail.com,17/10/2020             *"
+print"******************************************************"
+xmax=5  ! horizontal,  values
+xmin = - xmax
+ymax=5  ! vertical  ,  values
+ymin = - ymax
+! windows coordinate system : canvas
+set window xmin,xmax,ymin,ymax
+!parameters: ' draw vector field
+w =0.05 ! vector field  - - - -, trajectory 'init to final'
+! parameters : vector field, 'f1(x,y),f2(x,y)'
+a=2
+b=-1
+c=1
+d=4
+n=100 ! divide,both direction
+! draw axes sysem 'x-axes,y-axes'
+plot xmin,0;xmax,0 
+plot 0,ymin;0,ymax
+!'=> trajectory parameters '
+dim xt(0:1),yt(0:1)
+nu_step = 1000   ! number of steps init value to end 
+mat redim xt(0:nu_step+1),yt(0:nu_step+1)
+!=> init value trajectory
+xt(0) = 0.01 ! use 0 ,division by zero or xmin < xt(0)< xmax
+yt(0) = 0.01 ! use 0 ,division by zero or ymin < yt(0)< ymax
+set color 2 ! green
+! '=> plot vector field 2D'
+di =(xmax-xmin)/n
+dj =(ymax-ymin)/n
+! more accurate  drawing , don't use step values, for next loop
+for i=1 to n
+    x = xmin + i*di
+   for j=1  to n   
+       y = ymin+j*dj
+  dx = a*x+b*y  ! 'draw vector field' => f1(x,y)
+  dy = c*x+d*y  !                     => f2(x,y)
+   ds=sqr(dx^2+dy^2)
+ if ds >0 then plot x-w*dx/ds,y-w*dy/ds;x+w*dx/ds,y+w*dy/ds
+  next j
+next i
+! '=> plot trajectory init -> final'
+set color 4 ! red
+for i=0 to nu_step !  'integer values'
+    dx0 = a*xt(i)+b*yt(i)
+    dy0 = c*xt(i)+d*yt(i)
+    ds0 =sqr((dx0)^2+(dy0)^2)
+       xt(i+1) = xt(i) + w*dx0/ds0
+       yt(i+1) = yt(i) + w*dy0/ds0
+    plot lines:xt(i),yt(i);xt(i+1),yt(i+1)
+         xt(i) =xt(i+1)  ! connect lines,x values
+         yt(i) =yt(i+1)  ! connect lines,y values
+next i
+end

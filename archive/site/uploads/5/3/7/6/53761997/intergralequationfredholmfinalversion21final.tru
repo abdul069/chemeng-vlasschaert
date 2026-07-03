@@ -1,0 +1,162 @@
+print "******************************************"
+print "* integral equations ,version 2.1        *"
+print "* peter.vlasschaert@gmail.com,02/01/2018 *"
+print "******************************************"
+print "******************************************"
+print "* form :fredholm,second kind             *"
+print "******************************************"
+print " phi(x)+int(ker(x,t)*phi(t),t,aa,bb) =f(x)"
+print "******************************************"
+print "---------------------------------"
+print " example : f(x)     = exp(x)     "
+print " example : ker(x,t) = x*exp(x*t) " 
+print "---------------------------------"
+option nolet
+!***********************************************************
+! rem : phi(x)+ int(ker(x,t)*phi(t),t,aa,bb) = f(x)
+!***********************************************************
+! int = integration 
+! ker = kernel of the integral equation
+! filename :intergralequationfredholmfinalversion21final.tru
+!***********************************************************
+!***********************************************************
+! declare the used functions
+!***********************************************************
+declare function ker,f
+!***********************************************************
+! use simpson's formula nn=n=2,code only for nn=2
+!***********************************************************
+print
+!************************************************
+!0e) input : values
+!************************************************
+aa=0         !  begin value : integration
+bb=1         !  end   value : integration
+nn = 2       !  number of intervals;code only for nn=2
+print " number of intervals        'nn' = ";nn
+print " begin interval integration 'aa' = ";aa
+print " end   interval integration 'bb' = ";bb
+delta = bb-aa
+m = nn/2
+h = delta /(2*m)
+print " step value                 'h' = ";h
+print
+dim a(0:1)
+mat redim a(0:nn)
+!************************************************
+!1e)simpson's rule (example nn=2)
+!************************************************
+! a) simpson 
+a(0) = h/3   ! first value
+a(nn)= h/3   ! last  value
+for i=1 to nn-1
+ if mod(i,2) = 0 then
+  ! even: coef.
+  a(i) = 2*h/3
+ else 
+  ! odd: coef.
+  a(i) = 4*h/3
+ end if
+next i
+print " a(i), i=0..";nn;" => "
+mat print a
+!b) tj => tj(i) ,i=0..nn
+! values to evaluate,phi(x)
+dim tj(0:1)
+mat redim tj(0:nn)
+for i=0 to nn
+ tj(i)= aa + i*h
+next i
+print " t i , i=0..";nn;" => "
+mat print tj
+!************************************************
+!2e)hulp matrix 'k' for mat kk => 
+!************************************************
+dim kk(1,1),k(1,1)
+mat redim kk(nn+1,nn+1),k(nn+1,nn+1)
+for i=1 to nn+1
+    for j=1 to nn+1
+ if j=i then
+  k(i,j) = -a(i-1)*ker(tj(i-1),tj(i-1))
+ else
+  k(i,j) = -a(j-1)*ker(tj(i-1),tj(j-1))
+ end if
+    next j
+next i
+print " hulp matrix 'k' for mat kk => "
+mat print k
+!************************************************
+! 3e) build kk: from integral equation above
+!************************************************
+!a) build unit matrix
+dim id(1,1)
+mat redim id(nn+1,nn+1)
+mat id=idn
+print " result = mat kk           => "
+!b) result kk matrix
+mat kk = k-id
+mat print kk
+!*************************************************
+!4e) right hand side (rhs 'vector') of matrix kk
+!*************************************************
+print " right hand side matrix 'kk' = mat rhs => "
+dim rhs(1,1)
+mat redim rhs(nn+1,1)
+for i=1 to nn+1
+ rhs(i,1)=-f(tj(i-1))
+next i
+mat print rhs
+print
+!************************************************
+!5e) solution,phi
+!************************************************
+dim phi(1,1)
+mat redim phi(nn+1,1)
+!a) invers matrix kk (exit = non singular)
+print " inverse matrix 'kk' = mat k_inv => "
+dim k_inv(1,1)
+mat redim k_inv(nn+1,nn+1)
+mat k_inv = inv(kk)
+mat print k_inv
+!b) find phi vector
+print "-----------------------"
+print " result : phi 'vector' "
+print "-----------------------"
+mat phi = k_inv*rhs
+for i=0 to nn
+ print "t";i;" = ";tj(i)," => ";i+1;"e)  row phi =";phi(i+1,1)
+next i
+print
+!c) example
+!************************************************
+!6e) output : phi(x) ,approximation
+!************************************************
+print " delta = delta/6 "
+m$  = " xx    = "
+m1$ = " ker(x,t"& str$(0)& ")*"
+m2$ = " +4*ker(x,t"& str$(1) & ")*"
+m3$ = " + ker(x,t("& str$(2) & ")*"
+print m$ & m1$;phi(1,1);m2$;phi(2,1);m3$;phi(3,1)
+print
+print "--------------------------------"
+print " result approximation phi(x) => "
+print "--------------------------------"
+print " phi(x) = f(x) - delta*xx "
+end
+
+function ker(x,t)
+! other example
+!tel = 1+x+t
+!num = 2+x^2+t^2
+!ratio = tel/num
+ratio = x*exp(x*t)
+ker=ratio
+end function
+
+function f(x)
+! other example
+!f=exp(-x)
+f=exp(x)
+end function
+
+

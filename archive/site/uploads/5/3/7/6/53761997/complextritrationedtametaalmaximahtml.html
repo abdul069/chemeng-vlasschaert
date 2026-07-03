@@ -1,0 +1,373 @@
+<!DOCTYPE HTML">
+<HTML>
+ <HEAD>
+  <TITLE>ComplextritrationEDTAmetaalmaximahtml</TITLE>
+  <META NAME="generator" CONTENT="wxMaxima">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    displayAlign: "left",
+    context: "MathJax"
+  })
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+  <link rel="stylesheet" type="text/css" href="https://petervlaschemeng.weebly.com/uploads/5/3/7/6/53761997/ComplextritrationEDTAmetaalmaximahtml_htmlimg/ComplextritrationEDTAmetaalmaximahtml.css"/>
+ </HEAD>
+ <BODY>
+
+<!-- ***************************************************** -->
+<!--          Created with wxMaxima version 16.04.2         -->
+<!-- ***************************************************** -->
+<noscript><div class="error message">    Please enable JavaScript in order to get a 2d display of the equations embedded in this web page.</div></noscript>\(      \DeclareMathOperator{\abs}{abs}
+      \newcommand{\ensuremath}[1]{\mbox{$#1$}}
+\)
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+Titration Curve:(M(n+) with EDTA &rArr;Y(4-) )<BR>-----------------------------------------------<BR>M(n+)+Y(4-) &harr; MY(n-4)<BR>Ca(2+) &rarr; n=2 &rarr; Ca(2+)+Y(4-) = CaY(2-4)=CaY(2-)<BR>-----------------------------------------------<BR><a href="https://petervlaschemeng.weebly.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="88f8edfcedfaa6fee4e9fbfbebe0e9edfafcc8efe5e9e1e4a6ebe7e5">[email&#160;protected]</a>, 05/10/2016<BR>-----------------------------------------------<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+Definition : &nbsp;me=[M(n+)] = (Fraction remaining * initial concentration *dilutionfactor)=f1*f2*f3<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-----------------------------------------------------------------------------------------<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;volume , concentration<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-----------------------------------------------------------------------------------------<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;give : M(n+) &rarr; [M(n+)] , yy ml , U Molair conc (erlenmeyer flask)<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;added<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EDTA &nbsp;&rarr; [y(4-] &nbsp;, xx ml , W Molair conc (buret)<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;------------------------------------------------------------------------------------------<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kf &nbsp;= formation constant = [MY(n-4)]/([M(n+)]*[y(4-)])<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;edta = polyprotic acid (= tetraprotic weak acid)<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Y(4-)] = alpha(4) * [EDTA] &nbsp;&nbsp;,alpha(4) = f(h,ka1,ka2,ka3,ka4)=g(pH,ka1,ka2,ka3,ka4)<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rem : kfc ,conditional formation for complexes.<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kfc = kf * alpha(4) = [MY(n-4)]/([M(n+)]*[EDTA])=(my)/(me*edta) = kf *alpha4<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;------------------------------------------------------------------------------------------<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+Before EP:<BR>----------<BR>----------<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+xx=0 ml,w no EDTA ,yy ml concentration U<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+find general equation ,yy,u,w ( rule : v*t = v'*t', v' = (v*t)/t',from analytical chemistry, v'=z )<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">kill</span>(<span class="code_variable">all</span>)<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p1</span> <span class="code_operator">:</span> <span class="code_variable">z</span> <span class="code_operator">=</span> (<span class="code_variable">yy</span><span class="code_operator">*</span><span class="code_variable">u</span>)<span class="code_operator">/</span><span class="code_variable">w</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p1}\label{p1}z=\frac{u\,\mathit{yy}}{w}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i5) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p2</span><span class="code_operator">:</span><span class="code_variable">f1</span><span class="code_operator">=</span>(<span class="code_variable">z</span><span class="code_operator">-</span><span class="code_variable">xx</span>)<span class="code_operator">/</span><span class="code_variable">z</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">p3</span><span class="code_operator">:</span><span class="code_variable">f2</span><span class="code_operator">=</span> <span class="code_variable">u</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">p4</span><span class="code_operator">:</span><span class="code_variable">f3</span><span class="code_operator">=</span> <span class="code_variable">yy</span><span class="code_operator">/</span>(<span class="code_variable">yy</span><span class="code_operator">+</span><span class="code_variable">xx</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p5</span><span class="code_operator">:</span><span class="code_variable">f</span> <span class="code_operator">=</span> <span class="code_function">rhs</span>(<span class="code_variable">p2</span>)<span class="code_operator">*</span><span class="code_function">rhs</span>(<span class="code_variable">p3</span>)<span class="code_operator">*</span><span class="code_function">rhs</span>(<span class="code_variable">p4</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p2}\label{p2}\mathit{f1}=\frac{z-\mathit{xx}}{z}\]
+\[\tag{p3}\label{p3}\mathit{f2}=u\]
+\[\tag{p4}\label{p4}\mathit{f3}=\frac{\mathit{yy}}{\mathit{yy}+\mathit{xx}}\]
+\[\tag{p5}\label{p5}f=\frac{u\,\mathit{yy}\,\left( z-\mathit{xx}\right) }{\left( \mathit{yy}+\mathit{xx}\right) z}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i6) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p6</span><span class="code_operator">:</span><span class="code_variable">me</span><span class="code_operator">=</span><span class="code_function">ev</span>(<span class="code_function">rhs</span>(<span class="code_variable">p5</span>),<span class="code_variable">p1</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p6}\label{p6}\mathit{me}=\frac{w\,\left( \frac{u\,\mathit{yy}}{w}-\mathit{xx}\right) }{\mathit{yy}+\mathit{xx}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i7) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p7</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_function">rhs</span>(<span class="code_variable">p6</span>),<span class="code_variable">xx</span><span class="code_operator">=</span><span class="code_number">0</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p7}\label{p7}u\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+xx &lt; &gt; 0,ml,w EDTA,yy concentration &nbsp;U, ( use: z-xx &gt;0),FreeM_before = me<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i8) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p8</span><span class="code_operator">:</span><span class="code_variable">p6</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p8}\label{p8}\mathit{me}=\frac{w\,\left( \frac{u\,\mathit{yy}}{w}-\mathit{xx}\right) }{\mathit{yy}+\mathit{xx}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+By &nbsp;EP:<BR>-------<BR>-------<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+xx=z ml,w EDTA,yy ml concentration U<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i9) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p9</span><span class="code_operator">:</span><span class="code_variable">me</span><span class="code_operator">=</span><span class="code_function">ev</span>(<span class="code_function">rhs</span>(<span class="code_variable">p5</span>),<span class="code_variable">xx</span><span class="code_operator">=</span><span class="code_variable">z</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p9}\label{p9}\mathit{me}=0\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+me = 0 &nbsp;? all MY_VAL<BR> &nbsp;&nbsp;&nbsp;&nbsp;M(n+)+EDTA &harr; MY<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0 &nbsp;&nbsp;&nbsp;0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my_val ?<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i11) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p10</span><span class="code_operator">:</span><span class="code_variable">my_val</span><span class="code_operator">=</span><span class="code_variable">u</span><span class="code_operator">*</span><span class="code_variable">yy</span><span class="code_operator">/</span>(<span class="code_variable">yy</span><span class="code_operator">+</span><span class="code_variable">z</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p11</span><span class="code_operator">:</span> <span class="code_variable">kfc</span><span class="code_operator">=</span><span class="code_variable">kf</span><span class="code_operator">*</span><span class="code_variable">alpha4</span><span class="code_endofline">;</span><BR>
+<span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p10}\label{p10}\mathit{my\_ val}=\frac{u\,\mathit{yy}}{z+\mathit{yy}}\]
+\[\tag{p11}\label{p11}\mathit{kfc}=\mathit{alpha4}\,\mathit{kf}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+find free [M(n+)] :freeM =[M(n+)]<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M(n+) + EDTA &harr; MY<BR> conc initial &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my_val<BR> conc formation &nbsp;&nbsp;&nbsp;freeM &nbsp;freeM &nbsp;&nbsp;my_val - freeM<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i15) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p12</span><span class="code_operator">:</span> <span class="code_variable">my_ep</span> <span class="code_operator">=</span> <span class="code_variable">my_val</span> <span class="code_operator">-</span> <span class="code_variable">freeM</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">p13</span><span class="code_operator">:</span> <span class="code_variable">me_ep</span> <span class="code_operator">=</span> <span class="code_variable">freeM</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">p14</span><span class="code_operator">:</span> <span class="code_variable">edta_ep</span> <span class="code_operator">=</span> <span class="code_variable">freeM</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">p15</span><span class="code_operator">:</span> <span class="code_variable">kfc</span> <span class="code_operator">=</span> <span class="code_variable">my_ep</span><span class="code_operator">/</span>(<span class="code_variable">me_ep</span><span class="code_operator">*</span><span class="code_variable">edta_ep</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p12}\label{p12}\mathit{my\_ ep}=\mathit{my\_ val}-\mathit{freeM}\]
+\[\tag{p13}\label{p13}\mathit{me\_ ep}=\mathit{freeM}\]
+\[\tag{p14}\label{p14}\mathit{edta\_ ep}=\mathit{freeM}\]
+\[\tag{p15}\label{p15}\mathit{kfc}=\frac{\mathit{my\_ ep}}{\mathit{edta\_ ep}\mathit{me\_ ep}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i16) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p16</span><span class="code_operator">:</span><span class="code_variable">my_ep</span><span class="code_operator">=</span><span class="code_function">ev</span>(<span class="code_function">rhs</span>(<span class="code_variable">p12</span>),<span class="code_variable">p10</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p16}\label{p16}\mathit{my\_ ep}=\frac{u\,\mathit{yy}}{z+\mathit{yy}}-\mathit{freeM}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i17) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p17</span><span class="code_operator">:</span><span class="code_variable">kfc</span><span class="code_operator">=</span><span class="code_function">ev</span>(<span class="code_function">rhs</span>(<span class="code_variable">p15</span>),<span class="code_variable">p16</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p17}\label{p17}\mathit{kfc}=\frac{\frac{u\,\mathit{yy}}{z+\mathit{yy}}-\mathit{freeM}}{\mathit{edta\_ ep}\mathit{me\_ ep}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i18) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p18</span><span class="code_operator">:</span><span class="code_variable">kfc</span><span class="code_operator">=</span><span class="code_function">ev</span>(<span class="code_function">rhs</span>(<span class="code_variable">p17</span>),<span class="code_variable">p13</span>,<span class="code_variable">p14</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p18}\label{p18}\mathit{kfc}=\frac{\frac{u\,\mathit{yy}}{z+\mathit{yy}}-\mathit{freeM}}{{{\mathit{freeM}}^{2}}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i19) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p19</span><span class="code_operator">:</span><span class="code_function">solve</span>(<span class="code_variable">p18</span>,<span class="code_variable">freeM</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p19}\label{p19}[\mathit{freeM}=-\frac{\sqrt{{{z}^{2}}+\left( 4\mathit{kfc}u+2\right) \,\mathit{yy}z+\left( 4\mathit{kfc}u+1\right) \,{{\mathit{yy}}^{2}}}+z+\mathit{yy}}{2\mathit{kfc}z+2\mathit{kfc}\,\mathit{yy}},\mathit{freeM}=\frac{\sqrt{{{z}^{2}}+\left( 4\mathit{kfc}u+2\right) \,\mathit{yy}z+\left( 4\mathit{kfc}u+1\right) \,{{\mathit{yy}}^{2}}}-z-\mathit{yy}}{2\mathit{kfc}z+2\mathit{kfc}\,\mathit{yy}}]\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+only positive solution ?<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i21) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p20</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">p19</span>,<span class="code_number">2</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p20}\label{p20}\mathit{freeM}=\frac{\sqrt{{{z}^{2}}+\left( 4\mathit{kfc}u+2\right) \,\mathit{yy}z+\left( 4\mathit{kfc}u+1\right) \,{{\mathit{yy}}^{2}}}-z-\mathit{yy}}{2\mathit{kfc}z+2\mathit{kfc}\,\mathit{yy}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+after EP:<BR>---------<BR>---------<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+xx &gt; Z ml:w EDTA &rArr; z &lt; x_excess=xxx, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;freeM_after = [M(n+)]<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i26) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p21</span><span class="code_operator">:</span><span class="code_variable">edta_after</span><span class="code_operator">=</span><span class="code_variable">w</span><span class="code_operator">*</span>(<span class="code_variable">xxx</span><span class="code_operator">/</span>(<span class="code_variable">yy</span><span class="code_operator">+</span><span class="code_variable">z</span><span class="code_operator">+</span><span class="code_variable">xxx</span>))<span class="code_endofline">;</span><BR>
+<span class="code_variable">p22</span><span class="code_operator">:</span><span class="code_variable">my_after</span> &nbsp;<span class="code_operator">=</span><span class="code_variable">u</span><span class="code_operator">*</span>(<span class="code_variable">yy</span><span class="code_operator">/</span>(<span class="code_variable">yy</span><span class="code_operator">+</span><span class="code_variable">z</span><span class="code_operator">+</span><span class="code_variable">xxx</span>))<span class="code_endofline">;</span><BR>
+<span class="code_variable">p23</span><span class="code_operator">:</span><span class="code_variable">kfc</span> <span class="code_operator">=</span> <span class="code_variable">my_after</span><span class="code_operator">/</span>(<span class="code_variable">freeM_after</span><span class="code_operator">*</span><span class="code_variable">edta_after</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p21}\label{p21}\mathit{edta\_ after}=\frac{w\,\mathit{xxx}}{z+\mathit{yy}+\mathit{xxx}}\]
+\[\tag{p22}\label{p22}\mathit{my\_ after}=\frac{u\,\mathit{yy}}{z+\mathit{yy}+\mathit{xxx}}\]
+\[\tag{p23}\label{p23}\mathit{kfc}=\frac{\mathit{my\_ after}}{\mathit{edta\_ after}\mathit{freeM\_ after}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i27) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p24</span><span class="code_operator">:</span><span class="code_variable">kfc</span><span class="code_operator">=</span><span class="code_function">ev</span>(<span class="code_function">rhs</span>(<span class="code_variable">p23</span>),<span class="code_variable">p21</span>,<span class="code_variable">p22</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p24}\label{p24}\mathit{kfc}=\frac{u\,\mathit{yy}}{\mathit{freeM\_ after}w\,\mathit{xxx}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i29) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p25</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_function">solve</span>(<span class="code_variable">p24</span>,<span class="code_variable">freeM_after</span>),<span class="code_number">1</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p25}\label{p25}\mathit{freeM\_ after}=\frac{u\,\mathit{yy}}{\mathit{kfc}w\,\mathit{xxx}}\]
+
+ <HR>
+ <SMALL> Created with <A HREF="http://wxmaxima.sourceforge.net/">wxMaxima</A>.</SMALL>
+ <script data-cfasync="false" src="../../../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></BODY>
+</HTML>

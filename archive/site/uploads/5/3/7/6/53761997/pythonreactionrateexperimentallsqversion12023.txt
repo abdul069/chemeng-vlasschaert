@@ -1,0 +1,41 @@
+import numpy as np
+# see maxima :maximareactionrateexperimentallsqversion12023.wxmx
+# python:reaction rate (experimental),lsq ,version 1.0
+# peter.vlasschaert@gmail.com,03/01/2023
+def least_squares(M, b):
+  # get the transpose of M
+  M_transpose = M.T
+  
+  # multiply M_transpose by M
+  M_transpose_M = np.dot(M_transpose, M)
+  
+  # invert M_transpose_M
+  M_transpose_M_inverse = np.linalg.inv(M_transpose_M)
+  
+  # multiply M_transpose_M_inverse by M_transpose
+  M_transpose_M_inverse_M_transpose = np.dot(M_transpose_M_inverse, M_transpose)
+  
+  # multiply M_transpose_M_inverse_M_transpose by b to get the least squares solution
+  x = np.dot(M_transpose_M_inverse_M_transpose, b)
+  
+  return x
+
+# example usage
+# see maxima :→ transpose(ν)
+print("given :reaction system: see maxima.code ")
+M = np.array([[-1, 0, 0], [1, -1, 0], [0, 1, -1], [0, 0, 1], [-1, -1, -1]])
+print("M=",M)
+# see maxima :p6e
+print("input lsq :experimental values")
+b = np.array([-1.25, 0.37, 0.33, 0.54, -2.41])
+print("b=",b)
+# see maxima :p6c4
+x = least_squares(M, b)
+print("x=",x)
+# give the variables in x labels r1, r2, and r3
+r1, r2, r3 = x
+print( "output,rates,experimental values of b")
+print("r1=",r1)  # prints the value of r1
+print("r2=",r2)  # prints the value of r2
+print("r3=",r3)  # prints the value of r3
+

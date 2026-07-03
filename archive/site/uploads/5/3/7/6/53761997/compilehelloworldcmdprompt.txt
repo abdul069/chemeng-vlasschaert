@@ -1,0 +1,45 @@
+cmd : command prompt windows compile main.f90 (result :Hello World),output
+--------------------------------------------------------------------------
+peter.vlasschaert@gmail.com,13/07/2022
+
+Compile ,Linking and Building.
+------------------------------
+
+--------------------------------------------------------------------------
+info : https://www3.ntu.edu.sg/home/ehchua/programming/cpp/gcc_make.html
+learn : advanced skills to compile programs.(also gnu compiler)
+--------------------------------------------------------------------------
+
+1e) step : Type here to search : cmd , enter.
+2e) step : c:\Users\computername>
+3e) step : save file as > main.f90 some directory : c:\test
+4e) step : go to directory
+           a) c:\Users\computername>cd..
+           enter
+           result : c:\Users>
+           b) c:\Users>cd..
+           enter
+           result : c:\>
+           c) c:\>cd test
+           enter
+           result :c:\test>
+
+check windows file is here : main.f90 , copy file here
+5e) step : compile "maim.f90"
+    c:\test>gfortran main.f90 -o helloworld
+    enter
+    ( no message,compile finshed)
+    result : c:\test>
+6e) step : run helloworld
+    c:\test> helloworld
+    enter
+    result : Hello World
+    
+rem : gfortran   "compiler"
+      main.f90   "source code = program"
+      -o         "attribute,how to compile the program "
+      helloworld "executable: helloworld.exe"
+------------------------------------------------------------
+only can excute : helloworld from . cmd prompt ,not general.
+linking .library , need complex relation attributes
+-----------------------------------------------------------

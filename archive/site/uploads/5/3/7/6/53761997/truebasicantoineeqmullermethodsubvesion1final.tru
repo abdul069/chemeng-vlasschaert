@@ -1,0 +1,126 @@
+option nolet
+print "-------------------------------------------------------------"
+print "-temperature Antione eq ,Muller Method(Solve Nonlinear Eq.) -"
+print "-peter.vlasschaert@gmail.com, 21/08/2020                    -"
+print "-------------------------------------------------------------"
+! filename :truebasicAntoineeqMullermethodsubvesion1final
+!----------------------------------------------------------
+print
+print
+print "************************************************************"
+print " find : temperature of mixture (total pressure = p = given) "
+print "************************************************************"
+print
+print "---------------------------------------------"
+print " solve nonlinear : equation , Muller Method  "
+print " equation (solve: B6) => f(B6)=0             " 
+print "---------------------------------------------"
+print
+print "--------------------"
+print " math : equation => "
+print "--------------------"
+print
+print "-------------------------------------------------------"
+print " f(B6) = B3*%e^(C3-D3/(E3+B6))+B2*%e^(C2-D2/(E2+B6))-p "
+print "-------------------------------------------------------"
+print
+print
+declare function f  ! 'reason use f outside the sub '
+! first component (physical constant)
+B2=0.9337    ! /*mole fraction*/
+C2=14.3916
+D2=2795.82
+E2=230
+! second component(physical constant)
+B3=1-B2      ! /*mole fraction*/
+C3=16.262
+D3=3799.89
+E3=226.25
+! total pressure P
+p=101.325
+! start value B6 = 60 'see maxima document
+!*****************************************************
+! algorithm : Muller Method (solve:find B6, f(B6) = 0)
+!*****************************************************
+! rem xr = B6, for bellow Algo
+!*****************************************************
+print "input => "
+print
+xr = 60
+h  = 0.1
+eps = 0.001
+maxit = 20
+print " start value            = ";xr;" °c"
+print " h : xr ,xr(1+h),xr(1-h)= ";h      ! three values 'Muller Method'
+print " error                  = ";eps
+print " max number of iteration= ";maxit
+print
+!***********************************************
+! algorithm : mullermethod ( Do loop structure)
+!***********************************************
+print "output => "
+print
+print "start value :";xr;" °C  = result f(";xr;") =>";f(xr,B2,B3,C2,D2,E2,C3,D3,E3,p)
+print
+print " iter ,°C"
+print "---------"
+print
+call mullermethod(xr,h,eps,maxit,iter,B2,B3,C2,D2,E2,C3,D3,E3,p)
+print
+print " final solution f(B6,B2,B3,C2,D2,E2,C3,D3,E3,p) = 0 => B6 °C"
+print
+print " final temperature of the mixture => number of iteration = ";iter,xr;" °C"
+end 
+
+
+Function f(B6,B2,B3,C2,D2,E2,C3,D3,E3,p)
+f=B3*EXP(C3-D3/(E3+B6))+B2*EXP(C2-D2/(E2+B6))-p 
+! other f = x^2-2
+end function
+
+sub mullermethod(xr,h,eps,maxit,iter,B2,B3,C2,D2,E2,C3,D3,E3,p)
+declare function f ! otherwise truebasic = matrix 'f'
+! you need to supply : args of f ( in truebasic,C2,...'see above'.)
+
+x2 =xr       ! 1e value
+x1 =xr*(1+h) ! 2e value
+x0 =xr*(1-h) ! 3e value
+
+do
+ iter = iter + 1
+ h0 = x1-x0
+ h1 = x2-x1
+ m0 =f(x0,B2,B3,C2,D2,E2,C3,D3,E3,p)
+ m1 =f(x1,B2,B3,C2,D2,E2,C3,D3,E3,p)
+ m2 =f(x2,B2,B3,C2,D2,E2,C3,D3,E3,p)
+d0=(m1-m0)/h0! notation correction
+d1=(m2-m1)/h1! notation correction
+ a=(d1-d0)/(h1+h0)
+ b=a*h1+d1
+ c=f(x2,B2,B3,C2,D2,E2,C3,D3,E3,p)
+ rat = sqr(b^2-4*a*c) 
+
+!*****************************************
+! othermethod to find sign before +/-'rat'
+!*****************************************
+ if abs(b+rat) > abs(b-rat) then
+   den = b + rat
+ else
+   den = b - rat
+ end if
+
+   dxr  = -2*c/den
+   xr = x2 +dxr
+ print  iter , xr;" °C"
+if abs(dxr) < eps*xr or iter => maxit then
+   exit do
+end if
+
+ x0=x1
+ x1=x2
+ x2=xr
+loop
+exit sub
+end sub
+
+

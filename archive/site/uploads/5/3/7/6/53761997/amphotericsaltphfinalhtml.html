@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>New3 *</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="generator" content="Fatesoft.com HTML exporter" />
+<style type="text/css">
+<!--
+body { color: #000000; background-color: #FFFFFF; }
+.cpp1-assembler { color: #800000; }
+.cpp1-character { color: #000000; }
+.cpp1-comment { color: #008080; font-style: italic; }
+.cpp1-float { color: #FF0080; }
+.cpp1-hexadecimal { color: #8000FF; }
+.cpp1-identifier { color: #000080; }
+.cpp1-illegalchar { color: #FF8000; }
+.cpp1-number { color: #FF0000; }
+.cpp1-octal { color: #8080FF; }
+.cpp1-preprocessor { color: #008000; }
+.cpp1-reservedword { color: #0000FF; font-weight: bold; }
+.cpp1-space { color: #FFFFFF; }
+.cpp1-string { color: #800080; }
+.cpp1-symbol { color: #FF00FF; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<code><span style="font: 10pt Courier New;"><span class="cpp1-space"> </span><span class="cpp1-identifier">option</span><span class="cpp1-space"> </span><span class="cpp1-identifier">nolet
+</span><span class="cpp1-symbol">!</span><span class="cpp1-identifier">chemistry</span><span class="cpp1-space"> </span><span class="cpp1-identifier">analytical</span><span class="cpp1-space"> </span><span class="cpp1-identifier">serie
+</span><span class="cpp1-symbol">!</span><span class="cpp1-space"> </span><span class="cpp1-identifier">filename</span><span class="cpp1-space"> </span><span class="cpp1-symbol">:</span><span class="cpp1-identifier">amphotericsaltphfinal</span><span class="cpp1-symbol">.</span><span class="cpp1-identifier">tru
+print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;********************************************************&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; amphoteric salt : MH(n)A = M(+)+ H(n)A(-)'version 1.0'*&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; general         : MHB    = M(+)+ HB(-) = m + hb       *&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; <a href="https://petervlaschemeng.weebly.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2f5f4a5b4a5d0159434e5c5c4c474e4a5d5b6f48424e4643014c4042">[email&#160;protected]</a>,02/10/2016                *&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;********************************************************&quot;
+</span><span class="cpp1-identifier">print
+print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;************************************************************&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;examples: NaHCO3,NaHSO3,KH-Ftalaat  n=1 -&gt; Na(+)+HB(-)      &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;          NaH(2)PO4                 n=2 -&gt; Na(+)+H(2)PO4(-) &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;************************************************************&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;************************************************************&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; formula: H(m)B ( m=2),ka1,ka2,pkw=pH+pOH                   &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; definition :amphoteric salt : nature acid (give H(+)) or   &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;                               nature base (take H(+))      &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;                      up     give                           &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;nature acid : HB(-)        = H(+)  + B(2-) (1)              &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;nature base : HB(-) + H(+) = H(2)B         (2)              &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;aqua        : H(2)O        = H(+)+OH(-)    (3)              &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; [H(+)]tot = [B(2-)]-[H(2)B]+[0H(-)]=h=b-h2b+oh             &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;H(m)B   = H(+) + H(m-1)B(-)    -&gt; H(2)B = H(+) + HB(-)-&gt; ka1&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;H(m-1)B(-) = H(+) + H(m-2)B(2-)-&gt; HB(-)= H(+) + B(2-) -&gt; ka2&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; nature acid :   (1) -&gt; ka2   = ([H(+)]*[B(2-)])/[HB(-)]    &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; nature base :   (2) -&gt; 1/ka1 = ([H(2)B])/([HB(-)]*[H(+)])  &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;************************************************************&quot;
+</span><span class="cpp1-identifier">print
+print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;**********&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; input =&gt; &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;**********&quot;
+</span><span class="cpp1-identifier">print
+hb</span><span class="cpp1-symbol">=</span><span class="cpp1-float">0.01</span><span class="cpp1-space">     </span><span class="cpp1-symbol">!</span><span class="cpp1-space"> </span><span class="cpp1-identifier">concentration</span><span class="cpp1-space"> </span><span class="cpp1-identifier">amphoteric</span><span class="cpp1-space"> </span><span class="cpp1-identifier">salt</span><span class="cpp1-space"> </span><span class="cpp1-identifier">NaH</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">)</span><span class="cpp1-identifier">A
+ka1</span><span class="cpp1-symbol">=</span><span class="cpp1-float">0.0001</span><span class="cpp1-space"> </span><span class="cpp1-symbol">!</span><span class="cpp1-identifier">equilibrium</span><span class="cpp1-space"> </span><span class="cpp1-identifier">constant</span><span class="cpp1-space"> </span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">first</span><span class="cpp1-space">  </span><span class="cpp1-identifier">weak</span><span class="cpp1-space"> </span><span class="cpp1-identifier">acid</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">ka2</span><span class="cpp1-symbol">=</span><span class="cpp1-float">0.00001</span><span class="cpp1-symbol">!</span><span class="cpp1-identifier">equilibrium</span><span class="cpp1-space"> </span><span class="cpp1-identifier">constant</span><span class="cpp1-space"> </span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">second</span><span class="cpp1-space"> </span><span class="cpp1-identifier">weak</span><span class="cpp1-space"> </span><span class="cpp1-identifier">acid</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">kw</span><span class="cpp1-space">  </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> </span><span class="cpp1-float">1E-14</span><span class="cpp1-space"> </span><span class="cpp1-symbol">!</span><span class="cpp1-space"> </span><span class="cpp1-identifier">pH</span><span class="cpp1-symbol">+</span><span class="cpp1-identifier">pOH</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> </span><span class="cpp1-number">14</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> </span><span class="cpp1-identifier">pKw
+print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;concentration amphoteric salt (hb)  = &quot;</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">hb</span><span class="cpp1-symbol">;</span><span class="cpp1-string">&quot; M&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;equilibrium constant,first, k1a1    = &quot;</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">ka1
+print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;equilibrium constant,second,k2a2    = &quot;</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">ka2
+print
+print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;***********&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; result =&gt; &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;***********&quot;
+</span><span class="cpp1-identifier">print
+</span><span class="cpp1-symbol">!</span><span class="cpp1-space">  </span><span class="cpp1-identifier">take</span><span class="cpp1-space"> </span><span class="cpp1-identifier">kw</span><span class="cpp1-symbol">&lt;&gt;</span><span class="cpp1-number">0
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; kw = 1e-14 =&gt; [0H(-)] 'aq' &lt;&gt; 0&quot;
+</span><span class="cpp1-identifier">call</span><span class="cpp1-space"> </span><span class="cpp1-identifier">gen_amphotericsalt</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">kw</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">hb</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">ka1</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">ka2</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; kw&lt;&gt;0,[H(+)] = &quot;</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">;</span><span class="cpp1-string">&quot; M&quot;
+</span><span class="cpp1-identifier">print
+print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; pH  = &quot;</span><span class="cpp1-symbol">;-</span><span class="cpp1-identifier">log</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">)/</span><span class="cpp1-identifier">log</span><span class="cpp1-symbol">(</span><span class="cpp1-number">10</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">print
+</span><span class="cpp1-symbol">!</span><span class="cpp1-space">  </span><span class="cpp1-identifier">take</span><span class="cpp1-space"> </span><span class="cpp1-identifier">kw</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> </span><span class="cpp1-number">0
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; kw = 1e-14 =&gt; [0H(-)] 'aq' = 0&quot;
+</span><span class="cpp1-identifier">call</span><span class="cpp1-space"> </span><span class="cpp1-identifier">gen_amphotericsalt</span><span class="cpp1-symbol">(</span><span class="cpp1-number">0</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">hb</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">ka1</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">ka2</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; kw=0,[H(+)] = &quot;</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">;</span><span class="cpp1-string">&quot; M&quot;
+</span><span class="cpp1-identifier">print
+print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; pH  = &quot;</span><span class="cpp1-symbol">;-</span><span class="cpp1-identifier">log</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">)/</span><span class="cpp1-identifier">log</span><span class="cpp1-symbol">(</span><span class="cpp1-number">10</span><span class="cpp1-symbol">)
+!</span><span class="cpp1-space"> </span><span class="cpp1-identifier">formula</span><span class="cpp1-space"> </span><span class="cpp1-identifier">first</span><span class="cpp1-space"> </span><span class="cpp1-identifier">approximation
+call</span><span class="cpp1-space"> </span><span class="cpp1-identifier">first_amphotericsalt</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">ka1</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">ka2</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">print
+print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;****************************&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; first approximation =&gt; 'h' &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;****************************&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; pH  = &quot;</span><span class="cpp1-symbol">;-</span><span class="cpp1-identifier">log</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">)/</span><span class="cpp1-identifier">log</span><span class="cpp1-symbol">(</span><span class="cpp1-number">10</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">end
+
+sub</span><span class="cpp1-space"> </span><span class="cpp1-identifier">gen_amphotericsalt</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">kw</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">hb</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">ka1</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">ka2</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">part_1</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> </span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">ka1</span><span class="cpp1-symbol">*</span><span class="cpp1-identifier">kw</span><span class="cpp1-symbol">)/(</span><span class="cpp1-identifier">ka1</span><span class="cpp1-symbol">+</span><span class="cpp1-identifier">hb</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">part_2</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> </span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">hb</span><span class="cpp1-symbol">*</span><span class="cpp1-identifier">ka1</span><span class="cpp1-symbol">*</span><span class="cpp1-identifier">ka2</span><span class="cpp1-symbol">)/(</span><span class="cpp1-identifier">ka1</span><span class="cpp1-symbol">+</span><span class="cpp1-identifier">hb</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">sqr</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">part_1</span><span class="cpp1-symbol">+</span><span class="cpp1-identifier">part_2</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">end</span><span class="cpp1-space"> </span><span class="cpp1-identifier">sub
+
+sub</span><span class="cpp1-space"> </span><span class="cpp1-identifier">first_amphotericsalt</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">ka1</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">ka2</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">)
+!**************************************************************
+!</span><span class="cpp1-identifier">why</span><span class="cpp1-space"> </span><span class="cpp1-symbol">:</span><span class="cpp1-identifier">use</span><span class="cpp1-space"> </span><span class="cpp1-reservedword">for</span><span class="cpp1-space"> </span><span class="cpp1-identifier">pH</span><span class="cpp1-space"> </span><span class="cpp1-identifier">calculation</span><span class="cpp1-space"> </span><span class="cpp1-identifier">by</span><span class="cpp1-space"> </span><span class="cpp1-identifier">jump</span><span class="cpp1-space"> </span><span class="cpp1-symbol">(=</span><span class="cpp1-space"> </span><span class="cpp1-identifier">EP</span><span class="cpp1-symbol">)</span><span class="cpp1-space"> </span><span class="cpp1-identifier">of</span><span class="cpp1-space"> </span><span class="cpp1-identifier">polyprotic</span><span class="cpp1-space"> </span><span class="cpp1-identifier">acids
+</span><span class="cpp1-symbol">!</span><span class="cpp1-space">     </span><span class="cpp1-identifier">with</span><span class="cpp1-space"> </span><span class="cpp1-identifier">strong</span><span class="cpp1-space"> </span><span class="cpp1-identifier">base
+</span><span class="cpp1-symbol">!**************************************************************
+</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">sqr</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">ka1</span><span class="cpp1-symbol">*</span><span class="cpp1-identifier">ka2</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">end</span><span class="cpp1-space"> </span><span class="cpp1-identifier">sub
+
+
+</span></span>
+</code></pre>
+<script data-cfasync="false" src="../../../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

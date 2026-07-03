@@ -1,0 +1,579 @@
+<!DOCTYPE HTML">
+<HTML>
+ <HEAD>
+  <TITLE>appendixcoolinglawgeneralfinalversion1html</TITLE>
+  <META NAME="generator" CONTENT="wxMaxima">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    displayAlign: "left",
+    context: "MathJax"
+  })
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+  <link rel="stylesheet" type="text/css" href="https://petervlaschemeng.weebly.com/uploads/5/3/7/6/53761997/appendixcoolinglawgeneralfinalversion1html_htmlimg/appendixcoolinglawgeneralfinalversion1html.css"/>
+ </HEAD>
+ <BODY>
+
+<!-- ***************************************************** -->
+<!--          Created with wxMaxima version 16.04.2         -->
+<!-- ***************************************************** -->
+<noscript><div class="error message">    Please enable JavaScript in order to get a 2d display of the equations embedded in this web page.</div></noscript>\(      \DeclareMathOperator{\abs}{abs}
+      \newcommand{\ensuremath}[1]{\mbox{$#1$}}
+\)
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">kill</span>(<span class="code_variable">all</span>)<span class="code_endofline">$</span><BR>
+<span class="code_function">load</span>(<span class="code_variable">eigen</span>)<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+appendix: general system 2 differential equations.<BR><a href="https://petervlaschemeng.weebly.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6a1a0f1e0f18441c060b191909020b0f181e2a0d070b030644090507">[email&#160;protected]</a> &nbsp;,26/03/2017<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i3) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">depends</span>(<span class="code_variable">X</span>,<span class="code_variable">t</span>)<span class="code_endofline">;</span><BR>
+<span class="code_function">depends</span>(<span class="code_variable">Y</span>,<span class="code_variable">t</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o2}\label{o2} [\operatorname{X}(t)]\]
+\[\tag{\%{}o3}\label{o3} [\operatorname{Y}(t)]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i5) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">pg1</span><span class="code_operator">:</span><span class="code_operator">'</span><span class="code_function">diff</span>(<span class="code_variable">X</span>,<span class="code_variable">t</span>)<span class="code_operator">=</span> <span class="code_variable">a</span><span class="code_operator">*</span><span class="code_variable">X</span><span class="code_operator">+</span><span class="code_variable">b</span><span class="code_operator">*</span><span class="code_variable">Y</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">pg2</span><span class="code_operator">:</span><span class="code_operator">'</span><span class="code_function">diff</span>(<span class="code_variable">Y</span>,<span class="code_variable">t</span>)<span class="code_operator">=</span> <span class="code_variable">c</span><span class="code_operator">*</span><span class="code_variable">X</span><span class="code_operator">+</span><span class="code_variable">d</span><span class="code_operator">*</span><span class="code_variable">Y</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{pg1}\label{pg1}\frac{d}{dt}X=Yb+Xa\]
+\[\tag{pg2}\label{pg2}\frac{d}{dt}Y=Yd+Xc\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i10) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">M1</span><span class="code_operator">:</span><span class="code_function">zeromatrix</span>(<span class="code_number">2</span>,<span class="code_number">2</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">M1</span>[<span class="code_number">1</span>,<span class="code_number">1</span>]<span class="code_operator">:</span><span class="code_variable">a</span><span class="code_endofline">$</span><BR>
+<span class="code_variable">M1</span>[<span class="code_number">1</span>,<span class="code_number">2</span>]<span class="code_operator">:</span><span class="code_variable">b</span><span class="code_endofline">$</span><BR>
+<span class="code_variable">M1</span>[<span class="code_number">2</span>,<span class="code_number">1</span>]<span class="code_operator">:</span><span class="code_variable">c</span><span class="code_endofline">$</span><BR>
+<span class="code_variable">M1</span>[<span class="code_number">2</span>,<span class="code_number">2</span>]<span class="code_operator">:</span><span class="code_variable">d</span><span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{M1}\label{M1}\begin{pmatrix}0 & 0\\
+0 & 0\end{pmatrix}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+coefficient matrix,pg1,pg2<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i11) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p0</span><span class="code_operator">:</span><span class="code_variable">M1</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p0}\label{p0}\begin{pmatrix}a & b\\
+c & d\end{pmatrix}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+general solution' pg1,pg2 ' &nbsp;X=a1*e^(lambda*t)<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y=a2*e^(lambda*t)<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i13) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p1</span><span class="code_operator">:</span><span class="code_variable">X</span><span class="code_operator">=</span><span class="code_variable">a1</span><span class="code_operator">*</span><span class="code_variable">%e</span><span class="code_operator">^</span>(<span class="code_variable">lambda</span><span class="code_operator">*</span><span class="code_variable">t</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p2</span><span class="code_operator">:</span><span class="code_variable">Y</span><span class="code_operator">=</span><span class="code_variable">a2</span><span class="code_operator">*</span><span class="code_variable">%e</span><span class="code_operator">^</span>(<span class="code_variable">lambda</span><span class="code_operator">*</span><span class="code_variable">t</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p1}\label{p1}X=\mathit{a1}\,{{\%{}e}^{t\,\mathit{lambda}}}\]
+\[\tag{p2}\label{p2}Y=\mathit{a2}\,{{\%{}e}^{t\,\mathit{lambda}}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i15) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p3</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">pg1</span>,<span class="code_variable">p1</span>,<span class="code_variable">p2</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p4</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">pg2</span>,<span class="code_variable">p1</span>,<span class="code_variable">p2</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p3}\label{p3}\frac{d}{dt}\left( \mathit{a1}\,{{\%{}e}^{t\,\mathit{lambda}}}\right) =\mathit{a2}b\,{{\%{}e}^{t\,\mathit{lambda}}}+a\,\mathit{a1}\,{{\%{}e}^{t\,\mathit{lambda}}}\]
+\[\tag{p4}\label{p4}\frac{d}{dt}\left( \mathit{a2}\,{{\%{}e}^{t\,\mathit{lambda}}}\right) =\mathit{a2}d\,{{\%{}e}^{t\,\mathit{lambda}}}+\mathit{a1}c\,{{\%{}e}^{t\,\mathit{lambda}}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i17) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p5</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p3</span>,<span class="code_variable">nouns</span>)<span class="code_operator">/</span><span class="code_variable">%e</span><span class="code_operator">^</span>(<span class="code_variable">t</span><span class="code_operator">*</span><span class="code_variable">lambda</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p6</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p4</span>,<span class="code_variable">nouns</span>)<span class="code_operator">/</span><span class="code_variable">%e</span><span class="code_operator">^</span>(<span class="code_variable">t</span><span class="code_operator">*</span><span class="code_variable">lambda</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p5}\label{p5}\mathit{a1}\,\mathit{lambda}={{\%{}e}^{-t\,\mathit{lambda}}}\,\left( \mathit{a2}b\,{{\%{}e}^{t\,\mathit{lambda}}}+a\,\mathit{a1}\,{{\%{}e}^{t\,\mathit{lambda}}}\right) \]
+\[\tag{p6}\label{p6}\mathit{a2}\,\mathit{lambda}={{\%{}e}^{-t\,\mathit{lambda}}}\,\left( \mathit{a2}d\,{{\%{}e}^{t\,\mathit{lambda}}}+\mathit{a1}c\,{{\%{}e}^{t\,\mathit{lambda}}}\right) \]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i19) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p7</span><span class="code_operator">:</span><span class="code_function">ratsimp</span>(<span class="code_variable">p5</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p8</span><span class="code_operator">:</span><span class="code_function">ratsimp</span>(<span class="code_variable">p6</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p7}\label{p7}\mathit{a1}\,\mathit{lambda}=\mathit{a2}b+a\,\mathit{a1}\]
+\[\tag{p8}\label{p8}\mathit{a2}\,\mathit{lambda}=\mathit{a2}d+\mathit{a1}c\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i21) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p9</span><span class="code_operator">:</span><span class="code_function">rhs</span>(<span class="code_variable">p7</span>)<span class="code_operator">-</span><span class="code_function">lhs</span>(<span class="code_variable">p7</span>)<span class="code_operator">=</span><span class="code_number">0</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">p10</span><span class="code_operator">:</span><span class="code_function">rhs</span>(<span class="code_variable">p8</span>)<span class="code_operator">-</span><span class="code_function">lhs</span>(<span class="code_variable">p8</span>)<span class="code_operator">=</span><span class="code_number">0</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p9}\label{p9}-\mathit{a1}\,\mathit{lambda}+\mathit{a2}b+a\,\mathit{a1}=0\]
+\[\tag{p10}\label{p10}-\mathit{a2}\,\mathit{lambda}+\mathit{a2}d+\mathit{a1}c=0\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i25) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p11</span><span class="code_operator">:</span><span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">p9</span>,<span class="code_number">1</span>),<span class="code_variable">a1</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p12</span><span class="code_operator">:</span><span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">p9</span>,<span class="code_number">1</span>),<span class="code_variable">a2</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p13</span><span class="code_operator">:</span><span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">p10</span>,<span class="code_number">1</span>),<span class="code_variable">a1</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p14</span><span class="code_operator">:</span><span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">p10</span>,<span class="code_number">1</span>),<span class="code_variable">a2</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p11}\label{p11}a-\mathit{lambda}\]
+\[\tag{p12}\label{p12}b\]
+\[\tag{p13}\label{p13}c\]
+\[\tag{p14}\label{p14}d-\mathit{lambda}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+build matrix M2 ' coefficient matrix '<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i26) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">M2</span><span class="code_operator">:</span><span class="code_function">zeromatrix</span>(<span class="code_number">2</span>,<span class="code_number">2</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{M2}\label{M2}\begin{pmatrix}0 & 0\\
+0 & 0\end{pmatrix}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i30) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">M2</span>[<span class="code_number">1</span>,<span class="code_number">1</span>]<span class="code_operator">:</span><span class="code_variable">p11</span><span class="code_endofline">$</span><BR>
+<span class="code_variable">M2</span>[<span class="code_number">1</span>,<span class="code_number">2</span>]<span class="code_operator">:</span><span class="code_variable">p12</span><span class="code_endofline">$</span><BR>
+<span class="code_variable">M2</span>[<span class="code_number">2</span>,<span class="code_number">1</span>]<span class="code_operator">:</span><span class="code_variable">p13</span><span class="code_endofline">$</span><BR>
+<span class="code_variable">M2</span>[<span class="code_number">2</span>,<span class="code_number">2</span>]<span class="code_operator">:</span><span class="code_variable">p14</span><span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+coefficient matrix,p9,p10<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i31) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">M2</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o31}\label{o31} \begin{pmatrix}a-\mathit{lambda} & b\\
+c & d-\mathit{lambda}\end{pmatrix}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+solvable : determinant = 0<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i32) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p15</span><span class="code_operator">:</span> <span class="code_function">ratsimp</span>(<span class="code_function">determinant</span>(<span class="code_variable">M2</span>))<span class="code_operator">=</span><span class="code_number">0</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p15}\label{p15}{{\mathit{lambda}}^{2}}+\left( -d-a\right) \,\mathit{lambda}+ad-bc=0\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+characteristics polynomial of a matrix &nbsp;M2,'p15'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i33) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">load</span>(<span class="code_string">&quot;</span><span class="code_string">functs</span><span class="code_string">&quot;</span>)<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+needed :tracematrix 'statement'<BR>definition : sum of all elements on diagonal.<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i34) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p16</span><span class="code_operator">:</span><span class="code_function">tracematrix</span>(<span class="code_variable">M1</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p16}\label{p16}d+a\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i35) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p17</span><span class="code_operator">:</span><span class="code_function">determinant</span>(<span class="code_variable">M1</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p17}\label{p17}ad-bc\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+lambda^2-tracematrix(M1)*lambda+determinant(M1)=0<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i36) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p18</span><span class="code_operator">:</span><span class="code_variable">lambda</span><span class="code_operator">^</span><span class="code_number">2</span><span class="code_operator">-</span><span class="code_function">tracematrix</span>(<span class="code_variable">M1</span>)<span class="code_operator">*</span><span class="code_variable">lambda</span><span class="code_operator">+</span><span class="code_function">determinant</span>(<span class="code_variable">M1</span>)<span class="code_operator">=</span><span class="code_number">0</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p18}\label{p18}{{\mathit{lambda}}^{2}}-\left( d+a\right) \,\mathit{lambda}+ad-bc=0\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+eigenvalues : lambda1,lambda2,see module3<BR>other words : propervalues,char.values<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i37) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p19</span><span class="code_operator">:</span><span class="code_function">solve</span>(<span class="code_variable">p18</span>,<span class="code_variable">lambda</span>)<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+two lambda1: 'p20',lambda2: 'p21'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i39) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p20</span><span class="code_operator">:</span><span class="code_variable">p19</span>[<span class="code_number">1</span>]<span class="code_endofline">;</span><BR>
+<span class="code_variable">p21</span><span class="code_operator">:</span><span class="code_variable">p19</span>[<span class="code_number">2</span>]<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p20}\label{p20}\mathit{lambda}=-\frac{\sqrt{{{d}^{2}}-2ad+4bc+{{a}^{2}}}-d-a}{2}\]
+\[\tag{p21}\label{p21}\mathit{lambda}=\frac{\sqrt{{{d}^{2}}-2ad+4bc+{{a}^{2}}}+d+a}{2}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+find eigenvectors a1,a2 &rarr; lambda1<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a1,a2 &rarr; lambda2<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i41) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p22</span><span class="code_operator">:</span><span class="code_variable">a1</span><span class="code_operator">*</span><span class="code_variable">M2</span>[<span class="code_number">1</span>,<span class="code_number">1</span>]<span class="code_operator">+</span><span class="code_variable">a2</span><span class="code_operator">*</span><span class="code_variable">M2</span>[<span class="code_number">1</span>,<span class="code_number">2</span>]<span class="code_operator">=</span><span class="code_number">0</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">p23</span><span class="code_operator">:</span><span class="code_variable">a1</span><span class="code_operator">*</span><span class="code_variable">M2</span>[<span class="code_number">2</span>,<span class="code_number">1</span>]<span class="code_operator">+</span><span class="code_variable">a2</span><span class="code_operator">*</span><span class="code_variable">M2</span>[<span class="code_number">2</span>,<span class="code_number">2</span>]<span class="code_operator">=</span><span class="code_number">0</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p22}\label{p22}\mathit{a1}\,\left( a-\mathit{lambda}\right) +\mathit{a2}b=0\]
+\[\tag{p23}\label{p23}\mathit{a2}\,\left( d-\mathit{lambda}\right) +\mathit{a1}c=0\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+lambda1 find 'p20'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i43) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p24</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p22</span>,<span class="code_variable">p20</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p25</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p23</span>,<span class="code_variable">p20</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p24}\label{p24}\mathit{a1}\,\left( \frac{\sqrt{{{d}^{2}}-2ad+4bc+{{a}^{2}}}-d-a}{2}+a\right) +\mathit{a2}b=0\]
+\[\tag{p25}\label{p25}\mathit{a2}\,\left( \frac{\sqrt{{{d}^{2}}-2ad+4bc+{{a}^{2}}}-d-a}{2}+d\right) +\mathit{a1}c=0\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+solve system 'p24,p25' for a1,a2<BR>menu:equations &rarr; solve linear system<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i44) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p26</span><span class="code_operator">:</span><span class="code_function">linsolve</span>([<span class="code_variable">p24</span>, <span class="code_variable">p25</span>], [<span class="code_variable">a1</span>,<span class="code_variable">a2</span>])<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\mbox{}\\\mbox{solve: dependent equations eliminated: (2)}\]
+\[\tag{p26}\label{p26}[\mathit{a1}=\mathit{\%{}r1},\mathit{a2}=-\frac{\mathit{\%{}r1}\,\sqrt{{{d}^{2}}-2ad+4bc+{{a}^{2}}}-\mathit{\%{}r1}d+\mathit{\%{}r1}a}{2b}]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i45) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p27</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p26</span>,<span class="code_variable">%r1</span><span class="code_operator">=</span><span class="code_number">1</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p27}\label{p27}[\mathit{a1}=1,\mathit{a2}=-\frac{\sqrt{{{d}^{2}}-2ad+4bc+{{a}^{2}}}-d+a}{2b}]\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+lambda2 find 'p21'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i47) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p28</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p22</span>,<span class="code_variable">p21</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p29</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p23</span>,<span class="code_variable">p21</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p28}\label{p28}\mathit{a1}\,\left( a-\frac{\sqrt{{{d}^{2}}-2ad+4bc+{{a}^{2}}}+d+a}{2}\right) +\mathit{a2}b=0\]
+\[\tag{p29}\label{p29}\mathit{a2}\,\left( d-\frac{\sqrt{{{d}^{2}}-2ad+4bc+{{a}^{2}}}+d+a}{2}\right) +\mathit{a1}c=0\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+solve system 'p24,p25' for a1,a2<BR>menu:equations &rarr; solve linear system<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i48) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p30</span><span class="code_operator">:</span><span class="code_function">linsolve</span>([<span class="code_variable">p28</span>, <span class="code_variable">p29</span>], [<span class="code_variable">a1</span>,<span class="code_variable">a2</span>])<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\mbox{}\\\mbox{solve: dependent equations eliminated: (2)}\]
+\[\tag{p30}\label{p30}[\mathit{a1}=\mathit{\%{}r2},\mathit{a2}=\frac{\mathit{\%{}r2}\,\sqrt{{{d}^{2}}-2ad+4bc+{{a}^{2}}}+\mathit{\%{}r2}d-\mathit{\%{}r2}a}{2b}]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i49) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p31</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p30</span>,<span class="code_variable">%r2</span><span class="code_operator">=</span><span class="code_number">1</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p31}\label{p31}[\mathit{a1}=1,\mathit{a2}=\frac{\sqrt{{{d}^{2}}-2ad+4bc+{{a}^{2}}}+d-a}{2b}]\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+see: module3,how to write general solution at the 'end'<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+missing : repeated eigenvalues. 'comming later'<BR>https://ocw.mit.edu/courses/mathematics/18-03-differential-equations-spring-2010/video-lectures/<BR>lecture-26-continuation-repeated-real-eigenvalues/<BR>
+</P>
+
+ <HR>
+ <SMALL> Created with <A HREF="http://wxmaxima.sourceforge.net/">wxMaxima</A>.</SMALL>
+ <script data-cfasync="false" src="../../../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></BODY>
+</HTML>

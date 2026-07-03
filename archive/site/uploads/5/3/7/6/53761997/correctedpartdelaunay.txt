@@ -1,0 +1,9 @@
+# Find the elements which contain those points
+ww = set(tri.find_simplex(p))
+ww.remove(-1)
+ww = sorted(ww)
+# print(ww)
+
+# Feed the result of the previous function to the np.delete method
+# Create a new set of elements without the problematic elements
+mesh = np.delete(tri.simplices, ww, 0)

@@ -1,0 +1,48 @@
+vector 2d = vector two dimensional             
+-----------------------------------------------
+property: add two vectors with scalar ,vec2d   
+-----------------------------------------------
+ first vector = vec2d(2,3) 
+x coordinate vec2d(x,y) =  2
+y coordinate vec2d(x,y) =  3
+-----------------------------------
+ second vector = vec2d(3,2) 
+ result :vec2d(2,3)+vec2d(3,2) = vec2d(5,5) 
+x coordinate vec2d(5,5) =  5
+y coordinate vec2d(5,5) =  5
+-----------------------------------
+property: minus two vectors ,vec2d 
+-----------------------------------
+ result :vec2d(2,3)-vec2d(3,2) = vec2d(-1,1) 
+x coordinate vec2d(-1,1) =  -1
+y coordinate vec2d(-1,1) =  1
+vector 2d = vector two dimensional 
+-----------------------------------
+property: add two vectors ,vec2d   
+-----------------------------------
+ first vector = vec2d(2,3) 
+x coordinate vec2d(x,y) =  2
+y coordinate vec2d(x,y) =  3
+-----------------------------------
+ second vector = vec2d(3,2) 
+ result :vec2d(2,3)+vec2d(3,2) = vec2d(5,5) 
+x coordinate vec2d(5,5) =  5
+y coordinate vec2d(5,5) =  5
+-----------------------------------
+property: minus two vectors ,vec2d 
+-----------------------------------
+ result :vec2d(2,3)-vec2d(3,2) = vec2d(-1,1) 
+--------------------------------------------------
+property: scalarmultiplication of a vector ,vec2d 
+--------------------------------------------------
+ result :2*vec2d(-1,1) = vec2d(-2,2) 
+x coordinate 2*vec2d(-1,1) =  -2
+y coordinate 2*vec2d(-1,1) =  2
+--------------------------------------------------
+property: combination a vector ,vec2d             
+--------------------------------------------------
+ RESULT :2*vec2d(-1,1)+vec2d(2,3) = vec2d(-2,2) 
+x coordinate RESULT =  0
+y coordinate RESULT =  5
+good : result, equality 
+vec2d(2,3)==vec2d(2,3) -> True

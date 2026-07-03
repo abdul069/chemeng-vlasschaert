@@ -1,0 +1,43 @@
+% given variables
+rho = 1; % density
+AA = 3; % cross-section
+AB = 1; % cross-section
+p1 = 28
+p3 = 0
+
+% input a relaxation factor
+alpha =.5;
+
+% guess uA and uB and p2
+uA(1)=5/3;
+uB(1)=5;
+p2=25;
+
+% start overall loop,until cvg
+for loop = 1:100
+    for i = 2:100
+        uA(i) =(p1-p2)*AA/(rho*uA(i-1)*AA);
+		uB(i) =((rho*uA(i-1)*AA)*uA(i-1) + (p2-p3)*AB)/(rho*uB(i-1)*AB);
+		uA(i) = uA(i-1)+(uA(i)-uA(i-1))*alpha;
+		uB(i) = uB(i-1)+(uB(i)-uB(i-1))*alpha;
+		if ((abs(uB(i)-uB(i-1)))+(abs(uA(i)-uA(i-1)))<0.001)
+		   break
+		end
+	end	
+	% redefine the two velocities
+	uA = uA(length(uA));
+	uB = uA(length(uB));
+	%check cvg 
+	if (abs(rho*uA*AA-rho*uB*AB) < 0.01)
+	    break
+	end	
+	% use velocities to get pressure corrections
+	dA = (rho*uA)^(-1); dB = (rho*uB)^(-1);
+    % pressure correction equation
+    p2p = (uA*AA-uB*AB)/(dA*AA+dB*AB);
+    p2=p2+p2p*alpha;
+    % correction for velocities 
+    uA = uA+dA*(0-p2p);	
+	uB = uA+dB*(p2p-0);	
+end	
+    

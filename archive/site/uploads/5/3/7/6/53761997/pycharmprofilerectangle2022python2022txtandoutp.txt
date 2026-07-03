@@ -1,0 +1,26 @@
+import numpy                       #here we load numpy
+from matplotlib import pyplot as plt
+nx=41
+dx = 2 / (nx-1)
+nt = 25    #nt is the number of timesteps we want to calculate
+dt = .025  #dt is the amount of time each timestep covers (delta t)
+c = 1
+print(dx)
+print(.5/dx)
+print(1/dx+1)
+u = numpy.ones(nx)      #numpy function ones()
+u[int(.5 / dx):int(1 / dx + 1)] = 2  #setting u = 2 between 0.5 and 1 as per our I.C.s
+print(u)
+plt.plot(numpy.linspace(0, 2, nx), u,color = "green",linewidth=3)
+plt.title("reactangular wave")
+plt.xlabel("x-axis")
+plt.ylabel("y-axis")
+plt.grid(True)
+plt.show()
+
+# output : terminal ,pycharm
+# 0.05
+# 10.0
+# 21.0
+#[1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 2. 2. 2. 2. 2. 2. 2. 2. 2. 2. 2. 1. 1. 1.
+#  1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.]

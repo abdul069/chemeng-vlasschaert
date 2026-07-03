@@ -1,0 +1,19 @@
+********************************************************************************
+Some Python commands in the PATH of this session:
+ - python    == C:\python\Thonny\python.exe
+ - pip       == C:\python\Thonny\Scripts\pip.exe
+ - pip3      == C:\python\Thonny\Scripts\pip3.exe
+ - pip3.7    == C:\python\Thonny\Scripts\pip3.7.EXE
+ - pip3.8    == C:\Python38\Scripts\pip3.8.EXE
+
+********************************************************************************
+
+C:\test>pip install numpy
+Requirement already satisfied: numpy in c:\python\thonny\lib\site-packages (1.20.1)
+
+C:\test>
+
+
+see : importpackagesinthonny.txt
+
+rem: current directory :run *.py  example : 'C:\test> *.py'

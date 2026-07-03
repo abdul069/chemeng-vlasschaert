@@ -1,0 +1,200 @@
+<!DOCTYPE HTML">
+<HTML>
+ <HEAD>
+  <TITLE>dilutedsolutionmaximaversion1html</TITLE>
+  <META NAME="generator" CONTENT="wxMaxima">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    displayAlign: "left",
+    context: "MathJax"
+  })
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+  <link rel="stylesheet" type="text/css" href="https://petervlaschemeng.weebly.com/uploads/5/3/7/6/53761997/dilutedsolutionmaximaversion1html_htmlimg/dilutedsolutionmaximaversion1html.css"/>
+ </HEAD>
+ <BODY>
+
+<!-- ***************************************************** -->
+<!--          Created with wxMaxima version 16.04.2         -->
+<!-- ***************************************************** -->
+<noscript><div class="error message">    Please enable JavaScript in order to get a 2d display of the equations embedded in this web page.</div></noscript>\(      \DeclareMathOperator{\abs}{abs}
+      \newcommand{\ensuremath}[1]{\mbox{$#1$}}
+\)
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+diluted solution ?: &nbsp;w_dil = 50 weight % = 50g product/100g solution<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make = 1000ml from this solution<BR>------------------------------------------------------------------<BR>product = H(2)SO4 'acid sulfuric' MW=(S)32+4*16(O)+2*H(1) &nbsp;&nbsp;&nbsp;= 98g<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(M)olecular(W)eight H(2)SO4 = 98g<BR>product = H(2)O &nbsp;&nbsp;' aqua &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' MW=(H)2*1+1*16(O) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 18g<BR>------------------------------------------------------------------<BR>solution &nbsp;= soln<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+peter.vlasschaert@gmail,03/11/2016,version 1.0<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+Products : labo flask 1 : 'acid sulfuric' ,rho_acid =density = 1,84g/ml, w_acid = 96% weight<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flask 2 : ' aqua &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' ,rho_aq &nbsp;&nbsp;=density = 1,00g/ml,<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+How to find &nbsp;(y) ml flask 1 , (make - y) ml flask 2 &nbsp;? find y<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+info : rho_* w_ * y = (g product/ml)*(g product/100g soln)*y<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">kill</span>(<span class="code_variable">all</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o0}\label{o0} \mathit{done}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p1</span> <span class="code_operator">:</span> <span class="code_variable">rho_acid</span><span class="code_operator">*</span><span class="code_variable">w_acid</span> <span class="code_operator">*</span> <span class="code_variable">y</span> <span class="code_operator">=</span> (<span class="code_variable">rho_acid</span><span class="code_operator">*</span><span class="code_variable">y</span><span class="code_operator">+</span><span class="code_variable">rho_aq</span><span class="code_operator">*</span>(<span class="code_variable">make</span><span class="code_operator">-</span><span class="code_variable">y</span>))<span class="code_operator">*</span><span class="code_variable">w_dil</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p1}\label{p1}\mathit{rho\_ acid}{{w}_{\mathit{acid}}}y={{w}_{\mathit{dil}}}\left( \mathit{rho\_ acid}y+\mathit{rho\_ aq}\left( \mathit{make}-y\right) \right) \]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i2) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p2</span><span class="code_operator">:</span><span class="code_function">solve</span>(<span class="code_variable">p1</span>,<span class="code_variable">y</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p2}\label{p2}[y=\frac{\mathit{make}\,\mathit{rho\_ aq}{{w}_{\mathit{dil}}}}{\left( \mathit{rho\_ aq}-\mathit{rho\_ acid}\right) {{w}_{\mathit{dil}}}+\mathit{rho\_ acid}{{w}_{\mathit{acid}}}}]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i3) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p3</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">p2</span>,<span class="code_number">1</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p3}\label{p3}y=\frac{\mathit{make}\,\mathit{rho\_ aq}{{w}_{\mathit{dil}}}}{\left( \mathit{rho\_ aq}-\mathit{rho\_ acid}\right) {{w}_{\mathit{dil}}}+\mathit{rho\_ acid}{{w}_{\mathit{acid}}}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i4) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p4</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p3</span>,<span class="code_variable">make</span><span class="code_operator">=</span><span class="code_number">1000</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p4}\label{p4}y=\frac{1000\mathit{rho\_ aq}{{w}_{\mathit{dil}}}}{\left( \mathit{rho\_ aq}-\mathit{rho\_ acid}\right) {{w}_{\mathit{dil}}}+\mathit{rho\_ acid}{{w}_{\mathit{acid}}}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i8) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p5</span><span class="code_operator">:</span><span class="code_variable">rho_acid</span> <span class="code_operator">=</span> <span class="code_number">1</span>.<span class="code_number">84</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">p6</span><span class="code_operator">:</span><span class="code_variable">rho_aq</span> &nbsp;&nbsp;<span class="code_operator">=</span> <span class="code_number">1</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">p7</span><span class="code_operator">:</span><span class="code_variable">w_acid</span> &nbsp;&nbsp;<span class="code_operator">=</span> <span class="code_number">0</span>.<span class="code_number">96</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">p8</span><span class="code_operator">:</span><span class="code_variable">w_dil</span> &nbsp;&nbsp;&nbsp;<span class="code_operator">=</span> <span class="code_number">0</span>.<span class="code_number">5</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p5}\label{p5}\mathit{rho\_ acid}=1.84\]
+\[\tag{p6}\label{p6}\mathit{rho\_ aq}=1\]
+\[\tag{p7}\label{p7}{{w}_{\mathit{acid}}}=0.96\]
+\[\tag{p8}\label{p8}{{w}_{\mathit{dil}}}=0.5\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i12) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p9</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p4</span>,<span class="code_variable">p5</span>,<span class="code_variable">p6</span>,<span class="code_variable">p7</span>,<span class="code_variable">p8</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p9}\label{p9}y=371.3606654783125\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i15) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p10</span><span class="code_operator">:</span><span class="code_variable">y_aq</span><span class="code_operator">=</span><span class="code_function">ev</span>(<span class="code_variable">make</span> <span class="code_operator">-</span> <span class="code_function">part</span>(<span class="code_variable">p9</span>,<span class="code_number">2</span>),<span class="code_variable">make</span> <span class="code_operator">=</span> <span class="code_number">1000</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p10}\label{p10}{{y}_{\mathit{aq}}}=628.6393345216875\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+We get diluted soln 50 wt% ,take y ml =371.4ml flask 1 and<BR>put other flask and take y_aq from flask 2 &rArr; total volume = make = 1000<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i16) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p11</span><span class="code_operator">:</span><span class="code_variable">vol_tot</span> <span class="code_operator">=</span> <span class="code_function">ev</span>(<span class="code_variable">y</span><span class="code_operator">+</span><span class="code_variable">y_aq</span>,<span class="code_variable">p9</span>,<span class="code_variable">p10</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p11}\label{p11}\mathit{vol\_ tot}=1000.0\]
+
+ <HR>
+ <SMALL> Created with <A HREF="http://wxmaxima.sourceforge.net/">wxMaxima</A>.</SMALL>
+ </BODY>
+</HTML>

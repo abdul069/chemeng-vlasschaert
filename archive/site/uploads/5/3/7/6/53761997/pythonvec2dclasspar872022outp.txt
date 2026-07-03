@@ -1,0 +1,10 @@
+result : output 
+.................
+ first time , you call vec2d 
+1
+ second time , you call vec2d 
+2
+..........................................
+ output => print(counter)          = error
+ NameError: name 'counter' is not defined 
+..........................................

@@ -1,0 +1,103 @@
+option nolet
+!**********************************************************************
+! symbol : general :Levi-Civita,symbol: change position(correctedwhile)
+! info:https://en.wikipedia.org/wiki/Levi-Civita_symbol
+!**********************************************************************
+! website :https://petervlaschemeng.weebly.com/
+! topic :fluid dynamics (2019)
+!*****************************************************************
+!filename :fluidgeneralleviCivitasymbolpositionversion1final.tru
+!*****************************************************************
+print
+print "**********************************************************"
+print "----------------------------------------------------------"
+print " fluid:general :Levi-Civita symbol(position),version 1.0  "
+print " peter.vlasschaert@gmail.com,26/08/2019                   "
+print "----------------------------------------------------------"
+print " ref : maple code: Denis Constales (Prof UGent)           "
+print "**********************************************************"
+!*****************************************************************
+! ref code :peterperm.mw
+!*****************************************************************
+print 
+print "--------------------------------------------"
+print " example : epsilon(1,2,3) => sign = 1       "
+print " example : epsilon(2,1,3) => sign = -1      "
+print " example : epsilon(1,1,3) => sign = 0       "
+print "--------------------------------------------"
+n = 5 ! use 1,2,3,4,5
+dim a(1),b(1,1)
+mat redim a(n),b(1,2)
+m1$ = " not a permutation " 
+a(1) = 4
+a(2) = 5
+a(3) = 2
+a(4) = 1
+a(5) = 3
+mat b = 0
+print
+print "**************************"
+print " input permutation symbol "
+print "**************************"
+print
+mat print a ! input matrix for the permutation
+k=0         ! init : counter dimension matrix b (number of rows)
+for i= 1 to n
+   if a(i) <> i then
+    !***********************************************
+    ! not use exit some other languages use 'break'
+    !***********************************************
+    j = i+1
+         do while ( j <= n and a(j) <> i)
+            j =j+1 
+         loop
+    !************************************************
+    ! end loop
+    !************************************************
+        if n < j then    
+             m2$ = " not a permutation " 
+             exit for
+        end if
+     a(j) = a(i)
+     a(i) = i
+! output : begin
+         k=k+1
+         mat redim b(k,2)
+         ! corrected i to k
+         b(k,1) = i
+         b(k,2) = j
+! output : end
+       end if
+next i
+print "*************************************************"
+print "change position : interchange of position        "
+print "*************************************************"
+print
+if m1$ = m2$ then
+   print m1$ 
+   eps = 0  ! when two symbols are the same 
+else 
+mat print b
+! even or odd
+  if mod(k,2) = 0 then
+     eps = 1  ! even
+     print " k = ";k
+  else
+     eps = -1 ! odd
+     print " k = ";k
+  end if
+end if
+print "************************************"
+print " value permutation symbol (epsilon) "
+print "************************************"
+print
+print "************"
+print " example    "
+print "************"
+print
+print " epsilon(4,5,2,1,3) = ";" ,k = ";k;" , sign = ";eps
+end
+
+
+
+  

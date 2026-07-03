@@ -1,0 +1,113 @@
+option nolet  ! don't
+!print "************************************************"
+!print "* elek 1: interactive Ohms_Law 'version1'      *"
+!print "* peter.vlasschaert@gmail.com ,15/05/2018      *"
+!print "************************************************"
+! filename :Ohmslawinteractiverversion1
+do
+call info
+print
+!****************************************************
+! relation between 'current,voltage,resistance,power'
+! power = P,current = I,voltage = V,resistance = R
+! formula : def :'power'       P = V*I
+!           def 'Ohms Law'     V = I*R
+!****************************************************
+call formula
+! use function answer
+declare function answer
+print
+print "**********"
+print " input => "
+print "**********"
+print 
+print "***********************************************************"
+print "*'two values' from 'four values' ,values as input : result*"
+print "***********************************************************"
+print
+call inp(V,I,R,P) 
+print
+! calculation of the unknowns
+call cal(V,I,R,P)
+! output result
+print "***********"
+print " result => "
+print "***********"
+print
+call outp(V,I,R,P)
+print
+print "************************"
+print " press any key:continue "
+print " press enter  :end      "
+print "************************"
+print
+pause 7
+clear
+loop until key input
+end
+
+SUB info
+print "************************************************"
+print "* elek 1: interactive Ohms_Law 'version1'      *"
+print "* peter.vlasschaert@gmail.com ,15/05/2018      *"
+print "************************************************"
+END SUB
+
+sub formula
+print "**************************"
+print "* FORMULA  =>            *"
+print "**************************"
+print
+print "def :'power'       P = V*I = I^2*R"
+print "def :'Ohms Law'    V = I*R        "
+end sub
+
+sub inp(V,I,R,P)
+declare function answer
+V = answer("Voltage    unit:(volts)")
+I = answer("Current    unit:(amps) ")
+R = answer("REsistance unit:(ohms) ")
+P = answer("Power      unit:(watts)")
+end sub
+
+sub cal(V,I,R,P)
+if v <> 0 and I<> 0 then
+ R=V/I
+ P= V*I
+elseif V <>0 and R<>0 then
+ I= V/R
+ P= V^2/R
+elseif V <> 0 and P<>0 then
+  I=P/V
+  R=V^2/P
+elseif I <> 0 and R<>0 then
+  V=I*R
+  P=I^2*R
+elseif I <> 0 and P <>0 then
+  V=P/I
+  R=P/I^2
+elseif R<>0 and P<>0 then
+  V=sqr(P*R)
+  I=sqr(P/R)
+else
+  print " not enough information "
+end if
+
+end sub
+
+sub outp(V,I,R,P)
+print "Voltage    (V) = ";V
+print "Current    (I) = ";I
+print "Resistance (R) = ";R
+print "Power      (P) = ";P
+end sub
+
+function answer(q$)
+print q$;
+line input x$
+   when error in
+        answer = val(x$)
+   use
+        answer = 0
+   end when
+end function

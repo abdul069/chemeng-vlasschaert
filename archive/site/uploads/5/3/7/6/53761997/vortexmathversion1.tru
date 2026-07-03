@@ -1,0 +1,124 @@
+option nolet
+!****************************************************************
+! example 1 : graphics programming (to make figure on the canvas)
+!****************************************************************
+print "*********************************************"
+print "date    :27/06/2017  'example graphics 2'    "
+print "author  :peter.vlasschaert@gmail.com         "
+print "version :torus (vortex)  'version 1.0'       "
+print "*********************************************"
+!filename:vortexmathversion1
+print
+test = 2        ! plot axis x,y : test=1 else not
+r1=5            ! draw window dimension
+rs=2            ! radius small circle
+print " radius of the circle = ";rs
+!v=pi/180        ! conversion grad -> rad
+!****************************************************
+! " aspect ratio correction ----->                  "
+!****************************************************
+r=r1
+Ask pixels hpix,vpix
+pratio=hpix/vpix
+vr=2*r
+hr=2*r*pratio
+set window -hr/2-1,hr/2+1,-vr/2-1,vr/2+1
+!**** plot axis *************************************
+  if test = 1 then
+     set color "red"
+     plot lines:-hr/2-1,0;hr/2+1,0
+     plot lines: 0,-vr/2-1;0,vr/2+1
+  else
+     plot text, at 0,0 :"+"
+  end if
+!****************************************************
+set color "blue"
+!****************************************************
+! draw the circle
+!****************************************************
+! call cir(theta,rs)
+set color "green"
+call cir1(theta,rs,0,rs)
+call cir1(theta,rs,cos(pi/6)*rs,rs/2)
+call cir1(theta,rs,-cos(pi/6)*rs,rs/2)
+! mirror image ( x-axis) (x,y) -> (x,-y) 
+call cir1(theta,rs,cos(pi/6)*rs,-rs/2)
+call cir1(theta,rs,-cos(pi/6)*rs,-rs/2)
+call cir1(theta,rs,0,-rs)
+set color "black"
+! first diagonal
+dim fdx(2),fdy(2)
+fdx(1)= cos(pi/6)*rs
+fdy(1)= rs*3/2
+fdx(2)= -cos(pi/6)*rs
+fdy(2)= -rs*3/2
+for i=1 to 2
+   ! call cir1(theta,0.1,fdx(i),fdy(i))
+next i
+!**************************************
+! intersection : line and center circle
+!**************************************
+dim fdxx(2),fdyy(2)
+fdxx(1)= rs/2
+fdyy(1)= sqr(3)/2*rs
+fdxx(2)= -rs/2
+fdyy(2)= -sqr(3)/2*rs
+for i=1 to 2
+ call cir1(theta,rs,fdxx(i),fdyy(i))
+next i
+set color "red"
+! second diagonal
+dim sdx(2),sdy(2)
+sdx(1)= -cos(pi/6)*rs
+sdy(1)= rs*3/2
+sdx(2)= +cos(pi/6)*rs
+sdy(2)= -rs*3/2
+for i=1 to 2
+ ! call cir1(theta,.1,sdx(i),sdy(i))
+next i
+!**************************************
+! intersection : line and center circle
+!**************************************
+dim sdxx(2),sdyy(2)
+sdxx(1)= -rs/2
+sdyy(1)= +sqr(3)/2*rs
+sdxx(2)= +rs/2
+sdyy(2)= -sqr(3)/2*rs
+for i=1 to 2
+ call cir1(theta,rs,sdxx(i),sdyy(i))
+next i
+set color "blue"
+ call cir1(theta,rs,rs,0)
+ call cir1(theta,rs,-rs,0)
+end
+
+! draw the circle 'sub'
+
+sub cir(theta,r)
+for theta=0 to 6.28 step 0.001
+plot points: r*cos(theta),r*sin(theta)
+next theta
+end sub
+
+sub cir1(theta,r,x1,y1)
+!********************************
+! draw circle at position (x1,y1)
+!********************************
+for theta=0 to 6.28 step 0.001
+plot points: x1+r*cos(theta),y1+r*sin(theta)
+next theta
+end sub
+
+
+! y=m_rico*x+n_line
+
+sub m_rico(x1,y1,x2,y2,mx)
+    mx=(y2-y1)/(x2-x1)
+end sub
+
+sub n_line(x1,y1,mx,nx)
+    nx=y1-mx*x1
+end sub
+
+
+

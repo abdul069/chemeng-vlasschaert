@@ -1,0 +1,68 @@
+# part 7 : create class vec2d,see:part 6,length of a vector,dot product (def outside class)
+# peter.vlasschaert@gmail.com,26/08/2022
+#------------------------------------------------------------------------------------------
+from math import sqrt  # cmath ,complex variable
+class vec2d():
+# vector 2 dimensional plane (xy-plane)    
+    def __init__(self,x,y): # don't forget this
+        self.x = x
+        self.y = y        
+# change ve ,part: 5 -> other
+    def add(self,other):
+        return vec2d(self.x+other.x,self.y+other.y)
+# part 5 . minus -> sub , see : appendix ( simple math class )   
+    def sub(self,other):
+        return vec2d(self.x-other.x,self.y-other.y)
+# doesn't change  
+    def scale(self,scalar):
+        return vec2d(scalar*self.x,scalar*self.y)        
+# doesn't change    
+    def __eq__(self,other):   # see: logic and,eq = equality
+       return self.x == other.x and self.y == other.y
+# part operator overloading
+    def __add__(self,other):   
+        return self.add(other)
+    def __sub__(self,other):   
+        return self.sub(other)
+# other = SCALAR    
+    def __mul__(self,scalar):   # multiplication =*,mul
+        return self.scale(scalar)
+    def __rmul__(self,scalar):  # scalar multiplication=*,rmul  
+        return self.scale(scalar)
+# representation vec2d(x,y)
+    def __repr__(self):   
+        return str([self.x,self.y])
+# outside class.vec2d -> "working"
+# inside  class.vec2d -> error : NameError
+def length(self):         
+    return sqrt(self.x*self.x+self.y*self.y)
+def dot(self,other):
+    return self.x*other.x + self.y*other.y
+print(" math lib : import -> sqr ")   
+print("sqr(2) = ",sqrt(2))
+print(".................................")    
+print("output : vec2d class computation ")
+print(".................................")
+print(" x,y component : vec2d(x,y)      ")
+v1 = vec2d(2,3)
+print( "v1=vec2d(2,3) ->")
+print("x1 coordinate vec2d(2,3) = ",v1.x)     
+print("y1 coordinate vec2d(2,3) = ",v1.y)
+print("print : v1=vec2d(2,3)      ",v1)
+v2 = vec2d(3,-5)
+print( "v2=vec2d(3,-5) ->")
+print("x2 coordinate vec2d(2,3) = ",v2.x)     
+print("y2 coordinate vec2d(2,3) = ",v2.y)
+print("print : v1=vec2d(2,3)      ",v1)
+print("................................")
+print("magnitude = vec2d(2,3) ->",length(v1))
+print("....................................")
+print("computation = calculator ")
+print(".........................")
+print ("check = ",sqrt(v1.x*v1.x+v1.y*v1.y))
+print("                                    ")
+print("dotproduct = dot(v1,v2) ->",dot(v1,v2))
+print("....................................")
+print("computation = calculator ")
+print(".........................")
+print ("check = ",v1.x*v2.x+v1.y*v2.y)

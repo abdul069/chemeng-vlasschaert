@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?application progid="SMath Studio Desktop" version="0.99.7921.69"?>
+<worksheet xmlns="http://smath.info/schemas/worksheet/1.0">
+  <settings ppi="96">
+    <identity>
+      <id>0dac5e45-f4f8-4de9-ab21-6e1fbfd12001</id>
+      <revision>15</revision>
+    </identity>
+    <calculation>
+      <precision>4</precision>
+      <exponentialThreshold>5</exponentialThreshold>
+      <trailingZeros>false</trailingZeros>
+      <significantDigitsMode>false</significantDigitsMode>
+      <roundingMode>0</roundingMode>
+      <fractions>decimal</fractions>
+    </calculation>
+    <pageModel active="false" viewMode="2" printGrid="false" printAreas="true" simpleEqualsOnly="false" printBackgroundImages="true">
+      <paper id="9" orientation="Portrait" width="827" height="1169" />
+      <margins left="39" right="39" top="49" bottom="49" />
+      <header alignment="Center" color="#a9a9a9">&amp;[DATE] &amp;[TIME] - &amp;[FILENAME]</header>
+      <footer alignment="Center" color="#a9a9a9">&amp;[PAGENUM] / &amp;[COUNT]</footer>
+      <backgrounds />
+    </pageModel>
+    <dependencies>
+      <assembly name="SMath Studio Desktop" version="0.99.7921.69" guid="a37cba83-b69c-4c71-9992-55ff666763bd" />
+      <assembly name="MathRegion" version="1.11.7921.69" guid="02f1ab51-215b-466e-a74d-5d8b1cf85e8d" />
+      <assembly name="MaximaPlugin" version="1.98.7832.2744" guid="44011c1e-5d0d-4533-8e68-e32b5badce41" />
+      <assembly name="TextRegion" version="1.11.7921.69" guid="485d28c5-349a-48b6-93be-12a35a1c1e39" />
+    </dependencies>
+  </settings>
+  <regions type="content">
+    <region left="36" top="27" width="504" height="23" color="#000000" fontSize="10">
+      <text lang="eng" fontFamily="Arial" fontSize="10">
+        <content>
+          <p style="font-weight: bold; text-decoration: underline;">second : session maxima take over, peter.vlasschaert@gmail.com,06/02/2022</p>
+        </content>
+      </text>
+    </region>
+    <region left="36" top="54" width="369" height="26" color="#000000" fontSize="10">
+      <math>
+        <input>
+          <e type="operand" style="string">restart</e>
+          <e type="function" args="1">MaximaControl</e>
+        </input>
+        <result action="numeric">
+          <e type="operand" style="string">Restart complete.</e>
+        </result>
+      </math>
+    </region>
+    <region left="36" top="81" width="214" height="33" color="#000000" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">x</e>
+          <e type="function" args="1">sin</e>
+          <e type="function" args="1">Diff</e>
+          <e type="function" args="1">Maxima</e>
+        </input>
+        <result action="symbolic">
+          <e type="operand">x</e>
+          <e type="function" args="1">cos</e>
+        </result>
+      </math>
+    </region>
+    <region left="369" top="81" width="229" height="27" color="#000000" fontSize="10">
+      <text lang="eng" width="229" fontFamily="Arial" fontSize="10">
+        <content>
+          <p>use : \[REGION[4cb08e44fe984cd49b9b86f8b477116e]]\ ,select for menu</p>
+        </content>
+        <regions>
+          <region id="4cb08e44fe984cd49b9b86f8b477116e" left="35" top="0" width="91" height="26" color="#000000" fontSize="10">
+            <math>
+              <input>
+                <e type="operand">#</e>
+                <e type="function" args="1">Maxima,</e>
+              </input>
+            </math>
+          </region>
+        </regions>
+      </text>
+    </region>
+    <region left="45" top="117" width="393" height="26" color="#000000" fontSize="10">
+      <math>
+        <input>
+          <e type="operand" style="string">int</e>
+          <e type="function" args="1">MaximaTakeover</e>
+        </input>
+        <result action="numeric">
+          <e type="operand" style="string">int() handled by Maxima</e>
+        </result>
+      </math>
+    </region>
+    <region left="54" top="144" width="87" height="26" color="#000000" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">v</e>
+          <e type="operand">x</e>
+          <e type="function" args="1">sin</e>
+          <e type="operator" args="2">:</e>
+        </input>
+      </math>
+    </region>
+    <region left="153" top="144" width="114" height="26" color="#000000" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">v1</e>
+          <e type="operand">x</e>
+          <e type="operand">y</e>
+          <e type="operator" args="2">*</e>
+          <e type="function" args="1">sin</e>
+          <e type="operator" args="2">:</e>
+        </input>
+      </math>
+    </region>
+    <region left="45" top="180" width="226" height="23" color="#000000" fontSize="10">
+      <text lang="eng" fontFamily="Arial" fontSize="10">
+        <content>
+          <p>Maxima Take Over  int from smath :</p>
+        </content>
+      </text>
+    </region>
+    <region left="45" top="216" width="109" height="23" color="#000000" fontSize="10">
+      <text lang="eng" fontFamily="Arial" fontSize="10">
+        <content>
+          <p>1e step : int       </p>
+        </content>
+      </text>
+    </region>
+    <region left="378" top="234" width="171" height="23" color="#000000" fontSize="10">
+      <text lang="eng" fontFamily="Arial" fontSize="10">
+        <content>
+          <p>use : after function use tab</p>
+        </content>
+      </text>
+    </region>
+    <region left="45" top="261" width="120" height="23" color="#000000" fontSize="10">
+      <text lang="eng" fontFamily="Arial" fontSize="10">
+        <content>
+          <p>2e step: press tab</p>
+        </content>
+      </text>
+    </region>
+    <region left="45" top="306" width="303" height="23" color="#000000" fontSize="10">
+      <text lang="eng" width="300" fontFamily="Arial" fontSize="10">
+        <content>
+          <p>3e step: select with cursor whole integral &amp; ctrl +.</p>
+        </content>
+      </text>
+    </region>
+    <region left="378" top="306" width="179" height="23" color="#000000" fontSize="10">
+      <text lang="eng" fontFamily="Arial" fontSize="10">
+        <content>
+          <p>use : for evaluation = ctrl + .</p>
+        </content>
+      </text>
+    </region>
+    <region left="54" top="342" width="174" height="39" color="#000000" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">x</e>
+          <e type="function" args="1">sin</e>
+          <e type="operand">x</e>
+          <e type="function" args="2">int</e>
+        </input>
+        <result action="symbolic">
+          <e type="operand">x</e>
+          <e type="function" args="1">cos</e>
+          <e type="operator" args="1">-</e>
+        </result>
+      </math>
+    </region>
+    <region left="81" top="396" width="140" height="23" color="#000000" fontSize="10">
+      <text lang="eng" fontFamily="Arial" fontSize="10">
+        <content>
+          <p>Maxima: implimented</p>
+        </content>
+      </text>
+    </region>
+    <region left="54" top="423" width="199" height="28" color="#000000" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">y</e>
+          <e type="function" args="1">sin</e>
+          <e type="operand">y</e>
+          <e type="function" args="2">Int</e>
+        </input>
+        <result action="symbolic">
+          <e type="operand">y</e>
+          <e type="function" args="1">cos</e>
+          <e type="operator" args="1">-</e>
+        </result>
+      </math>
+    </region>
+    <region left="45" top="504" width="409" height="26" color="#000000" fontSize="10">
+      <math>
+        <input>
+          <e type="operand" style="string">diff</e>
+          <e type="function" args="1">MaximaTakeover</e>
+        </input>
+        <result action="numeric">
+          <e type="operand" style="string">diff() handled by Maxima</e>
+        </result>
+      </math>
+    </region>
+    <region left="54" top="540" width="129" height="29" color="#000000" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">x</e>
+          <e type="function" args="1">sin</e>
+          <e type="function" args="1">diff</e>
+        </input>
+        <result action="symbolic">
+          <e type="operand">x</e>
+          <e type="function" args="1">cos</e>
+        </result>
+      </math>
+    </region>
+    <region left="54" top="585" width="137" height="58" color="#000000" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">v</e>
+          <e type="operand">x</e>
+          <e type="operand">2</e>
+          <e type="function" args="3">diff</e>
+        </input>
+        <result action="symbolic">
+          <e type="operand">x</e>
+          <e type="function" args="1">sin</e>
+          <e type="operator" args="1">-</e>
+        </result>
+      </math>
+    </region>
+    <region left="99" top="648" width="178" height="23" color="#000000" fontSize="10">
+      <text lang="eng" fontFamily="Arial" fontSize="10">
+        <content>
+          <p>Maxima: first order, Diff,tab </p>
+        </content>
+      </text>
+    </region>
+    <region left="54" top="666" width="154" height="44" color="#000000" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">x</e>
+          <e type="function" args="1">sin</e>
+          <e type="operand">x</e>
+          <e type="function" args="2">diff</e>
+        </input>
+        <result action="symbolic">
+          <e type="operand">x</e>
+          <e type="function" args="1">cos</e>
+        </result>
+      </math>
+    </region>
+    <region left="99" top="720" width="174" height="23" color="#000000" fontSize="10">
+      <text lang="eng" fontFamily="Arial" fontSize="10">
+        <content>
+          <p>Maxima: first order, Diff,tab</p>
+        </content>
+      </text>
+    </region>
+    <region left="54" top="765" width="155" height="26" color="#000000" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">v</e>
+          <e type="operand">x</e>
+          <e type="function" args="2">Diff</e>
+        </input>
+        <result action="symbolic">
+          <e type="operand">x</e>
+          <e type="function" args="1">cos</e>
+        </result>
+      </math>
+    </region>
+    <region left="99" top="801" width="197" height="23" color="#000000" fontSize="10">
+      <text lang="eng" fontFamily="Arial" fontSize="10">
+        <content>
+          <p>Maxima: higher order, Diff,tab,;</p>
+        </content>
+      </text>
+    </region>
+    <region left="63" top="837" width="188" height="26" color="#000000" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">v</e>
+          <e type="operand">x</e>
+          <e type="operand">2</e>
+          <e type="function" args="3">Diff</e>
+        </input>
+        <result action="symbolic">
+          <e type="operand">x</e>
+          <e type="function" args="1">sin</e>
+          <e type="operator" args="1">-</e>
+        </result>
+      </math>
+    </region>
+    <region left="63" top="891" width="250" height="28" color="#000000" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">x</e>
+          <e type="operand">y</e>
+          <e type="operator" args="2">*</e>
+          <e type="function" args="1">sin</e>
+          <e type="operand">y</e>
+          <e type="function" args="2">Diff</e>
+        </input>
+        <result action="symbolic">
+          <e type="operand">x</e>
+          <e type="operand">x</e>
+          <e type="operand">y</e>
+          <e type="operator" args="2">*</e>
+          <e type="function" args="1">cos</e>
+          <e type="operator" args="2">*</e>
+        </result>
+      </math>
+    </region>
+    <region left="99" top="927" width="297" height="23" color="#000000" fontSize="10">
+      <text lang="eng" fontFamily="Arial" fontSize="10">
+        <content>
+          <p>Maxima: higher order mixed partial y,x, Diff,tab,;</p>
+        </content>
+      </text>
+    </region>
+    <region left="54" top="954" width="436" height="30" color="#000000" fontSize="10">
+      <math>
+        <input>
+          <e type="operand">x</e>
+          <e type="operand">y</e>
+          <e type="operator" args="2">*</e>
+          <e type="function" args="1">sin</e>
+          <e type="operand">y</e>
+          <e type="function" args="2">Diff</e>
+          <e type="operand">x</e>
+          <e type="function" args="2">Diff</e>
+        </input>
+        <result action="symbolic">
+          <e type="operand">x</e>
+          <e type="operand">y</e>
+          <e type="operator" args="2">*</e>
+          <e type="operand">x</e>
+          <e type="operand">y</e>
+          <e type="operator" args="2">*</e>
+          <e type="function" args="1">sin</e>
+          <e type="operator" args="2">*</e>
+          <e type="operator" args="1">-</e>
+          <e type="operand">x</e>
+          <e type="operand">y</e>
+          <e type="operator" args="2">*</e>
+          <e type="function" args="1">cos</e>
+          <e type="operator" args="2">+</e>
+        </result>
+      </math>
+    </region>
+    <region left="27" top="990" width="44" height="23" color="#000000" fontSize="10">
+      <text lang="eng" fontFamily="Arial" fontSize="10">
+        <content>
+          <p>rem :</p>
+        </content>
+      </text>
+    </region>
+    <region left="54" top="1008" width="144" height="27" color="#000000" fontSize="10">
+      <text lang="eng" fontFamily="Arial" fontSize="10">
+        <content>
+          <p>\[REGION[11b74efa9c574348896acd6b856261f1]]\</p>
+        </content>
+        <regions>
+          <region id="11b74efa9c574348896acd6b856261f1" left="2" top="0" width="137" height="26" color="#000000" fontSize="10">
+            <math>
+              <input>
+                <e type="operand" style="string">all</e>
+                <e type="function" args="1">MaximaLog</e>
+              </input>
+            </math>
+          </region>
+        </regions>
+      </text>
+    </region>
+    <region left="54" top="1035" width="297" height="23" color="#000000" fontSize="10">
+      <text lang="eng" fontFamily="Arial" fontSize="10">
+        <content>
+          <p>https://www.youtube.com/watch?v=iJL2nfJiMR8</p>
+        </content>
+      </text>
+    </region>
+  </regions>
+</worksheet>

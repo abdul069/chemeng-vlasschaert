@@ -1,0 +1,93 @@
+
+
+print ("peter.vlasschaert@gmail.com "+", "+"26/02/2021"+
+"version ("+str(1.0)+")")
+print("="*50)
+print ('ref : search in google')
+
+print( "                             ")
+print( " how to work with list & set ")
+print("-"*25)
+
+# sort of list
+print( " sorted list ")
+
+s1=[2,7,8,8,3,5]
+print(s1)
+s1.sort()  # doubles are more , not removed 
+print(s1)
+
+
+# list & set ( doubles are more ,are removed from the list)
+print("list & set ")
+
+y =[2,3,3,1,4,2,5]
+yn = y     # copy of y
+print(y)
+y.append(9)
+print(y,yn)
+y1 = set(y)   # after of 9 the set sorted list
+print(y1)
+y2 = list(y1) #  convert set -> list : result sorteed list
+print(y2)
+
+
+# range ,for
+print(" range & for")
+print( "-"*10)
+x = range(6,10,1)
+for n in x:
+ print(n)
+# identical of rhs
+print(x)
+
+
+
+# append two list
+print(" append two lists ")
+print("-"*15)
+
+a = ["apple", "banana", "cherry"]
+print(a)
+b = ["Ford", "BMW", "Volvo"]
+print(b)
+a.append(b)
+print("a=",a)
+# elements of list
+print("a[0]=",a[0])
+print("a[1]=",a[1])
+print("a[3]=",[3])
+print("a[3][0] =",a[3][0])
+print("a[:1] = ",a[:1])
+print("a[1:] = ",a[1:])
+
+
+# list & range (index default by zero) ,'see above'
+print( " list & range ")
+print("---------------")
+
+print( "-> method 1 ")
+
+qs= [*range(10, 16, 1)] #* unpacking operator
+
+print (" output = method 1")
+print("[*range(10, 16, 1)] = ",qs)
+
+
+# extend a list
+print ("->  method 2 ")
+
+z=[]     # empty list
+start,end = 10,15
+if start < end :
+         # unpack the result
+		 z.extend(range(start,end))
+		 # append :last value
+		 z.append(end)
+		 # end if		 
+
+
+print("output = method 2")
+print(z)
+print("="*90)
+print( "make exe ,from the file = uselistandset.py -> uselistandset.exe")

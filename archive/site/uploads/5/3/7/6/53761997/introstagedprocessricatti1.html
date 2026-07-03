@@ -1,0 +1,627 @@
+<!DOCTYPE HTML">
+<HTML>
+ <HEAD>
+  <TITLE>introstagedprocessricatti1</TITLE>
+  <META NAME="generator" CONTENT="wxMaxima">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    displayAlign: "left",
+    context: "MathJax"
+  })
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+  <link rel="stylesheet" type="text/css" href="https://petervlaschemeng.weebly.com/uploads/5/3/7/6/53761997/introstagedprocessricatti1_htmlimg/introstagedprocessricatti1.css"/>
+ </HEAD>
+ <BODY>
+
+<!-- ***************************************************** -->
+<!--          Created with wxMaxima version 16.04.2         -->
+<!-- ***************************************************** -->
+<noscript><div class="error message">    Please enable JavaScript in order to get a 2d display of the equations embedded in this web page.</div></noscript>\(      \DeclareMathOperator{\abs}{abs}
+      \newcommand{\ensuremath}[1]{\mbox{$#1$}}
+\)
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">kill</span>(<span class="code_variable">all</span>)<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+part 1 : intro staged-process models<BR><a href="https://petervlaschemeng.weebly.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5323362736217d253f322020303b3236212713343e323a3f7d303c3e">[email&#160;protected]</a> , 31/01/2017<BR>rem : see : 71e) Lake example. 'second order difference equation'<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+ricatti equation : &nbsp;&nbsp;&nbsp;&nbsp;? &nbsp;Staged-process<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+Continuous counter-current Liquid-Liquid extraction<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">batch</span>(<span class="code_variable">solve_rec</span>)<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\mbox{}\\\mbox{read and interpret file: C:\ensuremath{\backslash}maxima-5.38.1\ensuremath{\backslash}share\ensuremath{\backslash}maxima\ensuremath{\backslash}5.38.1\_ 5\_ gdf93b7b\_ dirty\ensuremath{\backslash}share\ensuremath{\backslash}solve\_ rec\ensuremath{\backslash}solve\_ rec.mac}\mbox{}\\\mbox{(\%{}i2) eval\_ when(batch,ttyoff:true,nolabels:true)}\]
+
+
+<!-- Image cell -->
+
+
+<P CLASS="image">
+Figure 1: 
+<BR/>
+  <IMG src="https://petervlaschemeng.weebly.com/uploads/5/3/7/6/53761997/introstagedprocessricatti1_htmlimg/introstagedprocessricatti1_1.png" alt="Diagram" style="max-width:90%;" >
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+select : block 'i' &rarr; 1,2,..,i,..,n<BR>1e) condition : accumulation = 0<BR>2e) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;generation &nbsp;&nbsp;= 0<BR>3e) phases : complete immiscible (L=water (kg/s),V=kerosene (kg/s))<BR> &nbsp;&nbsp;&nbsp;in-out + generation = accumulation<BR> &nbsp;&nbsp;&nbsp;in-out = 0<BR>&rArr; (1) material balance 'stag i'<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L*X(i-1)+V*Y(i+1)-(L*X(i)+V*Y(i))=0<BR>&rArr; (2) equilibrium relation<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y(i) = K*X(i)<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i72) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq1</span><span class="code_operator">:</span><span class="code_variable">L</span><span class="code_operator">*</span><span class="code_variable">x</span>[<span class="code_variable">i</span><span class="code_operator">-</span><span class="code_number">1</span>]<span class="code_operator">+</span><span class="code_variable">V</span><span class="code_operator">*</span><span class="code_variable">y</span>[<span class="code_variable">i</span><span class="code_operator">+</span><span class="code_number">1</span>]<span class="code_operator">-</span><span class="code_variable">L</span><span class="code_operator">*</span><span class="code_variable">x</span>[<span class="code_variable">i</span>]<span class="code_operator">-</span><span class="code_variable">V</span><span class="code_operator">*</span><span class="code_variable">y</span>[<span class="code_variable">i</span>]<span class="code_operator">=</span><span class="code_number">0</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">eq2</span><span class="code_operator">:</span><span class="code_variable">x</span>[<span class="code_variable">i</span>]<span class="code_operator">=</span><span class="code_variable">y</span>[<span class="code_variable">i</span>]<span class="code_operator">/</span><span class="code_variable">k</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq1}\label{eq1}V\,{{y}_{i+1}}-V\,{{y}_{i}}-L\,{{x}_{i}}+L\,{{x}_{i-1}}=0\]
+\[\tag{eq2}\label{eq2}{{x}_{i}}=\frac{{{y}_{i}}}{k}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i74) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq3</span><span class="code_operator">:</span><span class="code_function">subst</span>(<span class="code_variable">y</span>[<span class="code_variable">i</span>]<span class="code_operator">/</span><span class="code_variable">k</span>,<span class="code_variable">x</span>[<span class="code_variable">i</span>],<span class="code_variable">eq1</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq4</span><span class="code_operator">:</span><span class="code_function">subst</span>(<span class="code_variable">y</span>[<span class="code_variable">i</span><span class="code_operator">-</span><span class="code_number">1</span>]<span class="code_operator">/</span><span class="code_variable">k</span>,<span class="code_variable">x</span>[<span class="code_variable">i</span><span class="code_operator">-</span><span class="code_number">1</span>],<span class="code_variable">eq3</span>)<span class="code_endofline">;</span><BR>
+<span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq3}\label{eq3}-\frac{L\,{{y}_{i}}}{k}+V\,{{y}_{i+1}}-V\,{{y}_{i}}+L\,{{x}_{i-1}}=0\]
+\[\tag{eq4}\label{eq4}-\frac{L\,{{y}_{i}}}{k}+\frac{L\,{{y}_{i-1}}}{k}+V\,{{y}_{i+1}}-V\,{{y}_{i}}=0\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+def : theta = L/(V*k)<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i75) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq5</span><span class="code_operator">:</span><span class="code_function">ratsubst</span>(<span class="code_variable">theta</span>,<span class="code_variable">L</span><span class="code_operator">/</span>(<span class="code_variable">V</span><span class="code_operator">*</span><span class="code_variable">k</span>),<span class="code_variable">eq4</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq5}\label{eq5}V\,{{y}_{i-1}}\theta+V\,{{y}_{i}}\,\left( -\theta-1\right) +V\,{{y}_{i+1}}=0\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i76) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq6</span><span class="code_operator">:</span><span class="code_function">factor</span>(<span class="code_variable">eq5</span>)<span class="code_operator">*</span>(<span class="code_number">-</span><span class="code_number">1</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq6}\label{eq6}V\,\left( {{y}_{i}}\theta-{{y}_{i-1}}\theta-{{y}_{i+1}}+{{y}_{i}}\right) =0\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i77) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq7</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">eq6</span>,<span class="code_number">1</span>,<span class="code_number">2</span>)<span class="code_operator">*</span>(<span class="code_number">-</span><span class="code_number">1</span>)<span class="code_operator">=</span><span class="code_number">0</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq7}\label{eq7}-{{y}_{i}}\theta+{{y}_{i-1}}\theta+{{y}_{i+1}}-{{y}_{i}}=0\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i80) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p1</span><span class="code_operator">:</span><span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">eq7</span>,<span class="code_number">1</span>),<span class="code_variable">y</span>[<span class="code_variable">i</span><span class="code_operator">+</span><span class="code_number">1</span>])<span class="code_endofline">;</span><BR>
+<span class="code_variable">p2</span><span class="code_operator">:</span><span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">eq7</span>,<span class="code_number">1</span>),<span class="code_variable">y</span>[<span class="code_variable">i</span>])<span class="code_endofline">;</span><BR>
+<span class="code_variable">p3</span><span class="code_operator">:</span><span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">eq7</span>,<span class="code_number">1</span>),<span class="code_variable">y</span>[<span class="code_variable">i</span><span class="code_operator">-</span><span class="code_number">1</span>])<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p1}\label{p1}1\]
+\[\tag{p2}\label{p2}-\theta-1\]
+\[\tag{p3}\label{p3}\theta\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+second order : difference equation<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i81) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq8</span><span class="code_operator">:</span><span class="code_variable">p3</span><span class="code_operator">*</span><span class="code_variable">y</span>[<span class="code_variable">i</span><span class="code_operator">-</span><span class="code_number">1</span>]<span class="code_operator">+</span><span class="code_variable">p2</span><span class="code_operator">*</span><span class="code_variable">y</span>[<span class="code_variable">i</span>]<span class="code_operator">+</span><span class="code_variable">p1</span><span class="code_operator">*</span><span class="code_variable">y</span>[<span class="code_variable">i</span><span class="code_operator">+</span><span class="code_number">1</span>]<span class="code_operator">=</span><span class="code_number">0</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq8}\label{eq8}{{y}_{i-1}}\theta+{{y}_{i}}\,\left( -\theta-1\right) +{{y}_{i+1}}=0\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+y &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= depent &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variable<BR>subscript 'i' = independent variable<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i83) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq9</span><span class="code_operator">:</span><span class="code_function">subst</span>(<span class="code_variable">i</span><span class="code_operator">+</span><span class="code_number">2</span>,<span class="code_variable">i</span><span class="code_operator">+</span><span class="code_number">1</span>,<span class="code_variable">eq8</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq10</span><span class="code_operator">:</span><span class="code_function">subst</span>(<span class="code_variable">i</span><span class="code_operator">+</span><span class="code_number">1</span>,<span class="code_variable">i</span>,<span class="code_variable">eq8</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq9}\label{eq9}{{y}_{i-1}}\theta+{{y}_{i}}\,\left( -\theta-1\right) +{{y}_{i+2}}=0\]
+\[\tag{eq10}\label{eq10}{{y}_{i}}\theta+{{y}_{i+1}}\,\left( -\theta-1\right) +{{y}_{i+2}}=0\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+http://maxima.sourceforge.net/docs/tutorial/en/gaertner-tutorial-revision/Pages/DiffEq0001.htm<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i84) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq11</span><span class="code_operator">:</span><span class="code_function">solve_rec</span> (<span class="code_variable">eq10</span>, <span class="code_variable">y</span>[<span class="code_variable">i</span>])<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq11}\label{eq11}{{y}_{i}}={{\mathit{\%{}k}}_{1}}\,{{\theta}^{i}}+{{\mathit{\%{}k}}_{2}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+two values : quadratic equation<BR>1e) theta &nbsp;&rArr; (theta)^i<BR>2e) 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rArr; (1)^i<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+n = integer number ( example n=10)<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i85) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">ev</span>(<span class="code_variable">eq11</span>,<span class="code_variable">i</span><span class="code_operator">=</span><span class="code_number">10</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o85}\label{o85} {{y}_{10}}={{\mathit{\%{}k}}_{1}}\,{{\theta}^{10}}+{{\mathit{\%{}k}}_{2}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+How to find : &nbsp;%k1,%k2<BR>input &nbsp;x[0] &nbsp;&nbsp;&nbsp;= &gt; from equilibrium equation 'see above'<BR>output y[n+1]<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i86) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq12</span><span class="code_operator">:</span><span class="code_variable">y</span>[<span class="code_variable">i</span>]<span class="code_operator">:</span><span class="code_operator">=</span><span class="code_variable">k</span><span class="code_operator">*</span><span class="code_variable">x</span>[<span class="code_variable">i</span>]<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq12}\label{eq12}{{y}_{i}}:=k\,{{x}_{i}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i88) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq13</span><span class="code_operator">:</span><span class="code_variable">y</span>[<span class="code_number">0</span>]<span class="code_operator">=</span><span class="code_function">subst</span>(<span class="code_number">0</span>,<span class="code_variable">i</span>,<span class="code_function">rhs</span>(<span class="code_variable">eq11</span>))<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq14</span><span class="code_operator">:</span><span class="code_function">subst</span>(<span class="code_variable">n</span><span class="code_operator">+</span><span class="code_number">1</span>,<span class="code_variable">i</span>,<span class="code_function">lhs</span>(<span class="code_variable">eq11</span>))<span class="code_operator">=</span><span class="code_function">subst</span>(<span class="code_variable">n</span><span class="code_operator">+</span><span class="code_number">1</span>,<span class="code_variable">i</span>,<span class="code_function">rhs</span>(<span class="code_variable">eq11</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq13}\label{eq13}{{x}_{0}}k={{\mathit{\%{}k}}_{2}}+{{\mathit{\%{}k}}_{1}}\]
+\[\tag{eq14}\label{eq14}{{y}_{n+1}}={{\mathit{\%{}k}}_{1}}\,{{\theta}^{n+1}}+{{\mathit{\%{}k}}_{2}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i89) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq15</span><span class="code_operator">:</span><span class="code_function">solve</span>([<span class="code_variable">eq13</span>,<span class="code_variable">eq14</span>],[<span class="code_variable">%k</span>[<span class="code_number">1</span>],<span class="code_variable">%k</span>[<span class="code_number">2</span>]])<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq15}\label{eq15}[[{{\mathit{\%{}k}}_{1}}=-\frac{k\,\left( {{x}_{0}}-{{x}_{n+1}}\right) }{{{\theta}^{n+1}}-1},{{\mathit{\%{}k}}_{2}}=\frac{k\,\left( {{x}_{0}}\,{{\theta}^{n+1}}-{{x}_{n+1}}\right) }{{{\theta}^{n+1}}-1}]]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i91) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq16</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">eq15</span>,<span class="code_number">1</span>,<span class="code_number">1</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq17</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">eq15</span>,<span class="code_number">1</span>,<span class="code_number">2</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq16}\label{eq16}{{\mathit{\%{}k}}_{1}}=-\frac{k\,\left( {{x}_{0}}-{{x}_{n+1}}\right) }{{{\theta}^{n+1}}-1}\]
+\[\tag{eq17}\label{eq17}{{\mathit{\%{}k}}_{2}}=\frac{k\,\left( {{x}_{0}}\,{{\theta}^{n+1}}-{{x}_{n+1}}\right) }{{{\theta}^{n+1}}-1}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i92) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq18</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">eq11</span>,<span class="code_variable">eq16</span>,<span class="code_variable">eq17</span>)<span class="code_endofline">;</span><BR>
+<span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq18}\label{eq18}{{x}_{i}}k=\frac{k\,\left( {{x}_{0}}\,{{\theta}^{n+1}}-{{x}_{n+1}}\right) }{{{\theta}^{n+1}}-1}-\frac{k\,\left( {{x}_{0}}-{{x}_{n+1}}\right) \,{{\theta}^{i}}}{{{\theta}^{n+1}}-1}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i93) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq19</span><span class="code_operator">:</span><span class="code_function">rhs</span>(<span class="code_variable">eq18</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq19}\label{eq19}\frac{k\,\left( {{x}_{0}}\,{{\theta}^{n+1}}-{{x}_{n+1}}\right) }{{{\theta}^{n+1}}-1}-\frac{k\,\left( {{x}_{0}}-{{x}_{n+1}}\right) \,{{\theta}^{i}}}{{{\theta}^{n+1}}-1}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i94) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq20</span><span class="code_operator">:</span><span class="code_variable">y</span>[<span class="code_variable">i</span>]<span class="code_operator">=</span><span class="code_variable">eq19</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq20}\label{eq20}{{x}_{i}}k=\frac{k\,\left( {{x}_{0}}\,{{\theta}^{n+1}}-{{x}_{n+1}}\right) }{{{\theta}^{n+1}}-1}-\frac{k\,\left( {{x}_{0}}-{{x}_{n+1}}\right) \,{{\theta}^{i}}}{{{\theta}^{n+1}}-1}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+ ? I don't know how kill the definition,extra steps need it now.<BR>y[i]:= k*x[i]<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i96) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq21</span><span class="code_operator">:</span><span class="code_function">ratsubst</span>(<span class="code_variable">ti</span>,<span class="code_variable">x</span>[<span class="code_variable">i</span>]<span class="code_operator">*</span><span class="code_variable">k</span>,<span class="code_variable">eq20</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq22</span><span class="code_operator">:</span><span class="code_function">ratsubst</span>(<span class="code_variable">tn</span>,<span class="code_variable">x</span>[<span class="code_variable">n</span><span class="code_operator">+</span><span class="code_number">1</span>]<span class="code_operator">*</span><span class="code_variable">k</span>,<span class="code_variable">eq21</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq21}\label{eq21}\mathit{ti}=\frac{{{x}_{0}}k\,{{\theta}^{n+1}}+\left( k\,{{x}_{n+1}}-{{x}_{0}}k\right) \,{{\theta}^{i}}-k\,{{x}_{n+1}}}{{{\theta}^{n+1}}-1}\]
+\[\tag{eq22}\label{eq22}\mathit{ti}=\frac{{{\theta}^{i}}\,\left( \mathit{tn}-{{x}_{0}}k\right) -\mathit{tn}+{{x}_{0}}k\,{{\theta}^{n+1}}}{{{\theta}^{n+1}}-1}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i98) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq23</span><span class="code_operator">:</span><span class="code_function">subst</span>(<span class="code_variable">yy</span>[<span class="code_variable">i</span>],<span class="code_variable">ti</span>,<span class="code_variable">eq22</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">eq24</span><span class="code_operator">:</span><span class="code_function">subst</span>(<span class="code_variable">yy</span>[<span class="code_variable">n</span><span class="code_operator">+</span><span class="code_number">1</span>],<span class="code_variable">tn</span>,<span class="code_variable">eq23</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq23}\label{eq23}{{\mathit{yy}}_{i}}=\frac{{{\theta}^{i}}\,\left( \mathit{tn}-{{x}_{0}}k\right) -\mathit{tn}+{{x}_{0}}k\,{{\theta}^{n+1}}}{{{\theta}^{n+1}}-1}\]
+\[\tag{eq24}\label{eq24}{{\mathit{yy}}_{i}}=\frac{{{x}_{0}}k\,{{\theta}^{n+1}}+\left( {{\mathit{yy}}_{n+1}}-{{x}_{0}}k\right) \,{{\theta}^{i}}-{{\mathit{yy}}_{n+1}}}{{{\theta}^{n+1}}-1}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+i=1 :exit composition 'yy[1]=y[1]'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i99) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq25</span><span class="code_operator">:</span><span class="code_function">subst</span>(<span class="code_number">1</span>,<span class="code_variable">i</span>,<span class="code_variable">eq24</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq25}\label{eq25}{{\mathit{yy}}_{1}}=\frac{{{x}_{0}}k\,{{\theta}^{n+1}}+\left( {{\mathit{yy}}_{n+1}}-{{x}_{0}}k\right) \theta-{{\mathit{yy}}_{n+1}}}{{{\theta}^{n+1}}-1}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i100) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq26</span><span class="code_operator">:</span><span class="code_function">solve</span>(<span class="code_variable">eq25</span>,(<span class="code_variable">theta</span>)<span class="code_operator">^</span>(<span class="code_variable">n</span><span class="code_operator">+</span><span class="code_number">1</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq26}\label{eq26}[{{\theta}^{n+1}}=-\frac{\left( {{\mathit{yy}}_{n+1}}-{{x}_{0}}k\right) \theta-{{\mathit{yy}}_{n+1}}+{{\mathit{yy}}_{1}}}{{{x}_{0}}k-{{\mathit{yy}}_{1}}}]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i101) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq27</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">eq26</span>,<span class="code_number">1</span>)<span class="code_endofline">;</span><BR>
+<span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq27}\label{eq27}{{\theta}^{n+1}}=-\frac{\left( {{\mathit{yy}}_{n+1}}-{{x}_{0}}k\right) \theta-{{\mathit{yy}}_{n+1}}+{{\mathit{yy}}_{1}}}{{{x}_{0}}k-{{\mathit{yy}}_{1}}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+how to find :n+1 ,use log on both side 'number of stages'<BR>rem &nbsp;: &nbsp;&nbsp;&nbsp;ln(10)=log(10.0) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' Maxima'<BR>rem &nbsp;: &nbsp;def: &nbsp;log a^n = n*log(a)<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i102) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">log</span>(<span class="code_number">10</span>.<span class="code_number">0</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o102}\label{o102} 2.302585092994046\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i103) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq28</span><span class="code_operator">:</span><span class="code_variable">phi</span><span class="code_operator">=</span><span class="code_function">rhs</span>(<span class="code_variable">eq27</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq28}\label{eq28}\phi=-\frac{\left( {{\mathit{yy}}_{n+1}}-{{x}_{0}}k\right) \theta-{{\mathit{yy}}_{n+1}}+{{\mathit{yy}}_{1}}}{{{x}_{0}}k-{{\mathit{yy}}_{1}}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+rem : y[i]=yy[i] ,i=1,n+1<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i104) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">eq29</span><span class="code_operator">:</span> <span class="code_variable">n</span><span class="code_operator">+</span><span class="code_number">1</span> <span class="code_operator">=</span> <span class="code_function">log</span>(<span class="code_variable">phi</span>)<span class="code_operator">/</span><span class="code_function">log</span>(<span class="code_variable">theta</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{eq29}\label{eq29}n+1=\frac{\log{\left( \phi\right) }}{\log{\left( \theta\right) }}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+? How to find operating line : yy(n+1) = a*xx(n)+b<BR> &nbsp;find :a( = slope),b<BR>see : fig 'above',use for Graphical stage calculations (x[i],y[i]).<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x[i],y[i] : 0 = &lt; x[i],y[i] = &lt; 1<BR>1e) line : operating line<BR>2e) line : equilibrium line<BR>find : number of stages .<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+in &nbsp;arrow = (+) sign<BR>out arrow = (-) sign<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+material balance : stage 1 = L*xx[0]-V*yy[1]<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stage n = -L*xx[n]+V*yy[n+1]<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stage 1 = stage n<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i107) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">op1</span><span class="code_operator">:</span><span class="code_variable">stage1</span><span class="code_operator">=</span><span class="code_variable">L</span><span class="code_operator">*</span><span class="code_variable">xx</span>[<span class="code_number">0</span>]<span class="code_operator">-</span><span class="code_variable">V</span><span class="code_operator">*</span><span class="code_variable">yy</span>[<span class="code_number">1</span>]<span class="code_endofline">$</span><BR>
+<span class="code_variable">op2</span><span class="code_operator">:</span><span class="code_variable">stagen</span><span class="code_operator">=</span><span class="code_operator">-</span><span class="code_variable">L</span><span class="code_operator">*</span><span class="code_variable">xx</span>[<span class="code_variable">n</span>]<span class="code_operator">+</span><span class="code_variable">V</span><span class="code_operator">*</span><span class="code_variable">yy</span>[<span class="code_variable">n</span><span class="code_operator">+</span><span class="code_number">1</span>]<span class="code_endofline">$</span><BR>
+<span class="code_variable">op</span><span class="code_operator">:</span> <span class="code_function">rhs</span>(<span class="code_variable">op2</span>)<span class="code_operator">=</span><span class="code_function">rhs</span>(<span class="code_variable">op1</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{op}\label{op}V\,{{\mathit{yy}}_{n+1}}-L\,{{\mathit{xx}}_{n}}={{\mathit{xx}}_{0}}L-{{\mathit{yy}}_{1}}V\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i108) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">op3</span><span class="code_operator">:</span><span class="code_function">solve</span>(<span class="code_variable">op</span>,<span class="code_variable">yy</span>[<span class="code_variable">n</span><span class="code_operator">+</span><span class="code_number">1</span>])[<span class="code_number">1</span>]<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{op3}\label{op3}{{\mathit{yy}}_{n+1}}=\frac{L\,{{\mathit{xx}}_{n}}-{{\mathit{yy}}_{1}}V+{{\mathit{xx}}_{0}}L}{V}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+rem yy[n+1]= op4/op5<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i112) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">op4</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_function">rhs</span>(<span class="code_variable">op3</span>),<span class="code_number">1</span>)<span class="code_endofline">$</span><BR>
+<span class="code_variable">op5</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_function">rhs</span>(<span class="code_variable">op3</span>),<span class="code_number">2</span>)<span class="code_endofline">$</span><BR>
+<span class="code_variable">op6</span><span class="code_operator">:</span> <span class="code_variable">a</span><span class="code_operator">=</span><span class="code_function">coeff</span>(<span class="code_variable">op4</span>,<span class="code_variable">xx</span>[<span class="code_variable">n</span>])<span class="code_operator">/</span><span class="code_variable">op5</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">op7</span><span class="code_operator">:</span> <span class="code_variable">b</span><span class="code_operator">=</span><span class="code_function">ev</span>(<span class="code_variable">op4</span>,<span class="code_variable">xx</span>[<span class="code_variable">n</span>]<span class="code_operator">=</span><span class="code_number">0</span>)<span class="code_operator">/</span><span class="code_variable">op5</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{op6}\label{op6}a=\frac{L}{V}\]
+\[\tag{op7}\label{op7}b=\frac{{{\mathit{xx}}_{0}}L-{{\mathit{yy}}_{1}}V}{V}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+operating line :<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i113) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">op8</span><span class="code_operator">:</span><span class="code_variable">yy</span>[<span class="code_variable">n</span><span class="code_operator">+</span><span class="code_number">1</span>]<span class="code_operator">=</span><span class="code_function">rhs</span>(<span class="code_variable">op6</span>)<span class="code_operator">*</span><span class="code_variable">xx</span>[<span class="code_variable">n</span>]<span class="code_operator">+</span><span class="code_function">rhs</span>(<span class="code_variable">op7</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{op8}\label{op8}{{\mathit{yy}}_{n+1}}=\frac{L\,{{\mathit{xx}}_{n}}}{V}+\frac{{{\mathit{xx}}_{0}}L-{{\mathit{yy}}_{1}}V}{V}\]
+
+ <HR>
+ <SMALL> Created with <A HREF="http://wxmaxima.sourceforge.net/">wxMaxima</A>.</SMALL>
+ <script data-cfasync="false" src="../../../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></BODY>
+</HTML>

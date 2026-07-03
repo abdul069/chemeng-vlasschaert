@@ -1,0 +1,61 @@
+from sympy import *
+#
+print(" ..............................................................................")
+print(" PYTHON : solve symbolic,sympy,consecutive reaction A>B>C(k1,k2),version 1.0   ")
+print(" peter.vlasschaert@gmail.com,07/01/2023                                        ")
+print(" ..............................................................................")
+#
+# Define the variables and functions
+t = symbols('t')
+A = Function('A')(t)
+B = Function('B')(t)
+C = Function('C')(t)
+k1, k2 = symbols('k1 k2')
+a = symbols('a', positive=True)  # Assume a is positive
+
+# Define the differential equations
+eq1 = Eq(Derivative(A, t), -k1*A)
+eq2 = Eq(Derivative(B, t), k1*A - k2*B)
+eq3 = Eq(Derivative(C, t), k2*B)
+
+# Solve the differential equations with the initial conditions
+soln = dsolve((eq1, eq2, eq3), ics={A.subs(t, 0): a, B.subs(t, 0): 0, C.subs(t, 0): 0}, check=True)
+print("soln = ",soln)
+# Find the values of the constants of integration C1, C2, and C3
+# C1, C2, C3 = symbols('C1 C2 C3')
+
+A_soln = soln[0]
+B_soln = soln[1]
+C_soln = soln[2]
+
+print(A_soln.rhs) 
+print(B_soln.rhs)
+print(C_soln.rhs)
+print("=> A(t),B(t),C(t) ")
+print("A(t)=",A_soln.rhs)
+print("B(t)=",B_soln.rhs)
+print("C(t)=",C_soln.rhs)
+print(".......................................................................")
+print("checkodesol((eq1,eq2,eq3), soln) =",checkodesol((eq1,eq2,eq3), soln)    )
+print(".......................................................................")
+# plot de A,B,C
+t_range = (t, 0, 10)
+A_soln_subs = A_soln.rhs.subs({a: 1, k1: 1, k2: 0.5})
+B_soln_subs = B_soln.rhs.subs({a: 1, k1: 1, k2: 0.5})
+C_soln_subs = C_soln.rhs.subs({a: 1, k1: 1, k2: 0.5})
+# on different plot ,close them ,to see next
+#plot(A_soln_subs, t_range, xlabel='t', ylabel='A(t)')
+#plot(B_soln_subs, t_range, xlabel='t', ylabel='B(t)')
+#plot(C_soln_subs, t_range, xlabel='t', ylabel='C(t)')
+# on one plot
+p = plot_parametric((t, A_soln_subs), (t, B_soln_subs), (t, C_soln_subs), t_range,
+                    xlabel='t',
+                    ylabel='A(t), B(t), C(t)',
+                    legend=True,
+                    show=False)
+p[0].line_color = 'b'
+p[1].line_color = 'g'
+p[2].line_color = 'r'
+p.title = 'solve:system.differential equations,(A(0)=1,B(0)=0,C(0)=0) '
+# how to write txt on plot ?
+p.show()

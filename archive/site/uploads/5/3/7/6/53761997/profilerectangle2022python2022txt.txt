@@ -1,0 +1,65 @@
+print("..............................................................")
+print("python : intial condition profile:rectangular wave,version 1.0")
+print(" peter.vlasschaert@gmail.com,07/09/2022                       ")
+print("..............................................................")
+print("                                                              ")
+import numpy                       #here we load numpy
+from matplotlib import pyplot      #here we load matplotlib
+nup = 41   # number of points in u-spae      
+# interval (profile)
+xmin =0
+xmax = 2
+# space step =dx
+dx = (xmax-xmin)/(nup-1)
+# block profile, (up) to (dow)n
+# uu->u=2, interval :0.5 <= x <= 1
+uu  = 2
+up  = 0.5     #  u =2, dx*a = up   ->  a = up/dx  (float)
+dowp = 1.00   #  u =2 ,dx*b = dowp -> b = dowp/dx (float)
+# position in u : float -> integer
+a=up/dx
+b=dowp/dx
+#----------
+# u-range
+#----------
+# base line : u=1
+ub = 1
+u = numpy.ones(nup)   # fill all with values one,otherwise need ub
+# top : interval values,see : above
+u[int(a):int(b) + 1] = uu 
+# int(a)   = position in u,integer
+# int(b)+1 = position in u,integer
+print("number of points = ",nup)
+print(".......................")
+print("            ")
+print("point = ",int(a)-1 ," => u-value = ", u[int(a)-1])
+print("point = ",int(a)   ,"=> u-value = ", u[int(a)])
+print("point = ",int(b)   ,"=> u-value = ", u[int(b)])
+print("point = ",int(b)+1 ,"=> u-value = ", u[int(b)+1])
+print("            ")
+# plot profile ,rectangle wave. (initial condition)
+print("u-values  = ")
+print("............")
+print("            ")
+print(u)
+print("            ")
+#----------
+# v-range
+#----------
+v=numpy.linspace(xmin,xmax,nup)
+print("v-values  = ")
+print("............")
+print("            ")
+print(v)
+print("            ")
+print("plot values  = ")
+print("...............")
+print("               ")
+# color plot red dash lines.
+pyplot.plot( v, u,'r--')
+pyplot.title("plot:rectangular wave")
+pyplot.xlabel('v-values')
+pyplot.ylabel('u-values')
+pyplot.legend()
+pyplot.axis('equal')
+pyplot.show()

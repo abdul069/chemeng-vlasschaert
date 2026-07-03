@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>New3 *</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="generator" content="Fatesoft.com HTML exporter" />
+<style type="text/css">
+<!--
+body { color: #000000; background-color: #FFFFFF; }
+.cpp1-assembler { color: #800000; }
+.cpp1-character { color: #000000; }
+.cpp1-comment { color: #008080; font-style: italic; }
+.cpp1-float { color: #FF0080; }
+.cpp1-hexadecimal { color: #8000FF; }
+.cpp1-identifier { color: #000080; }
+.cpp1-illegalchar { color: #FF8000; }
+.cpp1-number { color: #FF0000; }
+.cpp1-octal { color: #8080FF; }
+.cpp1-preprocessor { color: #008000; }
+.cpp1-reservedword { color: #0000FF; font-weight: bold; }
+.cpp1-space { color: #FFFFFF; }
+.cpp1-string { color: #800080; }
+.cpp1-symbol { color: #FF00FF; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<code><span style="font: 10pt Courier New;"><span class="cpp1-identifier">option</span><span class="cpp1-space"> </span><span class="cpp1-identifier">nolet
+</span><span class="cpp1-symbol">!</span><span class="cpp1-identifier">chemistry</span><span class="cpp1-space"> </span><span class="cpp1-identifier">analytical</span><span class="cpp1-space"> </span><span class="cpp1-identifier">serie
+</span><span class="cpp1-symbol">!</span><span class="cpp1-space"> </span><span class="cpp1-identifier">filename</span><span class="cpp1-space"> </span><span class="cpp1-symbol">:</span><span class="cpp1-identifier">mixturetwoweakacidstruebasicfinal</span><span class="cpp1-symbol">.</span><span class="cpp1-identifier">tru
+print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;******************************************&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; mixture acids 'weak acids',version 1.0  *&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; find :[H(+)] of mixture =&gt; pH           *&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; <a href="https://petervlaschemeng.weebly.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="88f8edfcedfaa6fee4e9fbfbebe0e9edfafcc8efe5e9e1e4a6ebe7e5">[email&#160;protected]</a>,01/10/2016  *&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;******************************************&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;*********************************************************&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;example :combination of 'two weak acids,both mono protic &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;         k(number component)A(number anion solution)     &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;       example : k(1)A(1) = k1A1                         &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;*********************************************************&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;****************************************************************&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; first  : HA1=H(+) + A1(-) =&gt; k1a1 = ([H(+)]*[A1(-)])/[HA1] (1) &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; ca1    = [HA1]+[A1(-)] = ha1 +a1                           (2) &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;       example : k(2)A(2) = k2A2                        &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; second : HA2=H(+) + A1(-) =&gt; k2a2 = ([H(+)]*[A2(-)])/[HA2] (3) &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; ca2    = [HA2]+[A2(-)] = ha2 +a2                           (4) &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; species solution : negative  oh=[OH(-)],a1=[A1(-)],a2=[A2(-)]  &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;                  positive  h=[H(+)]                            &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;  charge balance   : [H(+)] = [OH(-)]+[A1(-)]+[A2(-)]           &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;total  balance   : [H(+)]tot = [H(+)]'aq'+[H(+)]'HA1'+[H(+)]'HA2&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; result:           [H(+)]    = kw/[H(+)]+[A1(-)]+[A2(-)]        &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; math                h       = kw/h + a1 + a2               (5) &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; multiple bases:mono hydric bases : M1OH,M2OH,k1b1,k2b2,cb1,cb2 &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;=&gt;                                'mono hydric = mono hydroxy'  &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;----------------------------------------------------------------&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; [OH(-)]tot = [OH(-)]'aq'+[OH(-)]'M1OH'+[OH(-)]'M2OH'           &quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;****************************************************************&quot;
+</span><span class="cpp1-identifier">print
+print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; input =&gt; &quot;
+</span><span class="cpp1-identifier">print
+ca1</span><span class="cpp1-symbol">=</span><span class="cpp1-float">0.01</span><span class="cpp1-space">    </span><span class="cpp1-symbol">!</span><span class="cpp1-space"> </span><span class="cpp1-identifier">concentration</span><span class="cpp1-space"> </span><span class="cpp1-identifier">first</span><span class="cpp1-space"> </span><span class="cpp1-identifier">weak</span><span class="cpp1-space"> </span><span class="cpp1-identifier">acid</span><span class="cpp1-space"> </span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">mono</span><span class="cpp1-space"> </span><span class="cpp1-identifier">protic</span><span class="cpp1-space"> </span><span class="cpp1-identifier">acid
+ca2</span><span class="cpp1-symbol">=</span><span class="cpp1-float">0.1</span><span class="cpp1-space">     </span><span class="cpp1-symbol">!</span><span class="cpp1-space"> </span><span class="cpp1-identifier">concentration</span><span class="cpp1-space"> </span><span class="cpp1-identifier">second</span><span class="cpp1-space"> </span><span class="cpp1-identifier">weak</span><span class="cpp1-space"> </span><span class="cpp1-identifier">acid</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">mono</span><span class="cpp1-space"> </span><span class="cpp1-identifier">protic</span><span class="cpp1-space"> </span><span class="cpp1-identifier">acid
+k1a1</span><span class="cpp1-symbol">=</span><span class="cpp1-float">0.0001</span><span class="cpp1-space"> </span><span class="cpp1-symbol">!</span><span class="cpp1-identifier">equilibrium</span><span class="cpp1-space"> </span><span class="cpp1-identifier">constant</span><span class="cpp1-space"> </span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">first</span><span class="cpp1-space">  </span><span class="cpp1-identifier">weak</span><span class="cpp1-space"> </span><span class="cpp1-identifier">acid</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">k2a2</span><span class="cpp1-symbol">=</span><span class="cpp1-float">0.00001</span><span class="cpp1-symbol">!</span><span class="cpp1-identifier">equilibrium</span><span class="cpp1-space"> </span><span class="cpp1-identifier">constant</span><span class="cpp1-space"> </span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">second</span><span class="cpp1-space"> </span><span class="cpp1-identifier">weak</span><span class="cpp1-space"> </span><span class="cpp1-identifier">acid</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">kw</span><span class="cpp1-space">  </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> </span><span class="cpp1-float">1E-14</span><span class="cpp1-space"> </span><span class="cpp1-symbol">!</span><span class="cpp1-space"> </span><span class="cpp1-identifier">pH</span><span class="cpp1-symbol">+</span><span class="cpp1-identifier">pOH</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> </span><span class="cpp1-number">14</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> </span><span class="cpp1-identifier">pKw
+print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;concentration first  weak acid,ca1  = &quot;</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">ca1</span><span class="cpp1-symbol">;</span><span class="cpp1-string">&quot; M&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;concentration second weak acid,ca1  = &quot;</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">ca2</span><span class="cpp1-symbol">;</span><span class="cpp1-string">&quot; M&quot;
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;equilibrium constant,first, k1a1    = &quot;</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">k1a1
+print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot;equilibrium constant,second,k2a2    = &quot;</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">k2a2
+print
+print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; result =&gt; &quot;
+</span><span class="cpp1-identifier">print
+call</span><span class="cpp1-space"> </span><span class="cpp1-identifier">first_approx</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">ca1</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">k1a1</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">ca2</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">k2a2</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; first approximation = &quot;</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">;</span><span class="cpp1-string">&quot; M&quot;
+</span><span class="cpp1-symbol">!</span><span class="cpp1-space">  </span><span class="cpp1-identifier">take</span><span class="cpp1-space"> </span><span class="cpp1-identifier">kw</span><span class="cpp1-space"> </span><span class="cpp1-symbol">&lt;&gt;</span><span class="cpp1-space"> </span><span class="cpp1-number">0
+</span><span class="cpp1-identifier">call</span><span class="cpp1-space"> </span><span class="cpp1-identifier">mix_gen_weakacids</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">kw</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">ca1</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">k1a1</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">ca2</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">k2a2</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">print
+print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; kw&lt;&gt;0,[H(+)] = &quot;</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">;</span><span class="cpp1-string">&quot; M&quot;
+</span><span class="cpp1-identifier">print
+print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; pH  = &quot;</span><span class="cpp1-symbol">;-</span><span class="cpp1-identifier">log</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">)/</span><span class="cpp1-identifier">log</span><span class="cpp1-symbol">(</span><span class="cpp1-number">10</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">call</span><span class="cpp1-space"> </span><span class="cpp1-identifier">first_approx</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">ca1</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">k1a1</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">ca2</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">k2a2</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">)
+!</span><span class="cpp1-space">  </span><span class="cpp1-identifier">take</span><span class="cpp1-space"> </span><span class="cpp1-identifier">kw</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> </span><span class="cpp1-number">0
+</span><span class="cpp1-identifier">call</span><span class="cpp1-space"> </span><span class="cpp1-identifier">mix_gen_weakacids</span><span class="cpp1-symbol">(</span><span class="cpp1-number">0</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">ca1</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">k1a1</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">ca2</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">k2a2</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">print
+print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; kw=0, [H(+)] = &quot;</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">;</span><span class="cpp1-string">&quot; M&quot;
+</span><span class="cpp1-identifier">print
+print</span><span class="cpp1-space"> </span><span class="cpp1-string">&quot; pH  = &quot;</span><span class="cpp1-symbol">;-</span><span class="cpp1-identifier">log</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">)/</span><span class="cpp1-identifier">log</span><span class="cpp1-symbol">(</span><span class="cpp1-number">10</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">end
+
+sub</span><span class="cpp1-space"> </span><span class="cpp1-identifier">mix_gen_weakacids</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">kw</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">ca1</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">k1a1</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">ca2</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">k2a2</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">first_weak</span><span class="cpp1-space">  </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> </span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">ca1</span><span class="cpp1-symbol">*</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">*</span><span class="cpp1-identifier">k1a1</span><span class="cpp1-symbol">)/(</span><span class="cpp1-identifier">k1a1</span><span class="cpp1-symbol">+</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">second_weak</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> </span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">ca2</span><span class="cpp1-symbol">*</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">*</span><span class="cpp1-identifier">k2a2</span><span class="cpp1-symbol">)/(</span><span class="cpp1-identifier">k2a2</span><span class="cpp1-symbol">+</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">sqr</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">kw</span><span class="cpp1-symbol">+</span><span class="cpp1-identifier">first_weak</span><span class="cpp1-symbol">+</span><span class="cpp1-identifier">second_weak</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">end</span><span class="cpp1-space"> </span><span class="cpp1-identifier">sub
+
+sub</span><span class="cpp1-space"> </span><span class="cpp1-identifier">first_approx</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">ca1</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">k1a1</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">ca2</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">k2a2</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">h</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">sqr</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">ca1</span><span class="cpp1-symbol">*</span><span class="cpp1-identifier">k1a1</span><span class="cpp1-symbol">+</span><span class="cpp1-identifier">ca2</span><span class="cpp1-symbol">*</span><span class="cpp1-identifier">k2a2</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">end</span><span class="cpp1-space"> </span><span class="cpp1-identifier">sub
+
+</span></span>
+</code></pre>
+<script data-cfasync="false" src="../../../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

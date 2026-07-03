@@ -1,0 +1,47 @@
+#python: intro to solve with python , ode(finite difference),version 1.0
+# peter.vlasschaert@gmail.com,31/08/2022
+print(".......................................................................")
+print("python: intro to solve with python , ode(finite difference),version 1.0")
+print("peter.vlasschaert@gmail.com,31/08/2022                                 ")
+print(".......................................................................")
+print("...................................................................................................")
+print("vibration ode : diff(u,t,2)+w^2*u = 0 ,ic :diff(u,t=0) = r,u(0)  =1,finite difference : maxima doc.")
+print("...................................................................................................")
+print(" model with : r=0 ")
+# ref : maxima doc. (see website)
+#..........................................................................
+# rmaxima: intro to solve with python , ode(finite difference),version 1.0a
+# peter.vlasschaert@gmail.com,31/08/2022
+#..........................................................................
+# import library , numerical ,plot
+import numpy as np
+import matplotlib.pyplot as plt
+# parameter
+r = 0
+w = 2*np.pi
+nup = 100 # (nu)mber of (p)oints,index = 0, nup+1 in T
+T   = 1   # period
+# simulation time : linspace import from numpy
+t   = np.linspace(0,T,nup+1)
+Δt  = t[1] - t[0]
+Δt = float(Δt)
+# implimentation model ode (finite difference): ref:maxima doc.
+u = np.zeros(nup+1)
+u[0] = 1   # ic 1 : ref:maxima.doc
+# replace maxima : . => *, ^2 =>**2,, () => [],U => u
+u[1] =-1*(w**2*Δt**2-2*r*Δt-2)/2 # ref :maxima.doc :p5a
+# don't forget : in for loop
+for n in range(1,nup):
+    u[n+1]=-u[n]*w**2*Δt**2+2*u[n]-u[n-1]
+# print(u,t)
+# use spyderr notebooks from anaconda distrubution
+print("................................")
+print("plot2d,r,exact solution ,close *")
+print("................................")
+plt.plot(t,np.cos(w*t),'r')
+plt.show()
+print("....................................")
+print("plot2d.r--,finite difference,close *")
+print("....................................")
+plt.plot(t,u,'r--')
+plt.show()

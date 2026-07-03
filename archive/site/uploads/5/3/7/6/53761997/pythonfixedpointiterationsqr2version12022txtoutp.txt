@@ -1,0 +1,25 @@
+.....................................................
+ python : fixed point iteration : sqr(2) ,version 1.0
+ peter.vlasschaert@gmail.com,31/08/2022              
+.....................................................
+ method : fixed point iteration: x=g(x), cvg : g'(x) < 1 
+.....................................................
+beginner error : python > case sensitive : NameError 
+.....................................................
+parameter = 
+ number of iterations =  1000
+ tolerance            =  1e-13
+init values = 
+ gues value :sqr(2)   =  0.9
+solution = 
+...........
+1 th iteration =  0.9  guess value 
+2 th iteration =  1.5611111111111111
+3 th iteration =  1.4211249505733492
+4 th iteration =  1.4142303685261486
+5 th iteration =  1.414213562472954
+6 th iteration =  1.414213562373095
+                                                       
+Heron method : 
+...............
+g(sqr(2)) =  1.414213562373095

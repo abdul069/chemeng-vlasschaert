@@ -1,0 +1,45 @@
+# python:programming , fixed point iteration (find :sqrt(2)),version 1.0
+# peter.vlasschaert@gmail.com,31/08/2022
+# from numpy import *
+# other way
+import numpy as np # most people use this way
+print( ".....................................................")
+print( " python : fixed point iteration : sqr(2) ,version 1.0")
+print( " peter.vlasschaert@gmail.com,31/08/2022              ")
+print( ".....................................................")
+print( " method : fixed point iteration: x=g(x), cvg : g'(x) < 1 ")
+print( ".....................................................")
+print( "beginner error : python > case sensitive : NameError ")
+print( ".....................................................")
+# cvg = convergence of the solution (otherwise : dvg : divergence)
+# see : maxima code g(x)
+a=2 # sqr(a) "math", sqrt from numpy,sqrt in maxima
+def g(x):
+    return 1/2*(x+a/x)
+print("parameter = ")
+niter = 1000     # maximum number of iterations
+tol   = 1e-13    # tolerance "error"
+print(" number of iterations = ",niter)
+print(" tolerance            = ",tol  )
+print("init values = ")
+x0 = .9          # guess value sqr(2)
+print(" gues value :sqr(2)   = ",x0   )
+i  =  1          # counter for number of iterations until tol
+print("solution = ")
+print("...........")
+print(i,"th iteration = ",x0," guess value ")
+while i <= niter:
+    x=g(x0)
+    if np.abs(x0-x) < tol:
+       break # maxima -> return("")
+    else:
+       i=i+1 # count number of iterations,until finished
+       print(i,"th iteration = ",x)
+       x0=x
+# fixed point : sqr(2), see # maxima
+print( "                                                       ")
+print( "Heron method : ")
+print( "...............")
+print( "g(sqr(2)) = ",g(np.sqrt(2)))
+# newton raphason : ideal fixed point method : see maxima code
+# don't forget , : ,see "above".       

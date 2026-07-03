@@ -1,0 +1,44 @@
+option nolet
+print "********************************************"
+print "* program : fibonacci list                 *"
+print "* peter.vlasschaert@gmail.com,31/03/2019   *"
+print "********************************************"
+print
+rem info : mit opencourseware
+rem
+rem https://www.youtube.com/watch?v=OQ5jsbhAv_M
+rem
+print "********************************"
+print "fibonacci : list , last element."
+print "********************************"
+print
+dim fib(0)
+!  n = > find fib(n)
+n=8   ! input for fibonacci number
+print ,str$(n) ;" the fibonacci number => "
+mat redim fib(0:n)
+for k = 0 to size(fib)-1
+if k <= 2 then
+    print "fib(";str$(k);") = "; f
+    f = 1
+else
+    f = fib(k-1) + fib(k-2)
+    print "fib(";str$(k);") = "; f
+end if
+   fib(k) = f
+next k
+print
+print "********************"
+print " matrix : fibonacci "
+print "--------------------"
+print
+mat print fib  ! matrix print statement
+
+print "************************"
+print " result => last element "
+print "------------------------"
+print
+print "fib(";str$(n);") = "; fib(n)
+rem 
+rem : number to string = > str$()
+end

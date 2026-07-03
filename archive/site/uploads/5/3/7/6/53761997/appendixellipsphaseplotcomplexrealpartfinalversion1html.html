@@ -1,0 +1,327 @@
+<!DOCTYPE HTML">
+<HTML>
+ <HEAD>
+  <TITLE>appendixellipsphaseplotcomplexrealpartfinalversion1html</TITLE>
+  <META NAME="generator" CONTENT="wxMaxima">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    displayAlign: "left",
+    context: "MathJax"
+  })
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+  <link rel="stylesheet" type="text/css" href="https://petervlaschemeng.weebly.com/uploads/5/3/7/6/53761997/appendixellipsphaseplotcomplexrealpartfinalversion1html_htmlimg/appendixellipsphaseplotcomplexrealpartfinalversion1html.css"/>
+ </HEAD>
+ <BODY>
+
+<!-- ***************************************************** -->
+<!--          Created with wxMaxima version 16.04.2         -->
+<!-- ***************************************************** -->
+<noscript><div class="error message">    Please enable JavaScript in order to get a 2d display of the equations embedded in this web page.</div></noscript>\(      \DeclareMathOperator{\abs}{abs}
+      \newcommand{\ensuremath}[1]{\mbox{$#1$}}
+\)
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+show that this equation 'ellipse'<BR><a href="https://petervlaschemeng.weebly.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bcccd9c8d9ce92cad0ddcfcfdfd4ddd9cec8fcdbd1ddd5d092dfd3d1">[email&#160;protected]</a>,28/03/2017<BR>ref:<BR>http://staff.argyll.epsb.ca/jreed/math30p/conics/general.htm<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">kill</span>(<span class="code_variable">all</span>)<span class="code_endofline">$</span><BR>
+<span class="code_function">load</span>(<span class="code_variable">eigen</span>)<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+given : parametric &nbsp;x=x(t)<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y=y(t),k=constant<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i3) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p1</span><span class="code_operator">:</span><span class="code_variable">X</span><span class="code_operator">=</span><span class="code_variable">k</span><span class="code_operator">*</span><span class="code_function">cos</span>(<span class="code_variable">t</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p2</span><span class="code_operator">:</span><span class="code_variable">Y</span><span class="code_operator">=</span><span class="code_operator">-</span>(<span class="code_variable">k</span><span class="code_operator">*</span><span class="code_function">sin</span>(<span class="code_variable">t</span>)<span class="code_operator">+</span><span class="code_variable">k</span><span class="code_operator">*</span><span class="code_function">cos</span>(<span class="code_variable">t</span>))<span class="code_operator">/</span><span class="code_number">2</span><span class="code_endofline">;</span><BR>
+<span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p1}\label{p1}X=k\,\cos{(t)}\]
+\[\tag{p2}\label{p2}Y=\frac{-k\,\sin{(t)}-k\,\cos{(t)}}{2}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i4) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p3</span><span class="code_operator">:</span><span class="code_function">linsolve</span>([<span class="code_variable">p1</span>, <span class="code_variable">p2</span>], [<span class="code_function">cos</span>(<span class="code_variable">t</span>),<span class="code_function">sin</span>(<span class="code_variable">t</span>)])<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p3}\label{p3}[\cos{(t)}=\frac{X}{k},\sin{(t)}=-\frac{2Y+X}{k}]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i6) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p4</span><span class="code_operator">:</span><span class="code_variable">p3</span>[<span class="code_number">1</span>]<span class="code_endofline">;</span><BR>
+<span class="code_variable">p5</span><span class="code_operator">:</span><span class="code_variable">p3</span>[<span class="code_number">2</span>]<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p4}\label{p4}\cos{(t)}=\frac{X}{k}\]
+\[\tag{p5}\label{p5}\sin{(t)}=-\frac{2Y+X}{k}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i8) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p6</span><span class="code_operator">:</span>(<span class="code_variable">p3</span>[<span class="code_number">1</span>])<span class="code_operator">^</span><span class="code_number">2</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">p7</span><span class="code_operator">:</span>(<span class="code_variable">p3</span>[<span class="code_number">2</span>])<span class="code_operator">^</span><span class="code_number">2</span><span class="code_endofline">;</span><BR>
+<span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p6}\label{p6}{{\cos{(t)}}^{2}}=\frac{{{X}^{2}}}{{{k}^{2}}}\]
+\[\tag{p7}\label{p7}{{\sin{(t)}}^{2}}=\frac{{{\left( 2Y+X\right) }^{2}}}{{{k}^{2}}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i9) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p8</span><span class="code_operator">:</span>(<span class="code_variable">p6</span><span class="code_operator">+</span><span class="code_variable">p7</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p8}\label{p8}{{\sin{(t)}}^{2}}+{{\cos{(t)}}^{2}}=\frac{{{\left( 2Y+X\right) }^{2}}}{{{k}^{2}}}+\frac{{{X}^{2}}}{{{k}^{2}}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+geometry: identity '(cos(theta))^2+(sin(theta))^2 = 1'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i10) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p9</span><span class="code_operator">:</span><span class="code_function">trigrat</span>(<span class="code_function">sin</span>(<span class="code_variable">t</span>)<span class="code_operator">^</span><span class="code_number">2</span><span class="code_operator">+</span><span class="code_function">cos</span>(<span class="code_variable">t</span>)<span class="code_operator">^</span><span class="code_number">2</span><span class="code_operator">=</span>(<span class="code_number">2</span><span class="code_operator">*</span><span class="code_variable">Y</span><span class="code_operator">+</span><span class="code_variable">X</span>)<span class="code_operator">^</span><span class="code_number">2</span><span class="code_operator">/</span><span class="code_variable">k</span><span class="code_operator">^</span><span class="code_number">2</span><span class="code_operator">+</span><span class="code_variable">X</span><span class="code_operator">^</span><span class="code_number">2</span><span class="code_operator">/</span><span class="code_variable">k</span><span class="code_operator">^</span><span class="code_number">2</span>)<span class="code_operator">*</span><span class="code_variable">k</span><span class="code_operator">^</span><span class="code_number">2</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p9}\label{p9}{{k}^{2}}=4{{Y}^{2}}+4XY+2{{X}^{2}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+ref : A*x^2+B*X*Y+C*y^2+D*x+E*x+F = 0 (1)<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i11) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p10</span><span class="code_operator">:</span><span class="code_function">rhs</span>(<span class="code_variable">p9</span>)<span class="code_operator">-</span><span class="code_function">lhs</span>(<span class="code_variable">p9</span>)<span class="code_operator">=</span><span class="code_number">0</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p10}\label{p10}-{{k}^{2}}+4{{Y}^{2}}+4XY+2{{X}^{2}}=0\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i18) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p11</span><span class="code_operator">:</span><span class="code_variable">A</span><span class="code_operator">=</span><span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">p10</span>,<span class="code_number">1</span>),<span class="code_variable">X</span><span class="code_operator">^</span><span class="code_number">2</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p111</span><span class="code_operator">:</span><span class="code_function">ratsubst</span>(<span class="code_variable">v</span>,<span class="code_variable">X</span><span class="code_operator">*</span><span class="code_variable">Y</span>, <span class="code_function">part</span>(<span class="code_variable">p10</span>,<span class="code_number">1</span>)<span class="code_operator">=</span><span class="code_number">0</span>)<span class="code_endofline">$</span><BR>
+<span class="code_variable">p12</span><span class="code_operator">:</span><span class="code_variable">B</span><span class="code_operator">=</span><span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">p111</span>,<span class="code_number">1</span>),<span class="code_variable">v</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p13</span><span class="code_operator">:</span><span class="code_variable">C</span><span class="code_operator">=</span><span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">p10</span>,<span class="code_number">1</span>),<span class="code_variable">Y</span><span class="code_operator">^</span><span class="code_number">2</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p14</span><span class="code_operator">:</span><span class="code_variable">D</span><span class="code_operator">=</span><span class="code_function">ev</span>(<span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">p10</span>,<span class="code_number">1</span>),<span class="code_variable">X</span>),<span class="code_variable">Y</span><span class="code_operator">=</span><span class="code_number">0</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p15</span><span class="code_operator">:</span><span class="code_variable">E</span><span class="code_operator">=</span><span class="code_function">ev</span>(<span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">p10</span>,<span class="code_number">1</span>),<span class="code_variable">Y</span>),<span class="code_variable">X</span><span class="code_operator">=</span><span class="code_number">0</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p16</span><span class="code_operator">:</span><span class="code_variable">F</span><span class="code_operator">=</span><span class="code_function">ev</span>(<span class="code_function">part</span>(<span class="code_variable">p10</span>,<span class="code_number">1</span>),<span class="code_variable">X</span><span class="code_operator">=</span><span class="code_number">0</span>,<span class="code_variable">Y</span><span class="code_operator">=</span><span class="code_number">0</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p11}\label{p11}A=2\]
+\[\tag{p12}\label{p12}B=4\]
+\[\tag{p13}\label{p13}C=4\]
+\[\tag{p14}\label{p14}D=0\]
+\[\tag{p15}\label{p15}E=0\]
+\[\tag{p16}\label{p16}F=-{{k}^{2}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+X*Y : rotation of the conic section.<BR>-----------------------------------<BR>see:ref = ' det = &nbsp;B^2-4*A*C ' (2)<BR>-----------------------------------<BR>see ' above (1) '<BR>-----------------------------------<BR>circle &nbsp;&nbsp;: A=C&lt;&gt;0 , det &lt; 0<BR>ellipse &nbsp;: A&lt;&gt;C &nbsp;&nbsp;, det &lt; 0<BR>parabola : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;, det = 0<BR>hyperbola: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;, det &gt; 0<BR>-----------------------------------<BR>-----------------------------------<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i19) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p17</span><span class="code_operator">:</span><span class="code_variable">det</span><span class="code_operator">=</span>(<span class="code_function">part</span>(<span class="code_variable">p12</span>,<span class="code_number">2</span>))<span class="code_operator">^</span><span class="code_number">2</span><span class="code_operator">-</span><span class="code_number">4</span><span class="code_operator">*</span>(<span class="code_function">part</span>(<span class="code_variable">p11</span>,<span class="code_number">2</span>))<span class="code_operator">*</span>(<span class="code_function">part</span>(<span class="code_variable">p13</span>,<span class="code_number">2</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p17}\label{p17}\mathit{det}=-16\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+programming : Maxima<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+rem : construction ' simple if '<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i22) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+if <span class="code_function">part</span>(<span class="code_variable">p17</span>,<span class="code_number">2</span>)&lt;<span class="code_number">0</span> and <span class="code_function">part</span>(<span class="code_variable">p11</span>,<span class="code_number">2</span>)<span class="code_operator">=</span><span class="code_function">part</span>(<span class="code_variable">p13</span>,<span class="code_number">2</span>) then <BR>
+ <span class="code_function">disp</span>(<span class="code_string">&quot;</span><span class="code_string">circle</span><span class="code_string">&quot;</span>)<BR>
+else <BR>
+ <span class="code_function">disp</span>(<span class="code_string">&quot;</span><span class="code_string">ellipse</span><span class="code_string">&quot;</span>)<span class="code_endofline">$</span><BR>
+if <span class="code_function">part</span>(<span class="code_variable">p17</span>,<span class="code_number">2</span>)&gt; <span class="code_number">0</span> then<BR>
+ <span class="code_function">disp</span>(<span class="code_string">&quot;</span><span class="code_string">hyperbola</span><span class="code_string">&quot;</span>)<span class="code_endofline">$</span><BR>
+if <span class="code_function">part</span>(<span class="code_variable">p17</span>,<span class="code_number">2</span>)<span class="code_operator">=</span> <span class="code_number">0</span> then<BR>
+ <span class="code_function">disp</span>(<span class="code_string">&quot;</span><span class="code_string">parabola</span><span class="code_string">&quot;</span>)<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\mbox{}\\ellipse\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+# = not equal to<BR>other :&gt;,=,&lt;,&ge;,&le;<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i23) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+if <span class="code_function">part</span>(<span class="code_variable">p12</span>,<span class="code_number">2</span>) <span class="code_operator">#</span> <span class="code_number">0</span> then<BR>
+ <span class="code_function">disp</span> (<span class="code_string">&quot;</span><span class="code_string">rotated</span><span class="code_string"> </span><span class="code_string">conic</span><span class="code_string"> </span><span class="code_string">&quot;</span>)<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\mbox{}\\rotated\,conic\,\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+rem : construction: if 'with elseif'<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ' condition ' then<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elseif ' condition ' then output<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elseif ' condition ' then output<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else output<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i24) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">s</span><span class="code_operator">:</span><span class="code_number">3</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{s}\label{s}3\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i25) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+if <span class="code_variable">s</span> &lt; <span class="code_number">0</span> then<BR>
+ <span class="code_string">&quot;</span><span class="code_string">minus</span><span class="code_string">&quot;</span> <BR>
+<span class="code_variable">elseif</span> <BR>
+<span class="code_variable">s</span> &lt; <span class="code_number">5</span> then <span class="code_string">&quot;</span><span class="code_string">small</span><span class="code_string">&quot;</span> <BR>
+<span class="code_variable">elseif</span> <BR>
+<span class="code_variable">s</span> &lt; <span class="code_number">10</span> then <span class="code_string">&quot;</span><span class="code_string">medium</span><span class="code_string">&quot;</span> <BR>
+else<BR>
+ <span class="code_string">&quot;</span><span class="code_string">large</span><span class="code_string">&quot;</span><span class="code_endofline">;</span><BR>
+<span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o25}\label{o25} small\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+appendix: &nbsp;statement 'trigrat'<BR>
+</P>
+
+ <HR>
+ <SMALL> Created with <A HREF="http://wxmaxima.sourceforge.net/">wxMaxima</A>.</SMALL>
+ <script data-cfasync="false" src="../../../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></BODY>
+</HTML>

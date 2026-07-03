@@ -1,0 +1,155 @@
+option nolet
+!****************************************************************
+! example 1 : graphics programming (to make figure on the canvas)
+!****************************************************************
+print "*********************************************"
+print "date    :26/06/2017  'example graphics 1'    "
+print "author  :peter.vlasschaert@gmail.com         "
+print "version :zero energy  'version 1.0'          "
+print "*********************************************"
+!filename:zeroenergyversion1
+print
+test = 2        ! plot axis x,y : test=1 else not
+dim x(1),y(1)
+r1=5            ! radius
+print " radius of the circle = ";r1
+v=pi/180        ! conversion grad -> rad
+nu_div = 9      ! number divisions
+div=360/nu_div
+mat redim x(nu_div),y(nu_div)
+!*******************************************
+! numbering from top around the circle 
+! 9 -> 8 -> 7->.....-> 1 (counter clockwise)
+!*******************************************
+for i=0 to nu_div-1
+!**************************************
+! coordinates of points on the circle :
+!**************************************
+x(9-i)= r1*cos(v*(90+i*div))
+y(9-i)= r1*sin(v*(90+i*div))
+next i
+!****************************************************
+! " aspect ratio correction ----->                  "
+!****************************************************
+r=r1
+Ask pixels hpix,vpix
+pratio=hpix/vpix
+vr=2*r
+hr=2*r*pratio
+set window -hr/2-1,hr/2+1,-vr/2-1,vr/2+1
+!**** plot axis *************************************
+  if test = 1 then
+     set color "red"
+     plot lines:-hr/2-1,0;hr/2+1,0
+     plot lines: 0,-vr/2-1;0,vr/2+1
+  else
+     plot text, at 0,0 :"+"
+  end if
+!****************************************************
+set color "blue"
+!****************************************************
+! draw the circle
+!****************************************************
+call cir(theta,r)
+!****************************************************
+! energy circle sequence 1,2,4,8,7,5 (1->6)
+!****************************************************
+dim nikt(1)
+mat redim nikt(6)
+nikt(1)=1
+nikt(2)=2
+nikt(3)=4
+nikt(4)=8
+nikt(5)=7
+nikt(6)=5
+set color "green"
+for i=1 to size(nikt)-1
+ plot x(nikt(i)),y(nikt(i));x(nikt(i+1)),y(nikt(i+1))
+next i
+!****************************************************
+! connect point 5 with point 1
+!****************************************************
+plot x(nikt(6)),y(nikt(6));x(nikt(1)),y(nikt(1))
+!****************************************************
+! closed 1,2,4,8,7,5,1,2,4,...  repeat (see)
+!****************************************************
+! numbers around the circle 1,2,..,9
+!****************************************************
+set color "black"
+for i=1 to nu_div
+plot text, at x(i)+0.1,y(i)+0.1:str$(i)
+next i
+!****************************************************
+! plot triangle 3,6,9 'upper', 9 = top
+!****************************************************
+set color "magenta"
+plot x(3),y(3);x(6),y(6)
+plot x(6),y(6);x(9),y(9)
+plot x(3),y(3);x(9),y(9)
+!****************************************************
+! plot triangle 3,6,9 'lower', 9 = bottom
+! mirror trough x-axis
+!****************************************************
+set color "magenta"
+plot x(3),-y(3);x(6),-y(6)
+plot x(6),-y(6);x(9),-y(9)
+plot x(3),-y(3);x(9),-y(9)
+!****************************************************
+! elementary math : 
+!  y1=m1*x+n1 (between point 8 and point 4)
+!  y2=m2*x+n2 (between point 1 and point 5)
+!  find intersection : y1=y2 -> (xp,yp)
+!****************************************************
+call m_rico(x(8),y(8),x(4),y(4),m1)
+call n_line(x(8),y(8),m1,n1)
+call m_rico(x(1),y(1),x(5),y(5),m2)
+call n_line(x(1),y(1),m2,n2)
+xp = (n2-n1)/(m1-m2)
+yp =  m1*xp + n1
+set color "black"
+!********************************
+!  point ( xp,yp) of intersection
+!********************************
+plot text, at xp+0.1,yp+0.1:str$(0)
+call cir1(theta,0.1,xp,yp)
+a1$="("& str$(xp) & "," & str$(yp) & ")"
+plot text, at xp+0.2,yp+0.2:a1$
+!********************************
+! mirror point ( xp,yp) =(xp,-yp)
+!********************************
+plot text, at xp+0.1,-yp+0.1:str$(0)
+call cir1(theta,0.1,xp,-yp)
+a2$="("& str$(xp) & "," & str$(-yp) & ")"
+plot text, at xp+0.2,-yp+0.2:a2$
+end
+
+! draw the circle 'sub'
+
+sub cir(theta,r)
+for theta=0 to 6.28 step 0.001
+plot points: r*cos(theta),r*sin(theta)
+next theta
+end sub
+
+sub cir1(theta,r,x1,y1)
+!********************************
+! draw circle at position (x1,y1)
+!********************************
+for theta=0 to 6.28 step 0.001
+plot points: x1+r*cos(theta),y1+r*sin(theta)
+next theta
+end sub
+
+
+! y=m_rico*x+n_line
+
+sub m_rico(x1,y1,x2,y2,mx)
+    mx=(y2-y1)/(x2-x1)
+end sub
+
+sub n_line(x1,y1,mx,nx)
+    nx=y1-mx*x1
+end sub
+
+
+

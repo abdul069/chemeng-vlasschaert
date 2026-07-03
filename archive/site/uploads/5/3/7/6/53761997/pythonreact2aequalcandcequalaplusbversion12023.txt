@@ -1,0 +1,107 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+#-------------------------------------------------------------------------------
+# reaction kinetics:2A=C,C=A+B,version 1.0
+# peter.vlasschaert@gmail.com,02/01/2023
+# maxima : code >maximareactionkinetics2AequalCandCequalAplusBversion12023.wmx
+#-------------------------------------------------------------------------------
+# 1e) reaction : 2A = C ,forward = k[1],backwards = k[2]
+# reaction : r1 ⇒ (2)*A→ C  ,k[1] ⇒ forward
+# reaction : r2 ⇒ C   → 2*A ,k[2] ⇒ forward
+# 2e) reaction : C = A+B ,forward = k[2],backwards = k[3]
+# reaction : r3 ⇒ C→ A+B  , k[3] ⇒ forward
+# reaction : r4 ⇒ A+B → C , k[4] ⇒ forward
+#-------------------------------------------------------------------------------
+# show in maxima
+#-------------------------------------------------------------------------------
+def reaction(t, y, k):
+    A, B, C = y
+    dAdt = k[3] * C + 2 * k[2] * C - k[4] * A * B - 2 * k[1] * A**2
+    dBdt = k[4] * A * B - k[3] * C
+    dCdt = k[3] * C - k[2] * C + k[4] * A * B + k[1] * A**2
+    return [dAdt, dBdt, dCdt]
+
+# Initial conditions
+A0 = 1
+B0 = 1.2
+C0 = 1
+
+# Rate constants
+k = [1, 2, 3, 4, 5]
+
+s = 1000 # higher s the more continue is the output.
+# Time points to evaluate the solution
+t_eval = np.linspace(0, 10, s)
+#-----------------------------------------
+# Solve the system
+#-----------------------------------------
+# error > `t_eval` are not within `t_span`
+#-----------------------------------------
+# error change y0 symbol
+#-----------------------------------------
+solution = solve_ivp(fun=lambda t, y: reaction(t, y, k), t_span=[0, 10], y0=[A0, B0, C0], t_eval=t_eval)
+
+# Extract the time points and solutions
+t = solution.t
+A, B, C = solution.y
+
+# Create the plot
+plt.plot(t, A, label='A(t),init A0')
+plt.plot(t, B, label='B(t);init B0')
+plt.plot(t, C, label='C(t),init C0')
+plt.xlabel('t')
+plt.ylabel('Concentration')
+# y:scale  
+# set : your self
+#-----------------------
+# Set the y-axis limits
+# plt.ylim(0, 1)
+#-----------------------
+# set : automatic
+#-----------------------------------------------
+# Set the y-axis limits based on the data
+plt.autoscale(enable=True, axis='y', tight=True)
+#-----------------------------------------------
+# t:scale
+# Find the maximum time
+t_max = np.max(t)
+# Set the x-axis limits to the maximum time
+plt.xlim(0, t_max)
+plt.legend()
+# Find the maximum time
+print(t_max)
+plt.show()
+
+
+#----------------------
+# info : How to use ivp
+#----------------------
+#solve_ivp is a function from the scipy.integrate module that solves initial value problems (IVPs)
+#for ordinary differential equations (ODEs). It takes several parameters that control the behavior of the solver.
+
+#fun: This is a function that represents the right-hand side of the ODE system.
+#It takes as input the time t and the state variables y, and returns the derivatives
+#of the state variables with respect to time. In the code you provided,
+#fun is defined as a lambda function that calls the reaction function with the time, state variables,
+#and rate constants as arguments.
+
+#t_span: This is a list or tuple with the start and end times of the integration.
+#  The solver will compute the solution for the specified time interval.
+# In the code you provided, the time span is set to [0, 10],7
+# which means that the solver will compute the solution from time 0 to time 10.
+
+#y0: This is a list or array with the initial conditions for the state variables.
+#In the code you provided, y0 is set to [A0, B0, C0], which are the initial conditions
+# for the species A, B, and C.
+
+# t_eval: This is an optional parameter that specifies the time points at which the solution should be evaluated.
+#If provided, the solver will compute the solution at the specified time points and return them as part of the solution.
+#If not provided, the solver will use its internal time stepping algorithm to compute the solution.
+#In the code you provided, t_eval is set to an array with 100 time points, which means that the solver will compute the
+#solution at 100 equally spaced time points between 0 and 10.
+
+# The solve_ivp function returns an OdeSolution object that contains the time points, the state variables,
+# and other information about the solution. You can use the .t and .y attributes of the OdeSolution object
+# to access the time points and the state variables, respectively.

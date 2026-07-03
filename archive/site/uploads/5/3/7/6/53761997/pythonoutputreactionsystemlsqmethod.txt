@@ -1,0 +1,13 @@
+given :reaction system: see maxima.code 
+M= [[-1  0  0]
+ [ 1 -1  0]
+ [ 0  1 -1]
+ [ 0  0  1]
+ [-1 -1 -1]]
+input lsq :experimental values
+b= [-1.25  0.37  0.33  0.54 -2.41]
+x= [1.18375 0.79    0.47875]
+output,rates,experimental values of b
+r1= 1.18375
+r2= 0.79
+r3= 0.47875

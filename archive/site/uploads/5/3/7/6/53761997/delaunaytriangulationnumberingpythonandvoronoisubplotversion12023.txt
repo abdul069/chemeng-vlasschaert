@@ -1,0 +1,60 @@
+import scipy
+from scipy.spatial import Delaunay, Voronoi, voronoi_plot_2d
+import numpy as np
+import matplotlib.pyplot as plt
+#
+print(" ..............................................................................")
+print(" PYTHON : How to plot <delaunay,voronoi> from random points,subplot,version 1.0")
+print(" peter.vlasschaert@gmail.com,07/01/2023                                        ")
+print(" ..............................................................................")
+#
+# Generate random points
+points = np.random.rand(10, 2)
+print(points)
+# Perform Delaunay triangulation
+tri = Delaunay(points)
+
+# Compute Voronoi tessellation
+vor = Voronoi(points)
+# Get the x and y coordinates of the points
+x = points[:,0]
+y = points[:,1]
+# Set up subplots
+fig, ax = plt.subplots(1, 3, figsize=(12, 4))
+
+# Plot Delaunay triangulation
+for triangle in tri.simplices:
+    ax[0].fill(points[triangle, 0], points[triangle, 1], color='g')
+    ax[0].plot(points[triangle, 0], points[triangle, 1], color='b')
+    ax[0].plot(points[:,0], points[:,1], 'o')
+# Add text labels to the plot
+for i, point in enumerate(points):
+    ax[0].text(x[i]+0.02, y[i]+0.02, str(i))
+# Add x and y labels and a title
+ax[0].set_xlabel("X")
+ax[0].set_ylabel("Y")
+ax[0].set_title("Delaunay Triangulation")
+
+# Plot Voronoi diagram
+fig = voronoi_plot_2d(vor, show_vertices=False, line_colors='orange',
+                      line_width=2, line_alpha=0.6, point_size=2, ax=ax[1])
+ax[1].plot(points[:,0], points[:,1], 'o')
+
+# Add x and y labels and a title
+ax[1].set_xlabel("X")
+ax[1].set_ylabel("Y")
+ax[1].set_title("Voronoi Diagram")
+
+# Plot combined Delaunay and Voronoi
+for triangle in tri.simplices:
+    ax[2].fill(points[triangle, 0], points[triangle, 1], color='g')
+    ax[2].plot(points[triangle, 0], points[triangle, 1], color='b')
+fig = voronoi_plot_2d(vor, show_vertices=False, line_colors='orange',
+                      line_width=2, line_alpha=0.6, point_size=2, ax=ax[2])
+ax[2].plot(points[:,0], points[:,1], 'o')
+
+# Add x and y labels and a title
+ax[2].set_xlabel("X")
+ax[2].set_ylabel("Y")
+ax[2].set_title("Delaunay and Voronoi")
+plt.show()

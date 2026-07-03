@@ -1,0 +1,61 @@
+How install : jupyter notebook ( version python from your choice),windows 10
+peter.vlasschaert@gmail.com,18/09/2022
+
+
+a) check verion in your path of python
+
+1e step : cmd.exe
+------------------
+Type here to search  >  cmd
+click : Command prompt
+output : c:\Users\computername>
+2e step : path 
+--------------
+  c:\Users\computername>python --version
+ 
+ rem :execute >  c:\Users\computername>python
+ reason :already installed because this is
+         part of other software 
+        
+b) install jupyter notebook on your version python.
+
+> directory of your python version.
+rem : 	c:\python\python39>	python.exe (python :alreday installed)
+otherwise : website of python first installed your version.
+
+1e)step : cmd.exe
+-----------------
+c:\Users\computername>
+
+2e)step :change directory
+--------------------------
+c:\Users\computername>cd..
+C:\Users>cd..
+cd python 
+cd python39
+output : C:\Python\Python39>
+cd scripts
+output : C:\Python\Python39\Scripts>
+
+3e)step : two ways, try (install juypter notebook)
+--------------------------------------------------
+C:\Python\Python39>pip install notebook
+or
+C:\Python\Python39\Scripts>pip install notebook
+
+4e)step : How start notebook  "see above"
+-----------------------------
+rem :exe for notebook inside > script directory > 
+C:\Python\Python39\Scripts>jupyter notebook
+result : will start in your browser : example (firefox...)
+
+best way : to start up : short cut of exe inside :script 
+directory 
+> jupyter-notebook.exe
+rem : select : exe > rhs button > create short cut
+copy to your desktop,click : open the notebook.
+
+
+
+
+

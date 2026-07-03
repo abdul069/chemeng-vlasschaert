@@ -1,0 +1,68 @@
+\documentclass[leqno]{article}
+
+%% Created with wxMaxima 17.05.0
+
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+\usepackage[utf8]{luainputenc}
+\DeclareUnicodeCharacter{00B5}{\ensuremath{\mu}}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{ifthen}
+\usepackage{breqn}   % don't for get this line
+\newsavebox{\picturebox}
+\newlength{\pictureboxwidth}
+\newlength{\pictureboxheight}
+\newcommand{\includeimage}[1]{
+    \savebox{\picturebox}{\includegraphics{#1}}
+    \settoheight{\pictureboxheight}{\usebox{\picturebox}}
+    \settowidth{\pictureboxwidth}{\usebox{\picturebox}}
+    \ifthenelse{\lengthtest{\pictureboxwidth > .95\linewidth}}
+    {
+        \includegraphics[width=.95\linewidth,height=.80\textheight,keepaspectratio]{#1}
+    }
+    {
+        \ifthenelse{\lengthtest{\pictureboxheight>.80\textheight}}
+        {
+            \includegraphics[width=.95\linewidth,height=.80\textheight,keepaspectratio]{#1}
+            
+        }
+        {
+            \includegraphics{#1}
+        }
+    }
+}
+\newlength{\thislabelwidth}
+\DeclareMathOperator{\abs}{abs}
+\usepackage{animate} % This package is required because the wxMaxima configuration option
+                      % "Export animations to TeX" was enabled when this file was generated.
+
+\definecolor{labelcolor}{RGB}{100,0,0}
+\begin{document}
+\begin{minipage}[t]{8ex}\color{red}\bf
+(\% i13)
+\end{minipage}
+\begin{minipage}[t]{\textwidth}\color{blue}
+p7:subst(pt, P, p4);
+\end{minipage}
+%%%%%%%%%%%%%%
+%%% OUTPUT %%% 'show full equation,*.pdf'
+%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 1e) replace :  
+% =>   \[\displaystyle -> \begin{dmath}                  see above '\usepackage{breqn}
+% 2e) replace :  
+% =>  \tag{p7}         ->  p7]
+% 3e) remove :  
+% =>  \mbox{}
+% 4e) replace :
+% =>  \]               -> \end{dmath}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{dmath}
+p7]
+\mathit{Z2}=\mathit{B1}\, \left( \frac{R T}{V}+\frac{B R T}{{{V}^{2}}}+\frac{C R T}{{{V}^{3}}}+\frac{D R T}{{{V}^{4}}}\right) +\mathit{D1}\,
+ {{\left( \frac{R T}{V}+\frac{B R T}{{{V}^{2}}}+\frac{C R T}{{{V}^{3}}}+\frac{D R T}{{{V}^{4}}}\right) }^{3}}+\mathit{C1}\, 
+{{\left( \frac{R T}{V}+\frac{B R T}{{{V}^{2}}}+\frac{C R T}{{{V}^{3}}}+\frac{D R T}{{{V}^{4}}}\right) }^{2}}+1
+\end{dmath}
+\end{document}

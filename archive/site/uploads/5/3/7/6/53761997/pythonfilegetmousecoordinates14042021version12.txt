@@ -1,0 +1,139 @@
+from tkinter import *
+import time
+#---------------------------------------------------------------------------------------------
+# peter.vlasschaert@gmail.com, 14/04/2021, 'version 1.2'
+# scientific : computing
+# Draw points on the Canvas:  origin= (0,0) on the lower left,version 1.2
+#----------------------------------------------------------------------------------------------
+# ref :https://www.reddit.com/r/learnpython/comments/2nldiu/how_to_drag_a_circle_using_tkinter/
+#----------------------------------------------------------------------------------------------
+
+#-------------------------------------------------------------
+# identation very important , otherwise error or wrong result
+#-------------------------------------------------------------
+
+# dimension of the Canvas
+canvas_width = 1000
+canvas_height = 500
+
+global l # get result also outside function : paint
+l=[] # empty list for circle coordinates ( = center of the circle)
+
+global r # radius of the circles
+r=8  # fixed value moving circle
+
+global n # repeated when not use lambda instruction in def, see def paint
+n=0
+
+def callback(event):
+    x1, y1 = ( event.x), ( event.y)
+    a1= "coordinate (point)  = "+"("+ str(x1) + ","+ str(canvas_height-y1) +")"
+    a2= "peter.vlasschaert@gmail.com (14-04-2021)                              "
+    message['text'] = a2+a1  
+    draw(x1, y1)
+
+def draw(x, y):
+    # global r # can be used not needed.
+    # r=3 (reason =global)
+    w.focus
+    w.coords(circle, x+r, y+r, x-r, y-r )
+    w.update()
+    
+def paint( event):
+    global n # repeated when not use lambda instruction in def
+    #-----------------------------------------------
+    # python_green = "#476042"   
+    # r= radius of the circles to draw on the canvas
+    #-----------------------------------------------   
+    # capture event of the center of the circle
+    #--------------------------------------------
+    x1, y1 = ( event.x), ( event.y)     
+    # create the circles
+    # r=3 (reason =global)
+    w.focus()
+    w.create_oval( x1+r, y1+r, x1-r, y1-r)   
+    #--------------------------------------------------------------------------
+    # origin (0,0) @ lower left, 'display coordinates , positiv values x and y'
+    # mathematical : transformation to change position of the origin.
+    #--------------------------------------------------------------------------
+    a1= "coordinate (point)  = "+"("+ str(x1) + ","+ str(canvas_height-y1) +")"
+    a2= "peter.vlasschaert@gmail.com (14-04-2021)                              "
+    message['text'] = a2+a1
+    # give number for every point : put on the Canvas(=w)
+    n=n+1
+    # give number inside the circle
+    w.create_text(x1,y1, text = str(n))
+    # update the drawing on the Canvas    
+    w.update()
+    
+    # list of all mouse coordinates and append to list l    
+    l.append([x1,canvas_height-y1])
+    
+    
+# => function : print coordinates in python editor .   
+def result(l):
+    # find first point from => l[0]
+    print(l)    
+   
+# => function : to close gui interface.    
+def _quit():
+    win.quit()
+    win.destroy()
+    
+ #-------------------------------------------------------------------   
+ # to place widgets on Canvas we use : grid method ( rows ,columns) -
+ #-------------------------------------------------------------------
+
+win = Tk() # we will open window , name = win
+win.title( "Draw points on the Canvas:  origin= (0,0) on the lower left,version 1.2" )
+# disable resizing of the win ,x (=width) and y(=height) dimension
+win.resizable(False,False)
+# messagebox.showinfo("get coordinates ", "click the left mouse button")
+# construct w=Canvas on the win
+w = Canvas(win, 
+           width=canvas_width, 
+           height=canvas_height)
+# Canvas area: light blue 'GIVEN: Hexadecimale Code ' application on my website
+w.create_rectangle(0, 0, canvas_width, canvas_height, fill="#add8e6" )
+w.bind('<Motion>'       , callback)   # circle flow to position select with the mouse
+w.bind( "<B1-Motion>"   , paint)      # paint on the Canvas with circle
+#corrected with columnspan
+w.grid(row=0,column=0,columnspan = 3 )
+message = Label( win)
+message.grid( row =1,column=0)
+# get list of coordinates of the center of circles,first point => l[0]
+# explain use : lambda combination with parameter 'l'
+btn1 = Button(win, width = 30 ,text = " result = ",command=lambda: result(l))
+btn1.grid(row = 1,column = 1)
+# destroy win ,no parameter : result  no lambda
+btn2 = Button(win, width = 30 ,text = " quit   = ",command = _quit)
+btn2.grid(row = 1,column = 2)
+
+# redraw circle again and again, very important to see circle always
+circle = w.create_oval(0, 0, 0, 0)
+# show relevant information to the user
+messagebox.showinfo(" get coordinates ", "click : the left mouse button:to fix coordinate ")
+# https://web.stanford.edu/class/archive/cs/cs106a/cs106a.1208/examples/bouncingBall/
+# time.sleep(8/100.00),need :import time
+w.update()
+# w.after(10)
+#--------------------------------------------------------------------
+# How to Drag a circle using tkinter?
+#--------------------------------------------------------------------
+#ref: see website , 'see : website above
+#--------------------------------------------------------------------
+#--------------------------------------------------------------------
+#from Tkinter import Tk, Canvas
+#def callback(event):
+#    draw(event.x, event.y)
+#def draw(x, y):
+#    paint.coords(circle, x-20, y-20, x+20, y+20)
+#root = Tk()
+#paint = Canvas(root)
+#paint.bind('<Motion>', callback)
+#paint.pack()
+#circle = paint.create_oval(0, 0, 0, 0)
+#root.mainloop()
+#-----------------------------------------------------------------------
+#-----------------------------------------------------------------------
+win.mainloop()

@@ -1,0 +1,69 @@
+LIBRARY "BronzeTD.trc"
+!********************************************************
+! modifications , peter.vlasschaert@gmail.com,15/05/2018
+! orginal file : AREAS.TRU ' problem by calculation : area'
+!********************************************************
+rem : no error catching 'val from strings'
+! ****** some strings *************************
+let a$  = " Make' Geometry computation '"
+let az$ = "Triangle|Rectangle|Circle"
+let az1$ = " no more computation      => "
+let az2$ = " matrix with area values  => "
+let az3$ = " select any key on the keyboard,'end program' "
+! *********************************************
+
+let i = 0        ! init counter 
+dim areaA(1)
+print a$
+print
+DO
+   CALL TD_Message("GEOMETRY","Select a button",az$,1,type)
+   IF type=1 then                 ! triangles
+      CALL TD_LineInput("Enter base length of triangle",text$)
+      CALL TD_LineInput("Enter height of triangle",text1$)
+let base  =10*(val(text$))/10! notation correction   
+let height=10*(val(text1$))/10! notation correction
+      LET area=base*height/2      ! area calculation
+let i=i+1            ! update counter   
+mat redim  areaA(i)  ! collect values for array 'use counter'
+print " area (" &  az$[1:8] & ") = ";area
+let areaA(i) = area
+print
+   ELSEIF type=2 then             ! rectangles
+      CALL TD_LineInput("Enter length of rectangle",text$)
+let length=10*(val(text$))/10! notation correction
+      CALL TD_LineInput("Enter width of rectangle",text1$)
+let width=10*(val(text1$))/10! notation correction
+      LET area=length*width       ! area calculation
+let i=i+1
+mat redim  areaA(i)
+print " area (" &  az$[9:18] & ") = ";area  
+let areaA(i) = area
+print
+   ELSEIF type=3 then             ! circles
+      CALL TD_LineInput("Enter radius of circle",text$)
+let radius=10*(val(text$))/10     ! notation correction
+      LET area=pi*radius^2        ! area calculation
+let i=i+1
+mat redim  areaA(i)
+print " area (" &  az$[19:25] & ") = ";area
+let areaA(i) = area
+print
+   END IF
+   LET answer$="The area is " & str$(area) & "|Do you want to continue?"
+   CALL TD_Message("ANSWER",answer$,"More|Quit",1,result)    
+   IF result=2 then
+     print az1$ & ",number computation = " & str$(i)   
+     print
+     print az2$
+     print
+     print az3$
+     print
+      mat print areaA             ! print matrix area
+      get key p
+      ! pause 3  
+     EXIT DO
+   END IF
+LOOP
+stop
+END

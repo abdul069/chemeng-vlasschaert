@@ -1,0 +1,68 @@
+option nolet
+print "***********************************************"
+print "*optimization f(x,y) : 'fixed step,fx,fy,num' *"
+print "*peter.vlasschaert@gmail.com,21/03/2019       *"
+print "***********************************************"
+print
+!*******************************************************
+!program : central differences approximation first order
+!          => d(f)/dx an d(f)/dy
+!*******************************************************
+print " central differences : df/dx,df/dy => "
+!***************************************
+! < input >, parametric values , f(x,y).
+!***************************************
+s=1 ! default values
+if s = 0 then
+input prompt " step value 'first derivate',num  = ":hss
+input prompt " step value 'simulation',num      = ":hh
+input prompt " start value for x = x0,num       = ":xx0
+input prompt " start value for x = y0,num       = ":yy0
+input prompt " number of steps 'simulation',num = ":nn
+  else
+hss = 0.1
+hh  = 0.12
+xx0 = 0.5
+yy0 = -1
+nn  = 10
+end if
+
+!****************************
+! < output > , xx,yy,f(xx,yy)
+!****************************
+call fxynumcd_max_or_min(hss,hh,xx0,yy0,nn)
+end
+
+! function to find max or min (see maxima:website)
+
+DEF f(x,y) 
+f = 4-x^2-y^2
+end def
+
+! sub :fxynumcd_max_or_min
+
+sub fxynumcd_max_or_min(hss,hh,xx0,yy0,nn)
+declare def f
+ h  = hh 
+ x0 = xx0
+ y0 = yy0
+ n  = nn
+ hsc = hss
+#
+!   first order df/dx,df/dy ,approximation fxx,fyy
+#
+    fxx =(f(x0+hsc,y0) -f(x0-hsc,y0))/(2*hsc)
+    fyy =(f(x0,y0+hsc) -f(x0,y0-hsc))/(2*hsc) 
+            xx = x0+h*fxx
+            yy = y0+h*fyy    
+  for i = 1 to  n   
+    m1 = (f(xx+hsc,yy)-f(xx-hsc,yy))/(2*hsc)
+    xx = xx+m1*h
+    m2 = (f(xx,yy+hsc) -f(xx,yy-hsc))/(2*hsc) 
+    yy = yy+m2*h
+  next i
+print " x value : min or max ";xx
+print " y value : min or max ";yy
+qq=f(xx,yy)
+print " min or max  = ";qq
+end sub

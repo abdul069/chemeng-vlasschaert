@@ -1,0 +1,83 @@
+option nolet
+!******************************************************
+! symbol : general :Levi-Civita symbol
+! info:https://en.wikipedia.org/wiki/Levi-Civita_symbol
+!******************************************************
+! website :https://petervlaschemeng.weebly.com/
+! topic :fluid dynamics (2019)
+!******************************************************
+!filename :fluidgeneralleviCivitasymbol.tru
+!******************************************************
+! v=epsilon(p,q,r) ? find sign(v) = {-1,+1,0}
+!******************************************************
+print "------------------------------------------------"
+print " fluid:general :Levi-Civita symbol,version 1.0  "
+print " peter.vlasschaert@gmail.com,23/07/2019         "
+print "------------------------------------------------"
+print
+print "--------------------------------------------"
+print " example : epsilon(1,2,3) => sign = 1   (1) "
+print " example : epsilon(2,1,3) => sign = -1  (2) "
+print " example : epsilon(1,1,3) => sign = 0   (3) "
+print "--------------------------------------------"
+print
+!**********************************************
+! general : formula
+!**********************************************
+print "**********************************************"
+print "* algo : product(sign(ii(p)-ii(q),ii,1,n;p>q)*"
+print "**********************************************"
+print
+!**********************************************
+! declare : array
+!**********************************************
+dim ii(1)
+!examples : n = 3  ,{1,2,3}
+! example (2)
+n = 3
+mat redim ii(1:n)
+! matrix entries : (2)
+print "-------------------------------"
+print " matrix entries : sequence (2) "
+print "-------------------------------"
+print
+ii(1) = 2
+ii(2) = 1
+ii(3) = 3
+! output : matrix 'ii'
+mat print ii
+! copy orginal matrix (jj)
+dim jj(1)
+mat redim jj(1:n)
+mat jj = ii
+print "------------------------------"
+print " copy array ii into jj        "
+print "------------------------------"
+print
+mat print jj
+!*********************************************
+! epsilon(2,1,3) ?  sign
+!*********************************************
+! algo:product(sign(ii(p)-ii(q),ii,1,n;p>q)
+!**********************************************
+! set initial value : sign
+!**********************************************
+r=1 
+!**********************************************
+! algo : start
+for p=1 to n
+  for q=1 to p-1
+! if one of members more than once.
+  if ii(p) = ii(q) then r=0
+! sign must be alternated stop:ii(p) > ii(q)
+  if ii(p) < ii(q) then  r=-r
+  next q
+next p
+! algo : end
+print " input : array => "
+mat print jj
+print "***********************************"
+print " sign (epsilon) => epsilon(p,q,...)"
+print "***********************************"
+print r
+end  

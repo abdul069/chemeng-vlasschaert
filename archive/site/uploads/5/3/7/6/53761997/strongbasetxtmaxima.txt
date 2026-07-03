@@ -1,0 +1,149 @@
+(%i1) kill(all)$
+ find:generalequations for strong base m(OH)n,n=1,2
+   peter.vlasschaert@gmail.com, 26/09/2016
+ calculus ,infinity limit of rational expression.
+(%i2) p:(5*x^3+x+9)/(3*x^3+5);
+limit(p, x, infinity);
+(p)(5*x^3+x+9)/(3*x^3+5)
+(%o2) 5/3
+ general equation for (di)hydroxy base : (n=2,M(OH)n)
+h=[H(+)],c=Cb,k1=kb(1),k2=kb(2),kw = 1E-14
+(%i3) p1:kw/h=h+cb*(2*h^2*k1*k2 +h*k1*kw)/(h^2*k1*k2+h*k1*kw+kw^2);
+(p1)kw/h=(cb*(h*k1*kw+2*h^2*k1*k2))/(kw^2+h*k1*kw+h^2*k1*k2)+h
+(%i6) p2:lhs(p1)-rhs(p1)=0$
+p3:factor(lhs(p2))=0$
+p4:num(lhs(p3))=0;
+(p4)kw^3+h*k1*kw^2-h^2*kw^2+h^2*k1*k2*kw-h^3*k1*kw-cb*h^2*k1*kw-h^4*k1*k2-2*cb*h^3*k1*k2=0
+ monohydroxy strong base (n=1,M(OH)n)
+[H(+)] = h ,kb(1)=k1 = infinity , kb(2)=k2= 0,kw=1E-14
+(%i7) p5:ev(lhs(p4),k2=0);
+(p5)kw^3+h*k1*kw^2-h^2*kw^2-h^3*k1*kw-cb*h^2*k1*kw
+(%i8) p6:limit(lhs(p5/k1), k1, infinity);
+(p6)h*kw^2+(-h^3-cb*h^2)*kw
+(%i9) p7:factor(p6);
+(p7)h*kw*(kw-h^2-cb*h)
+(%i10) p8:(-1)*part(p7,3)=0;
+(p8)-kw+h^2+cb*h=0
+(%i11) p9:solve(lhs(p8),h);
+(p9)[h=-(sqrt(4*kw+cb^2)+cb)/2,h=(sqrt(4*kw+cb^2)-cb)/2]
+(%i12) p10:part(p9,2);
+(p10)h=(sqrt(4*kw+cb^2)-cb)/2
+(%i15) nb1:ev(lhs(p8),h=0)/h;
+nb2:coeff(lhs(p8),h)*(h/h);
+nb3:coeff(lhs(p8),h^2)*(h^2/h);
+(nb1)-kw/h
+(nb2)cb
+(nb3)h
+(%i16) nb:nb2+nb3=-nb1;
+(nb)h+cb=kw/h
+ kw = oh*h
+(%i19) np:subst(kw/oh,h,lhs(nb));
+nq:subst(oh,kw/h,rhs(nb));
+npq:np=nq;
+(np)kw/oh+cb
+(nq)oh
+(npq)kw/oh+cb=oh
+ first approximation : monohydroxy base 'MOH'
+(%i20) nr:ev(npq,kw=0);
+(nr)cb=oh
+ pOH = - log(c),   pH+pOH = 14 = kw
+ dihydroxy base (n=2,M(OH)n)
+[H(+)] = h ,kb(1)=k1 = infinity , kb(2)=k2= infinity ,kw=1E-14
+ first (n=2)
+(%i21) p4;
+(%o21) kw^3+h*k1*kw^2-h^2*kw^2+h^2*k1*k2*kw-h^3*k1*kw-cb*h^2*k1*kw-h^4*k1*k2-2*cb*h^3*k1*k2=0
+(%i28) n1:ev(lhs(p4),h=0);
+n2:coeff(lhs(p4),h^1);
+n3:coeff(lhs(p4),h^2);
+n4:coeff(lhs(p4),h^3);
+n5:coeff(lhs(p4),h^4);
+q1:n5*h^4+n4*h^3+n3*h^2+n2*h+n1;
+q2:ratsubst(k,k1*k2,q1);
+(n1)kw^3
+(n2)k1*kw^2
+(n3)-kw^2+k1*k2*kw-cb*k1*kw
+(n4)-k1*kw-2*cb*k1*k2
+(n5)-k1*k2
+(q1)kw^3+h*k1*kw^2+h^2*(-kw^2+k1*k2*kw-cb*k1*kw)+h^3*(-k1*kw-2*cb*k1*k2)-h^4*k1*k2
+(q2)kw^3+(h*k1-h^2)*kw^2+((-h^3-cb*h^2)*k1+h^2*k)*kw-h^4*k-2*cb*h^3*k
+(%i33) p11:ratsubst(k,k1*k2,n1);
+n1_k:limit((p11)/k,k,infinity);
+n1_k1:limit(ratsubst(k1*k2,k,(coeff(p11,k1)/(k)))*k1,k2,infinity);
+n1_k2:limit(ratsubst(k1*k2,k,(coeff(p11,k2)/(k)))*k2,k1,infinity);
+n1_c:limit(ev(p11,k1=0,k2=0,k=0)/(k),k,infinity);
+(p11)kw^3
+(n1_k)0
+(n1_k1)0
+(n1_k2)0
+(n1_c)0
+(%i38) p22:ratsubst(k,k1*k2,n2);
+n2_k:limit((p22)/k,k,infinity);
+n2_k1:limit(ratsubst(k1*k2,k,(coeff(p22,k1)/(k)))*k1,k2,infinity);
+n2_k2:limit(ratsubst(k1*k2,k,(coeff(p22,k2)/(k)))*k2,k1,infinity);
+n2_c:limit(ev(p22,k1=0,k2=0,k=0)/(k),k,infinity);
+(p22)k1*kw^2
+(n2_k)0
+(n2_k1)0
+(n2_k2)0
+(n2_c)0
+(%i43) p33:ratsubst(k,k1*k2,n3);
+n3_k:limit((p33)/k,k,infinity);
+n3_k1:limit(ratsubst(k1*k2,k,(coeff(p33,k1)/(k)))*k1,k2,infinity);
+n3_k2:limit(ratsubst(k1*k2,k,(coeff(p33,k2)/(k)))*k2,k1,infinity);
+n3_c:limit(ev(p33,k1=0,k2=0,k=0)/(k),k,infinity);
+(p33)(k-cb*k1)*kw-kw^2
+(n3_k)kw
+(n3_k1)0
+(n3_k2)0
+(n3_c)0
+(%i48) p44:ratsubst(k,k1*k2,n4);
+n4_k:limit((p44)/k,k,infinity);
+n4_k1:limit(ratsubst(k1*k2,k,(coeff(p44,k1)/(k)))*k1,k2,infinity);
+n4_k2:limit(ratsubst(k1*k2,k,(coeff(p44,k2)/(k)))*k2,k1,infinity);
+n4_c:limit(ev(p44,k1=0,k2=0,k=0)/(k),k,infinity);
+(p44)-k1*kw-2*cb*k
+(n4_k)-2*cb
+(n4_k1)0
+(n4_k2)0
+(n4_c)0
+(%i53) p55:ratsubst(k,k1*k2,n5);
+n5_k:limit((p55)/k,k,infinity);
+n5_k1:limit(ratsubst(k1*k2,k,(coeff(p55,k1)/(k)))*k1,k2,infinity);
+n5_k2:limit(ratsubst(k1*k2,k,(coeff(p55,k2)/(k)))*k2,k1,infinity);
+n5_c:limit(ev(p55,k1=0,k2=0,k=0)/(k),k,infinity);
+(p55)-k
+(n5_k)-1
+(n5_k1)0
+(n5_k2)0
+(n5_c)0
+(%i58)  t1:n1_k+n1_k1+n1_k2+n1_c$
+ t2:n2_k+n2_k1+n2_k2+n2_c$
+ t3:n3_k+n3_k1+n3_k2+n3_c$
+ t4:n4_k+n4_k1+n4_k2+n4_c$
+ t5:n5_k+n5_k1+n5_k2+n5_c$
+(%i59) p66:t5*h^4+t4*h^3+t3*h^2+t2*h+t1=0;
+(p66)h^2*kw-h^4-2*cb*h^3=0
+(%i60) p77:factor(p66);
+(p77)h^2*(kw-h^2-2*cb*h)=0
+(%i69) p88:(-1)*part(p77,1,2)=0;
+(p88)-kw+h^2+2*cb*h=0
+(%i70) p99:solve(p88,h);
+(p99)[h=-sqrt(kw+cb^2)-cb,h=sqrt(kw+cb^2)-cb]
+(%i68) p100:part(p99,2);
+(p100)h=sqrt(kw+cb^2)-cb
+(%i73) nd1:ev(lhs(p88),h=0)/h;
+nd2:coeff(lhs(p88),h)*(h/h);
+nd3:coeff(lhs(p88),h^2)*(h^2/h);
+(nd1)-kw/h
+(nd2)2*cb
+(nd3)h
+(%i74) nd:nd2+nd3=-nd1;
+(nd)h+2*cb=kw/h
+(%i83) mp:subst(kw/oh,h,lhs(nd))$
+mq:subst(oh,kw/h,rhs(nd))$
+mpq:mq=mp;
+(mpq)oh=kw/oh+2*cb
+ first approximation:dihydroxy base 'M(OH)2'
+(%i84) mr:ev(mpq,kw=0);
+(mr)oh=2*cb
+ pOH=-log(2*cb) , pH+pOH=pkw

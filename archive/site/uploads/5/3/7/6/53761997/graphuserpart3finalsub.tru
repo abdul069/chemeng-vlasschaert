@@ -1,0 +1,129 @@
+option nolet
+ask pixels z1,z2
+print "---------------------------------------------------------------------"
+print " user coord.   : part 3 ,sub,draw circle,aspect ratio    version 1.0 "
+print " peter.vlasschaert@gmail.com,19/02/2019                              "
+print "---------------------------------------------------------------------"
+print
+!*******************************************
+! filename : graphuserpart3finalsub.tru 
+!*******************************************
+! online : help
+! info : https://www.truebasic.com/node/1025
+!*******************************************
+xmin = -7
+xmax = 7
+ymin = -7
+ymax = 7
+dx = xmax-xmin
+dy = ymax-ymin
+x_pix = z1
+y_pix = z2
+print
+print "--------------------------"
+print " draw a function y = F(x) "
+print "--------------------------"
+print
+print "--------------------------------------------"
+print " How to save pixel window  => funcpict3.bmp "
+print "--------------------------------------------"
+print
+! draw F(x) => circle (parametric plot)
+print " x = rr*cos(theta);y = rr*sin(theta), 'red '| cos(x) 'green' "
+asp = x_pix/y_pix   ! aspect ratio
+set window xmin,xmax,ymin,ymax
+!********************************
+! parametric plot of circle "red"
+!********************************
+set color "red"
+rr  = 1           ! radius circle
+val = 0.01        ! step value
+!*************************************
+! need have same axis for both x and y
+!*************************************
+for theta = 0 to 6.28 step val
+!*******************************
+! parametric equation of circle
+!*******************************
+     x = rr*cos(theta)
+     y = rr*sin(theta)
+ plot points :x,y*asp
+next theta
+!******************************
+! F(x) =>
+!******************************
+set color "green"
+for  x = xmin to xmax step val
+     y = cos(x) 
+     plot x,y*asp
+next x
+!******************************
+! draw x-axis and y-axis
+!******************************
+set color "blue"
+call draw_xas_user(xmin,xmax)
+call draw_yas_user(ymin,ymax)
+!***********************************
+! box :  xl < x < xr , yb < y < yt *
+!***********************************
+! corrected with asp 'see above
+box keep 0-rr,0+rr,(0-rr)*asp,(0+rr)*asp in kep1$
+!*************************************************
+! draw box " circle + some parts of the function "
+!*************************************************
+cor = 0.5 ! corrected position txt
+#!*************************************************
+#! math : first quadrant (x>0,y>0), also here.
+#!*************************************************
+BOX SHOW kep1$ at 1,1 ! Draw at new position circle
+set color "black"
+PLOT TEXT, at 1+cor,1-cor : "new circle"
+
+!************************************************
+! How to save canvas as a picture. (funcpict.bmp)
+!************************************************
+call save_userfullwin(xmin,xmax,ymin,ymax,keep$)
+!------------------------------------------------------------------------,
+!  Create a filename. Don't need an extention; the SUB will put ".bmp"
+!------------------------------------------------------------------------,
+ff$="C:\download\funcpict3.bmp" ! make sure this is a valid path...
+CALL Write_Image("MS BMP", keep$, ff$) ! or you can use this 
+print
+end
+
+sub save_userfullwin(x_min,x_max,y_min,y_max,kep$)
+! <help>
+! x-direction : x_min < =  x < = x_max , float
+! y-direction : y_min < =  x < = x_max , float
+! picture hold string : kep$
+!***************************************************
+box keep x_min, x_max, y_min, y_max in kep$ ! kep$ memory
+end sub
+
+
+sub draw_xas_user(x_min,x_max)
+! <help>
+! x-direction : x_min < =  x < = x_max , float
+! picture hold string : kep$
+!***************************************************
+pxa = 0
+pxb = x_min
+pxc = 0
+pxd = x_max
+plot lines : pxa,pxb ;pxc,pxd
+end sub
+
+sub draw_yas_user(y_min,y_max)
+! <help>
+! y-direction : y_min < =  x < = x_max , float
+! picture hold string : kep$
+!***************************************************
+pxaa = y_min
+pxbb = 0
+pxcc = y_max
+pxdd = 0
+plot lines : pxaa,pxbb ;pxcc,pxdd
+end sub
+
+
+

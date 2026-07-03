@@ -1,0 +1,163 @@
+option nolet
+ask pixels z1,z2
+print "----------------------------------------------------------"
+print " graph pixel   : part 2c , sub,draw circle    version 1.0 "
+print " peter.vlasschaert@gmail.com,18/02/2019                   "
+print "----------------------------------------------------------"
+print
+!*******************************************
+! filename : graphpixelpart2cfinalsub.tru 
+!*******************************************
+! online : help
+! info : https://www.truebasic.com/node/1025
+!*******************************************
+xmin = -5
+xmax = 5
+ymin = -7
+ymax = 7
+dx = xmax-xmin
+dy = ymax-ymin
+x_pix = z1
+y_pix = z2
+print
+print "--------------------------"
+print " draw a function y = F(x) "
+print "--------------------------"
+print
+print "--------------------------------------------"
+print " How to save pixel window  => funcpict2c.bmp "
+print "--------------------------------------------"
+print
+asp = x_pix/y_pix   ! aspect ratio
+set window 0,(x_pix-1),(y_pix-1),0
+set color "blue"
+! draw axis
+call draw_xas_usertopix(x_pix,y_pix,ymin,ymax)
+call draw_yas_usertopix(x_pix,y_pix,xmin,xmax)
+! draw F(x) => circle (parametric plot)
+print " x = rr*cos(theta);y = rr*sin(theta), 'red '| cos(x) 'green' "
+set color "red"
+rr  = 70          ! radius circle
+val = 0.01        ! step value
+for theta = 0 to 6.28 step val
+!*******************************
+! parametric equation of circle
+!*******************************
+     x = rr*cos(theta)
+     y = rr*sin(theta)
+!call convers_usertopix(x_pix,y_pix,xmin,xmax,ymin,ymax,x,y,px,py)
+     plot x_pix/2+x,y_pix/2+y
+next theta
+set color "green"
+for  x = xmin to xmax step val
+     y = cos(x) 
+call convers_usertopix(x_pix,y_pix,xmin,xmax,ymin,ymax,x,y,px,py)
+     plot px,py
+next x
+!***********************************
+! box :  xl < x < xr , yt < y < yb *
+!***********************************
+box keep x_pix/2-rr,x_pix/2+rr,y_pix/2-rr,y_pix/2+rr in kep1$
+!***********************************************
+! draw box " circle + some parts of the circle "
+!***********************************************
+! syntax : PLOT TEXT, at -1, 5 : "Test Results"
+!***********************
+! fourth : quadrant  =>*
+!***********************
+cor = 10   ! correct display text
+BOX SHOW kep1$ at x_pix/2+3*rr,y_pix/2+3*rr ! Draw at new position (+,+)
+set color "red"
+PLOT TEXT, at x_pix/2+3*rr, y_pix/2+3*rr+cor  : "fourth qudrant  :pos circle (+,+)"
+!***********************
+! second : quadrant  =>*
+!***********************
+BOX SHOW kep1$ at x_pix/2-3*rr,y_pix/2-3*rr ! Draw at new position (-,-)
+set color "blue"
+PLOT TEXT, at x_pix/2-3*rr, y_pix/2-3*rr+cor  : "second quadrant :pos circle (-,-)"
+!***********************
+! first : quadrant   =>*
+!***********************
+BOX SHOW kep1$ at x_pix/2+3*rr,y_pix/2-3*rr ! Draw at new position (+,-)
+set color "green"
+PLOT TEXT, at x_pix/2+3*rr, y_pix/2-3*rr+cor : "first quadrant   :pos circle (+,-)"
+!***********************
+! thrid : quadrant   =>*
+!***********************
+BOX SHOW kep1$ at x_pix/2-3*rr,y_pix/2+3*rr ! Draw at new position (-,+)
+set color "black"
+PLOT TEXT, at x_pix/2-3*rr, y_pix/2+3*rr+cor : "third quadrant   :pos circle (-,+)"
+
+!************************************************
+! How to save canvas as a picture. (funcpict.bmp)
+!************************************************
+call save_pixfullwin(z1,z2,keep$)
+!------------------------------------------------------------------------,
+!  Create a filename. Don't need an extention; the SUB will put ".bmp"
+!------------------------------------------------------------------------,
+ff$="C:\download\funcpict2c.bmp" ! make sure this is a valid path...
+CALL Write_Image("MS BMP", keep$, ff$) ! or you can use this 
+
+print
+end
+
+sub save_pixfullwin(z11,z22,kep$)
+! <help> 
+! z11 : number of pixels x-direction , start :0 to z11-1,integer >0
+! z22 : number of pixels y-direction , start :0 to z22-1,integer >0
+! picture hold string : kep$
+!************************************************
+box keep 0, z11-1, z22-1, 0 in kep$ ! kep$ memory
+end sub
+
+sub save_userfullwin(x_min,x_max,y_min,y_max,kep$)
+! <help>
+! x-direction : x_min < =  x < = x_max , float
+! y-direction : y_min < =  x < = x_max , float
+! picture hold string : kep$
+!***************************************************
+box keep x_min, x_max, y_min, y_max in kep$ ! kep$ memory
+end sub
+
+sub convers_usertopix(z11,z22,x_min,x_max,y_min,y_max,xx,yy,pxx,pyy)
+! < help >
+! z11 : number of pixels x-direction , start :0 to z11-1,integer >0
+! z22 : number of pixels y-direction , start :0 to z22-1,integer >0
+! x-direction : x_min < =  x < = x_max , float
+! y-direction : y_min < =  y < = y_max , float
+! pxx,pyy : integer > 0
+!********************************************************************
+dx = (x_min-x_max)
+dy = (y_min-y_max)
+pxx=(z11*x_min)/dx-(xx*z11)/dx
+pyy=(yy*z22)/dy-(z22*y_max)/dy
+end sub
+
+sub draw_xas_usertopix(z11,z22,y_min,y_max)
+! < help >
+! z11 : number of pixels x-direction , start :0 to z11-1,integer >0
+! z22 : number of pixels y-direction , start :0 to z22-1,integer >0
+! y-direction : y_min < =  y < = y_max , float
+!*******************************************************************
+dy = (y_min-y_max)
+pxa=0
+pxb=z11
+pxc=-(z22*y_max)/dy
+plot lines : pxa,pxc ;pxb,pxc
+end sub
+
+sub draw_yas_usertopix(z11,z22,x_min,x_max)
+! < help >
+! z11 : number of pixels y-direction , start :0 to z11-1,integer >0
+! z22 : number of pixels y-direction , start :0 to z22-1,integer >0
+! x-direction : xmin < =  x < = x_max , float
+!*******************************************************************
+dx = (x_min-x_max)
+pxaa=z22
+pxbb=0
+pxcc=(z11*x_min)/dx
+plot lines : pxcc,pxaa ;pxcc,pxbb
+end sub
+
+
+

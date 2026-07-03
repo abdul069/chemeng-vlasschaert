@@ -1,0 +1,61 @@
+option nolet
+ask pixels z1,z2
+print "----------------------------------------------------------"
+print " graph pixel   : part 2a ,                    version 1.0 "
+print " peter.vlasschaert@gmail.com,10/02/2019                   "
+print "----------------------------------------------------------"
+! filename : graphpixelpart2afinal.tru    
+xmin = -5
+xmax = 5
+ymin = -7
+ymax = 7
+x_pix = z1
+y_pix = z2
+print
+print "--------------------------"
+print " draw a function y = F(x) "
+print "--------------------------"
+print
+print "-------------------------------------------"
+print " How to save pixel window  => funcpict.bmp "
+print "-------------------------------------------"
+print
+set window 0,z1-1,z2-1,0
+set color "blue"
+! draw axis
+pxa=0
+pxb=x_pix
+pxc=-(y_pix*ymax)/(ymin-ymax)
+plot lines : pxa,pxc ;pxb,pxc
+pxaa=y_pix
+pxbb=0
+pxcc=(x_pix*xmin)/(xmin-xmax)
+plot lines : pxcc,pxaa ;pxcc,pxbb
+! draw F(x) =>
+print " x: ->  y = sin(x) 'red ',cos(x) 'green' "
+set color "red"
+val = 0.01
+for  x = xmin to xmax step val
+     y = sin(x) 
+     px=(x_pix*xmin)/(xmin-xmax)-(x*x_pix)/(xmin-xmax)
+     py=(y*y_pix)/(ymin-ymax)-(y_pix*ymax)/(ymin-ymax)
+     plot px,py
+next x
+set color "green"
+for  x = xmin to xmax step val
+     y = cos(x) 
+     px=(x_pix*xmin)/(xmin-xmax)-(x*x_pix)/(xmin-xmax)
+     py=(y*y_pix)/(ymin-ymax)-(y_pix*ymax)/(ymin-ymax)
+     plot px,py
+next x
+!************************************************
+! How to save canvas as a picture. (funcpict.bmp)
+!************************************************
+box keep 0, z1-1, z2-1, 0 in keep$ ! area for the picture (*.bmp)
+!------------------------------------------------------------------------,
+!  Create a filename. Don't need an extention; the SUB will put ".bmp"
+!------------------------------------------------------------------------,
+ff$="C:\download\funcpict.bmp" ! make sure this is a valid path...
+CALL Write_Image("MS BMP", keep$, ff$) ! or you can use this 
+print
+end

@@ -1,0 +1,70 @@
+How to install : gfortran.exe in codeblocks  20.03 of above.
+------------------------------------------------------------
+info:peter.vlasschaert@gmail.com,12/07/2022
+
+windows 10 ( people : windows 11 check : problems > youtube)
+
+0e)first : read > 6e)
+
+1e) Download : Codeblocks + MinGw (x64 architecture)
+
+https://www.codeblocks.org/
+http://www.codeblocks.org/downloads/source/
+page : below (picture)
+
+Binary releases > Microsoft windows
+
+codeblocks-20.03mingw-setup.exe 	FossHUB or Sourceforge.net
+
+2e) Excute selected download (directory structure)
+
+program :
+
+path : C:\Program Files\CodeBlocks
+
+compilers ( later needit : gfortran.exe ,bin :subdirectory) :
+
+path : C:\Program Files\CodeBlocks\MinGW
+path : C:\Program Files\CodeBlocks\MinGW\bin\gfortran.exe
+
+3e) How can windows find the path to : MinGW.
+
+type here to search :environ
+result :edit the system environment variables, click it.
+window : system properties
+click on : Environment Variables
+new windows open : User variables for "computername"
+scroll down . see path (select with the mouse) ,BUTTON :edit
+click : Button : New
+copy : C:\Program Files\CodeBlocks\MinGW\bin
+click : Ok
+click : Ok
+result :Envirnment Variables ,window > close.
+click : Ok
+result :System Properties    ,window > close
+
+4e) check : everything  c-compiler ( by default)
+Type here to search :cmd     
+result : c:\Users\science>gcc --version
+some text :MinGW
+
+5e) How find codeblocks > gfortran.exe
+
+a) run codeblocks
+b) Menu : settings > Compiler
+result : window opens : Global compiler settings
+   c1) selected compiler : dropdown menu 
+       GNU Fortran Compiler
+       click : Set as Default
+   c2) Compiler settings ,Linker settings,Search directories,Toolchains executables,........
+       click : Toolchains executables
+   Compiler's installation directory:
+   C:\Program Files\CodeBlocks\MinGW
+   Program Files > C   compiler (inside) : gfortran.exe
+                   C++ compiler (inside) : gfortran.exe
+                   Linnkerfordynamic libs: gfortran.exe
+   c3) click Ok : now you can use (gfortran.exe),close : code blocks
+   c4) restart : code blocks > programming fortran.
+
+6e) take : paper "set back to gcc compiler",everything you 
+    change:inside codeblocks.

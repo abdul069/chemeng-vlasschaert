@@ -1,0 +1,103 @@
+option nolet
+!+++++++++++++++++++++++++++++
+! coordinates of the window
+!+++++++++++++++++++++++++++++
+! x values window
+xmin = -5
+xmax = 5
+! y values window
+ymin = -5
+ymax = 5
+set window xmin,xmax,ymin,ymax
+!+++++++++++++++++++++++++++++
+!
+!+++++++++++++++++++++++++++++++++
+! info programma,title,author,time
+!+++++++++++++++++++++++++++++++++
+set color "blue"
+plot text,at xmin +.5,ymax -.5:"vector field 3d ,version 1.0"
+plot text,at xmin+.5,ymax - .75:"peter.vlasschaert@gmail.com,07/04/2020"
+set color "black"
+!+++++++++++++++++++++++++++++++++++++++++++
+! general parameter , compass needles
+!+++++++++++++++++++++++++++++++++++++++++++
+w =0.1   !( dimension compass needle )
+!+++++++++++++++++++++++++++++++++++++++++++
+! general parameter , differential equations
+!+++++++++++++++++++++++++++++++++++++++++++
+a=2
+b=-1
+c=1
+d=4
+!+++++++++++++++++++++++++++++++++++++++++++
+xm =3 ! x-range
+xstep = .25
+ym =2 ! y-yrange
+ystep = .25
+zm =3 ! z-range
+zstep = 2
+!++++++++++++++++++++++++++++++++++++++++++
+for z=-zm to zm step  zstep
+ for x=-xm to xm step  xstep
+  for y=-ym to ym step ystep
+!++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+! system three differential equations ,'example:see parameters above'
+!++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  dx = a*x+b*y*x
+  dy = c*x+d*y-z
+  dz = 2*z
+!++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   ds=sqr(dx^2+dy^2+dz^2)
+!++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   call cor2to3(x,y,z,xs,ys) 
+!+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+! compass needle are tangent to curve,(dy/ds)/(dx/ds) = dy/dx
+!++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ if ds>0 then plot xs-w*dx/ds,ys-w*dy/ds;xs+w*dx/ds,ys+w*dy/ds
+    next y
+  next x
+next z
+!  z=0,rectangle, 'black'
+call cor2to3(xm+3,ym+3,0,xs,ys)
+plot -xs,0;xs,0
+plot 0,-ys;0,ys
+plot -xs,ys;xs,-ys
+plot -xs,-ys;xs,-ys
+plot xs,-ys;xs,ys
+plot xs,-ys;-xs,ys
+plot xs,ys;xs,-ys
+plot xs,ys;-xs,-ys
+plot xs,ys;-xs,ys
+plot -xs,-ys;-xs,ys
+set color "red"
+!+++++++++++++++++++++++++++++
+! conversion 3d to 2d
+!++++++++++++++++++++++++++++++
+! axis z,1e) + axis ,2e) - axis
+plot 0,0;0,zm+2
+PLOT TEXT, AT 0.25,zm+1:"z axis"
+plot 0,0;0,-zm-2
+set color "green"
+! axis x,1e) + axis ,2e) - axis
+plot 0,0;-xm/2-2,-xm/2-2
+PLOT TEXT, AT -xm/2-2,-xm/2-2:"x axis"
+plot 0,0;+xm/2+2,+xm/2+2
+set color "blue"
+! axis y,1e) + axis ,2e) - axis
+plot 0,0;ym+2,0
+PLOT TEXT, AT ym+2,0+0.1:"y axis"
+plot 0,0;-ym-2,0
+! origin of graphics
+! number for simple color 1-16
+set color 13
+PLOT TEXT, AT 0,0+0.1:"(0,0,0)"
+end
+
+!++++++++++++++++++++++++++++++++++++++++++++++++
+!3d to 2d:world coordinates to screen coordinates
+!++++++++++++++++++++++++++++++++++++++++++++++++
+
+sub cor2to3(x1,y1,z1,xs,ys)
+xs=y1-x1/2
+ys=z1-x1/2
+end sub

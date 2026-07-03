@@ -1,0 +1,66 @@
+option nolet
+print "********************************************"
+print " programming : bet game play ,'version 1.0'*"
+print " peter.vlasschaert@gmail.com,22/01/2020    *"
+print "********************************************"
+randomize  ! random generator ,rnd
+!*********************
+! before play the game
+!*********************
+print
+print "***************"
+print " before play = "
+print "***************"
+print
+account = 100000  !money in your account
+b_money = 100     !money for every bet
+nu_times = 15     !number of times to bet
+print "*****************************************"
+print " money for every bet                    :";b_money
+print " number of times to bet                 :";nu_times
+print " your account ( = before play the game) :";account
+print "*****************************************"
+print
+call bet_money(a,account,b_money,nu_times,val,roll)
+!********************
+! after play the game
+!********************
+print
+print "***************"
+print " after play =  "
+print "***************"
+print
+print " your account ( = after play the game) :";val
+end
+
+sub roll_dice(roll,a)
+! programming : part of bet_money 'sub'
+roll = int(100*rnd)+1
+if roll = 100 then
+   print " roll = 100, you lose money ,play again   "
+   a = 0  !true
+else if  roll <= 50 then
+    print " roll (1 & 50), you lose money ,play again"
+    a = 0 !false
+else
+    print " roll (51 & 99), you win money ,play again"
+    a = 1 !true
+end if  
+end sub
+
+sub bet_money(a,account,b_money,nu_times,val,roll)
+!***************************************
+! nu_times : number of times you to play
+! nu_times => counter 'nu_initial'
+!****************************************
+     val = account    ! money in your account
+     money = b_money  ! money use for every bet
+nu_initial =0
+do while nu_initial < nu_times
+   call roll_dice(roll,a)
+if a=0 then val= val-money
+if a=1 then val= val+money
+print " account = ";val
+nu_initial = nu_initial +1
+loop
+end sub

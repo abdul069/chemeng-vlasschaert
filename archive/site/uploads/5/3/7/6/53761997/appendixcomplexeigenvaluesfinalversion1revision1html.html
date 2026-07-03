@@ -1,0 +1,485 @@
+<!DOCTYPE HTML">
+<HTML>
+ <HEAD>
+  <TITLE>appendixcomplexeigenvaluesfinalversion1revision1html</TITLE>
+  <META NAME="generator" CONTENT="wxMaxima">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    displayAlign: "left",
+    context: "MathJax"
+  })
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+  <link rel="stylesheet" type="text/css" href="https://petervlaschemeng.weebly.com/uploads/5/3/7/6/53761997/appendixcomplexeigenvaluesfinalversion1revision1html_htmlimg/appendixcomplexeigenvaluesfinalversion1revision1html.css"/>
+ </HEAD>
+ <BODY>
+
+<!-- ***************************************************** -->
+<!--          Created with wxMaxima version 16.04.2         -->
+<!-- ***************************************************** -->
+<noscript><div class="error message">    Please enable JavaScript in order to get a 2d display of the equations embedded in this web page.</div></noscript>\(      \DeclareMathOperator{\abs}{abs}
+      \newcommand{\ensuremath}[1]{\mbox{$#1$}}
+\)
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">kill</span>(<span class="code_variable">all</span>)<span class="code_endofline">$</span><BR>
+<span class="code_function">load</span>(<span class="code_variable">eigen</span>)<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+appendix:complex eigenvalues,'revision1'<BR><a href="https://petervlaschemeng.weebly.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a2d2c7d6c7d08cd4cec3d1d1c1cac3c7d0d6e2c5cfc3cbce8cc1cdcf">[email&#160;protected]</a>,27/03/2017<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+see:<BR>Lecture 26: Continuation: Repeated Real Eigenvalues<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i2) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">depends</span>(<span class="code_variable">x</span>,<span class="code_variable">t</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o2}\label{o2} [\operatorname{x}(t)]\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+simple example:<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i4) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p</span>[<span class="code_number">1</span>]<span class="code_operator">:</span><span class="code_operator">'</span><span class="code_function">diff</span>(<span class="code_variable">x</span>[<span class="code_number">1</span>],<span class="code_variable">t</span>)<span class="code_operator">=</span><span class="code_variable">x</span>[<span class="code_number">1</span>]<span class="code_operator">+</span><span class="code_number">2</span><span class="code_operator">*</span><span class="code_variable">x</span>[<span class="code_number">2</span>]<span class="code_endofline">;</span><BR>
+<span class="code_variable">p</span>[<span class="code_number">2</span>]<span class="code_operator">:</span><span class="code_operator">'</span><span class="code_function">diff</span>(<span class="code_variable">x</span>[<span class="code_number">2</span>],<span class="code_variable">t</span>)<span class="code_operator">=</span><span class="code_operator">-</span><span class="code_variable">x</span>[<span class="code_number">1</span>]<span class="code_operator">-</span><span class="code_variable">x</span>[<span class="code_number">2</span>]<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o3}\label{o3} \frac{d}{dt}{{x}_{1}}=2{{x}_{2}}+{{x}_{1}}\]
+\[\tag{\%{}o4}\label{o4} \frac{d}{dt}{{x}_{2}}=-{{x}_{2}}-{{x}_{1}}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i6) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">M1</span><span class="code_operator">:</span><span class="code_function">zeromatrix</span>(<span class="code_number">2</span>,<span class="code_number">2</span>)<span class="code_endofline">$</span><BR>
+for <span class="code_variable">i</span><span class="code_operator">:</span><span class="code_number">1</span> thru <span class="code_number">2</span> do<BR>
+ &nbsp;for <span class="code_variable">j</span><span class="code_operator">:</span><span class="code_number">1</span> thru <span class="code_number">2</span> do<BR>
+<span class="code_variable">M1</span>[<span class="code_variable">i</span>,<span class="code_variable">j</span>]<span class="code_operator">:</span><span class="code_function">coeff</span>(<span class="code_function">part</span>(<span class="code_variable">p</span>[<span class="code_variable">i</span>],<span class="code_number">2</span>),<span class="code_variable">x</span>[<span class="code_variable">j</span>])<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o6}\label{o6} \mathit{done}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+coef.Marix : 'p[i] , i=1..3'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i7) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">M1</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o7}\label{o7} \begin{pmatrix}1 & 2\\
+-1 & -1\end{pmatrix}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+eigenvalues ,M2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'|A-lambda*I|=0'<BR>I=matrix(M3)<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i11) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">M2</span><span class="code_operator">:</span><span class="code_function">zeromatrix</span>(<span class="code_number">2</span>,<span class="code_number">2</span>)<span class="code_endofline">$</span><BR>
+<span class="code_variable">M3</span><span class="code_operator">:</span><span class="code_function">zeromatrix</span>(<span class="code_number">2</span>,<span class="code_number">2</span>)<span class="code_endofline">$</span><BR>
+for <span class="code_variable">i</span><span class="code_operator">:</span><span class="code_number">1</span> thru <span class="code_number">2</span> do<BR>
+ &nbsp;<span class="code_variable">M3</span>[<span class="code_variable">i</span>,<span class="code_variable">i</span>]<span class="code_operator">:</span><span class="code_number">1</span><span class="code_endofline">;</span><BR>
+for <span class="code_variable">i</span><span class="code_operator">:</span><span class="code_number">1</span> thru <span class="code_number">2</span> do<BR>
+ &nbsp;for <span class="code_variable">j</span><span class="code_operator">:</span><span class="code_number">1</span> thru <span class="code_number">2</span> do<BR>
+ &nbsp;<span class="code_variable">M2</span>[<span class="code_variable">i</span>,<span class="code_variable">j</span>]<span class="code_operator">:</span><span class="code_variable">M1</span>[<span class="code_variable">i</span>,<span class="code_variable">j</span>]<span class="code_operator">-</span><span class="code_variable">lambda</span><span class="code_operator">*</span><span class="code_variable">M3</span>[<span class="code_variable">i</span>,<span class="code_variable">j</span>]<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o10}\label{o10} \mathit{done}\]
+\[\tag{\%{}o11}\label{o11} \mathit{done}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i12) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">M2</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}o12}\label{o12} \begin{pmatrix}1-\mathit{lambda} & 2\\
+-1 & -\mathit{lambda}-1\end{pmatrix}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+find :eigenvalues 'lambda'<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i13) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p1</span><span class="code_operator">:</span><span class="code_function">ratsimp</span>(<span class="code_function">determinant</span>(<span class="code_variable">M2</span>))<span class="code_operator">=</span><span class="code_number">0</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p1}\label{p1}{{\mathit{lambda}}^{2}}+1=0\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i18) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p2</span><span class="code_operator">:</span><span class="code_function">allroots</span>(<span class="code_variable">p1</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p21</span><span class="code_operator">:</span><span class="code_variable">p2</span>[<span class="code_number">1</span>]<span class="code_endofline">;</span><BR>
+<span class="code_variable">p22</span><span class="code_operator">:</span><span class="code_variable">p2</span>[<span class="code_number">2</span>]<span class="code_endofline">;</span><BR>
+<span class="code_variable">p210</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">p21</span>,<span class="code_number">2</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p220</span><span class="code_operator">:</span><span class="code_function">part</span>(<span class="code_variable">p22</span>,<span class="code_number">2</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p2}\label{p2}[\mathit{lambda}=1.0\%{}i,\mathit{lambda}=-1.0\%{}i]\]
+\[\tag{p21}\label{p21}\mathit{lambda}=1.0\%{}i\]
+\[\tag{p22}\label{p22}\mathit{lambda}=-1.0\%{}i\]
+\[\tag{p210}\label{p210}1.0\%{}i\]
+\[\tag{p220}\label{p220}-1.0\%{}i\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i19) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p3</span><span class="code_operator">:</span>[<span class="code_variable">vals</span>,<span class="code_variable">vecs</span>]<span class="code_operator">:</span><span class="code_function">eigenvectors</span>(<span class="code_variable">M1</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p3}\label{p3}[[[-\%{}i,\%{}i],[1,1]],[[[1,-\frac{\%{}i+1}{2}]],[[1,\frac{\%{}i-1}{2}]]]]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i21) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p4</span><span class="code_operator">:</span><span class="code_variable">vals</span>[<span class="code_number">1</span>]<span class="code_endofline">;</span><BR>
+<span class="code_variable">p5</span><span class="code_operator">:</span><span class="code_variable">vecs</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p4}\label{p4}[-\%{}i,\%{}i]\]
+\[\tag{p5}\label{p5}[[[1,-\frac{\%{}i+1}{2}]],[[1,\frac{\%{}i-1}{2}]]]\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i23) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p6</span><span class="code_operator">:</span><span class="code_variable">p5</span>[<span class="code_number">1</span>][<span class="code_number">1</span>]<span class="code_endofline">;</span><BR>
+<span class="code_variable">p7</span><span class="code_operator">:</span><span class="code_variable">p5</span>[<span class="code_number">2</span>][<span class="code_number">1</span>]<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p6}\label{p6}[1,-\frac{\%{}i+1}{2}]\]
+\[\tag{p7}\label{p7}[1,\frac{\%{}i-1}{2}]\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+solution 'system diff.equations':p[i],i=1,2,3<BR>math: e^(i*t) = cos(t)+i*sin(t)<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i25) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p8</span><span class="code_operator">:</span><span class="code_variable">x</span>[<span class="code_number">1</span>]<span class="code_operator">=</span><span class="code_variable">c1</span><span class="code_operator">*</span><span class="code_variable">p7</span>[<span class="code_number">1</span>]<span class="code_operator">*</span><span class="code_variable">%e</span><span class="code_operator">^</span>(<span class="code_variable">p210</span><span class="code_operator">*</span><span class="code_variable">t</span>)<span class="code_operator">+</span><span class="code_variable">c2</span><span class="code_operator">*</span><span class="code_variable">p6</span>[<span class="code_number">1</span>]<span class="code_operator">*</span><span class="code_variable">%e</span><span class="code_operator">^</span>(<span class="code_variable">p220</span><span class="code_operator">*</span><span class="code_variable">t</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p9</span><span class="code_operator">:</span><span class="code_variable">x</span>[<span class="code_number">2</span>]<span class="code_operator">=</span><span class="code_variable">c1</span><span class="code_operator">*</span><span class="code_variable">p7</span>[<span class="code_number">2</span>]<span class="code_operator">*</span><span class="code_variable">%e</span><span class="code_operator">^</span>(<span class="code_variable">p210</span><span class="code_operator">*</span><span class="code_variable">t</span>)<span class="code_operator">+</span><span class="code_variable">c2</span><span class="code_operator">*</span><span class="code_variable">p6</span>[<span class="code_number">2</span>]<span class="code_operator">*</span><span class="code_variable">%e</span><span class="code_operator">^</span>(<span class="code_variable">p220</span><span class="code_operator">*</span><span class="code_variable">t</span>)<span class="code_endofline">;</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p8}\label{p8}{{x}_{1}}=\mathit{c1}\,{{\%{}e}^{1.0\%{}it}}+\mathit{c2}\,{{\%{}e}^{-1.0\%{}it}}\]
+\[\tag{p9}\label{p9}{{x}_{2}}=\frac{\left( \%{}i-1\right) \,\mathit{c1}\,{{\%{}e}^{1.0\%{}it}}}{2}-\frac{\left( \%{}i+1\right) \,\mathit{c2}\,{{\%{}e}^{-1.0\%{}it}}}{2}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+ 'x '(t)<BR> &nbsp;&nbsp;&nbsp;1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+realpart 'x '<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i26) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p10</span><span class="code_operator">:</span><span class="code_function">realpart</span>(<span class="code_function">part</span>(<span class="code_variable">p8</span>,<span class="code_number">2</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p10}\label{p10}\mathit{c2}\,\cos{\left( 1.0t\right) }+\mathit{c1}\,\cos{\left( 1.0t\right) }\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i28) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p101</span><span class="code_operator">:</span><span class="code_variable">X</span><span class="code_operator">=</span><span class="code_function">ratsimp</span>(<span class="code_variable">p10</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p101</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p101</span>,<span class="code_variable">c1</span><span class="code_operator">+</span><span class="code_variable">c2</span><span class="code_operator">=</span><span class="code_variable">c</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\mbox{}\\\mbox{rat: replaced 1.0 by 1/1 = 1.0}\]
+\[\tag{p101}\label{p101}X=\left( \mathit{c2}+\mathit{c1}\right) \,\cos{(t)}\]
+\[\tag{p101}\label{p101}X=c\,\cos{(t)}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+imaginairpart 'x '<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i29) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p11</span><span class="code_operator">:</span><span class="code_function">imagpart</span>(<span class="code_function">part</span>(<span class="code_variable">p8</span>,<span class="code_number">2</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p11}\label{p11}\mathit{c1}\,\sin{\left( 1.0t\right) }-\mathit{c2}\,\sin{\left( 1.0t\right) }\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+ 'x '(t)<BR> &nbsp;&nbsp;2<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+realpart 'x '<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i30) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p12</span><span class="code_operator">:</span><span class="code_function">realpart</span>(<span class="code_function">part</span>(<span class="code_variable">p9</span>,<span class="code_number">2</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p12}\label{p12}\frac{\mathit{c1}\,\left( -\sin{\left( 1.0t\right) }-\cos{\left( 1.0t\right) }\right) }{2}-\frac{\mathit{c2}\,\left( \sin{\left( 1.0t\right) }+\cos{\left( 1.0t\right) }\right) }{2}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i32) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p121</span><span class="code_operator">:</span><span class="code_variable">Y</span><span class="code_operator">=</span><span class="code_function">ratsimp</span>(<span class="code_variable">p12</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p122</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p121</span>,<span class="code_variable">c1</span><span class="code_operator">+</span><span class="code_variable">c2</span><span class="code_operator">=</span><span class="code_variable">c</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\mbox{}\\\mbox{rat: replaced 1.0 by 1/1 = 1.0}\mbox{}\\\mbox{rat: replaced 1.0 by 1/1 = 1.0}\]
+\[\tag{p121}\label{p121}Y=-\frac{\left( \mathit{c2}+\mathit{c1}\right) \,\sin{(t)}+\left( \mathit{c2}+\mathit{c1}\right) \,\cos{(t)}}{2}\]
+\[\tag{p122}\label{p122}Y=-\frac{c\,\sin{(t)}+c\,\cos{(t)}}{2}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+imaginairpart 'x '<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i33) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p13</span><span class="code_operator">:</span><span class="code_function">imagpart</span>(<span class="code_function">part</span>(<span class="code_variable">p9</span>,<span class="code_number">2</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p13}\label{p13}\frac{\mathit{c1}\,\left( \cos{\left( 1.0t\right) }-\sin{\left( 1.0t\right) }\right) }{2}-\frac{\mathit{c2}\,\left( \cos{\left( 1.0t\right) }-\sin{\left( 1.0t\right) }\right) }{2}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i35) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">p14</span><span class="code_operator">:</span><span class="code_function">ev</span>(<span class="code_variable">p101</span>,<span class="code_variable">c</span><span class="code_operator">=</span><span class="code_variable">k</span>)<span class="code_endofline">;</span><BR>
+<span class="code_variable">p15</span><span class="code_operator">:</span><span class="code_function">ratsimp</span>(<span class="code_function">ev</span>(<span class="code_variable">p122</span>,<span class="code_variable">c</span><span class="code_operator">=</span><span class="code_variable">k</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{p14}\label{p14}X=k\,\cos{(t)}\]
+\[\tag{p15}\label{p15}Y=-\frac{k\,\sin{(t)}+k\,\cos{(t)}}{2}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+x(t),y(t) gives ellips ' x,y system '<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+delete : to see other ellipse<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+for <span class="code_variable">k</span><span class="code_operator">:</span><span class="code_number">0</span> step <span class="code_number">0</span>.<span class="code_number">5</span> thru <span class="code_number">2</span> do<BR>
+<span class="code_function">plot2d</span>([[<span class="code_operator">'</span><span class="code_variable">parametric</span>, <span class="code_function">part</span>(<span class="code_variable">p14</span>,<span class="code_number">2</span>), <span class="code_function">part</span>(<span class="code_variable">p15</span>,<span class="code_number">2</span>), [<span class="code_variable">t</span>, <span class="code_number">-</span><span class="code_number">6</span>, <span class="code_number">6</span>], [<span class="code_variable">nticks</span>, <span class="code_number">300</span>]]],<BR>
+ &nbsp;&nbsp;&nbsp;[<span class="code_variable">x</span>,<span class="code_number">-</span><span class="code_number">5</span>,<span class="code_number">5</span>],[<span class="code_variable">plot_format</span>, <span class="code_variable">gnuplot</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+statement : imaginair numbers = realpart+%i*imagpart<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+&lt; parametricplot2d &gt; &rArr;<BR>
+</P>
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">
+rem:plot2d([['parametric, 2*cos(t), -sin(t)-cos(t), [t, -6, 6], [nticks, 300]]],<BR> &nbsp;&nbsp;&nbsp;&nbsp;[x,-5,5],[plot_format, gnuplot])$<BR>
+</P>
+
+ <HR>
+ <SMALL> Created with <A HREF="http://wxmaxima.sourceforge.net/">wxMaxima</A>.</SMALL>
+ <script data-cfasync="false" src="../../../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></BODY>
+</HTML>

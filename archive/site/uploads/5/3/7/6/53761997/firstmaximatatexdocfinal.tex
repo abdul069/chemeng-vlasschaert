@@ -1,0 +1,115 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=2mm,
+ top=1mm,
+ }
+\begin{document}
+'info: peter.vlasschaert@gmail.com ,29/06/2017'
+
+first : to convert wxMaxima files version ' 17.05.0' to pdf 
+
+How to install latex :'windows 10'.
+
+ "  arrow =  ' = '  "
+
+1e) download : MikTex   ( Texworks ) = install
+
+2e) download : Texmaker ( version 4.5 Latex editor) = install
+
+rem: start : Texmaker  
+
+     go to menu : Options = configure Texmaker = 
+      
+     a) Commands    = Pdf built-in viewer 'enable'.
+     
+     b) Quick build = Pdflatex + View Pdf 'enable'
+     
+     c) Editor      = Show Line Numbers   'enable' , backup ?
+
+     go to file menu 'save as' your latex document
+     
+     - create folder : name 'latex' on your 'desktop'
+     
+3e) tutorial : YouTube   ' channel '
+
+LaTeX Tutorial :   from  'Michelle Krummel'
+
+ $$ https://www.youtube.com/channel/UCGCHc7LsEYT6_2dQauh2NYw $$   
+ 
+4e) start : Maxima 'wxMaxima 17.05.0'
+
+    go to menu : file ,choose , Export
+    
+    a) first : select file you want to convert to latex.
+    
+    example: website:virialequationsfinalversion1.wxmx
+    
+    b) second : choose,Export 'below' select: Save Type :
+    
+    pdfLatexfile(*.tex)
+    
+    example: website:virialequationsfinalversion1.tex
+    
+    
+5e) start :Texmaker      
+
+    go to menu ,file,open 'virialequationsfinalversion1.tex'
+    
+    select above : blue arrow 'Quick Build'
+    
+6e) ? error: Missing packages. ( How to Solve)
+
+   start : MikTex Package Manager (Admin)
+   
+   go to menu : choose Repository
+   
+   a) first  : Synchronize ,wait until see the files
+   
+   b) second : Change Package Repository,go to internet option 'enable' 
+   
+   c) you can select : next,change place : Repository.fr,Nl ...
+   
+   d) Missing :  error when by conversion to *.tex  to *.pdf
+
+   ? Installing package ocgx2 will fix the problem.
+   
+   (As ocgbase.sty is part of the ocgx2 package) 
+   
+   ? Quick build : gives error ,MikTex Package Manager (Admin) is open 
+   
+   solve : close  MikTex Package Manager (Admin)    
+    
+7e) How use MikTex Package Manager.
+
+   go to YouTube ( install packages)
+   
+   $$ https://www.youtube.com/watch?v=2qtH4AvxJAA $$
+   
+8e) To put more txt on one page (usepackage: geometry)  
+
+    see 7e) 'packages is missing'
+    
+    see : *.tex file 'above'  'begin(document)'
+    
+%      \usepackage{geometry}
+%      \geometry{
+%         a4paper,
+%       total={170mm,257mm},
+%        left=5mm,
+%        top=20mm,
+%       }
+   see : firstmaximatatexdocfinal.tex open 'Texmaker'
+   
+9e)    open 'virialequationsfinalversion1.tex'
+
+   see : edit code 'to put more txt one your page',(usepackage: geometry)
+   
+rem: * =  filename.
+
+10e) output : Maxima big (overcome,put in pieces to show the pdf file).   
+   
+   
+\end{document}

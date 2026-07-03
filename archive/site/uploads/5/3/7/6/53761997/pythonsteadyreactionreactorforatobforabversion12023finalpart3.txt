@@ -1,0 +1,101 @@
+import numpy as np
+import matplotlib.pyplot as plt
+# ref : see maxima ,
+#--------------------------------------------------------------------------------------
+# maxima,kinetics : -('diff(C,x,1))*u-C*k+('diff(C,x,2))*D=0,symbolic,part 1,version 1
+# maxima,kinetics : -('diff(C,x,1))*u-C*k+('diff(C,x,2))*D=0,numerical,part 2,version 1
+#---------------------------------------------------------------------------------------
+print("-------------------------------------------------------------------------------------")
+print("python,kinetics : -('diff(C,x,1))*u-C*k+('diff(C,x,2))*D=0,numerical,part 3,version 1")
+print("peter.vlasschaert@gmail.com,28/01/2023                                               ")
+print("-------------------------------------------------------------------------------------")
+print("                                                                                     ")
+print(" mathematical model : reactor")
+print("-----------------------------")
+print(" ode :-('diff(C,x,1))*u-C*k+('diff(C,x,2))*D=0 ")
+print(" bc1 :at(x=0),Cin = u*C -D*'diff(C,x)")
+print(" bc2 :at(x=L),'diff(C,x) =0          ")
+print("-----------------------------")
+# Parameters
+
+u = 1       # [m/s] velocity
+D = 0.0001  # [m^2/s] diffusion constant
+k = 1       # [1/s] reaction constant
+L = 10      # [m] length of the reactor
+Cin = 1     # [mol/m^3] begin concentration CA
+n = 7       # number of divisions for the reactor
+
+# Discretization
+dx = L/n
+x = np.linspace(0, L, n+1)  # position vector
+C = np.zeros(n+1)           # concentration vector
+C[0] = Cin                  # inlet boundary condition
+
+# Coefficients for TDMA
+a = np.zeros(n)    # lower diagonal
+b = np.zeros(n+1)  # main diagonal , one element more
+c = np.zeros(n)    # upper diagonal
+d = np.zeros(n+1)  # RHS vector
+
+# Fill in the coefficients, see maxima code.
+for i in range(1, n):
+    a[i-1] = D/(dx*dx) - u/(2*dx)
+    b[i] = -2*D/(dx*dx) +k
+    c[i] = D/(dx*dx) + u/(2*dx)
+    d[i] = 0  # RHS is zero for steady-state problem
+
+# Apply boundary conditions
+b[0] = 1    # at x=0, C=Cin
+c[0] = 0
+d[0] = Cin                 # see maxima
+b[n] = 1    # at x=L, dC/dx=0
+a[n-1] = 0  # 
+
+# Thomas algorithm (used : solve tridiagonal system)
+for i in range(1, n):                   # maxima code 1.n+1> 0 to n
+    m = a[i-1]/b[i-1]
+    b[i] = b[i] - m*c[i-1]
+    d[i] = d[i] - m*d[i-1]
+
+C[n] = d[n]/b[n]  # solve last equation
+
+for i in range(n-1, -1, -1):
+    C[i] = (d[i] - c[i]*C[i+1])/b[i]
+# make plot    
+plt.title(" A -> B, k=constant ,steady state reactor ,length =L")
+# Plot
+# Plot the results
+# Plot the results for A
+plt.plot(x, C, label='Change in concentration A',color='blue', marker='o')
+# Plot the discrete points in black
+# plt.scatter(x, C, c='black')
+# Plot the results for B
+Cr = Cin- C  # subtract initial concentration of A,reverse , only posive concentration
+plt.plot(x, Cr, label='Change in concentration B', color='red', marker='o')
+# Plot the discrete points in black
+# plt.scatter(x, Cr, c='black')
+plt.xlabel('Distance [m]')
+plt.ylabel('Change in concentration [mol/m^3]')
+plt.legend()
+# print tables :
+#----------------------------
+# use : tabulate packages
+# pip install tabulate
+#----------------------------
+from tabulate import tabulate
+# Create a table of the discrete values
+data = [[i, x[i], C[i], - (C[i] - Cin)] for i in range(n+1)]
+headers = ['Index', 'Distance', 'Concentration A', 'Concentration B']
+print(tabulate(data, headers, tablefmt='fancy_grid'))
+#----------------------------
+# use : pandas packages
+# pip install pandas
+#----------------------------
+print("-------------------------------------------------------------------------")
+import pandas as pd
+# Create a pandas dataframe 
+data = {'distance': x, 'concentration A': C, 'concentration B': -(C - Cin)}
+df = pd.DataFrame(data)
+print(df)
+plt.show()
+

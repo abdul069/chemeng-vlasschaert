@@ -1,0 +1,70 @@
+option nolet
+declare function f
+! divide window in two equal parts
+open #1:screen 0,0.5,0,1  ! window #1
+open #2:screen 0.5,1,0,1  ! window #2
+!open #N:left,right,bottom,top
+! window closed: closed #N, N positiv integer.
+!=> make window #1 active
+window #1
+call info(a)
+clear  ! window clear contens #1,removed info(a)
+window #2
+! tab used to print txt logical window
+print tab (5);"window2"
+print
+ask max cursor r2,c2
+print " r2:number of rows     window #2";r2
+print " c2:number of columns  window #2";c2
+open #3:screen 0.5,1,0,0.5  ! window #3
+set window -6.283,6.283,-1.1,1.1
+window #3
+print tab(5);"window3,draw :sin(x)"
+print
+ask max cursor r3,c3
+print " r3:number of rows     window #3";r3
+print " c3:number of columns  window #3";c3
+! draw : y=sin(x)
+function f(x) = sin(x)
+x_step =.002
+for x=-5 to 5 step x_step
+      set color "red" 
+      y=sin(x)
+      plot x,y
+next x
+! draw :title
+set color "blue"
+print tab(5,10);" function to draw : y = sin(x) "
+! draw :coordinate axis
+set color "green"
+plot lines :-5,0;5,0  ! x axis
+plot lines :0,-1;0,1  ! y axis
+print
+print " user :coordinaat system, ask window xl,xr,yb,yt "
+print
+ask window xmin,xmax,ymin,ymax
+print " xmin(=xl) = ";xmin
+print " xmax(=xr) = ";xmax
+print " ymin(=yb) = ";ymin
+print " ymax(=yt) = ";ymax
+window #1
+set color "black"
+print
+call info(a)
+print
+print tab(5);"window1"
+print
+ask max cursor r1,c1
+print " r1:number of rows     window #1";r1
+print " c1:number of columns  window #1";c1
+!******************************************************
+! three logical windows , window #1,window #2,window #3
+!******************************************************
+end
+
+sub info(a)
+print tab(7); "*********************************************"
+print tab(7); "* prog : divide window , version 1.0        *"
+print tab(7); "* peter.vlasschaert@gmail.com,29/02/2020    *"
+print tab(7); "*********************************************"
+end sub

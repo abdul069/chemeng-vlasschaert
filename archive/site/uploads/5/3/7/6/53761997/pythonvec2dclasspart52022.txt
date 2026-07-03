@@ -1,0 +1,106 @@
+# part 5 : create class vec2d,add vectors,scalar,equality,represent
+# peter.vlasschaert@gmail.com,24/08/2022
+#------------------------------------------------------------------
+class vec2d():
+# vector 2 dimensional plane (xy-plane)    
+    def __init__(self,x,y): # don't forget this
+        self.x = x
+        self.y = y
+# add vector 1 + vector 2 ( use def to this,see : quadratic
+# def function ,need return function.
+    def add(self,ve):
+        return vec2d(self.x+ve.x,self.y+ve.y)
+    def minus(self,ve):
+        return vec2d(self.x-ve.x,self.y-ve.y)
+#..................................
+# ve internal add vector = vector 2
+#..................................
+    def scale(self,scalar):
+        return vec2d(scalar*self.x,scalar*self.y)
+#..................................
+# scala*vector = result new vector
+#..................................    
+    def __eq__(self,other):   # see: logic and,eq = equality
+       return self.x == other.x and self.y == other.y
+#.......................................
+# equality method,otherwise wrong result
+#.......................................       
+    def __repr__(self):      # see: repr = representation 
+      return "vec2d({},{})".format(self.x,self.y)
+#.......................................
+# representation of vector : combination
+#.......................................       
+    
+print( "vector 2d = vector two dimensional             ")
+print( "-----------------------------------------------")
+print( "property: add two vectors with scalar ,vec2d   ")
+print( "-----------------------------------------------")
+print( " first vector = vec2d(2,3) " )
+v1 = vec2d(2,3)      
+# example : find x coordinate vec2d(x,y)
+print("x coordinate vec2d(x,y) = ",v1.x)
+# v1 = object and x,y = method = attribute
+# example : find y coordinate vec2d(x,y)
+print("y coordinate vec2d(x,y) = ",v1.y)
+print( "-----------------------------------")
+print( " second vector = vec2d(3,2) " )
+v2 =vec2d(3,2)
+print (" result :vec2d(2,3)+vec2d(3,2) = vec2d(5,5) ")
+v3=v1.add(v2)
+print("x coordinate vec2d(5,5) = ",v3.x)        
+print("y coordinate vec2d(5,5) = ",v3.y)
+print( "-----------------------------------")
+print( "property: minus two vectors ,vec2d ")
+print( "-----------------------------------")
+print (" result :vec2d(2,3)-vec2d(3,2) = vec2d(-1,1) ")
+v4=v1.minus(v2)
+print("x coordinate vec2d(-1,1) = ",v4.x)        
+print("y coordinate vec2d(-1,1) = ",v4.y)
+print( "vector 2d = vector two dimensional ")
+print( "-----------------------------------")
+print( "property: add two vectors ,vec2d   ")
+print( "-----------------------------------")
+print( " first vector = vec2d(2,3) " )
+v1 = vec2d(2,3)      
+# example : find x coordinate vec2d(x,y)
+print("x coordinate vec2d(x,y) = ",v1.x)
+# v1 = object and x,y = method = attribute
+# example : find y coordinate vec2d(x,y)
+print("y coordinate vec2d(x,y) = ",v1.y)
+print( "-----------------------------------")
+print( " second vector = vec2d(3,2) " )
+v2 =vec2d(3,2)
+print (" result :vec2d(2,3)+vec2d(3,2) = vec2d(5,5) ")
+v3=v1.add(v2)
+print("x coordinate vec2d(5,5) = ",v3.x)        
+print("y coordinate vec2d(5,5) = ",v3.y)
+print( "-----------------------------------")
+print( "property: minus two vectors ,vec2d ")
+print( "-----------------------------------")
+print (" result :vec2d(2,3)-vec2d(3,2) = vec2d(-1,1) ")
+v4=v1.minus(v2)
+print( "--------------------------------------------------")
+print( "property: scalarmultiplication of a vector ,vec2d ")
+print( "--------------------------------------------------")
+print (" result :2*vec2d(-1,1) = vec2d(-2,2) ")
+v5=v4.scale(2)
+print("x coordinate 2*vec2d(-1,1) = ",v5.x)        
+print("y coordinate 2*vec2d(-1,1) = ",v5.y)
+print( "--------------------------------------------------")
+print( "property: combination a vector ,vec2d             ")
+print( "--------------------------------------------------")
+v6=v5.add(v1)
+print (" RESULT :2*vec2d(-1,1)+vec2d(2,3) = vec2d(-2,2) ")
+print("x coordinate RESULT = ",v6.x)        
+print("y coordinate RESULT = ",v6.y)
+print( "good : result, equality ")
+# problem solve : change class vec2d ,combination self ,other.
+print("vec2d(2,3)==vec2d(2,3) ->",vec2d(2,3)==vec2d(2,3))
+print( "--------------------------------------------------")
+print( "property: representation,vec2d                    ")
+print( "--------------------------------------------------")
+m1=[vec2d(4,5),v6]  # list of vectors
+print(m1)
+m2=print("vec2d(4,5)+vec2d(0,5) = ",vec2d(4,5).add(v6)) # som of vectors
+
+
