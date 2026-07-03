@@ -25,7 +25,7 @@ jobs:
                --convert-links \
                --restrict-file-names=windows \
                --no-parent \
-               --wait=0.3 \
+               --wait=0.15 \
                --tries=3 \
                --timeout=30 \
                -e robots=off \
@@ -54,6 +54,9 @@ jobs:
             echo ""
             echo "Open \`archive/site/index.html\` lokaal in een browser om de site offline te bekijken."
           } > archive/README.md
+          find archive/site -type f -size +95M -printf '%p (%s bytes)\n' > archive/TOO_LARGE.txt || true
+          find archive/site -type f -size +95M -delete || true
+          [ -s archive/TOO_LARGE.txt ] || rm -f archive/TOO_LARGE.txt
 
       - name: Commit archive
         run: |
@@ -61,4 +64,5 @@ jobs:
           git config user.email "actions@github.com"
           git add archive/
           git commit -m "Archive: volledige mirror van petervlaschemeng.weebly.com" || echo "niets te committen"
+          git pull --rebase origin main
           git push
