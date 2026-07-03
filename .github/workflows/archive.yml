@@ -1,6 +1,9 @@
 name: archive-site
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - '.archive-trigger'
 
 permissions:
   contents: write
